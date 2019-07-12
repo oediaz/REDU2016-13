@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputStylesheet library="css" name="template.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+        <link rel="shortcut icon" href="/redu/web/resources/css/icono.ico" type="image/x-icon"/>
+    </h:head>
+
+    <h:body>
+
+        <p:growl id="growl" life="3000" />
+
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="65" header="#{bundle.AppName}">
+                <h:form id="menuForm">
+                    <p:menubar>
+                        <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
+                        <p:submenu label="Aspecto Relacional" icon="ui-icon-folder-collapsed">
+                            <p:submenu label="Gestión" icon="ui-icon-folder-collapsed">
+                                <p:menuitem value="Médico" outcome="/medico/List.xhtml" />
+                                <p:menuitem value="Paciente" outcome="/paciente/List.xhtml" />
+                                <p:menuitem value="Medicamento" outcome="/medicamento/List.xhtml" />
+                                <p:menuitem value="Responsable de Imagen" outcome="/responsableimagen/List.xhtml" />
+                                <p:menuitem value="Laboratorio" outcome="/laboratorio/List.xhtml" />
+                            </p:submenu>
+                            <p:submenu label="Screening" icon="ui-icon-image">
+                                <p:menuitem value="Crear Screening" outcome="/screening/List.xhtml" />
+                                <p:submenu label="Mamografía">
+                                    <p:menuitem value="Gestión" outcome="/mamografia/List.xhtml" />
+                                    <p:menuitem value="Resultados" outcome="/resultadosmamografia/List.xhtml" />
+                                </p:submenu>
+                                <p:submenu label="Ecografía">
+                                    <p:menuitem value="Gestión" outcome="/ecografia/List.xhtml" />
+                                    <p:menuitem value="Resultados" outcome="/resultadosecografia/List.xhtml" />
+                                </p:submenu>
+                                <p:submenu label="Resonancia Magnética">
+                                    <p:menuitem value="Gestión" outcome="/resonanciamagnetica/List.xhtml" />
+                                    <p:menuitem value="Resultados" outcome="/resultadosresonanciamagnetica/List.xhtml" />
+                                </p:submenu>
+                                <p:submenu label="Emisión de Positrones">
+                                    <p:menuitem value="Gestión" outcome="/mamografiaemisionpositrones/List.xhtml" />
+                                    <p:menuitem value="Resultados" outcome="/resultadosmamografiaep/List.xhtml" />
+                                </p:submenu>
+                            </p:submenu>
+                            <p:submenu label="BI-RADS" icon="ui-icon-contact">
+                                <p:menuitem value="Gestión de BI-RADS" outcome="/birads/List.xhtml" />
+                                <p:menuitem value="Gestión de informe BI-RADS" outcome="/birads/List.xhtml" />
+                            </p:submenu>
+                            <p:submenu label="Reportes" icon="ui-icon-clipboard">
+                            </p:submenu>
+                        </p:submenu>
+
+                        <p:submenu label="Aspecto Inteligente" icon="ui-icon-gear">
+                            <p:submenu label="Reconocimiento de Patrones">
+                                <p:menuitem value="Gestión de imágenes" outcome="/index" />
+                                <p:menuitem value="Gestión de patrones de imágenes previas" outcome="/index" />
+                                <p:menuitem value="Gestión de patrones obtenidos del reconocimiento" outcome="/index" />
+                            </p:submenu>
+                            <p:submenu label="Interpretación de Patrones" >
+                                <p:menuitem value="Pre-procesado de patrones" outcome="/index" />
+                                <p:menuitem value="Procesamiento de patrones" outcome="/index" />
+                                <p:menuitem value="Gestión de patrones en el dominio de la textura Haralicks" outcome="/index" />
+                                <p:menuitem value="Gestión de coeficientes de Haralicks" outcome="/index" />
+                            </p:submenu>
+                            <p:menuitem value="Base de conocimiento" ></p:menuitem>
+                            <p:menuitem value="Motor de inferencia" ></p:menuitem>
+                            <p:menuitem value="Gestión de reglas de inferencia" ></p:menuitem>
+                            <p:menuitem value="Generación supervisada del reporte BI-RADS" ></p:menuitem>
+                        </p:submenu>
+                        <p:menuitem value="Conexión y Acceso al Servicio PACS" icon="ui-icon-transferthick-e-w"></p:menuitem>
+                        <p:menuitem value="Ayuda" icon="ui-icon-help"></p:menuitem>
+
+
+
+
+                        <p:submenu label="#{bundle.Maintenance}">
+                            <p:menuitem value="Biopsia" outcome="/biopsia/List.xhtml" />
+                            <p:menuitem value="Birads" outcome="/birads/List.xhtml" />
+                            <p:menuitem value="Cirugia" outcome="/cirugia/List.xhtml" />
+                            <p:menuitem value="Ecografia" outcome="/ecografia/List.xhtml" />
+                            <p:menuitem value="Examen" outcome="/examen/List.xhtml" />
+                            <p:menuitem value="Examinacion" outcome="/examinacion/List.xhtml" />
+                            <p:menuitem value="Laboratorio" outcome="/laboratorio/List.xhtml" />
+                            <p:menuitem value="Mamografia" outcome="/mamografia/List.xhtml" />
+                            <p:menuitem value="Mamografiaemisionpositrones" outcome="/mamografiaemisionpositrones/List.xhtml" />
+                            <p:menuitem value="Medicacion" outcome="/medicacion/List.xhtml" />
+                            <p:menuitem value="Medicamento" outcome="/medicamento/List.xhtml" />
+                            <p:menuitem value="Medico" outcome="/medico/List.xhtml" />
+                            <p:menuitem value="Paciente" outcome="/paciente/List.xhtml" />
+                            <p:menuitem value="Quimioterapia" outcome="/quimioterapia/List.xhtml" />
+                            <p:menuitem value="Radioterapia" outcome="/radioterapia/List.xhtml" />
+                            <p:menuitem value="Resonanciamagnetica" outcome="/resonanciamagnetica/List.xhtml" />
+                            <p:menuitem value="Responsableimagen" outcome="/responsableimagen/List.xhtml" />
+                            <p:menuitem value="Resultadosecografia" outcome="/resultadosecografia/List.xhtml" />
+                            <p:menuitem value="Resultadosmamografia" outcome="/resultadosmamografia/List.xhtml" />
+                            <p:menuitem value="Resultadosmamografiaep" outcome="/resultadosmamografiaep/List.xhtml" />
+                            <p:menuitem value="Resultadosresonanciamagnetica" outcome="/resultadosresonanciamagnetica/List.xhtml" />
+                            <p:menuitem value="Screening" outcome="/screening/List.xhtml" />
+                            <p:menuitem value="Tratamientocancermama" outcome="/tratamientocancermama/List.xhtml" />
+                        </p:submenu>
+                    </p:menubar>
+                </h:form>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="30">
+                <footer>
+                    <p style="color:#000000; text-decoration:none;" >© 2019<a style="color:#000000; text-decoration:none;" href="#"> REDU</a>, All rights reserved.</p>
+                </footer>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <ui:insert name="body"/>
+            </p:layoutUnit>
+
+        </p:layout>
+
+    </h:body>
+
+
+</html>

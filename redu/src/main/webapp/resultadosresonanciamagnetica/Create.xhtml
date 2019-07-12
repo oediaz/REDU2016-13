@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ResultadosresonanciamagneticaCreateDlg" widgetVar="ResultadosresonanciamagneticaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateResultadosresonanciamagneticaTitle}">
+            <h:form id="ResultadosresonanciamagneticaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{resultadosresonanciamagneticaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateResultadosresonanciamagneticaLabel_tipohallazgormm}" for="tipohallazgormm" />
+                        <p:inputText id="tipohallazgormm" value="#{resultadosresonanciamagneticaController.selected.tipohallazgormm}" title="#{bundle.CreateResultadosresonanciamagneticaTitle_tipohallazgormm}" />
+                        <p:outputLabel value="#{bundle.CreateResultadosresonanciamagneticaLabel_descripcionhallazgorrm}" for="descripcionhallazgorrm" />
+                        <p:inputText id="descripcionhallazgorrm" value="#{resultadosresonanciamagneticaController.selected.descripcionhallazgorrm}" title="#{bundle.CreateResultadosresonanciamagneticaTitle_descripcionhallazgorrm}" />
+                        <p:outputLabel value="#{bundle.CreateResultadosresonanciamagneticaLabel_resonanciamagnetica}" for="resonanciamagnetica" />
+                        <p:selectOneMenu id="resonanciamagnetica" value="#{resultadosresonanciamagneticaController.selected.resonanciamagnetica}" >
+                            <f:selectItems value="#{resonanciamagneticaController.itemsAvailableSelectOne}"
+                                           var="resonanciamagneticaItem"
+                                           itemValue="#{resonanciamagneticaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{resultadosresonanciamagneticaController.create}" value="#{bundle.Save}" update="display,:ResultadosresonanciamagneticaListForm:datalist,:growl" oncomplete="handleSubmit(args,'ResultadosresonanciamagneticaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ResultadosresonanciamagneticaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

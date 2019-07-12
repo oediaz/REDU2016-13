@@ -1,0 +1,51 @@
+
+body {
+    /* Ubicación de la imagen 
+    background-image: url(http://s1.1zoom.me/b5050/579/Trucks_White_455321_2048x1536.jpg);*/
+    background-image: url(https://www.rcusine.com/wp-content/uploads/2015/12/rch_logistica_camions.jpg);
+    
+    /* Nos aseguramos que la imagen de fondo este centrada vertical y
+      horizontalmente en todo momento */
+    background-position: center center;
+
+    /* La imagen de fondo no se repite */
+    background-repeat: no-repeat;
+
+    /* La imagen de fondo está fija en el viewport, de modo que no se mueva cuando
+       la altura del contenido supere la altura de la imagen. */
+    background-attachment: fixed;
+
+    /* La imagen de fondo se reescala cuando se cambia el ancho de ventana
+       del navegador */
+    background-size: cover;
+
+    /* Fijamos un color de fondo para que se muestre mientras se está
+      cargando la imagen de fondo o si hay problemas para cargarla  */
+    background-color: #464646;
+}
+
+.centrado-porcentual {
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+.centrado-porcentual1{
+    position: absolute;
+    left: 50%;
+    top: 19%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+.centrado-porcentual2{
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+

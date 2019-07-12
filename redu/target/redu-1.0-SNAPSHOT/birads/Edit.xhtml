@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BiradsEditDlg" widgetVar="BiradsEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditBiradsTitle}">
+            <h:form id="BiradsEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{biradsController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditBiradsLabel_idbirads}" for="idbirads" />
+                        <p:inputText id="idbirads" value="#{biradsController.selected.idbirads}" title="#{bundle.EditBiradsTitle_idbirads}" required="true" requiredMessage="#{bundle.EditBiradsRequiredMessage_idbirads}"/>
+                        <p:outputLabel value="#{bundle.EditBiradsLabel_fechabirads}" for="fechabirads" />
+                        <p:calendar id="fechabirads" pattern="MM/dd/yyyy HH:mm:ss" value="#{biradsController.selected.fechabirads}" title="#{bundle.EditBiradsTitle_fechabirads}" required="true" requiredMessage="#{bundle.EditBiradsRequiredMessage_fechabirads}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBiradsLabel_razonbirads}" for="razonbirads" />
+                        <p:selectOneMenu id="razonbirads" value="#{biradsController.selected.razonbirads}" title="#{bundle.EditBiradsTitle_razonbirads}" style="width: 100%">
+                            <f:selectItem itemLabel="Mamografia de control" itemValue="Tratante" />
+                            <f:selectItem itemLabel="estudio de cribado" itemValue="Especialista" />
+                            <f:selectItem itemLabel="seguimiento cancer de mama" itemValue="Interconsulta" />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditBiradsLabel_descripcionbirads}" for="descripcionbirads" />
+                        <p:inputText id="descripcionbirads" value="#{biradsController.selected.descripcionbirads}" title="#{bundle.EditBiradsTitle_descripcionbirads}" />
+                        <p:outputLabel value="#{bundle.EditBiradsLabel_categoriabirads}" for="categoriabirads" />
+                        <p:inputText id="categoriabirads" value="#{biradsController.selected.categoriabirads}" title="#{bundle.EditBiradsTitle_categoriabirads}" />
+                        <p:outputLabel value="#{bundle.EditBiradsLabel_definicionbirads}" for="definicionbirads" />
+                        <p:inputText id="definicionbirads" value="#{biradsController.selected.definicionbirads}" title="#{bundle.EditBiradsTitle_definicionbirads}" />
+                        <p:outputLabel value="#{bundle.EditBiradsLabel_evaluacionbirads}" for="evaluacionbirads" />
+                        <p:inputTextarea rows="4" cols="30" id="evaluacionbirads" value="#{biradsController.selected.evaluacionbirads}" title="#{bundle.EditBiradsTitle_evaluacionbirads}" />
+                        <p:outputLabel value="#{bundle.EditBiradsLabel_porcentajecancerbirads}" for="porcentajecancerbirads" />
+                        <p:inputText id="porcentajecancerbirads" value="#{biradsController.selected.porcentajecancerbirads}" title="#{bundle.EditBiradsTitle_porcentajecancerbirads}" />
+                        <p:outputLabel value="#{bundle.EditBiradsLabel_recomendacionbirads}" for="recomendacionbirads" />
+                        <p:inputText id="recomendacionbirads" value="#{biradsController.selected.recomendacionbirads}" title="#{bundle.EditBiradsTitle_recomendacionbirads}" />
+                        <p:outputLabel value="#{bundle.EditBiradsLabel_idresultadoe}" for="idresultadoe" />
+                        <p:selectOneMenu id="idresultadoe" value="#{biradsController.selected.idresultadoe}" required="true" requiredMessage="#{bundle.EditBiradsRequiredMessage_idresultadoe}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{resultadosecografiaController.itemsAvailableSelectOne}"
+                                           var="idresultadoeItem"
+                                           itemValue="#{idresultadoeItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditBiradsLabel_idresultadom}" for="idresultadom" />
+                        <p:selectOneMenu id="idresultadom" value="#{biradsController.selected.idresultadom}" required="true" requiredMessage="#{bundle.EditBiradsRequiredMessage_idresultadom}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{resultadosmamografiaController.itemsAvailableSelectOne}"
+                                           var="idresultadomItem"
+                                           itemValue="#{idresultadomItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditBiradsLabel_idresultadosmep}" for="idresultadosmep" />
+                        <p:selectOneMenu id="idresultadosmep" value="#{biradsController.selected.idresultadosmep}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{resultadosmamografiaepController.itemsAvailableSelectOne}"
+                                           var="idresultadosmepItem"
+                                           itemValue="#{idresultadosmepItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditBiradsLabel_idresultadorm}" for="idresultadorm" />
+                        <p:selectOneMenu id="idresultadorm" value="#{biradsController.selected.idresultadorm}" required="true" requiredMessage="#{bundle.EditBiradsRequiredMessage_idresultadorm}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{resultadosresonanciamagneticaController.itemsAvailableSelectOne}"
+                                           var="idresultadormItem"
+                                           itemValue="#{idresultadormItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{biradsController.update}" value="#{bundle.Save}" update="display,:BiradsListForm:datalist,:growl" oncomplete="handleSubmit(args, 'BiradsEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BiradsEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

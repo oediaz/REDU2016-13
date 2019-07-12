@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ResponsableimagenCreateDlg" widgetVar="ResponsableimagenCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="CREAR NUEVO RESPONSABLE DE IMAGEN">
+            <h:form id="ResponsableimagenCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{responsableimagenController.selected != null}">
+                        <p:outputLabel value="Cédula:" for="cedularesponsablei" />
+                        <p:inputText id="cedularesponsablei" value="#{responsableimagenController.selected.cedularesponsablei}" title="#{bundle.CreateResponsableimagenTitle_cedularesponsablei}" />
+                        <p:outputLabel value="Nombre:" for="nombreresponsablei" />
+                        <p:inputText id="nombreresponsablei" value="#{responsableimagenController.selected.nombreresponsablei}" title="#{bundle.CreateResponsableimagenTitle_nombreresponsablei}" />
+                        <p:outputLabel value="Teléfono:" for="fonoresponsablei" />
+                        <p:inputText id="fonoresponsablei" value="#{responsableimagenController.selected.fonoresponsablei}" title="#{bundle.CreateResponsableimagenTitle_fonoresponsablei}" />
+                        <p:outputLabel value="Email:" for="mailresponsablei" />
+                        <p:inputText id="mailresponsablei" value="#{responsableimagenController.selected.mailresponsablei}" title="#{bundle.CreateResponsableimagenTitle_mailresponsablei}" />
+                        <p:outputLabel value="Celular:" for="celularresponsablei" />
+                        <p:inputText id="celularresponsablei" value="#{responsableimagenController.selected.celularresponsablei}" title="#{bundle.CreateResponsableimagenTitle_celularresponsablei}" />
+                    </p:panelGrid>
+                    <center>
+                    <p:commandButton actionListener="#{responsableimagenController.create}" value="#{bundle.Save}" update="display,:ResponsableimagenListForm:datalist,:growl" oncomplete="handleSubmit(args,'ResponsableimagenCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ResponsableimagenCreateDialog.hide()"/>
+                    </center>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

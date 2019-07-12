@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BiopsiaCreateDlg" widgetVar="BiopsiaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateBiopsiaTitle}">
+            <h:form id="BiopsiaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{biopsiaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateBiopsiaLabel_biopsiaPK_idbiopsia}" for="biopsiaPK_idbiopsia" />
+                        <p:inputText id="biopsiaPK_idbiopsia" value="#{biopsiaController.selected.biopsiaPK.idbiopsia}" title="#{bundle.CreateBiopsiaTitle_biopsiaPK_idbiopsia}" required="true" requiredMessage="#{bundle.CreateBiopsiaRequiredMessage_biopsiaPK_idbiopsia}"/>
+                        <p:outputLabel value="#{bundle.CreateBiopsiaLabel_fechabiopsia}" for="fechabiopsia" />
+                        <p:calendar id="fechabiopsia" pattern="MM/dd/yyyy HH:mm:ss" value="#{biopsiaController.selected.fechabiopsia}" title="#{bundle.EditBiopsiaTitle_fechabiopsia}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateBiopsiaLabel_tratamientocancermama}" for="tratamientocancermama" />
+                        <p:selectOneMenu id="tratamientocancermama" value="#{biopsiaController.selected.tratamientocancermama}" required="true" requiredMessage="#{bundle.EditBiopsiaRequiredMessage_tratamientocancermama}">
+                            <f:selectItems value="#{tratamientocancermamaController.itemsAvailableSelectOne}"
+                                           var="tratamientocancermamaItem"
+                                           itemValue="#{tratamientocancermamaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{biopsiaController.create}" value="#{bundle.Save}" update="display,:BiopsiaListForm:datalist,:growl" oncomplete="handleSubmit(args,'BiopsiaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BiopsiaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

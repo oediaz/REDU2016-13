@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MedicacionEditDlg" widgetVar="MedicacionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditMedicacionTitle}">
+            <h:form id="MedicacionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{medicacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditMedicacionLabel_medicacionPK_idmedicacion}" for="medicacionPK_idmedicacion" />
+                        <p:inputText id="medicacionPK_idmedicacion" value="#{medicacionController.selected.medicacionPK.idmedicacion}" title="#{bundle.EditMedicacionTitle_medicacionPK_idmedicacion}" required="true" requiredMessage="#{bundle.EditMedicacionRequiredMessage_medicacionPK_idmedicacion}"/>
+                        <p:outputLabel value="#{bundle.EditMedicacionLabel_fechamedicacion}" for="fechamedicacion" />
+                        <p:calendar id="fechamedicacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{medicacionController.selected.fechamedicacion}" title="#{bundle.EditMedicacionTitle_fechamedicacion}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditMedicacionLabel_descripcionmedicacion}" for="descripcionmedicacion" />
+                        <p:inputText id="descripcionmedicacion" value="#{medicacionController.selected.descripcionmedicacion}" title="#{bundle.EditMedicacionTitle_descripcionmedicacion}" />
+                        <p:outputLabel value="#{bundle.EditMedicacionLabel_tratamientocancermama}" for="tratamientocancermama" />
+                        <p:selectOneMenu id="tratamientocancermama" value="#{medicacionController.selected.tratamientocancermama}" required="true" requiredMessage="#{bundle.EditMedicacionRequiredMessage_tratamientocancermama}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tratamientocancermamaController.itemsAvailableSelectOne}"
+                                           var="tratamientocancermamaItem"
+                                           itemValue="#{tratamientocancermamaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{medicacionController.update}" value="#{bundle.Save}" update="display,:MedicacionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MedicacionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MedicacionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

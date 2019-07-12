@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MedicoViewDlg" widgetVar="MedicoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="VER MÉDICO">
+            <h:form id="MedicoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{medicoController.selected != null}">
+                        <h:outputText value="ID"/>
+                        <h:outputText value="#{medicoController.selected.idmedico}" title="#{bundle.ViewMedicoTitle_idmedico}"/>
+                        <h:outputText value="Cédula"/>
+                        <h:outputText value="#{medicoController.selected.cedulamedico}" title="#{bundle.ViewMedicoTitle_cedulamedico}"/>
+                        <h:outputText value="Apellido"/>
+                        <h:outputText value="#{medicoController.selected.apellidomedico}" title="#{bundle.ViewMedicoTitle_apellidomedico}"/>
+                        <h:outputText value="Nombre"/>
+                        <h:outputText value="#{medicoController.selected.nombremedico}" title="#{bundle.ViewMedicoTitle_nombremedico}"/>
+                        <h:outputText value="Tipo Médico"/>
+                        <h:outputText value="#{medicoController.selected.tipomedico}" title="#{bundle.ViewMedicoTitle_tipomedico}"/>
+                        <h:outputText value="Teléfono"/>
+                        <h:outputText value="#{medicoController.selected.fonomedico}" title="#{bundle.ViewMedicoTitle_fonomedico}"/>
+                        <h:outputText value="Dirección"/>
+                        <h:outputText value="#{medicoController.selected.direccionmedico}" title="#{bundle.ViewMedicoTitle_direccionmedico}"/>
+                        <h:outputText value="Email"/>
+                        <h:outputText value="#{medicoController.selected.mailmedico}" title="#{bundle.ViewMedicoTitle_mailmedico}"/>
+                        <h:outputText value="Celular"/>
+                        <h:outputText value="#{medicoController.selected.celularmedico}" title="#{bundle.ViewMedicoTitle_celularmedico}"/>
+                    </p:panelGrid>
+                    <center>
+                        <p:commandButton value="#{bundle.Close}" onclick="MedicoViewDialog.hide()"/>
+                    </center>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

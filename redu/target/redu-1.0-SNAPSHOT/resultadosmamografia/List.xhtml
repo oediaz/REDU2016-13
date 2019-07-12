@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListResultadosmamografiaTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="ResultadosmamografiaListForm">
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <center>
+                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </center>
+                </p:confirmDialog>
+                <p:panel header="#{bundle.ListResultadosmamografiaTitle}">
+                    <p:dataTable id="datalist" value="#{resultadosmamografiaController.items}" var="item"
+                                 selectionMode="single" selection="#{resultadosmamografiaController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idresultadom}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50" 
+                                 emptyMessage="No hay coincidencias"  
+                                 widgetVar="datalist"             
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column filterBy="#{item.idresultadom}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResultadosmamografiaTitle_idresultadom}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idresultadom}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.tipohallazgorem}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResultadosmamografiaTitle_tipohallazgorem}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipohallazgorem}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.descripcionhallazgorem}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResultadosmamografiaTitle_descripcionhallazgorem}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcionhallazgorem}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.gradosospechahallazgorem}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResultadosmamografiaTitle_gradosospechahallazgorem}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.gradosospechahallazgorem}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.descripciongradosospechahallazgorem}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResultadosmamografiaTitle_descripciongradosospechahallazgorem}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripciongradosospechahallazgorem}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.clasificaciondistribucionhallazgorem}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResultadosmamografiaTitle_clasificaciondistribucionhallazgorem}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clasificaciondistribucionhallazgorem}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.mamografia}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResultadosmamografiaTitle_mamografia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mamografia}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{resultadosmamografiaController.prepareCreate}" update=":ResultadosmamografiaCreateForm" oncomplete="PF('ResultadosmamografiaCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ResultadosmamografiaViewForm" oncomplete="PF('ResultadosmamografiaViewDialog').show()" disabled="#{empty resultadosmamografiaController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ResultadosmamografiaEditForm" oncomplete="PF('ResultadosmamografiaEditDialog').show()" disabled="#{empty resultadosmamografiaController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{resultadosmamografiaController.destroy}" update=":growl,datalist" disabled="#{empty resultadosmamografiaController.selected}">
+                                <p:confirm header="Eliminación de Resultados" message="¿Está seguro de querer eliminar?" icon="ui-icon-alert" />
+                            </p:commandButton>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

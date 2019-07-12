@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MamografiaemisionpositronesCreateDlg" widgetVar="MamografiaemisionpositronesCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMamografiaemisionpositronesTitle}">
+            <h:form id="MamografiaemisionpositronesCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{mamografiaemisionpositronesController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_fechamamografiaep}" for="fechamamografiaep" />
+                        <p:calendar id="fechamamografiaep" placeholder="dd/mm/yyyy" yearRange="1950:2019" locale="de" navigator="true" pattern="dd/MM/yyyy" required="true"  value="#{mamografiaemisionpositronesController.selected.fechamamografiaep}" title="#{bundle.EditMamografiaemisionpositronesTitle_fechamamografiaep}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_diagnosticopreviomamografiaep}" for="diagnosticopreviomamografiaep" />
+                        <p:inputText id="diagnosticopreviomamografiaep" value="#{mamografiaemisionpositronesController.selected.diagnosticopreviomamografiaep}" title="#{bundle.CreateMamografiaemisionpositronesTitle_diagnosticopreviomamografiaep}" />
+                        <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_razonmamografiaep}" for="razonmamografiaep" />
+                        <p:selectOneMenu id="razonmamografiaep" value="#{mamografiaemisionpositronesController.selected.razonmamografiaep}"
+                                         effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith" >
+                            <f:selectItem itemLabel="" itemValue="" />
+                            <f:selectItem itemLabel="Detectar cáncer" itemValue="Detectar cáncer" />
+                            <f:selectItem itemLabel="Determinar si un cáncer se ha diseminado en el cuerpo" itemValue="Determinar si un cáncer se ha diseminado en el cuerpo" />
+                            <f:selectItem itemLabel="Evaluar una terapia de cáncer" itemValue="Evaluar una terapia de cáncer" />
+                            <f:selectItem itemLabel="Determinar el retorno de un cáncer tras el tratamiento" itemValue="Determinar el retorno de un cáncer tras el tratamiento" />
+                            <f:selectItem itemLabel="Determinar el flujo sanguíneo hacia el músculo cardíaco" itemValue="Determinar el flujo sanguíneo hacia el músculo cardíaco" />
+                            <f:selectItem itemLabel="Determinar los efectos de un ataque cardíaco o infarto del miocardio en áreas del corazón" itemValue="Determinar los efectos de un ataque cardíaco o infarto del miocardio en áreas del corazón" />
+                            <f:selectItem itemLabel="Identificar áreas del músculo cardíaco que se beneficiarían mediante un procedimiento tal como angioplastia o cirugía de bypass coronario" itemValue="Identificar áreas del músculo cardíaco que se beneficiarían mediante un procedimiento tal como angioplastia o cirugía de bypass coronario" />
+                            <f:selectItem itemLabel="Evaluar anomalías cerebrales,esquematizar el cerebro humano normal y la función cardíaca" itemValue="Evaluar anomalías cerebrales,esquematizar el cerebro humano normal y la función cardíaca" />
+                            <f:selectItem itemLabel="La respuesta metabólica a un tratamiento oncológico" itemValue="La respuesta metabólica a un tratamiento oncológico" />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_sensibilidadmetastasisep}" for="sensibilidadmetastasisep" />
+                        <p:inputText id="sensibilidadmetastasisep" value="#{mamografiaemisionpositronesController.selected.sensibilidadmetastasisep}" title="#{bundle.CreateMamografiaemisionpositronesTitle_sensibilidadmetastasisep}" />
+                        <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_especificadadmetastasisep}" for="especificadadmetastasisep" />
+                        <p:inputText id="especificadadmetastasisep" value="#{mamografiaemisionpositronesController.selected.especificadadmetastasisep}" title="#{bundle.CreateMamografiaemisionpositronesTitle_especificadadmetastasisep}" />
+                        <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_observacionesmetastasisep}" for="observacionesmetastasisep" />
+                        <p:inputText id="observacionesmetastasisep" value="#{mamografiaemisionpositronesController.selected.observacionesmetastasisep}" title="#{bundle.CreateMamografiaemisionpositronesTitle_observacionesmetastasisep}" />
+                        
+                        <p:outputLabel value="Paciente:" for="idpaciente" />
+                        <p:selectOneMenu id="idpaciente" required="true" value="#{screeningController.filtro}"
+                                         effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith">
+                            <p:ajax listener="#{screeningController.filtrar}" update="screening" />
+                            <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"
+                                           var="idpacienteItem"
+                                           itemLabel="#{idpacienteItem.nombreCedula()}"
+                                           itemValue="#{idpacienteItem}"/>
+                            <p:column>
+                                <h:outputText value="#{t.nombreCedula()}" />
+                            </p:column>
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_screening}" for="screening" />
+                        <p:selectOneMenu id="screening" value="#{mamografiaemisionpositronesController.selected.screening}" required="true" requiredMessage="#{bundle.EditMamografiaemisionpositronesRequiredMessage_screening}">
+                            <f:selectItems value="#{screeningController.screPaciente}"
+                                           var="screeningItem"
+                                           itemValue="#{screeningItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_responsableimagen}" for="responsableimagen" />
+                        <p:selectOneMenu id="responsableimagen" value="#{mamografiaemisionpositronesController.selected.responsableimagen}" required="true" requiredMessage="#{bundle.EditMamografiaemisionpositronesRequiredMessage_responsableimagen}">
+                            <f:selectItems value="#{responsableimagenController.itemsAvailableSelectOne}"
+                                           var="responsableimagenItem"
+                                           itemValue="#{responsableimagenItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_laboratorio}" for="laboratorio" />
+                        <p:selectOneMenu id="laboratorio" value="#{mamografiaemisionpositronesController.selected.laboratorio}" required="true" requiredMessage="#{bundle.EditMamografiaemisionpositronesRequiredMessage_laboratorio}">
+                            <f:selectItems value="#{laboratorioController.itemsAvailableSelectOne}"
+                                           var="laboratorioItem"
+                                           itemValue="#{laboratorioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{mamografiaemisionpositronesController.create}" value="#{bundle.Save}" update="display,:MamografiaemisionpositronesListForm:datalist,:growl" oncomplete="handleSubmit(args,'MamografiaemisionpositronesCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MamografiaemisionpositronesCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MedicamentoViewDlg" widgetVar="MedicamentoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="VER MEDICAMENTO">
+            <h:form id="MedicamentoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{medicamentoController.selected != null}">
+                        <h:outputText value="ID:"/>
+                        <h:outputText value="#{medicamentoController.selected.idmedicamento}" title="#{bundle.ViewMedicamentoTitle_idmedicamento}"/>
+                        <h:outputText value="Nombre"/>
+                        <h:outputText value="#{medicamentoController.selected.nombremedicamento}" title="#{bundle.ViewMedicamentoTitle_nombremedicamento}"/>
+                        <h:outputText value="Nombre Genérico:"/>
+                        <h:outputText value="#{medicamentoController.selected.nombregenericomedicamento}" title="#{bundle.ViewMedicamentoTitle_nombregenericomedicamento}"/>
+                        <h:outputText value="Presentación:"/>
+                        <h:outputText value="#{medicamentoController.selected.presentacionmedicamento}" title="#{bundle.ViewMedicamentoTitle_presentacionmedicamento}"/>
+                        <h:outputText value="Descripción:"/>
+                        <h:outputText value="#{medicamentoController.selected.descripcionmedicamento}" title="#{bundle.ViewMedicamentoTitle_descripcionmedicamento}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="MedicamentoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

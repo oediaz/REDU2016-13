@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MamografiaEditDlg" widgetVar="MamografiaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditMamografiaTitle}">
+            <h:form id="MamografiaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{mamografiaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditMamografiaLabel_fechamamografia}" for="fechamamografia" />
+                        <p:calendar id="fechamamografia" placeholder="dd/mm/yyyy" yearRange="1950:2019" locale="de" navigator="true" pattern="dd/MM/yyyy" required="true"  value="#{mamografiaController.selected.fechamamografia}" title="#{bundle.EditMamografiaTitle_fechamamografia}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditMamografiaLabel_caracteristicapredominantem}" for="caracteristicapredominantem" />
+                        <p:inputText id="caracteristicapredominantem" value="#{mamografiaController.selected.caracteristicapredominantem}" title="#{bundle.EditMamografiaTitle_caracteristicapredominantem}" />
+                        <p:outputLabel value="#{bundle.EditMamografiaLabel_patrondensidadm}" for="patrondensidadm" />
+                        <p:inputText id="patrondensidadm" value="#{mamografiaController.selected.patrondensidadm}" title="#{bundle.EditMamografiaTitle_patrondensidadm}" />
+                        <p:outputLabel value="#{bundle.EditMamografiaLabel_patrongrasam}" for="patrongrasam" />
+                        <p:inputText id="patrongrasam" value="#{mamografiaController.selected.patrongrasam}" title="#{bundle.EditMamografiaTitle_patrongrasam}" />
+                        <p:outputLabel value="#{bundle.EditMamografiaLabel_estimacionvisualdensidadm}" for="estimacionvisualdensidadm" />
+                        <p:inputText id="estimacionvisualdensidadm" value="#{mamografiaController.selected.estimacionvisualdensidadm}" title="#{bundle.EditMamografiaTitle_estimacionvisualdensidadm}" />
+                        <p:outputLabel value="#{bundle.EditMamografiaLabel_patronparenquimagrandularm}" for="patronparenquimagrandularm" />
+                        <p:inputText id="patronparenquimagrandularm" value="#{mamografiaController.selected.patronparenquimagrandularm}" title="#{bundle.EditMamografiaTitle_patronparenquimagrandularm}" />
+                        <p:outputLabel value="#{bundle.EditMamografiaLabel_protocolomamografia}" for="protocolomamografia" />
+                        <p:inputText id="protocolomamografia" value="#{mamografiaController.selected.protocolomamografia}" title="#{bundle.EditMamografiaTitle_protocolomamografia}" />
+                        <p:outputLabel value="#{bundle.EditMamografiaLabel_observacionesprotocolom}" for="observacionesprotocolom" />
+                        <p:inputText id="observacionesprotocolom" value="#{mamografiaController.selected.observacionesprotocolom}" title="#{bundle.EditMamografiaTitle_observacionesprotocolom}" />
+                        <p:outputLabel value="#{bundle.EditMamografiaLabel_screening}" for="screening" />
+                        <p:selectOneMenu id="screening" value="#{mamografiaController.selected.screening}" required="true" requiredMessage="#{bundle.EditMamografiaRequiredMessage_screening}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{screeningController.itemsAvailableSelectOne}"
+                                           var="screeningItem"
+                                           itemValue="#{screeningItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditMamografiaLabel_responsableimagen}" for="responsableimagen" />
+                        <p:selectOneMenu id="responsableimagen" value="#{mamografiaController.selected.responsableimagen}" required="true" requiredMessage="#{bundle.EditMamografiaRequiredMessage_responsableimagen}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{responsableimagenController.itemsAvailableSelectOne}"
+                                           var="responsableimagenItem"
+                                           itemValue="#{responsableimagenItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditMamografiaLabel_laboratorio}" for="laboratorio" />
+                        <p:selectOneMenu id="laboratorio" value="#{mamografiaController.selected.laboratorio}" required="true" requiredMessage="#{bundle.EditMamografiaRequiredMessage_laboratorio}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{laboratorioController.itemsAvailableSelectOne}"
+                                           var="laboratorioItem"
+                                           itemValue="#{laboratorioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{mamografiaController.update}" value="#{bundle.Save}" update="display,:MamografiaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MamografiaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MamografiaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

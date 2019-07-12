@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ExamenEditDlg" widgetVar="ExamenEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditExamenTitle}">
+            <h:form id="ExamenEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{examenController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditExamenLabel_idexamen}" for="idexamen" />
+                        <p:inputText id="idexamen" value="#{examenController.selected.idexamen}" title="#{bundle.EditExamenTitle_idexamen}" required="true" requiredMessage="#{bundle.EditExamenRequiredMessage_idexamen}"/>
+                        <p:outputLabel value="#{bundle.EditExamenLabel_nombreexamen}" for="nombreexamen" />
+                        <p:inputText id="nombreexamen" value="#{examenController.selected.nombreexamen}" title="#{bundle.EditExamenTitle_nombreexamen}" />
+                        <p:outputLabel value="#{bundle.EditExamenLabel_descripcionexamen}" for="descripcionexamen" />
+                        <p:inputText id="descripcionexamen" value="#{examenController.selected.descripcionexamen}" title="#{bundle.EditExamenTitle_descripcionexamen}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{examenController.update}" value="#{bundle.Save}" update="display,:ExamenListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ExamenEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ExamenEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

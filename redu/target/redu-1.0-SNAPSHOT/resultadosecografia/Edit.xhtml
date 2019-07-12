@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ResultadosecografiaEditDlg" widgetVar="ResultadosecografiaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditResultadosecografiaTitle}">
+            <h:form id="ResultadosecografiaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{resultadosecografiaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditResultadosecografiaLabel_tipohallazgore}" for="tipohallazgore" />
+                        <p:inputText id="tipohallazgore" value="#{resultadosecografiaController.selected.tipohallazgore}" title="#{bundle.EditResultadosecografiaTitle_tipohallazgore}" />
+                        <p:outputLabel value="#{bundle.EditResultadosecografiaLabel_descripcionhallazgore}" for="descripcionhallazgore" />
+                        <p:inputText id="descripcionhallazgore" value="#{resultadosecografiaController.selected.descripcionhallazgore}" title="#{bundle.EditResultadosecografiaTitle_descripcionhallazgore}" />
+                        <p:outputLabel value="#{bundle.EditResultadosecografiaLabel_valorpredictivopositivohallazgore}" for="valorpredictivopositivohallazgore" />
+                        <p:inputText id="valorpredictivopositivohallazgore" value="#{resultadosecografiaController.selected.valorpredictivopositivohallazgore}" title="#{bundle.EditResultadosecografiaTitle_valorpredictivopositivohallazgore}" />
+                        <p:outputLabel value="#{bundle.EditResultadosecografiaLabel_sensibilidadhallazgore}" for="sensibilidadhallazgore" />
+                        <p:inputText id="sensibilidadhallazgore" value="#{resultadosecografiaController.selected.sensibilidadhallazgore}" title="#{bundle.EditResultadosecografiaTitle_sensibilidadhallazgore}" />
+                        <p:outputLabel value="#{bundle.EditResultadosecografiaLabel_ecografia}" for="ecografia" />
+                        <p:selectOneMenu id="ecografia" value="#{resultadosecografiaController.selected.ecografia}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{ecografiaController.itemsAvailableSelectOne}"
+                                           var="ecografiaItem"
+                                           itemValue="#{ecografiaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{resultadosecografiaController.update}" value="#{bundle.Save}" update="display,:ResultadosecografiaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ResultadosecografiaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ResultadosecografiaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EcografiaViewDlg" widgetVar="EcografiaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEcografiaTitle}">
+            <h:form id="EcografiaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ecografiaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEcografiaLabel_ecografiaPK_idecografia}"/>
+                        <h:outputText value="#{ecografiaController.selected.ecografiaPK.idecografia}" title="#{bundle.ViewEcografiaTitle_ecografiaPK_idecografia}"/>
+                        <h:outputText value="#{bundle.ViewEcografiaLabel_fechaecografia}"/>
+                        <h:outputText value="#{ecografiaController.selected.fechaecografia}" title="#{bundle.ViewEcografiaTitle_fechaecografia}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEcografiaLabel_descripcionecografia}"/>
+                        <h:outputText value="#{ecografiaController.selected.descripcionecografia}" title="#{bundle.ViewEcografiaTitle_descripcionecografia}"/>
+                        <h:outputText value="#{bundle.ViewEcografiaLabel_razonecografia}"/>
+                        <h:outputText value="#{ecografiaController.selected.razonecografia}" title="#{bundle.ViewEcografiaTitle_razonecografia}"/>
+                        <h:outputText value="#{bundle.ViewEcografiaLabel_observacionecografia}"/>
+                        <h:outputText value="#{ecografiaController.selected.observacionecografia}" title="#{bundle.ViewEcografiaTitle_observacionecografia}"/>
+                        <h:outputText value="#{bundle.ViewEcografiaLabel_protocoloecografia}"/>
+                        <h:outputText value="#{ecografiaController.selected.protocoloecografia}" title="#{bundle.ViewEcografiaTitle_protocoloecografia}"/>
+                        <h:outputText value="#{bundle.ViewEcografiaLabel_observacionesprotocoloe}"/>
+                        <h:outputText value="#{ecografiaController.selected.observacionesprotocoloe}" title="#{bundle.ViewEcografiaTitle_observacionesprotocoloe}"/>
+                        <h:outputText value="#{bundle.ViewEcografiaLabel_screening}"/>
+                        <h:outputText value="#{ecografiaController.selected.screening}" title="#{bundle.ViewEcografiaTitle_screening}"/>
+                        <h:outputText value="#{bundle.ViewEcografiaLabel_responsableimagen}"/>
+                        <h:outputText value="#{ecografiaController.selected.responsableimagen}" title="#{bundle.ViewEcografiaTitle_responsableimagen}"/>
+                        <h:outputText value="#{bundle.ViewEcografiaLabel_laboratorio}"/>
+                        <h:outputText value="#{ecografiaController.selected.laboratorio}" title="#{bundle.ViewEcografiaTitle_laboratorio}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EcografiaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

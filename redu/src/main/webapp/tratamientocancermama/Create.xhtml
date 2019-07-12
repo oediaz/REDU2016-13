@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TratamientocancermamaCreateDlg" widgetVar="TratamientocancermamaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTratamientocancermamaTitle}">
+            <h:form id="TratamientocancermamaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tratamientocancermamaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTratamientocancermamaLabel_idtrtamientocm}" for="idtrtamientocm" />
+                        <p:inputText id="idtrtamientocm" value="#{tratamientocancermamaController.selected.idtrtamientocm}" title="#{bundle.CreateTratamientocancermamaTitle_idtrtamientocm}" required="true" requiredMessage="#{bundle.CreateTratamientocancermamaRequiredMessage_idtrtamientocm}"/>
+                        <p:outputLabel value="#{bundle.CreateTratamientocancermamaLabel_fechainiciotcm}" for="fechainiciotcm" />
+                        <p:calendar id="fechainiciotcm" pattern="MM/dd/yyyy HH:mm:ss" value="#{tratamientocancermamaController.selected.fechainiciotcm}" title="#{bundle.EditTratamientocancermamaTitle_fechainiciotcm}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateTratamientocancermamaLabel_descripciontcm}" for="descripciontcm" />
+                        <p:inputText id="descripciontcm" value="#{tratamientocancermamaController.selected.descripciontcm}" title="#{bundle.CreateTratamientocancermamaTitle_descripciontcm}" />
+                        <p:outputLabel value="#{bundle.CreateTratamientocancermamaLabel_observaciontcm}" for="observaciontcm" />
+                        <p:inputText id="observaciontcm" value="#{tratamientocancermamaController.selected.observaciontcm}" title="#{bundle.CreateTratamientocancermamaTitle_observaciontcm}" />
+                        <p:outputLabel value="#{bundle.CreateTratamientocancermamaLabel_idbirads}" for="idbirads" />
+                        <p:selectOneMenu id="idbirads" value="#{tratamientocancermamaController.selected.idbirads}" required="true" requiredMessage="#{bundle.EditTratamientocancermamaRequiredMessage_idbirads}">
+                            <f:selectItems value="#{biradsController.itemsAvailableSelectOne}"
+                                           var="idbiradsItem"
+                                           itemValue="#{idbiradsItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tratamientocancermamaController.create}" value="#{bundle.Save}" update="display,:TratamientocancermamaListForm:datalist,:growl" oncomplete="handleSubmit(args,'TratamientocancermamaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TratamientocancermamaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

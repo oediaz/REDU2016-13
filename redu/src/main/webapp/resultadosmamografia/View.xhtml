@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ResultadosmamografiaViewDlg" widgetVar="ResultadosmamografiaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewResultadosmamografiaTitle}">
+            <h:form id="ResultadosmamografiaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{resultadosmamografiaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewResultadosmamografiaLabel_idresultadom}"/>
+                        <h:outputText value="#{resultadosmamografiaController.selected.idresultadom}" title="#{bundle.ViewResultadosmamografiaTitle_idresultadom}"/>
+                        <h:outputText value="#{bundle.ViewResultadosmamografiaLabel_tipohallazgorem}"/>
+                        <h:outputText value="#{resultadosmamografiaController.selected.tipohallazgorem}" title="#{bundle.ViewResultadosmamografiaTitle_tipohallazgorem}"/>
+                        <h:outputText value="#{bundle.ViewResultadosmamografiaLabel_descripcionhallazgorem}"/>
+                        <h:outputText value="#{resultadosmamografiaController.selected.descripcionhallazgorem}" title="#{bundle.ViewResultadosmamografiaTitle_descripcionhallazgorem}"/>
+                        <h:outputText value="#{bundle.ViewResultadosmamografiaLabel_gradosospechahallazgorem}"/>
+                        <h:outputText value="#{resultadosmamografiaController.selected.gradosospechahallazgorem}" title="#{bundle.ViewResultadosmamografiaTitle_gradosospechahallazgorem}"/>
+                        <h:outputText value="#{bundle.ViewResultadosmamografiaLabel_descripciongradosospechahallazgorem}"/>
+                        <h:outputText value="#{resultadosmamografiaController.selected.descripciongradosospechahallazgorem}" title="#{bundle.ViewResultadosmamografiaTitle_descripciongradosospechahallazgorem}"/>
+                        <h:outputText value="#{bundle.ViewResultadosmamografiaLabel_clasificaciondistribucionhallazgorem}"/>
+                        <h:outputText value="#{resultadosmamografiaController.selected.clasificaciondistribucionhallazgorem}" title="#{bundle.ViewResultadosmamografiaTitle_clasificaciondistribucionhallazgorem}"/>
+                        <h:outputText value="#{bundle.ViewResultadosmamografiaLabel_mamografia}"/>
+                        <h:outputText value="#{resultadosmamografiaController.selected.mamografia}" title="#{bundle.ViewResultadosmamografiaTitle_mamografia}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ResultadosmamografiaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListResonanciamagneticaTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="ResonanciamagneticaListForm">
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <center>
+                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </center>
+                </p:confirmDialog>
+                <p:panel header="#{bundle.ListResonanciamagneticaTitle}">
+                    <p:dataTable id="datalist" value="#{resonanciamagneticaController.items}" var="item"
+                                 selectionMode="single" selection="#{resonanciamagneticaController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.resonanciamagneticaPK}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 emptyMessage="No hay coincidencias"  
+                                 widgetVar="datalist"           
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column filterBy="#{item.resonanciamagneticaPK.idresonanciamagnetica}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResonanciamagneticaTitle_resonanciamagneticaPK_idresonanciamagnetica}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.resonanciamagneticaPK.idresonanciamagnetica}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.fecharm}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResonanciamagneticaTitle_fecharm}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecharm}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column filterBy="#{item.descripcionrm}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResonanciamagneticaTitle_descripcionrm}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcionrm}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.razonrm}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResonanciamagneticaTitle_razonrm}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.razonrm}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.observacionrm}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResonanciamagneticaTitle_observacionrm}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observacionrm}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.indicacionespecificidadrm}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResonanciamagneticaTitle_indicacionespecificidadrm}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.indicacionespecificidadrm}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.patronreforzamientorm}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResonanciamagneticaTitle_patronreforzamientorm}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.patronreforzamientorm}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.protocolorm}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResonanciamagneticaTitle_protocolorm}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.protocolorm}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.observacionesprotocolorm}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResonanciamagneticaTitle_observacionesprotocolorm}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observacionesprotocolorm}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.screening}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResonanciamagneticaTitle_screening}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.screening}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.responsableimagen}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResonanciamagneticaTitle_responsableimagen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.responsableimagen}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.laboratorio}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResonanciamagneticaTitle_laboratorio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.laboratorio}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{resonanciamagneticaController.prepareCreate}" update=":ResonanciamagneticaCreateForm" oncomplete="PF('ResonanciamagneticaCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ResonanciamagneticaViewForm" oncomplete="PF('ResonanciamagneticaViewDialog').show()" disabled="#{empty resonanciamagneticaController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ResonanciamagneticaEditForm" oncomplete="PF('ResonanciamagneticaEditDialog').show()" disabled="#{empty resonanciamagneticaController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{resonanciamagneticaController.destroy}" update=":growl,datalist" disabled="#{empty resonanciamagneticaController.selected}">
+                                <p:confirm header="Eliminación de Resonancia Magnética" message="¿Está seguro de querer eliminar?" icon="ui-icon-alert" />
+                            </p:commandButton>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

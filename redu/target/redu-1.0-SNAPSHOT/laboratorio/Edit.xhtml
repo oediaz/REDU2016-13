@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LaboratorioEditDlg" widgetVar="LaboratorioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditLaboratorioTitle}">
+            <h:form id="LaboratorioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{laboratorioController.selected != null}">
+                        <p:outputLabel value="ID:" for="idlaboratorio" />
+                        <p:inputText id="idlaboratorio" readonly="true" value="#{laboratorioController.selected.idlaboratorio}" title="#{bundle.EditLaboratorioTitle_idlaboratorio}" required="true" requiredMessage="#{bundle.EditLaboratorioRequiredMessage_idlaboratorio}"/>
+                        <p:outputLabel value="Nombre:" for="nombrelaboratorio" />
+                        <p:inputText id="nombrelaboratorio" value="#{laboratorioController.selected.nombrelaboratorio}" title="#{bundle.EditLaboratorioTitle_nombrelaboratorio}" />
+                        <p:outputLabel value="Dirección:" for="direccionlaboratorio" />
+                        <p:inputText id="direccionlaboratorio" value="#{laboratorioController.selected.direccionlaboratorio}" title="#{bundle.EditLaboratorioTitle_direccionlaboratorio}" />
+                        <p:outputLabel value="Teléfono:" for="fonolaboratorio" />
+                        <p:inputText id="fonolaboratorio" value="#{laboratorioController.selected.fonolaboratorio}" title="#{bundle.EditLaboratorioTitle_fonolaboratorio}" />
+                    </p:panelGrid>
+                    <center>
+                        <p:commandButton actionListener="#{laboratorioController.update}" value="#{bundle.Save}" update="display,:LaboratorioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'LaboratorioEditDialog');"/>
+                        <p:commandButton value="#{bundle.Cancel}" onclick="LaboratorioEditDialog.hide()"/>
+                    </center>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

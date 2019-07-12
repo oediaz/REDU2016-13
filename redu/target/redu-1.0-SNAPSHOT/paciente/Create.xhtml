@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PacienteCreateDlg" widgetVar="PacienteCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="AGREGAR NUEVO PACIENTE">
+            <h:form id="PacienteCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pacienteController.selected != null}">
+                        <p:outputLabel value="CÉDULA" for="cedulapaciente" />
+                        <p:inputText id="cedulapaciente" value="#{pacienteController.selected.cedulapaciente}" title="#{bundle.CreatePacienteTitle_cedulapaciente}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_cedulapaciente}"/>
+                        <p:outputLabel value="APELLIDO" for="apellidopaciente" />
+                        <p:inputText id="apellidopaciente" value="#{pacienteController.selected.apellidopaciente}" title="#{bundle.CreatePacienteTitle_apellidopaciente}" />
+                        <p:outputLabel value="NOMBRE" for="nombrepaciente" />
+                        <p:inputText id="nombrepaciente" value="#{pacienteController.selected.nombrepaciente}" title="#{bundle.CreatePacienteTitle_nombrepaciente}" />
+                        <p:outputLabel value="FECHA DE NACIMIENTO" for="fechanacimientopaciente" />
+                        <p:calendar id="fechanacimientopaciente" placeholder="dd/mm/yyyy" yearRange="1950:2019" locale="de" navigator="true" pattern="dd/MM/yyyy" value="#{pacienteController.selected.fechanacimientopaciente}" title="#{bundle.EditPacienteTitle_fechanacimientopaciente}" required="true" requiredMessage="#{bundle.EditPacienteRequiredMessage_fechanacimientopaciente}" showOn="button"/>
+                        <p:outputLabel value="TELÉFONO" for="fonopaciente" />
+                        <p:inputText id="fonopaciente" value="#{pacienteController.selected.fonopaciente}" title="#{bundle.CreatePacienteTitle_fonopaciente}" />
+                        <p:outputLabel value="DIRECCIÓN" for="direccionpaciente" />
+                        <p:inputText id="direccionpaciente" value="#{pacienteController.selected.direccionpaciente}" title="#{bundle.CreatePacienteTitle_direccionpaciente}" />
+                        <p:outputLabel value="MAIL" for="mailpaciente" />
+                        <p:inputText id="mailpaciente" value="#{pacienteController.selected.mailpaciente}" title="#{bundle.CreatePacienteTitle_mailpaciente}" />
+                        <p:outputLabel value="CELULAR" for="celularpaciente" />
+                        <p:inputText id="celularpaciente" value="#{pacienteController.selected.celularpaciente}" title="#{bundle.CreatePacienteTitle_celularpaciente}" />
+                    </p:panelGrid>
+                    <center>
+                        <p:commandButton actionListener="#{pacienteController.create}" value="#{bundle.Save}" update="display,:PacienteListForm:datalist,:growl" oncomplete="handleSubmit(args,'PacienteCreateDialog');"/>
+                        <p:commandButton value="#{bundle.Cancel}" onclick="PacienteCreateDialog.hide()"/>
+                    </center>
+
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

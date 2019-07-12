@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="QuimioterapiaViewDlg" widgetVar="QuimioterapiaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewQuimioterapiaTitle}">
+            <h:form id="QuimioterapiaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{quimioterapiaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewQuimioterapiaLabel_quimioterapiaPK_idquimioterapia}"/>
+                        <h:outputText value="#{quimioterapiaController.selected.quimioterapiaPK.idquimioterapia}" title="#{bundle.ViewQuimioterapiaTitle_quimioterapiaPK_idquimioterapia}"/>
+                        <h:outputText value="#{bundle.ViewQuimioterapiaLabel_fechainicioquimioterapia}"/>
+                        <h:outputText value="#{quimioterapiaController.selected.fechainicioquimioterapia}" title="#{bundle.ViewQuimioterapiaTitle_fechainicioquimioterapia}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewQuimioterapiaLabel_tratamientocancermama}"/>
+                        <h:outputText value="#{quimioterapiaController.selected.tratamientocancermama}" title="#{bundle.ViewQuimioterapiaTitle_tratamientocancermama}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="QuimioterapiaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

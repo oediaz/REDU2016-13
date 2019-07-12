@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="Médico"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="MedicoListForm">
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <center>
+                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </center>
+                </p:confirmDialog>
+                <p:panel header="GESTIÓN DE MÉDICOS">
+                    <p:dataTable id="datalist" value="#{medicoController.items}" var="item"
+                                 selectionMode="single" selection="#{medicoController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idmedico}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 emptyMessage="No hay coincidencias"
+                                 widgetVar="datalist"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column filterBy="#{item.idmedico}" filterMatchMode="contains">
+                            <f:facet name="filter">
+                                <p:inputText  onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText   value="ID" />
+                            </f:facet>
+                            <h:outputText value="#{item.idmedico}" style="width:100%"/>
+                        </p:column>
+                        <p:column filterBy="#{item.cedulamedico}" filterMatchMode="contains">
+                            <f:facet name="filter">
+                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText    value="CÉDULA"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cedulamedico}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.apellidomedico}" filterMatchMode="contains">
+                            <f:facet name="filter">
+                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText    value="APELLIDO"/>
+                            </f:facet>
+                            <h:outputText value="#{item.apellidomedico}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.nombremedico}" filterMatchMode="contains">
+                            <f:facet name="filter">
+                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText   value="NOMBRE"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombremedico}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.tipomedico}" filterMatchMode="contains" >
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('datalist').filter()" style="width:100%">
+                                    <f:selectItem itemLabel="" itemValue="" />
+                                    <f:selectItem itemLabel="Tratante" itemValue="Tratante" />
+                                    <f:selectItem itemLabel="Especialista" itemValue="Especialista" />
+                                    <f:selectItem itemLabel="Interconsulta" itemValue="Interconsulta" />
+                                </p:selectOneMenu>
+                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText  value="TIPO MÉDICO"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipomedico}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.fonomedico}" filterMatchMode="contains">
+                            <f:facet name="filter">
+                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText value="TELÉFONO"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fonomedico}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.direccionmedico}" filterMatchMode="contains">
+                            <f:facet name="filter">
+                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText value="DIRECCIÓN"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direccionmedico}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.mailmedico}" filterMatchMode="contains">
+                            <f:facet name="filter">
+                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText value="EMAIL"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mailmedico}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.celularmedico}" filterMatchMode="contains">
+                            <f:facet name="filter">
+                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText value="CELULAR"/>
+                            </f:facet>
+                            <h:outputText value="#{item.celularmedico}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{medicoController.prepareCreate}" update=":MedicoCreateForm" oncomplete="PF('MedicoCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":MedicoViewForm" oncomplete="PF('MedicoViewDialog').show()" disabled="#{empty medicoController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":MedicoEditForm" oncomplete="PF('MedicoEditDialog').show()" disabled="#{empty medicoController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{medicoController.destroy}" update=":growl,datalist" disabled="#{empty medicoController.selected}">
+                                <p:confirm header="Eliminación de Médico" message="¿Está seguro de querer eliminar?" icon="ui-icon-alert" />
+                            </p:commandButton>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

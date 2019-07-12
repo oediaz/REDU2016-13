@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CirugiaEditDlg" widgetVar="CirugiaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCirugiaTitle}">
+            <h:form id="CirugiaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cirugiaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCirugiaLabel_cirugiaPK_idcirugia}" for="cirugiaPK_idcirugia" />
+                        <p:inputText id="cirugiaPK_idcirugia" value="#{cirugiaController.selected.cirugiaPK.idcirugia}" title="#{bundle.EditCirugiaTitle_cirugiaPK_idcirugia}" required="true" requiredMessage="#{bundle.EditCirugiaRequiredMessage_cirugiaPK_idcirugia}"/>
+                        <p:outputLabel value="#{bundle.EditCirugiaLabel_fechainiciocirugia}" for="fechainiciocirugia" />
+                        <p:calendar id="fechainiciocirugia" pattern="MM/dd/yyyy HH:mm:ss" value="#{cirugiaController.selected.fechainiciocirugia}" title="#{bundle.EditCirugiaTitle_fechainiciocirugia}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCirugiaLabel_tratamientocancermama}" for="tratamientocancermama" />
+                        <p:selectOneMenu id="tratamientocancermama" value="#{cirugiaController.selected.tratamientocancermama}" required="true" requiredMessage="#{bundle.EditCirugiaRequiredMessage_tratamientocancermama}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tratamientocancermamaController.itemsAvailableSelectOne}"
+                                           var="tratamientocancermamaItem"
+                                           itemValue="#{tratamientocancermamaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cirugiaController.update}" value="#{bundle.Save}" update="display,:CirugiaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CirugiaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CirugiaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

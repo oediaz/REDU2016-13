@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ResultadosmamografiaepEditDlg" widgetVar="ResultadosmamografiaepEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditResultadosmamografiaepTitle}">
+            <h:form id="ResultadosmamografiaepEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{resultadosmamografiaepController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditResultadosmamografiaepLabel_hallazgomep}" for="hallazgomep" />
+                        <p:inputText id="hallazgomep" value="#{resultadosmamografiaepController.selected.hallazgomep}" title="#{bundle.EditResultadosmamografiaepTitle_hallazgomep}" />
+                        <p:outputLabel value="#{bundle.EditResultadosmamografiaepLabel_descripcionhallazgomep}" for="descripcionhallazgomep" />
+                        <p:inputText id="descripcionhallazgomep" value="#{resultadosmamografiaepController.selected.descripcionhallazgomep}" title="#{bundle.EditResultadosmamografiaepTitle_descripcionhallazgomep}" />
+                        <p:outputLabel value="#{bundle.EditResultadosmamografiaepLabel_causafalsopositivomep}" for="causafalsopositivomep" />
+                        <p:inputText id="causafalsopositivomep" value="#{resultadosmamografiaepController.selected.causafalsopositivomep}" title="#{bundle.EditResultadosmamografiaepTitle_causafalsopositivomep}" />
+                        <p:outputLabel value="#{bundle.EditResultadosmamografiaepLabel_causafalsonegativomep}" for="causafalsonegativomep" />
+                        <p:inputText id="causafalsonegativomep" value="#{resultadosmamografiaepController.selected.causafalsonegativomep}" title="#{bundle.EditResultadosmamografiaepTitle_causafalsonegativomep}" />
+                        <p:outputLabel value="#{bundle.EditResultadosmamografiaepLabel_mamografiaemisionpositrones}" for="mamografiaemisionpositrones" />
+                        <p:selectOneMenu id="mamografiaemisionpositrones" value="#{resultadosmamografiaepController.selected.mamografiaemisionpositrones}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{mamografiaemisionpositronesController.itemsAvailableSelectOne}"
+                                           var="mamografiaemisionpositronesItem"
+                                           itemValue="#{mamografiaemisionpositronesItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{resultadosmamografiaepController.update}" value="#{bundle.Save}" update="display,:ResultadosmamografiaepListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ResultadosmamografiaepEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ResultadosmamografiaepEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

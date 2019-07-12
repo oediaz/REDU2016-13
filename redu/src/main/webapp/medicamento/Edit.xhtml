@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MedicamentoEditDlg" widgetVar="MedicamentoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="EDITAR MEDICAMENTO">
+            <h:form id="MedicamentoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{medicamentoController.selected != null}">
+                        <p:outputLabel value="ID:" for="idmedicamento" />
+                        <p:inputText id="idmedicamento" value="#{medicamentoController.selected.idmedicamento}" title="#{bundle.CreateMedicamentoTitle_idmedicamento}" required="true" requiredMessage="#{bundle.CreateMedicamentoRequiredMessage_idmedicamento}" readonly="true"/>
+                        <p:outputLabel value="Nombre:" for="nombremedicamento" />
+                        <p:inputText id="nombremedicamento" value="#{medicamentoController.selected.nombremedicamento}" title="#{bundle.EditMedicamentoTitle_nombremedicamento}" />
+                        <p:outputLabel value="Nombre Genérico:" for="nombregenericomedicamento" />
+                        <p:inputText id="nombregenericomedicamento" value="#{medicamentoController.selected.nombregenericomedicamento}" title="#{bundle.EditMedicamentoTitle_nombregenericomedicamento}" />
+                        <p:outputLabel value="Presentación:" for="presentacionmedicamento" />
+                        <p:inputTextarea rows="4" cols="30" id="presentacionmedicamento" value="#{medicamentoController.selected.presentacionmedicamento}" title="#{bundle.EditMedicamentoTitle_presentacionmedicamento}" />
+                        <p:outputLabel value="Descripción:" for="descripcionmedicamento" />
+                        <p:inputText id="descripcionmedicamento" value="#{medicamentoController.selected.descripcionmedicamento}" title="#{bundle.EditMedicamentoTitle_descripcionmedicamento}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{medicamentoController.update}" value="#{bundle.Save}" update="display,:MedicamentoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MedicamentoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MedicamentoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

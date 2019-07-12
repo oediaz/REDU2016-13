@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EcografiaEditDlg" widgetVar="EcografiaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEcografiaTitle}">
+            <h:form id="EcografiaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ecografiaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEcografiaLabel_fechaecografia}" for="fechaecografia" />
+                        <p:calendar id="fechaecografia" placeholder="dd/mm/yyyy" yearRange="1950:2019" locale="de" navigator="true" pattern="dd/MM/yyyy" required="true"  value="#{ecografiaController.selected.fechaecografia}" title="#{bundle.EditEcografiaTitle_fechaecografia}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEcografiaLabel_descripcionecografia}" for="descripcionecografia" />
+                        <p:inputText id="descripcionecografia" value="#{ecografiaController.selected.descripcionecografia}" title="#{bundle.EditEcografiaTitle_descripcionecografia}" />
+                        <p:outputLabel value="#{bundle.EditEcografiaLabel_razonecografia}" for="razonecografia" />
+                        <p:inputText id="razonecografia" value="#{ecografiaController.selected.razonecografia}" title="#{bundle.EditEcografiaTitle_razonecografia}" />
+                        <p:outputLabel value="#{bundle.EditEcografiaLabel_observacionecografia}" for="observacionecografia" />
+                        <p:inputText id="observacionecografia" value="#{ecografiaController.selected.observacionecografia}" title="#{bundle.EditEcografiaTitle_observacionecografia}" />
+                        <p:outputLabel value="#{bundle.EditEcografiaLabel_protocoloecografia}" for="protocoloecografia" />
+                        <p:inputText id="protocoloecografia" value="#{ecografiaController.selected.protocoloecografia}" title="#{bundle.EditEcografiaTitle_protocoloecografia}" />
+                        <p:outputLabel value="#{bundle.EditEcografiaLabel_observacionesprotocoloe}" for="observacionesprotocoloe" />
+                        <p:inputText id="observacionesprotocoloe" value="#{ecografiaController.selected.observacionesprotocoloe}" title="#{bundle.EditEcografiaTitle_observacionesprotocoloe}" />
+                        <p:outputLabel value="#{bundle.EditEcografiaLabel_screening}" for="screening" />
+                        <p:selectOneMenu id="screening" value="#{ecografiaController.selected.screening}" required="true" requiredMessage="#{bundle.EditEcografiaRequiredMessage_screening}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{screeningController.itemsAvailableSelectOne}"
+                                           var="screeningItem"
+                                           itemValue="#{screeningItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEcografiaLabel_responsableimagen}" for="responsableimagen" />
+                        <p:selectOneMenu id="responsableimagen" value="#{ecografiaController.selected.responsableimagen}" required="true" requiredMessage="#{bundle.EditEcografiaRequiredMessage_responsableimagen}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{responsableimagenController.itemsAvailableSelectOne}"
+                                           var="responsableimagenItem"
+                                           itemValue="#{responsableimagenItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEcografiaLabel_laboratorio}" for="laboratorio" />
+                        <p:selectOneMenu id="laboratorio" value="#{ecografiaController.selected.laboratorio}" required="true" requiredMessage="#{bundle.EditEcografiaRequiredMessage_laboratorio}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{laboratorioController.itemsAvailableSelectOne}"
+                                           var="laboratorioItem"
+                                           itemValue="#{laboratorioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{ecografiaController.update}" value="#{bundle.Save}" update="display,:EcografiaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EcografiaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EcografiaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

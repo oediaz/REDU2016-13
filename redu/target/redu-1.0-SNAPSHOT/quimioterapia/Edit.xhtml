@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="QuimioterapiaEditDlg" widgetVar="QuimioterapiaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditQuimioterapiaTitle}">
+            <h:form id="QuimioterapiaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{quimioterapiaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditQuimioterapiaLabel_quimioterapiaPK_idquimioterapia}" for="quimioterapiaPK_idquimioterapia" />
+                        <p:inputText id="quimioterapiaPK_idquimioterapia" value="#{quimioterapiaController.selected.quimioterapiaPK.idquimioterapia}" title="#{bundle.EditQuimioterapiaTitle_quimioterapiaPK_idquimioterapia}" required="true" requiredMessage="#{bundle.EditQuimioterapiaRequiredMessage_quimioterapiaPK_idquimioterapia}"/>
+                        <p:outputLabel value="#{bundle.EditQuimioterapiaLabel_fechainicioquimioterapia}" for="fechainicioquimioterapia" />
+                        <p:calendar id="fechainicioquimioterapia" pattern="MM/dd/yyyy HH:mm:ss" value="#{quimioterapiaController.selected.fechainicioquimioterapia}" title="#{bundle.EditQuimioterapiaTitle_fechainicioquimioterapia}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditQuimioterapiaLabel_tratamientocancermama}" for="tratamientocancermama" />
+                        <p:selectOneMenu id="tratamientocancermama" value="#{quimioterapiaController.selected.tratamientocancermama}" required="true" requiredMessage="#{bundle.EditQuimioterapiaRequiredMessage_tratamientocancermama}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tratamientocancermamaController.itemsAvailableSelectOne}"
+                                           var="tratamientocancermamaItem"
+                                           itemValue="#{tratamientocancermamaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{quimioterapiaController.update}" value="#{bundle.Save}" update="display,:QuimioterapiaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'QuimioterapiaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="QuimioterapiaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

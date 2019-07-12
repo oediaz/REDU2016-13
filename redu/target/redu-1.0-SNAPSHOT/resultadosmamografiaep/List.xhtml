@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListResultadosmamografiaepTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="ResultadosmamografiaepListForm">
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <center>
+                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </center>
+                </p:confirmDialog>
+                <p:panel header="#{bundle.ListResultadosmamografiaepTitle}">
+                    <p:dataTable id="datalist" value="#{resultadosmamografiaepController.items}" var="item"
+                                 selectionMode="single" selection="#{resultadosmamografiaepController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idresultadosmep}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 emptyMessage="No hay coincidencias" 
+                                 widgetVar="datalist"         
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column filterBy="#{item.idresultadosmep}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResultadosmamografiaepTitle_idresultadosmep}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idresultadosmep}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.hallazgomep}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResultadosmamografiaepTitle_hallazgomep}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hallazgomep}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.descripcionhallazgomep}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResultadosmamografiaepTitle_descripcionhallazgomep}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcionhallazgomep}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.causafalsopositivomep}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResultadosmamografiaepTitle_causafalsopositivomep}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.causafalsopositivomep}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.causafalsonegativomep}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResultadosmamografiaepTitle_causafalsonegativomep}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.causafalsonegativomep}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.mamografiaemisionpositrones}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResultadosmamografiaepTitle_mamografiaemisionpositrones}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mamografiaemisionpositrones}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{resultadosmamografiaepController.prepareCreate}" update=":ResultadosmamografiaepCreateForm" oncomplete="PF('ResultadosmamografiaepCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ResultadosmamografiaepViewForm" oncomplete="PF('ResultadosmamografiaepViewDialog').show()" disabled="#{empty resultadosmamografiaepController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ResultadosmamografiaepEditForm" oncomplete="PF('ResultadosmamografiaepEditDialog').show()" disabled="#{empty resultadosmamografiaepController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{resultadosmamografiaepController.destroy}" update=":growl,datalist" disabled="#{empty resultadosmamografiaepController.selected}">
+                                <p:confirm header="Eliminación de Resultados" message="¿Está seguro de querer eliminar?" icon="ui-icon-alert" />
+                            </p:commandButton>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEcografiaTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="EcografiaListForm">
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <center>
+                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </center>
+                </p:confirmDialog>
+                <p:panel header="#{bundle.ListEcografiaTitle}">
+                    <p:dataTable id="datalist" value="#{ecografiaController.items}" var="item"
+                                 selectionMode="single" selection="#{ecografiaController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.ecografiaPK}"
+                                 rows="10"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="10,20,30,40,50" 
+                                 emptyMessage="No hay coincidencias"  
+                                 widgetVar="datalist"            
+                           
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column filterBy="#{item.ecografiaPK.idecografia}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListEcografiaTitle_ecografiaPK_idecografia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ecografiaPK.idecografia}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.fechaecografia}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListEcografiaTitle_fechaecografia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaecografia}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column filterBy="#{item.descripcionecografia}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListEcografiaTitle_descripcionecografia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcionecografia}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.razonecografia}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListEcografiaTitle_razonecografia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.razonecografia}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.observacionecografia}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListEcografiaTitle_observacionecografia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observacionecografia}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.protocoloecografia}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListEcografiaTitle_protocoloecografia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.protocoloecografia}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.observacionesprotocoloe}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListEcografiaTitle_observacionesprotocoloe}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observacionesprotocoloe}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.screening}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListEcografiaTitle_screening}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.screening}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.responsableimagen}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListEcografiaTitle_responsableimagen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.responsableimagen}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.laboratorio}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListEcografiaTitle_laboratorio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.laboratorio}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{ecografiaController.prepareCreate}" update=":EcografiaCreateForm" oncomplete="PF('EcografiaCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":EcografiaViewForm" oncomplete="PF('EcografiaViewDialog').show()" disabled="#{empty ecografiaController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":EcografiaEditForm" oncomplete="PF('EcografiaEditDialog').show()" disabled="#{empty ecografiaController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{ecografiaController.destroy}" update=":growl,datalist" disabled="#{empty ecografiaController.selected}">
+                                <p:confirm header="Eliminación de Ecografía" message="¿Está seguro de querer eliminar?" icon="ui-icon-alert" />
+                            </p:commandButton>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

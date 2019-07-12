@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ResponsableimagenViewDlg" widgetVar="ResponsableimagenViewDialog" modal="true" resizable="false" appendTo="@(body)" header="VER RESPONSABLE DE IMAGEN">
+            <h:form id="ResponsableimagenViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{responsableimagenController.selected != null}">
+                        <h:outputText value="ID:"/>
+                        <h:outputText value="#{responsableimagenController.selected.idresponsablei}" title="#{bundle.ViewResponsableimagenTitle_idresponsablei}"/>
+                        <h:outputText value="Cédula:"/>
+                        <h:outputText value="#{responsableimagenController.selected.cedularesponsablei}" title="#{bundle.ViewResponsableimagenTitle_cedularesponsablei}"/>
+                        <h:outputText value="Nombre:"/>
+                        <h:outputText value="#{responsableimagenController.selected.nombreresponsablei}" title="#{bundle.ViewResponsableimagenTitle_nombreresponsablei}"/>
+                        <h:outputText value="Teléfono:"/>
+                        <h:outputText value="#{responsableimagenController.selected.fonoresponsablei}" title="#{bundle.ViewResponsableimagenTitle_fonoresponsablei}"/>
+                        <h:outputText value="Email:"/>
+                        <h:outputText value="#{responsableimagenController.selected.mailresponsablei}" title="#{bundle.ViewResponsableimagenTitle_mailresponsablei}"/>
+                        <h:outputText value="Celular:"/>
+                        <h:outputText value="#{responsableimagenController.selected.celularresponsablei}" title="#{bundle.ViewResponsableimagenTitle_celularresponsablei}"/>
+                    </p:panelGrid>
+                    <center>
+                        <p:commandButton value="#{bundle.Close}" onclick="ResponsableimagenViewDialog.hide()"/>  
+                    </center>
+                 
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

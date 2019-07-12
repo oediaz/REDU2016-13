@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ResonanciamagneticaCreateDlg" widgetVar="ResonanciamagneticaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateResonanciamagneticaTitle}">
+            <h:form id="ResonanciamagneticaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{resonanciamagneticaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_fecharm}" for="fecharm" />
+                        <p:calendar id="fecharm" placeholder="dd/mm/yyyy" yearRange="1950:2019" locale="de" navigator="true" pattern="dd/MM/yyyy" required="true"  value="#{resonanciamagneticaController.selected.fecharm}" title="#{bundle.EditResonanciamagneticaTitle_fecharm}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_descripcionrm}" for="descripcionrm" />
+                        <p:inputText id="descripcionrm" value="#{resonanciamagneticaController.selected.descripcionrm}" title="#{bundle.CreateResonanciamagneticaTitle_descripcionrm}" />
+                        <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_razonrm}" for="razonrm" />
+                        <p:inputText id="razonrm" value="#{resonanciamagneticaController.selected.razonrm}" title="#{bundle.CreateResonanciamagneticaTitle_razonrm}" />
+                        <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_observacionrm}" for="observacionrm" />
+                        <p:inputText id="observacionrm" value="#{resonanciamagneticaController.selected.observacionrm}" title="#{bundle.CreateResonanciamagneticaTitle_observacionrm}" />
+                        <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_indicacionespecificidadrm}" for="indicacionespecificidadrm" />
+                        <p:inputText id="indicacionespecificidadrm" value="#{resonanciamagneticaController.selected.indicacionespecificidadrm}" title="#{bundle.CreateResonanciamagneticaTitle_indicacionespecificidadrm}" />
+                        <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_patronreforzamientorm}" for="patronreforzamientorm" />
+                        <p:inputText id="patronreforzamientorm" value="#{resonanciamagneticaController.selected.patronreforzamientorm}" title="#{bundle.CreateResonanciamagneticaTitle_patronreforzamientorm}" />
+                        <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_protocolorm}" for="protocolorm" />
+                        <p:inputText id="protocolorm" value="#{resonanciamagneticaController.selected.protocolorm}" title="#{bundle.CreateResonanciamagneticaTitle_protocolorm}" />
+                        <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_observacionesprotocolorm}" for="observacionesprotocolorm" />
+                        <p:inputText id="observacionesprotocolorm" value="#{resonanciamagneticaController.selected.observacionesprotocolorm}" title="#{bundle.CreateResonanciamagneticaTitle_observacionesprotocolorm}" />
+                        
+                        <p:outputLabel value="Paciente:" for="idpaciente" />
+                        <p:selectOneMenu id="idpaciente" required="true" value="#{screeningController.filtro}"
+                                         effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith">
+                            <p:ajax listener="#{screeningController.filtrar}" update="screening" />
+                            <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"
+                                           var="idpacienteItem"
+                                           itemLabel="#{idpacienteItem.nombreCedula()}"
+                                           itemValue="#{idpacienteItem}"/>
+                            <p:column>
+                                <h:outputText value="#{t.nombreCedula()}" />
+                            </p:column>
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_screening}" for="screening" />
+                        <p:selectOneMenu id="screening" value="#{resonanciamagneticaController.selected.screening}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_screening}">
+                            <f:selectItems value="#{screeningController.screPaciente}"
+                                           var="screeningItem"
+                                           itemValue="#{screeningItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_responsableimagen}" for="responsableimagen" />
+                        <p:selectOneMenu id="responsableimagen" value="#{resonanciamagneticaController.selected.responsableimagen}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_responsableimagen}">
+                            <f:selectItems value="#{responsableimagenController.itemsAvailableSelectOne}"
+                                           var="responsableimagenItem"
+                                           itemValue="#{responsableimagenItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_laboratorio}" for="laboratorio" />
+                        <p:selectOneMenu id="laboratorio" value="#{resonanciamagneticaController.selected.laboratorio}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_laboratorio}">
+                            <f:selectItems value="#{laboratorioController.itemsAvailableSelectOne}"
+                                           var="laboratorioItem"
+                                           itemValue="#{laboratorioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{resonanciamagneticaController.create}" value="#{bundle.Save}" update="display,:ResonanciamagneticaListForm:datalist,:growl" oncomplete="handleSubmit(args,'ResonanciamagneticaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ResonanciamagneticaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CirugiaViewDlg" widgetVar="CirugiaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCirugiaTitle}">
+            <h:form id="CirugiaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cirugiaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCirugiaLabel_cirugiaPK_idcirugia}"/>
+                        <h:outputText value="#{cirugiaController.selected.cirugiaPK.idcirugia}" title="#{bundle.ViewCirugiaTitle_cirugiaPK_idcirugia}"/>
+                        <h:outputText value="#{bundle.ViewCirugiaLabel_fechainiciocirugia}"/>
+                        <h:outputText value="#{cirugiaController.selected.fechainiciocirugia}" title="#{bundle.ViewCirugiaTitle_fechainiciocirugia}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCirugiaLabel_tratamientocancermama}"/>
+                        <h:outputText value="#{cirugiaController.selected.tratamientocancermama}" title="#{bundle.ViewCirugiaTitle_tratamientocancermama}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CirugiaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

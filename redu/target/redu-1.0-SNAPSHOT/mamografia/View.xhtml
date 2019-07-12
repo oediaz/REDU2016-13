@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MamografiaViewDlg" widgetVar="MamografiaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMamografiaTitle}">
+            <h:form id="MamografiaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{mamografiaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewMamografiaLabel_mamografiaPK_idmamografia}"/>
+                        <h:outputText value="#{mamografiaController.selected.mamografiaPK.idmamografia}" title="#{bundle.ViewMamografiaTitle_mamografiaPK_idmamografia}"/>
+                        <h:outputText value="#{bundle.ViewMamografiaLabel_fechamamografia}"/>
+                        <h:outputText value="#{mamografiaController.selected.fechamamografia}" title="#{bundle.ViewMamografiaTitle_fechamamografia}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewMamografiaLabel_caracteristicapredominantem}"/>
+                        <h:outputText value="#{mamografiaController.selected.caracteristicapredominantem}" title="#{bundle.ViewMamografiaTitle_caracteristicapredominantem}"/>
+                        <h:outputText value="#{bundle.ViewMamografiaLabel_patrondensidadm}"/>
+                        <h:outputText value="#{mamografiaController.selected.patrondensidadm}" title="#{bundle.ViewMamografiaTitle_patrondensidadm}"/>
+                        <h:outputText value="#{bundle.ViewMamografiaLabel_patrongrasam}"/>
+                        <h:outputText value="#{mamografiaController.selected.patrongrasam}" title="#{bundle.ViewMamografiaTitle_patrongrasam}"/>
+                        <h:outputText value="#{bundle.ViewMamografiaLabel_estimacionvisualdensidadm}"/>
+                        <h:outputText value="#{mamografiaController.selected.estimacionvisualdensidadm}" title="#{bundle.ViewMamografiaTitle_estimacionvisualdensidadm}"/>
+                        <h:outputText value="#{bundle.ViewMamografiaLabel_patronparenquimagrandularm}"/>
+                        <h:outputText value="#{mamografiaController.selected.patronparenquimagrandularm}" title="#{bundle.ViewMamografiaTitle_patronparenquimagrandularm}"/>
+                        <h:outputText value="#{bundle.ViewMamografiaLabel_protocolomamografia}"/>
+                        <h:outputText value="#{mamografiaController.selected.protocolomamografia}" title="#{bundle.ViewMamografiaTitle_protocolomamografia}"/>
+                        <h:outputText value="#{bundle.ViewMamografiaLabel_observacionesprotocolom}"/>
+                        <h:outputText value="#{mamografiaController.selected.observacionesprotocolom}" title="#{bundle.ViewMamografiaTitle_observacionesprotocolom}"/>
+                        <h:outputText value="#{bundle.ViewMamografiaLabel_screening}"/>
+                        <h:outputText value="#{mamografiaController.selected.screening}" title="#{bundle.ViewMamografiaTitle_screening}"/>
+                        <h:outputText value="#{bundle.ViewMamografiaLabel_responsableimagen}"/>
+                        <h:outputText value="#{mamografiaController.selected.responsableimagen}" title="#{bundle.ViewMamografiaTitle_responsableimagen}"/>
+                        <h:outputText value="#{bundle.ViewMamografiaLabel_laboratorio}"/>
+                        <h:outputText value="#{mamografiaController.selected.laboratorio}" title="#{bundle.ViewMamografiaTitle_laboratorio}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="MamografiaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

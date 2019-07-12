@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ResultadosmamografiaEditDlg" widgetVar="ResultadosmamografiaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditResultadosmamografiaTitle}">
+            <h:form id="ResultadosmamografiaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{resultadosmamografiaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditResultadosmamografiaLabel_tipohallazgorem}" for="tipohallazgorem" />
+                        <p:inputText id="tipohallazgorem" value="#{resultadosmamografiaController.selected.tipohallazgorem}" title="#{bundle.EditResultadosmamografiaTitle_tipohallazgorem}" />
+                        <p:outputLabel value="#{bundle.EditResultadosmamografiaLabel_descripcionhallazgorem}" for="descripcionhallazgorem" />
+                        <p:inputText id="descripcionhallazgorem" value="#{resultadosmamografiaController.selected.descripcionhallazgorem}" title="#{bundle.EditResultadosmamografiaTitle_descripcionhallazgorem}" />
+                        <p:outputLabel value="#{bundle.EditResultadosmamografiaLabel_gradosospechahallazgorem}" for="gradosospechahallazgorem" />
+                        <p:inputText id="gradosospechahallazgorem" value="#{resultadosmamografiaController.selected.gradosospechahallazgorem}" title="#{bundle.EditResultadosmamografiaTitle_gradosospechahallazgorem}" />
+                        <p:outputLabel value="#{bundle.EditResultadosmamografiaLabel_descripciongradosospechahallazgorem}" for="descripciongradosospechahallazgorem" />
+                        <p:inputTextarea rows="4" cols="30" id="descripciongradosospechahallazgorem" value="#{resultadosmamografiaController.selected.descripciongradosospechahallazgorem}" title="#{bundle.EditResultadosmamografiaTitle_descripciongradosospechahallazgorem}" />
+                        <p:outputLabel value="#{bundle.EditResultadosmamografiaLabel_clasificaciondistribucionhallazgorem}" for="clasificaciondistribucionhallazgorem" />
+                        <p:inputText id="clasificaciondistribucionhallazgorem" value="#{resultadosmamografiaController.selected.clasificaciondistribucionhallazgorem}" title="#{bundle.EditResultadosmamografiaTitle_clasificaciondistribucionhallazgorem}" />
+                        <p:outputLabel value="#{bundle.EditResultadosmamografiaLabel_mamografia}" for="mamografia" />
+                        <p:selectOneMenu id="mamografia" value="#{resultadosmamografiaController.selected.mamografia}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{mamografiaController.itemsAvailableSelectOne}"
+                                           var="mamografiaItem"
+                                           itemValue="#{mamografiaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{resultadosmamografiaController.update}" value="#{bundle.Save}" update="display,:ResultadosmamografiaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ResultadosmamografiaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ResultadosmamografiaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

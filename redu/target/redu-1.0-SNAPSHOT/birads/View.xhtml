@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BiradsViewDlg" widgetVar="BiradsViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewBiradsTitle}">
+            <h:form id="BiradsViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{biradsController.selected != null}">
+                        <h:outputText value="#{bundle.ViewBiradsLabel_idbirads}"/>
+                        <h:outputText value="#{biradsController.selected.idbirads}" title="#{bundle.ViewBiradsTitle_idbirads}"/>
+                        <h:outputText value="#{bundle.ViewBiradsLabel_fechabirads}"/>
+                        <h:outputText value="#{biradsController.selected.fechabirads}" title="#{bundle.ViewBiradsTitle_fechabirads}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBiradsLabel_razonbirads}"/>
+                        <h:outputText value="#{biradsController.selected.razonbirads}" title="#{bundle.ViewBiradsTitle_razonbirads}"/>
+                        <h:outputText value="#{bundle.ViewBiradsLabel_descripcionbirads}"/>
+                        <h:outputText value="#{biradsController.selected.descripcionbirads}" title="#{bundle.ViewBiradsTitle_descripcionbirads}"/>
+                        <h:outputText value="#{bundle.ViewBiradsLabel_categoriabirads}"/>
+                        <h:outputText value="#{biradsController.selected.categoriabirads}" title="#{bundle.ViewBiradsTitle_categoriabirads}"/>
+                        <h:outputText value="#{bundle.ViewBiradsLabel_definicionbirads}"/>
+                        <h:outputText value="#{biradsController.selected.definicionbirads}" title="#{bundle.ViewBiradsTitle_definicionbirads}"/>
+                        <h:outputText value="#{bundle.ViewBiradsLabel_evaluacionbirads}"/>
+                        <h:outputText value="#{biradsController.selected.evaluacionbirads}" title="#{bundle.ViewBiradsTitle_evaluacionbirads}"/>
+                        <h:outputText value="#{bundle.ViewBiradsLabel_porcentajecancerbirads}"/>
+                        <h:outputText value="#{biradsController.selected.porcentajecancerbirads}" title="#{bundle.ViewBiradsTitle_porcentajecancerbirads}"/>
+                        <h:outputText value="#{bundle.ViewBiradsLabel_recomendacionbirads}"/>
+                        <h:outputText value="#{biradsController.selected.recomendacionbirads}" title="#{bundle.ViewBiradsTitle_recomendacionbirads}"/>
+                        <h:outputText value="#{bundle.ViewBiradsLabel_idresultadoe}"/>
+                        <h:outputText value="#{biradsController.selected.idresultadoe}" title="#{bundle.ViewBiradsTitle_idresultadoe}"/>
+                        <h:outputText value="#{bundle.ViewBiradsLabel_idresultadom}"/>
+                        <h:outputText value="#{biradsController.selected.idresultadom}" title="#{bundle.ViewBiradsTitle_idresultadom}"/>
+                        <h:outputText value="#{bundle.ViewBiradsLabel_idresultadosmep}"/>
+                        <h:outputText value="#{biradsController.selected.idresultadosmep}" title="#{bundle.ViewBiradsTitle_idresultadosmep}"/>
+                        <h:outputText value="#{bundle.ViewBiradsLabel_idresultadorm}"/>
+                        <h:outputText value="#{biradsController.selected.idresultadorm}" title="#{bundle.ViewBiradsTitle_idresultadorm}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="BiradsViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

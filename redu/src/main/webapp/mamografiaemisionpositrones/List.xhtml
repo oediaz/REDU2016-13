@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListMamografiaemisionpositronesTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="MamografiaemisionpositronesListForm">
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <center>
+                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </center>
+                </p:confirmDialog>
+                <p:panel header="#{bundle.ListMamografiaemisionpositronesTitle}">
+                    <p:dataTable id="datalist" value="#{mamografiaemisionpositronesController.items}" var="item"
+                                 selectionMode="single" selection="#{mamografiaemisionpositronesController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.mamografiaemisionpositronesPK}"
+                                 rows="10"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="10,20,30,40,50" 
+                                 emptyMessage="No hay coincidencias"  
+                                 widgetVar="datalist"                
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column filterBy="#{item.mamografiaemisionpositronesPK.idmamografiaep}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaemisionpositronesTitle_mamografiaemisionpositronesPK_idmamografiaep}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mamografiaemisionpositronesPK.idmamografiaep}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.fechamamografiaep}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaemisionpositronesTitle_fechamamografiaep}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechamamografiaep}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column filterBy="#{item.diagnosticopreviomamografiaep}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaemisionpositronesTitle_diagnosticopreviomamografiaep}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diagnosticopreviomamografiaep}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.razonmamografiaep}" filterMatchMode="contains">   
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('datalist').filter()" 
+                                                 effect="fade" var="t"  filter="true" filterMatchMode="startsWith">
+                                    <f:selectItem itemLabel="" itemValue="" />
+                                    <f:selectItem itemLabel="Detectar cáncer" itemValue="Detectar cáncer" />
+                                    <f:selectItem itemLabel="Determinar si un cáncer se ha diseminado en el cuerpo" itemValue="Determinar si un cáncer se ha diseminado en el cuerpo" />
+                                    <f:selectItem itemLabel="Evaluar una terapia de cáncer" itemValue="Evaluar una terapia de cáncer" />
+                                    <f:selectItem itemLabel="Determinar el retorno de un cáncer tras el tratamiento" itemValue="Determinar el retorno de un cáncer tras el tratamiento" />
+                                    <f:selectItem itemLabel="Determinar el flujo sanguíneo hacia el músculo cardíaco" itemValue="Determinar el flujo sanguíneo hacia el músculo cardíaco" />
+                                    <f:selectItem itemLabel="Determinar los efectos de un ataque cardíaco o infarto del miocardio en áreas del corazón" itemValue="Determinar los efectos de un ataque cardíaco o infarto del miocardio en áreas del corazón" />
+                                    <f:selectItem itemLabel="Identificar áreas del músculo cardíaco que se beneficiarían mediante un procedimiento tal como angioplastia o cirugía de bypass coronario" itemValue="Identificar áreas del músculo cardíaco que se beneficiarían mediante un procedimiento tal como angioplastia o cirugía de bypass coronario" />
+                                    <f:selectItem itemLabel="Evaluar anomalías cerebrales,esquematizar el cerebro humano normal y la función cardíaca" itemValue="Evaluar anomalías cerebrales,esquematizar el cerebro humano normal y la función cardíaca" />
+                                    <f:selectItem itemLabel="La respuesta metabólica a un tratamiento oncológico" itemValue="La respuesta metabólica a un tratamiento oncológico" />
+                                </p:selectOneMenu>
+                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaemisionpositronesTitle_razonmamografiaep}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.razonmamografiaep}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.sensibilidadmetastasisep}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaemisionpositronesTitle_sensibilidadmetastasisep}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sensibilidadmetastasisep}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.especificadadmetastasisep}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaemisionpositronesTitle_especificadadmetastasisep}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.especificadadmetastasisep}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.observacionesmetastasisep}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaemisionpositronesTitle_observacionesmetastasisep}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observacionesmetastasisep}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.screening}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaemisionpositronesTitle_screening}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.screening}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.responsableimagen}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaemisionpositronesTitle_responsableimagen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.responsableimagen}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.laboratorio}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaemisionpositronesTitle_laboratorio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.laboratorio}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{mamografiaemisionpositronesController.prepareCreate}" update=":MamografiaemisionpositronesCreateForm" oncomplete="PF('MamografiaemisionpositronesCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":MamografiaemisionpositronesViewForm" oncomplete="PF('MamografiaemisionpositronesViewDialog').show()" disabled="#{empty mamografiaemisionpositronesController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":MamografiaemisionpositronesEditForm" oncomplete="PF('MamografiaemisionpositronesEditDialog').show()" disabled="#{empty mamografiaemisionpositronesController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{mamografiaemisionpositronesController.destroy}" update=":growl,datalist" disabled="#{empty mamografiaemisionpositronesController.selected}">
+                                <p:confirm header="Eliminación de Mamografía" message="¿Está seguro de querer eliminar?" icon="ui-icon-alert" />
+                            </p:commandButton>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

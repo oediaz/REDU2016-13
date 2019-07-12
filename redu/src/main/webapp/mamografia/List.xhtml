@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListMamografiaTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="MamografiaListForm">
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <center>
+                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </center>
+                </p:confirmDialog>
+                <p:panel header="#{bundle.ListMamografiaTitle}">
+                    <p:dataTable id="datalist" value="#{mamografiaController.items}" var="item"
+                                 selectionMode="single" selection="#{mamografiaController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.mamografiaPK}"
+                                 rows="10"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="10,20,30,40,50"  
+                                 emptyMessage="No hay coincidencias" 
+                                 widgetVar="datalist"        
+                                 
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column filterBy="#{item.mamografiaPK.idmamografia}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaTitle_mamografiaPK_idmamografia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mamografiaPK.idmamografia}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.fechamamografia}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaTitle_fechamamografia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechamamografia}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column filterBy="#{item.caracteristicapredominantem}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaTitle_caracteristicapredominantem}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.caracteristicapredominantem}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.patrondensidadm}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaTitle_patrondensidadm}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.patrondensidadm}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.patrongrasam}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaTitle_patrongrasam}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.patrongrasam}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.estimacionvisualdensidadm}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaTitle_estimacionvisualdensidadm}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estimacionvisualdensidadm}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.patronparenquimagrandularm}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaTitle_patronparenquimagrandularm}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.patronparenquimagrandularm}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.protocolomamografia}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaTitle_protocolomamografia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.protocolomamografia}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.observacionesprotocolom}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaTitle_observacionesprotocolom}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observacionesprotocolom}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.screening}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaTitle_screening}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.screening}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.responsableimagen}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaTitle_responsableimagen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.responsableimagen}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.laboratorio}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaTitle_laboratorio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.laboratorio}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{mamografiaController.prepareCreate}" update=":MamografiaCreateForm" oncomplete="PF('MamografiaCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":MamografiaViewForm" oncomplete="PF('MamografiaViewDialog').show()" disabled="#{empty mamografiaController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":MamografiaEditForm" oncomplete="PF('MamografiaEditDialog').show()" disabled="#{empty mamografiaController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{mamografiaController.destroy}" update=":growl,datalist" disabled="#{empty mamografiaController.selected}">
+                                <p:confirm header="Eliminación de Mamografía" message="¿Está seguro de querer eliminar?" icon="ui-icon-alert" />
+                            </p:commandButton>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

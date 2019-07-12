@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ResonanciamagneticaViewDlg" widgetVar="ResonanciamagneticaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewResonanciamagneticaTitle}">
+            <h:form id="ResonanciamagneticaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{resonanciamagneticaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewResonanciamagneticaLabel_resonanciamagneticaPK_idresonanciamagnetica}"/>
+                        <h:outputText value="#{resonanciamagneticaController.selected.resonanciamagneticaPK.idresonanciamagnetica}" title="#{bundle.ViewResonanciamagneticaTitle_resonanciamagneticaPK_idresonanciamagnetica}"/>
+                        <h:outputText value="#{bundle.ViewResonanciamagneticaLabel_fecharm}"/>
+                        <h:outputText value="#{resonanciamagneticaController.selected.fecharm}" title="#{bundle.ViewResonanciamagneticaTitle_fecharm}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewResonanciamagneticaLabel_descripcionrm}"/>
+                        <h:outputText value="#{resonanciamagneticaController.selected.descripcionrm}" title="#{bundle.ViewResonanciamagneticaTitle_descripcionrm}"/>
+                        <h:outputText value="#{bundle.ViewResonanciamagneticaLabel_razonrm}"/>
+                        <h:outputText value="#{resonanciamagneticaController.selected.razonrm}" title="#{bundle.ViewResonanciamagneticaTitle_razonrm}"/>
+                        <h:outputText value="#{bundle.ViewResonanciamagneticaLabel_observacionrm}"/>
+                        <h:outputText value="#{resonanciamagneticaController.selected.observacionrm}" title="#{bundle.ViewResonanciamagneticaTitle_observacionrm}"/>
+                        <h:outputText value="#{bundle.ViewResonanciamagneticaLabel_indicacionespecificidadrm}"/>
+                        <h:outputText value="#{resonanciamagneticaController.selected.indicacionespecificidadrm}" title="#{bundle.ViewResonanciamagneticaTitle_indicacionespecificidadrm}"/>
+                        <h:outputText value="#{bundle.ViewResonanciamagneticaLabel_patronreforzamientorm}"/>
+                        <h:outputText value="#{resonanciamagneticaController.selected.patronreforzamientorm}" title="#{bundle.ViewResonanciamagneticaTitle_patronreforzamientorm}"/>
+                        <h:outputText value="#{bundle.ViewResonanciamagneticaLabel_protocolorm}"/>
+                        <h:outputText value="#{resonanciamagneticaController.selected.protocolorm}" title="#{bundle.ViewResonanciamagneticaTitle_protocolorm}"/>
+                        <h:outputText value="#{bundle.ViewResonanciamagneticaLabel_observacionesprotocolorm}"/>
+                        <h:outputText value="#{resonanciamagneticaController.selected.observacionesprotocolorm}" title="#{bundle.ViewResonanciamagneticaTitle_observacionesprotocolorm}"/>
+                        <h:outputText value="#{bundle.ViewResonanciamagneticaLabel_screening}"/>
+                        <h:outputText value="#{resonanciamagneticaController.selected.screening}" title="#{bundle.ViewResonanciamagneticaTitle_screening}"/>
+                        <h:outputText value="#{bundle.ViewResonanciamagneticaLabel_responsableimagen}"/>
+                        <h:outputText value="#{resonanciamagneticaController.selected.responsableimagen}" title="#{bundle.ViewResonanciamagneticaTitle_responsableimagen}"/>
+                        <h:outputText value="#{bundle.ViewResonanciamagneticaLabel_laboratorio}"/>
+                        <h:outputText value="#{resonanciamagneticaController.selected.laboratorio}" title="#{bundle.ViewResonanciamagneticaTitle_laboratorio}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ResonanciamagneticaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

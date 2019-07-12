@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ExaminacionEditDlg" widgetVar="ExaminacionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditExaminacionTitle}">
+            <h:form id="ExaminacionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{examinacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditExaminacionLabel_examinacionPK_idexaminacion}" for="examinacionPK_idexaminacion" />
+                        <p:inputText id="examinacionPK_idexaminacion" value="#{examinacionController.selected.examinacionPK.idexaminacion}" title="#{bundle.EditExaminacionTitle_examinacionPK_idexaminacion}" required="true" requiredMessage="#{bundle.EditExaminacionRequiredMessage_examinacionPK_idexaminacion}"/>
+                        <p:outputLabel value="#{bundle.EditExaminacionLabel_fechaexaminacion}" for="fechaexaminacion" />
+                        <p:calendar id="fechaexaminacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{examinacionController.selected.fechaexaminacion}" title="#{bundle.EditExaminacionTitle_fechaexaminacion}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditExaminacionLabel_descripcionexaminacion}" for="descripcionexaminacion" />
+                        <p:inputText id="descripcionexaminacion" value="#{examinacionController.selected.descripcionexaminacion}" title="#{bundle.EditExaminacionTitle_descripcionexaminacion}" />
+                        <p:outputLabel value="#{bundle.EditExaminacionLabel_observacionexaminacion}" for="observacionexaminacion" />
+                        <p:inputText id="observacionexaminacion" value="#{examinacionController.selected.observacionexaminacion}" title="#{bundle.EditExaminacionTitle_observacionexaminacion}" />
+                        <p:outputLabel value="#{bundle.EditExaminacionLabel_tratamientocancermama}" for="tratamientocancermama" />
+                        <p:selectOneMenu id="tratamientocancermama" value="#{examinacionController.selected.tratamientocancermama}" required="true" requiredMessage="#{bundle.EditExaminacionRequiredMessage_tratamientocancermama}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tratamientocancermamaController.itemsAvailableSelectOne}"
+                                           var="tratamientocancermamaItem"
+                                           itemValue="#{tratamientocancermamaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{examinacionController.update}" value="#{bundle.Save}" update="display,:ExaminacionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ExaminacionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ExaminacionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

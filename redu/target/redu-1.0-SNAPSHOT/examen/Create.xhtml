@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ExamenCreateDlg" widgetVar="ExamenCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateExamenTitle}">
+            <h:form id="ExamenCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{examenController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateExamenLabel_idexamen}" for="idexamen" />
+                        <p:inputText id="idexamen" value="#{examenController.selected.idexamen}" title="#{bundle.CreateExamenTitle_idexamen}" required="true" requiredMessage="#{bundle.CreateExamenRequiredMessage_idexamen}"/>
+                        <p:outputLabel value="#{bundle.CreateExamenLabel_nombreexamen}" for="nombreexamen" />
+                        <p:inputText id="nombreexamen" value="#{examenController.selected.nombreexamen}" title="#{bundle.CreateExamenTitle_nombreexamen}" />
+                        <p:outputLabel value="#{bundle.CreateExamenLabel_descripcionexamen}" for="descripcionexamen" />
+                        <p:inputText id="descripcionexamen" value="#{examenController.selected.descripcionexamen}" title="#{bundle.CreateExamenTitle_descripcionexamen}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{examenController.create}" value="#{bundle.Save}" update="display,:ExamenListForm:datalist,:growl" oncomplete="handleSubmit(args,'ExamenCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ExamenCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
