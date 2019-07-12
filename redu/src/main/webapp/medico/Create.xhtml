@@ -13,7 +13,11 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{medicoController.selected != null}">
                         <p:outputLabel value="Cédula:" for="cedulamedico" />
-                        <p:inputText id="cedulamedico" value="#{medicoController.selected.cedulamedico}" title="#{bundle.CreateMedicoTitle_cedulamedico}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_cedulamedico}"/>
+                        <p:inputText id="cedulamedico" value="#{medicoController.selected.cedulamedico}" title="#{bundle.CreateMedicoTitle_cedulamedico}" 
+                                     validatorMessage="Cedula Mal Ingresada"
+                                     required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_cedulamedico}">
+                            <f:validateLength minimum = "10" maximum = "10"/>
+                        </p:inputText>
                         <p:outputLabel value="Apellido:" for="apellidomedico" />
                         <p:inputText id="apellidomedico" value="#{medicoController.selected.apellidomedico}" title="#{bundle.CreateMedicoTitle_apellidomedico}" />
                         <p:outputLabel value="Nombre:" for="nombremedico" />
@@ -29,10 +33,20 @@
                         <p:outputLabel value="Dirección:" for="direccionmedico" />
                         <p:inputText id="direccionmedico" value="#{medicoController.selected.direccionmedico}" title="#{bundle.CreateMedicoTitle_direccionmedico}" />
                         <p:outputLabel value="Email:" for="mailmedico" />
-                        <p:inputText id="mailmedico" value="#{medicoController.selected.mailmedico}" title="#{bundle.CreateMedicoTitle_mailmedico}" />
+                        <p:inputText id="mailmedico" value="#{medicoController.selected.mailmedico}" title="#{bundle.CreateMedicoTitle_mailmedico}" validatorMessage="Email no Valido" >
+                            <f:validateRegex  pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                        </p:inputText>
                         <p:outputLabel value="Celular:" for="celularmedico" />
                         <p:inputText id="celularmedico" value="#{medicoController.selected.celularmedico}" title="#{bundle.CreateMedicoTitle_celularmedico}" />
+                        
                     </p:panelGrid>
+                    <p:keyFilter for="cedulamedico" mask="num"/>
+                    <p:keyFilter for="celularmedico" mask="num"/>
+                        <p:keyFilter for="fonomedico" mask="num"/>
+                        <p:keyFilter for="mailmedico" mask="email"/>
+                        <p:keyFilter for="nombremedico" regEx="/[ABCDEFGHIJKLMNOPQRSTUVWXYZÑÁÉÍÓÚ]/i"/>
+                        <p:keyFilter for="apellidomedico" regEx="/[ABCDEFGHIJKLMNOPQRSTUVWXYZÑÁÉÍÓÚ]/i"/>
+                        
                     <p:commandButton actionListener="#{medicoController.create}" value="#{bundle.Save}" update="display,:MedicoListForm:datalist,:growl" oncomplete="handleSubmit(args,'MedicoCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="MedicoCreateDialog.hide()"/>
                 </h:panelGroup>

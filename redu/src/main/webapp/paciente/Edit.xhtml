@@ -29,6 +29,12 @@
                         <p:outputLabel value="CELULAR" for="celularpaciente" />
                         <p:inputText id="celularpaciente" value="#{pacienteController.selected.celularpaciente}" title="#{bundle.EditPacienteTitle_celularpaciente}" />
                     </p:panelGrid>
+                    <p:keyFilter for="cedulapaciente" mask="num"/>
+                    <p:keyFilter for="fonopaciente" mask="num"/>
+                    <p:keyFilter for="celularpaciente" mask="num"/>
+                    <p:keyFilter for="mailpaciente" mask="email"/>
+                    <p:keyFilter for="nombrepaciente" regEx="/[ABCDEFGHIJKLMNOPQRSTUVWXYZÑÁÉÍÓÚ]/i"/>
+                    <p:keyFilter for="apellidopaciente" regEx="/[ABCDEFGHIJKLMNOPQRSTUVWXYZÑÁÉÍÓÚ]/i"/>
                     <center>
                         <p:commandButton actionListener="#{pacienteController.update}" value="#{bundle.Save}" update="display,:PacienteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PacienteEditDialog');"/>
                         <p:commandButton value="#{bundle.Cancel}" onclick="PacienteEditDialog.hide()"/>

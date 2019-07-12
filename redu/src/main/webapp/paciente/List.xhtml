@@ -46,8 +46,11 @@
                             <h:outputText value="#{item.idpaciente}" style="width:100%"/>
                         </p:column>
                         <p:column filterBy="#{item.cedulapaciente}" filterMatchMode="contains">
+                            
                             <f:facet name="filter">
-                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%">
+                                    <p:keyFilter  mask="num"/>
+                                </p:inputText>
                             </f:facet>
                             <f:facet name="header">
                                 <h:outputText style="width:100%; text-transform: uppercase"   value="CÉDULA" />
@@ -55,8 +58,11 @@
                             <h:outputText value="#{item.cedulapaciente}" style="width:100%"/>
                         </p:column>
                         <p:column filterBy="#{item.apellidopaciente}" filterMatchMode="contains">
+                            
                             <f:facet name="filter">
-                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                                <p:inputText  onkeyup ="PF('datalist').filter()" style="width:95%">
+                                    <p:keyFilter  regEx="/[ABCDEFGHIJKLMNOPQRSTUVWXYZÑÁÉÍÓÚ]/i"/>
+                                </p:inputText>
                             </f:facet>
                             <f:facet name="header">
                                 <h:outputText style="width:100%; text-transform: uppercase"   value="APELLIDO" />
@@ -65,7 +71,9 @@
                         </p:column>
                         <p:column filterBy="#{item.nombrepaciente}" filterMatchMode="contains">
                             <f:facet name="filter">
-                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                                <p:inputText  onkeyup ="PF('datalist').filter()" style="width:95%">
+                                    <p:keyFilter regEx="/[ABCDEFGHIJKLMNOPQRSTUVWXYZÑÁÉÍÓÚ]/i"/>
+                                </p:inputText>
                             </f:facet>
                             <f:facet name="header">
                                 <h:outputText style="width:100%; text-transform: uppercase"   value="NOMBRE" />
@@ -74,18 +82,22 @@
                         </p:column>
                         <p:column filterBy="#{item.fechanacimientopaciente}" filterMatchMode="contains">
                             <f:facet name="filter">
-                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
-                            </f:facet>
+                                <p:calendar onkeyup="PF('datalist').filter()"   onmousemove="PF('datalist').filter()" style="width:95%" placeholder="dd/mm/yyyy" yearRange="1950:2019" locale="de" navigator="true" pattern="dd/MM/yyyy" />
+                                                    </f:facet>
                             <f:facet name="header">
+                                
                                 <h:outputText style="width:100%; text-transform: uppercase"   value="FECHA DE NACIMIENTO" />
                             </f:facet>
                             <h:outputText value="#{item.fechanacimientopaciente}" style="width:100%">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
                             </h:outputText>
                         </p:column>
                         <p:column filterBy="#{item.fonopaciente}" filterMatchMode="contains">
+                           
                             <f:facet name="filter">
-                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                                <p:inputText  onkeyup ="PF('datalist').filter()" style="width:95%">
+                                    <p:keyFilter  mask="num"/>
+                                </p:inputText>
                             </f:facet>
                             <f:facet name="header">
                                 <h:outputText style="width:100%; text-transform: uppercase"   value="TELÉFONO" />
@@ -103,6 +115,8 @@
                         </p:column>
                         <p:column filterBy="#{item.mailpaciente}" filterMatchMode="contains">
                             <f:facet name="filter">
+                                
+                   
                                 <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
                             </f:facet>
                             <f:facet name="header">
@@ -111,8 +125,12 @@
                             <h:outputText value="#{item.mailpaciente}" style="width:100%"/>
                         </p:column>
                         <p:column filterBy="#{item.celularpaciente}" filterMatchMode="contains">
+                           
                             <f:facet name="filter">
-                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                                
+                                <p:inputText id="celularpaciente" onkeyup ="PF('datalist').filter()" style="width:95%">
+                                    <p:keyFilter  mask="num"/>
+                                </p:inputText>
                             </f:facet>
                             <f:facet name="header">
                                 <h:outputText style="width:100%; text-transform: uppercase"   value="CELULAR" />
