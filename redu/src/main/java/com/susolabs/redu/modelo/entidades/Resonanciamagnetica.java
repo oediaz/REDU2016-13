@@ -8,9 +8,13 @@ package com.susolabs.redu.modelo.entidades;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -25,17 +29,14 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author t4nk
+ * @author PEPE
  */
 @Entity
 @Table(name = "resonanciamagnetica")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Resonanciamagnetica.findAll", query = "SELECT r FROM Resonanciamagnetica r")
-    , @NamedQuery(name = "Resonanciamagnetica.findByIdscreening", query = "SELECT r FROM Resonanciamagnetica r WHERE r.resonanciamagneticaPK.idscreening = :idscreening")
-    , @NamedQuery(name = "Resonanciamagnetica.findByIdresponsablei", query = "SELECT r FROM Resonanciamagnetica r WHERE r.resonanciamagneticaPK.idresponsablei = :idresponsablei")
-    , @NamedQuery(name = "Resonanciamagnetica.findByIdlaboratorio", query = "SELECT r FROM Resonanciamagnetica r WHERE r.resonanciamagneticaPK.idlaboratorio = :idlaboratorio")
-    , @NamedQuery(name = "Resonanciamagnetica.findByIdresonanciamagnetica", query = "SELECT r FROM Resonanciamagnetica r WHERE r.resonanciamagneticaPK.idresonanciamagnetica = :idresonanciamagnetica")
+    , @NamedQuery(name = "Resonanciamagnetica.findByIdresonanciamagnetica", query = "SELECT r FROM Resonanciamagnetica r WHERE r.idresonanciamagnetica = :idresonanciamagnetica")
     , @NamedQuery(name = "Resonanciamagnetica.findByFecharm", query = "SELECT r FROM Resonanciamagnetica r WHERE r.fecharm = :fecharm")
     , @NamedQuery(name = "Resonanciamagnetica.findByDescripcionrm", query = "SELECT r FROM Resonanciamagnetica r WHERE r.descripcionrm = :descripcionrm")
     , @NamedQuery(name = "Resonanciamagnetica.findByRazonrm", query = "SELECT r FROM Resonanciamagnetica r WHERE r.razonrm = :razonrm")
@@ -47,8 +48,11 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Resonanciamagnetica implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected ResonanciamagneticaPK resonanciamagneticaPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "IDRESONANCIAMAGNETICA")
+    private Integer idresonanciamagnetica;
     @Column(name = "FECHARM")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecharm;
@@ -73,35 +77,31 @@ public class Resonanciamagnetica implements Serializable {
     @Size(max = 64)
     @Column(name = "OBSERVACIONESPROTOCOLORM")
     private String observacionesprotocolorm;
-    @OneToMany(mappedBy = "resonanciamagnetica")
+    @JoinColumn(name = "IDSCREENING", referencedColumnName = "IDSCREENING")
+    @ManyToOne(optional = false)
+    private Screening idscreening;
+    @JoinColumn(name = "IDRESPONSABLEI", referencedColumnName = "IDRESPONSABLEI")
+    @ManyToOne(optional = false)
+    private Responsableimagen idresponsablei;
+    @JoinColumn(name = "IDLABORATORIO", referencedColumnName = "IDLABORATORIO")
+    @ManyToOne(optional = false)
+    private Laboratorio idlaboratorio;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idresonanciamagnetica")
     private List<Resultadosresonanciamagnetica> resultadosresonanciamagneticaList;
-    @JoinColumn(name = "IDSCREENING", referencedColumnName = "IDSCREENING", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Screening screening;
-    @JoinColumn(name = "IDRESPONSABLEI", referencedColumnName = "IDRESPONSABLEI", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Responsableimagen responsableimagen;
-    @JoinColumn(name = "IDLABORATORIO", referencedColumnName = "IDLABORATORIO", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Laboratorio laboratorio;
 
     public Resonanciamagnetica() {
     }
 
-    public Resonanciamagnetica(ResonanciamagneticaPK resonanciamagneticaPK) {
-        this.resonanciamagneticaPK = resonanciamagneticaPK;
+    public Resonanciamagnetica(Integer idresonanciamagnetica) {
+        this.idresonanciamagnetica = idresonanciamagnetica;
     }
 
-    public Resonanciamagnetica(int idscreening, int idresponsablei, int idlaboratorio, int idresonanciamagnetica) {
-        this.resonanciamagneticaPK = new ResonanciamagneticaPK(idscreening, idresponsablei, idlaboratorio, idresonanciamagnetica);
+    public Integer getIdresonanciamagnetica() {
+        return idresonanciamagnetica;
     }
 
-    public ResonanciamagneticaPK getResonanciamagneticaPK() {
-        return resonanciamagneticaPK;
-    }
-
-    public void setResonanciamagneticaPK(ResonanciamagneticaPK resonanciamagneticaPK) {
-        this.resonanciamagneticaPK = resonanciamagneticaPK;
+    public void setIdresonanciamagnetica(Integer idresonanciamagnetica) {
+        this.idresonanciamagnetica = idresonanciamagnetica;
     }
 
     public Date getFecharm() {
@@ -168,6 +168,30 @@ public class Resonanciamagnetica implements Serializable {
         this.observacionesprotocolorm = observacionesprotocolorm;
     }
 
+    public Screening getIdscreening() {
+        return idscreening;
+    }
+
+    public void setIdscreening(Screening idscreening) {
+        this.idscreening = idscreening;
+    }
+
+    public Responsableimagen getIdresponsablei() {
+        return idresponsablei;
+    }
+
+    public void setIdresponsablei(Responsableimagen idresponsablei) {
+        this.idresponsablei = idresponsablei;
+    }
+
+    public Laboratorio getIdlaboratorio() {
+        return idlaboratorio;
+    }
+
+    public void setIdlaboratorio(Laboratorio idlaboratorio) {
+        this.idlaboratorio = idlaboratorio;
+    }
+
     @XmlTransient
     public List<Resultadosresonanciamagnetica> getResultadosresonanciamagneticaList() {
         return resultadosresonanciamagneticaList;
@@ -177,34 +201,10 @@ public class Resonanciamagnetica implements Serializable {
         this.resultadosresonanciamagneticaList = resultadosresonanciamagneticaList;
     }
 
-    public Screening getScreening() {
-        return screening;
-    }
-
-    public void setScreening(Screening screening) {
-        this.screening = screening;
-    }
-
-    public Responsableimagen getResponsableimagen() {
-        return responsableimagen;
-    }
-
-    public void setResponsableimagen(Responsableimagen responsableimagen) {
-        this.responsableimagen = responsableimagen;
-    }
-
-    public Laboratorio getLaboratorio() {
-        return laboratorio;
-    }
-
-    public void setLaboratorio(Laboratorio laboratorio) {
-        this.laboratorio = laboratorio;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (resonanciamagneticaPK != null ? resonanciamagneticaPK.hashCode() : 0);
+        hash += (idresonanciamagnetica != null ? idresonanciamagnetica.hashCode() : 0);
         return hash;
     }
 
@@ -215,7 +215,7 @@ public class Resonanciamagnetica implements Serializable {
             return false;
         }
         Resonanciamagnetica other = (Resonanciamagnetica) object;
-        if ((this.resonanciamagneticaPK == null && other.resonanciamagneticaPK != null) || (this.resonanciamagneticaPK != null && !this.resonanciamagneticaPK.equals(other.resonanciamagneticaPK))) {
+        if ((this.idresonanciamagnetica == null && other.idresonanciamagnetica != null) || (this.idresonanciamagnetica != null && !this.idresonanciamagnetica.equals(other.idresonanciamagnetica))) {
             return false;
         }
         return true;
@@ -223,7 +223,7 @@ public class Resonanciamagnetica implements Serializable {
 
     @Override
     public String toString() {
-        return resonanciamagneticaPK +", Screening:"+screening.toString();
+        return "com.susolabs.redu.modelo.entidades.Resonanciamagnetica[ idresonanciamagnetica=" + idresonanciamagnetica + " ]";
     }
     
 }

@@ -8,14 +8,18 @@ package com.susolabs.redu.modelo.entidades;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,23 +29,25 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author t4nk
+ * @author PEPE
  */
 @Entity
 @Table(name = "examinacion")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Examinacion.findAll", query = "SELECT e FROM Examinacion e")
-    , @NamedQuery(name = "Examinacion.findByIdtrtamientocm", query = "SELECT e FROM Examinacion e WHERE e.examinacionPK.idtrtamientocm = :idtrtamientocm")
-    , @NamedQuery(name = "Examinacion.findByIdexaminacion", query = "SELECT e FROM Examinacion e WHERE e.examinacionPK.idexaminacion = :idexaminacion")
+    , @NamedQuery(name = "Examinacion.findByIdexaminacion", query = "SELECT e FROM Examinacion e WHERE e.idexaminacion = :idexaminacion")
     , @NamedQuery(name = "Examinacion.findByFechaexaminacion", query = "SELECT e FROM Examinacion e WHERE e.fechaexaminacion = :fechaexaminacion")
     , @NamedQuery(name = "Examinacion.findByDescripcionexaminacion", query = "SELECT e FROM Examinacion e WHERE e.descripcionexaminacion = :descripcionexaminacion")
     , @NamedQuery(name = "Examinacion.findByObservacionexaminacion", query = "SELECT e FROM Examinacion e WHERE e.observacionexaminacion = :observacionexaminacion")})
 public class Examinacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected ExaminacionPK examinacionPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "IDEXAMINACION")
+    private Integer idexaminacion;
     @Column(name = "FECHAEXAMINACION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaexaminacion;
@@ -51,29 +57,25 @@ public class Examinacion implements Serializable {
     @Size(max = 64)
     @Column(name = "OBSERVACIONEXAMINACION")
     private String observacionexaminacion;
-    @ManyToMany(mappedBy = "examinacionList")
-    private List<Examen> examenList;
-    @JoinColumn(name = "IDTRTAMIENTOCM", referencedColumnName = "IDTRTAMIENTOCM", insertable = false, updatable = false)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idexaminacion")
+    private List<Resultadosexamen> resultadosexamenList;
+    @JoinColumn(name = "IDTRTAMIENTOCM", referencedColumnName = "IDTRTAMIENTOCM")
     @ManyToOne(optional = false)
-    private Tratamientocancermama tratamientocancermama;
+    private Tratamientocancermama idtrtamientocm;
 
     public Examinacion() {
     }
 
-    public Examinacion(ExaminacionPK examinacionPK) {
-        this.examinacionPK = examinacionPK;
+    public Examinacion(Integer idexaminacion) {
+        this.idexaminacion = idexaminacion;
     }
 
-    public Examinacion(int idtrtamientocm, int idexaminacion) {
-        this.examinacionPK = new ExaminacionPK(idtrtamientocm, idexaminacion);
+    public Integer getIdexaminacion() {
+        return idexaminacion;
     }
 
-    public ExaminacionPK getExaminacionPK() {
-        return examinacionPK;
-    }
-
-    public void setExaminacionPK(ExaminacionPK examinacionPK) {
-        this.examinacionPK = examinacionPK;
+    public void setIdexaminacion(Integer idexaminacion) {
+        this.idexaminacion = idexaminacion;
     }
 
     public Date getFechaexaminacion() {
@@ -101,26 +103,26 @@ public class Examinacion implements Serializable {
     }
 
     @XmlTransient
-    public List<Examen> getExamenList() {
-        return examenList;
+    public List<Resultadosexamen> getResultadosexamenList() {
+        return resultadosexamenList;
     }
 
-    public void setExamenList(List<Examen> examenList) {
-        this.examenList = examenList;
+    public void setResultadosexamenList(List<Resultadosexamen> resultadosexamenList) {
+        this.resultadosexamenList = resultadosexamenList;
     }
 
-    public Tratamientocancermama getTratamientocancermama() {
-        return tratamientocancermama;
+    public Tratamientocancermama getIdtrtamientocm() {
+        return idtrtamientocm;
     }
 
-    public void setTratamientocancermama(Tratamientocancermama tratamientocancermama) {
-        this.tratamientocancermama = tratamientocancermama;
+    public void setIdtrtamientocm(Tratamientocancermama idtrtamientocm) {
+        this.idtrtamientocm = idtrtamientocm;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (examinacionPK != null ? examinacionPK.hashCode() : 0);
+        hash += (idexaminacion != null ? idexaminacion.hashCode() : 0);
         return hash;
     }
 
@@ -131,7 +133,7 @@ public class Examinacion implements Serializable {
             return false;
         }
         Examinacion other = (Examinacion) object;
-        if ((this.examinacionPK == null && other.examinacionPK != null) || (this.examinacionPK != null && !this.examinacionPK.equals(other.examinacionPK))) {
+        if ((this.idexaminacion == null && other.idexaminacion != null) || (this.idexaminacion != null && !this.idexaminacion.equals(other.idexaminacion))) {
             return false;
         }
         return true;
@@ -139,7 +141,7 @@ public class Examinacion implements Serializable {
 
     @Override
     public String toString() {
-        return "com.susolabs.redu.modelo.entidades.Examinacion[ examinacionPK=" + examinacionPK + " ]";
+        return "com.susolabs.redu.modelo.entidades.Examinacion[ idexaminacion=" + idexaminacion + " ]";
     }
     
 }

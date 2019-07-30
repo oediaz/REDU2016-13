@@ -8,9 +8,13 @@ package com.susolabs.redu.modelo.entidades;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -25,17 +29,14 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author t4nk
+ * @author PEPE
  */
 @Entity
 @Table(name = "mamografia")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Mamografia.findAll", query = "SELECT m FROM Mamografia m")
-    , @NamedQuery(name = "Mamografia.findByIdscreening", query = "SELECT m FROM Mamografia m WHERE m.mamografiaPK.idscreening = :idscreening")
-    , @NamedQuery(name = "Mamografia.findByIdresponsablei", query = "SELECT m FROM Mamografia m WHERE m.mamografiaPK.idresponsablei = :idresponsablei")
-    , @NamedQuery(name = "Mamografia.findByIdlaboratorio", query = "SELECT m FROM Mamografia m WHERE m.mamografiaPK.idlaboratorio = :idlaboratorio")
-    , @NamedQuery(name = "Mamografia.findByIdmamografia", query = "SELECT m FROM Mamografia m WHERE m.mamografiaPK.idmamografia = :idmamografia")
+    , @NamedQuery(name = "Mamografia.findByIdmamografia", query = "SELECT m FROM Mamografia m WHERE m.idmamografia = :idmamografia")
     , @NamedQuery(name = "Mamografia.findByFechamamografia", query = "SELECT m FROM Mamografia m WHERE m.fechamamografia = :fechamamografia")
     , @NamedQuery(name = "Mamografia.findByCaracteristicapredominantem", query = "SELECT m FROM Mamografia m WHERE m.caracteristicapredominantem = :caracteristicapredominantem")
     , @NamedQuery(name = "Mamografia.findByPatrondensidadm", query = "SELECT m FROM Mamografia m WHERE m.patrondensidadm = :patrondensidadm")
@@ -47,8 +48,11 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Mamografia implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected MamografiaPK mamografiaPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "IDMAMOGRAFIA")
+    private Integer idmamografia;
     @Column(name = "FECHAMAMOGRAFIA")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechamamografia;
@@ -73,35 +77,31 @@ public class Mamografia implements Serializable {
     @Size(max = 64)
     @Column(name = "OBSERVACIONESPROTOCOLOM")
     private String observacionesprotocolom;
-    @JoinColumn(name = "IDSCREENING", referencedColumnName = "IDSCREENING", insertable = false, updatable = false)
+    @JoinColumn(name = "IDSCREENING", referencedColumnName = "IDSCREENING")
     @ManyToOne(optional = false)
-    private Screening screening;
-    @JoinColumn(name = "IDRESPONSABLEI", referencedColumnName = "IDRESPONSABLEI", insertable = false, updatable = false)
+    private Screening idscreening;
+    @JoinColumn(name = "IDRESPONSABLEI", referencedColumnName = "IDRESPONSABLEI")
     @ManyToOne(optional = false)
-    private Responsableimagen responsableimagen;
-    @JoinColumn(name = "IDLABORATORIO", referencedColumnName = "IDLABORATORIO", insertable = false, updatable = false)
+    private Responsableimagen idresponsablei;
+    @JoinColumn(name = "IDLABORATORIO", referencedColumnName = "IDLABORATORIO")
     @ManyToOne(optional = false)
-    private Laboratorio laboratorio;
-    @OneToMany(mappedBy = "mamografia")
+    private Laboratorio idlaboratorio;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idmamografia")
     private List<Resultadosmamografia> resultadosmamografiaList;
 
     public Mamografia() {
     }
 
-    public Mamografia(MamografiaPK mamografiaPK) {
-        this.mamografiaPK = mamografiaPK;
+    public Mamografia(Integer idmamografia) {
+        this.idmamografia = idmamografia;
     }
 
-    public Mamografia(int idscreening, int idresponsablei, int idlaboratorio, int idmamografia) {
-        this.mamografiaPK = new MamografiaPK(idscreening, idresponsablei, idlaboratorio, idmamografia);
+    public Integer getIdmamografia() {
+        return idmamografia;
     }
 
-    public MamografiaPK getMamografiaPK() {
-        return mamografiaPK;
-    }
-
-    public void setMamografiaPK(MamografiaPK mamografiaPK) {
-        this.mamografiaPK = mamografiaPK;
+    public void setIdmamografia(Integer idmamografia) {
+        this.idmamografia = idmamografia;
     }
 
     public Date getFechamamografia() {
@@ -168,28 +168,28 @@ public class Mamografia implements Serializable {
         this.observacionesprotocolom = observacionesprotocolom;
     }
 
-    public Screening getScreening() {
-        return screening;
+    public Screening getIdscreening() {
+        return idscreening;
     }
 
-    public void setScreening(Screening screening) {
-        this.screening = screening;
+    public void setIdscreening(Screening idscreening) {
+        this.idscreening = idscreening;
     }
 
-    public Responsableimagen getResponsableimagen() {
-        return responsableimagen;
+    public Responsableimagen getIdresponsablei() {
+        return idresponsablei;
     }
 
-    public void setResponsableimagen(Responsableimagen responsableimagen) {
-        this.responsableimagen = responsableimagen;
+    public void setIdresponsablei(Responsableimagen idresponsablei) {
+        this.idresponsablei = idresponsablei;
     }
 
-    public Laboratorio getLaboratorio() {
-        return laboratorio;
+    public Laboratorio getIdlaboratorio() {
+        return idlaboratorio;
     }
 
-    public void setLaboratorio(Laboratorio laboratorio) {
-        this.laboratorio = laboratorio;
+    public void setIdlaboratorio(Laboratorio idlaboratorio) {
+        this.idlaboratorio = idlaboratorio;
     }
 
     @XmlTransient
@@ -204,7 +204,7 @@ public class Mamografia implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (mamografiaPK != null ? mamografiaPK.hashCode() : 0);
+        hash += (idmamografia != null ? idmamografia.hashCode() : 0);
         return hash;
     }
 
@@ -215,7 +215,7 @@ public class Mamografia implements Serializable {
             return false;
         }
         Mamografia other = (Mamografia) object;
-        if ((this.mamografiaPK == null && other.mamografiaPK != null) || (this.mamografiaPK != null && !this.mamografiaPK.equals(other.mamografiaPK))) {
+        if ((this.idmamografia == null && other.idmamografia != null) || (this.idmamografia != null && !this.idmamografia.equals(other.idmamografia))) {
             return false;
         }
         return true;
@@ -223,7 +223,7 @@ public class Mamografia implements Serializable {
 
     @Override
     public String toString() {
-        return mamografiaPK+", Screening:"+screening.toString();
+        return "com.susolabs.redu.modelo.entidades.Mamografia[ idmamografia=" + idmamografia + " ]";
     }
     
 }

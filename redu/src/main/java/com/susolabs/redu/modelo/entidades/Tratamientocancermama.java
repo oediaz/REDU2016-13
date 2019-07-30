@@ -12,6 +12,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,14 +23,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author t4nk
+ * @author PEPE
  */
 @Entity
 @Table(name = "tratamientocancermama")
@@ -43,8 +44,8 @@ public class Tratamientocancermama implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "IDTRTAMIENTOCM")
     private Integer idtrtamientocm;
     @Column(name = "FECHAINICIOTCM")
@@ -56,21 +57,21 @@ public class Tratamientocancermama implements Serializable {
     @Size(max = 64)
     @Column(name = "OBSERVACIONTCM")
     private String observaciontcm;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tratamientocancermama")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idtrtamientocm")
     private List<Biopsia> biopsiaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tratamientocancermama")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idtrtamientocm")
     private List<Cirugia> cirugiaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tratamientocancermama")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idtrtamientocm")
     private List<Radioterapia> radioterapiaList;
     @JoinColumn(name = "IDBIRADS", referencedColumnName = "IDBIRADS")
     @ManyToOne(optional = false)
     private Birads idbirads;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tratamientocancermama")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idtrtamientocm")
     private List<Quimioterapia> quimioterapiaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tratamientocancermama")
-    private List<Examinacion> examinacionList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tratamientocancermama")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idtrtamientocm")
     private List<Medicacion> medicacionList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idtrtamientocm")
+    private List<Examinacion> examinacionList;
 
     public Tratamientocancermama() {
     }
@@ -156,21 +157,21 @@ public class Tratamientocancermama implements Serializable {
     }
 
     @XmlTransient
-    public List<Examinacion> getExaminacionList() {
-        return examinacionList;
-    }
-
-    public void setExaminacionList(List<Examinacion> examinacionList) {
-        this.examinacionList = examinacionList;
-    }
-
-    @XmlTransient
     public List<Medicacion> getMedicacionList() {
         return medicacionList;
     }
 
     public void setMedicacionList(List<Medicacion> medicacionList) {
         this.medicacionList = medicacionList;
+    }
+
+    @XmlTransient
+    public List<Examinacion> getExaminacionList() {
+        return examinacionList;
+    }
+
+    public void setExaminacionList(List<Examinacion> examinacionList) {
+        this.examinacionList = examinacionList;
     }
 
     @Override

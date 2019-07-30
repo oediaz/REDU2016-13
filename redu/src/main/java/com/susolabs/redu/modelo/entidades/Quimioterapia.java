@@ -7,9 +7,12 @@ package com.susolabs.redu.modelo.entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -21,45 +24,43 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author t4nk
+ * @author PEPE
  */
 @Entity
 @Table(name = "quimioterapia")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Quimioterapia.findAll", query = "SELECT q FROM Quimioterapia q")
-    , @NamedQuery(name = "Quimioterapia.findByIdtrtamientocm", query = "SELECT q FROM Quimioterapia q WHERE q.quimioterapiaPK.idtrtamientocm = :idtrtamientocm")
-    , @NamedQuery(name = "Quimioterapia.findByIdquimioterapia", query = "SELECT q FROM Quimioterapia q WHERE q.quimioterapiaPK.idquimioterapia = :idquimioterapia")
+    , @NamedQuery(name = "Quimioterapia.findByIdquimioterapia", query = "SELECT q FROM Quimioterapia q WHERE q.idquimioterapia = :idquimioterapia")
     , @NamedQuery(name = "Quimioterapia.findByFechainicioquimioterapia", query = "SELECT q FROM Quimioterapia q WHERE q.fechainicioquimioterapia = :fechainicioquimioterapia")})
 public class Quimioterapia implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected QuimioterapiaPK quimioterapiaPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "IDQUIMIOTERAPIA")
+    private Integer idquimioterapia;
     @Column(name = "FECHAINICIOQUIMIOTERAPIA")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechainicioquimioterapia;
-    @JoinColumn(name = "IDTRTAMIENTOCM", referencedColumnName = "IDTRTAMIENTOCM", insertable = false, updatable = false)
+    @JoinColumn(name = "IDTRTAMIENTOCM", referencedColumnName = "IDTRTAMIENTOCM")
     @ManyToOne(optional = false)
-    private Tratamientocancermama tratamientocancermama;
+    private Tratamientocancermama idtrtamientocm;
 
     public Quimioterapia() {
     }
 
-    public Quimioterapia(QuimioterapiaPK quimioterapiaPK) {
-        this.quimioterapiaPK = quimioterapiaPK;
+    public Quimioterapia(Integer idquimioterapia) {
+        this.idquimioterapia = idquimioterapia;
     }
 
-    public Quimioterapia(int idtrtamientocm, int idquimioterapia) {
-        this.quimioterapiaPK = new QuimioterapiaPK(idtrtamientocm, idquimioterapia);
+    public Integer getIdquimioterapia() {
+        return idquimioterapia;
     }
 
-    public QuimioterapiaPK getQuimioterapiaPK() {
-        return quimioterapiaPK;
-    }
-
-    public void setQuimioterapiaPK(QuimioterapiaPK quimioterapiaPK) {
-        this.quimioterapiaPK = quimioterapiaPK;
+    public void setIdquimioterapia(Integer idquimioterapia) {
+        this.idquimioterapia = idquimioterapia;
     }
 
     public Date getFechainicioquimioterapia() {
@@ -70,18 +71,18 @@ public class Quimioterapia implements Serializable {
         this.fechainicioquimioterapia = fechainicioquimioterapia;
     }
 
-    public Tratamientocancermama getTratamientocancermama() {
-        return tratamientocancermama;
+    public Tratamientocancermama getIdtrtamientocm() {
+        return idtrtamientocm;
     }
 
-    public void setTratamientocancermama(Tratamientocancermama tratamientocancermama) {
-        this.tratamientocancermama = tratamientocancermama;
+    public void setIdtrtamientocm(Tratamientocancermama idtrtamientocm) {
+        this.idtrtamientocm = idtrtamientocm;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (quimioterapiaPK != null ? quimioterapiaPK.hashCode() : 0);
+        hash += (idquimioterapia != null ? idquimioterapia.hashCode() : 0);
         return hash;
     }
 
@@ -92,7 +93,7 @@ public class Quimioterapia implements Serializable {
             return false;
         }
         Quimioterapia other = (Quimioterapia) object;
-        if ((this.quimioterapiaPK == null && other.quimioterapiaPK != null) || (this.quimioterapiaPK != null && !this.quimioterapiaPK.equals(other.quimioterapiaPK))) {
+        if ((this.idquimioterapia == null && other.idquimioterapia != null) || (this.idquimioterapia != null && !this.idquimioterapia.equals(other.idquimioterapia))) {
             return false;
         }
         return true;
@@ -100,7 +101,7 @@ public class Quimioterapia implements Serializable {
 
     @Override
     public String toString() {
-        return "com.susolabs.redu.modelo.entidades.Quimioterapia[ quimioterapiaPK=" + quimioterapiaPK + " ]";
+        return "com.susolabs.redu.modelo.entidades.Quimioterapia[ idquimioterapia=" + idquimioterapia + " ]";
     }
     
 }

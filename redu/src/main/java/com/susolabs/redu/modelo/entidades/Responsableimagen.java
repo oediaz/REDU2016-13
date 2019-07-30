@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author t4nk
+ * @author PEPE
  */
 @Entity
 @Table(name = "responsableimagen")
@@ -60,13 +60,13 @@ public class Responsableimagen implements Serializable {
     @Size(max = 32)
     @Column(name = "CELULARRESPONSABLEI")
     private String celularresponsablei;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "responsableimagen")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idresponsablei")
     private List<Mamografia> mamografiaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "responsableimagen")
-    private List<Ecografia> ecografiaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "responsableimagen")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idresponsablei")
     private List<Resonanciamagnetica> resonanciamagneticaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "responsableimagen")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idresponsablei")
+    private List<Ecografia> ecografiaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idresponsablei")
     private List<Mamografiaemisionpositrones> mamografiaemisionpositronesList;
 
     public Responsableimagen() {
@@ -134,21 +134,21 @@ public class Responsableimagen implements Serializable {
     }
 
     @XmlTransient
-    public List<Ecografia> getEcografiaList() {
-        return ecografiaList;
-    }
-
-    public void setEcografiaList(List<Ecografia> ecografiaList) {
-        this.ecografiaList = ecografiaList;
-    }
-
-    @XmlTransient
     public List<Resonanciamagnetica> getResonanciamagneticaList() {
         return resonanciamagneticaList;
     }
 
     public void setResonanciamagneticaList(List<Resonanciamagnetica> resonanciamagneticaList) {
         this.resonanciamagneticaList = resonanciamagneticaList;
+    }
+
+    @XmlTransient
+    public List<Ecografia> getEcografiaList() {
+        return ecografiaList;
+    }
+
+    public void setEcografiaList(List<Ecografia> ecografiaList) {
+        this.ecografiaList = ecografiaList;
     }
 
     @XmlTransient
@@ -182,11 +182,7 @@ public class Responsableimagen implements Serializable {
 
     @Override
     public String toString() {
-        return cedularesponsablei+" - "+nombreresponsablei;
-    }
-    
-    public String nombreCedula(){
-        return cedularesponsablei+" - "+nombreresponsablei;
+        return "com.susolabs.redu.modelo.entidades.Responsableimagen[ idresponsablei=" + idresponsablei + " ]";
     }
     
 }

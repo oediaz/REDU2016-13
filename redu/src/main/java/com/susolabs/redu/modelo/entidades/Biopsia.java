@@ -7,9 +7,12 @@ package com.susolabs.redu.modelo.entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -21,45 +24,43 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author t4nk
+ * @author PEPE
  */
 @Entity
 @Table(name = "biopsia")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Biopsia.findAll", query = "SELECT b FROM Biopsia b")
-    , @NamedQuery(name = "Biopsia.findByIdtrtamientocm", query = "SELECT b FROM Biopsia b WHERE b.biopsiaPK.idtrtamientocm = :idtrtamientocm")
-    , @NamedQuery(name = "Biopsia.findByIdbiopsia", query = "SELECT b FROM Biopsia b WHERE b.biopsiaPK.idbiopsia = :idbiopsia")
+    , @NamedQuery(name = "Biopsia.findByIdbiopsia", query = "SELECT b FROM Biopsia b WHERE b.idbiopsia = :idbiopsia")
     , @NamedQuery(name = "Biopsia.findByFechabiopsia", query = "SELECT b FROM Biopsia b WHERE b.fechabiopsia = :fechabiopsia")})
 public class Biopsia implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected BiopsiaPK biopsiaPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "IDBIOPSIA")
+    private Integer idbiopsia;
     @Column(name = "FECHABIOPSIA")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechabiopsia;
-    @JoinColumn(name = "IDTRTAMIENTOCM", referencedColumnName = "IDTRTAMIENTOCM", insertable = false, updatable = false)
+    @JoinColumn(name = "IDTRTAMIENTOCM", referencedColumnName = "IDTRTAMIENTOCM")
     @ManyToOne(optional = false)
-    private Tratamientocancermama tratamientocancermama;
+    private Tratamientocancermama idtrtamientocm;
 
     public Biopsia() {
     }
 
-    public Biopsia(BiopsiaPK biopsiaPK) {
-        this.biopsiaPK = biopsiaPK;
+    public Biopsia(Integer idbiopsia) {
+        this.idbiopsia = idbiopsia;
     }
 
-    public Biopsia(int idtrtamientocm, int idbiopsia) {
-        this.biopsiaPK = new BiopsiaPK(idtrtamientocm, idbiopsia);
+    public Integer getIdbiopsia() {
+        return idbiopsia;
     }
 
-    public BiopsiaPK getBiopsiaPK() {
-        return biopsiaPK;
-    }
-
-    public void setBiopsiaPK(BiopsiaPK biopsiaPK) {
-        this.biopsiaPK = biopsiaPK;
+    public void setIdbiopsia(Integer idbiopsia) {
+        this.idbiopsia = idbiopsia;
     }
 
     public Date getFechabiopsia() {
@@ -70,18 +71,18 @@ public class Biopsia implements Serializable {
         this.fechabiopsia = fechabiopsia;
     }
 
-    public Tratamientocancermama getTratamientocancermama() {
-        return tratamientocancermama;
+    public Tratamientocancermama getIdtrtamientocm() {
+        return idtrtamientocm;
     }
 
-    public void setTratamientocancermama(Tratamientocancermama tratamientocancermama) {
-        this.tratamientocancermama = tratamientocancermama;
+    public void setIdtrtamientocm(Tratamientocancermama idtrtamientocm) {
+        this.idtrtamientocm = idtrtamientocm;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (biopsiaPK != null ? biopsiaPK.hashCode() : 0);
+        hash += (idbiopsia != null ? idbiopsia.hashCode() : 0);
         return hash;
     }
 
@@ -92,7 +93,7 @@ public class Biopsia implements Serializable {
             return false;
         }
         Biopsia other = (Biopsia) object;
-        if ((this.biopsiaPK == null && other.biopsiaPK != null) || (this.biopsiaPK != null && !this.biopsiaPK.equals(other.biopsiaPK))) {
+        if ((this.idbiopsia == null && other.idbiopsia != null) || (this.idbiopsia != null && !this.idbiopsia.equals(other.idbiopsia))) {
             return false;
         }
         return true;
@@ -100,7 +101,7 @@ public class Biopsia implements Serializable {
 
     @Override
     public String toString() {
-        return "com.susolabs.redu.modelo.entidades.Biopsia[ biopsiaPK=" + biopsiaPK + " ]";
+        return "com.susolabs.redu.modelo.entidades.Biopsia[ idbiopsia=" + idbiopsia + " ]";
     }
     
 }

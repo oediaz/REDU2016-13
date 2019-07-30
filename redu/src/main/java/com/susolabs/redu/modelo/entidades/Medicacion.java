@@ -8,14 +8,18 @@ package com.susolabs.redu.modelo.entidades;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,51 +29,49 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author t4nk
+ * @author PEPE
  */
 @Entity
 @Table(name = "medicacion")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Medicacion.findAll", query = "SELECT m FROM Medicacion m")
-    , @NamedQuery(name = "Medicacion.findByIdtrtamientocm", query = "SELECT m FROM Medicacion m WHERE m.medicacionPK.idtrtamientocm = :idtrtamientocm")
-    , @NamedQuery(name = "Medicacion.findByIdmedicacion", query = "SELECT m FROM Medicacion m WHERE m.medicacionPK.idmedicacion = :idmedicacion")
+    , @NamedQuery(name = "Medicacion.findByIdmedicacion", query = "SELECT m FROM Medicacion m WHERE m.idmedicacion = :idmedicacion")
     , @NamedQuery(name = "Medicacion.findByFechamedicacion", query = "SELECT m FROM Medicacion m WHERE m.fechamedicacion = :fechamedicacion")
     , @NamedQuery(name = "Medicacion.findByDescripcionmedicacion", query = "SELECT m FROM Medicacion m WHERE m.descripcionmedicacion = :descripcionmedicacion")})
 public class Medicacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected MedicacionPK medicacionPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "IDMEDICACION")
+    private Integer idmedicacion;
     @Column(name = "FECHAMEDICACION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechamedicacion;
     @Size(max = 64)
     @Column(name = "DESCRIPCIONMEDICACION")
     private String descripcionmedicacion;
-    @ManyToMany(mappedBy = "medicacionList")
-    private List<Medicamento> medicamentoList;
-    @JoinColumn(name = "IDTRTAMIENTOCM", referencedColumnName = "IDTRTAMIENTOCM", insertable = false, updatable = false)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idmedicacion")
+    private List<Receta> recetaList;
+    @JoinColumn(name = "IDTRTAMIENTOCM", referencedColumnName = "IDTRTAMIENTOCM")
     @ManyToOne(optional = false)
-    private Tratamientocancermama tratamientocancermama;
+    private Tratamientocancermama idtrtamientocm;
 
     public Medicacion() {
     }
 
-    public Medicacion(MedicacionPK medicacionPK) {
-        this.medicacionPK = medicacionPK;
+    public Medicacion(Integer idmedicacion) {
+        this.idmedicacion = idmedicacion;
     }
 
-    public Medicacion(int idtrtamientocm, int idmedicacion) {
-        this.medicacionPK = new MedicacionPK(idtrtamientocm, idmedicacion);
+    public Integer getIdmedicacion() {
+        return idmedicacion;
     }
 
-    public MedicacionPK getMedicacionPK() {
-        return medicacionPK;
-    }
-
-    public void setMedicacionPK(MedicacionPK medicacionPK) {
-        this.medicacionPK = medicacionPK;
+    public void setIdmedicacion(Integer idmedicacion) {
+        this.idmedicacion = idmedicacion;
     }
 
     public Date getFechamedicacion() {
@@ -89,26 +91,26 @@ public class Medicacion implements Serializable {
     }
 
     @XmlTransient
-    public List<Medicamento> getMedicamentoList() {
-        return medicamentoList;
+    public List<Receta> getRecetaList() {
+        return recetaList;
     }
 
-    public void setMedicamentoList(List<Medicamento> medicamentoList) {
-        this.medicamentoList = medicamentoList;
+    public void setRecetaList(List<Receta> recetaList) {
+        this.recetaList = recetaList;
     }
 
-    public Tratamientocancermama getTratamientocancermama() {
-        return tratamientocancermama;
+    public Tratamientocancermama getIdtrtamientocm() {
+        return idtrtamientocm;
     }
 
-    public void setTratamientocancermama(Tratamientocancermama tratamientocancermama) {
-        this.tratamientocancermama = tratamientocancermama;
+    public void setIdtrtamientocm(Tratamientocancermama idtrtamientocm) {
+        this.idtrtamientocm = idtrtamientocm;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (medicacionPK != null ? medicacionPK.hashCode() : 0);
+        hash += (idmedicacion != null ? idmedicacion.hashCode() : 0);
         return hash;
     }
 
@@ -119,7 +121,7 @@ public class Medicacion implements Serializable {
             return false;
         }
         Medicacion other = (Medicacion) object;
-        if ((this.medicacionPK == null && other.medicacionPK != null) || (this.medicacionPK != null && !this.medicacionPK.equals(other.medicacionPK))) {
+        if ((this.idmedicacion == null && other.idmedicacion != null) || (this.idmedicacion != null && !this.idmedicacion.equals(other.idmedicacion))) {
             return false;
         }
         return true;
@@ -127,7 +129,7 @@ public class Medicacion implements Serializable {
 
     @Override
     public String toString() {
-        return "com.susolabs.redu.modelo.entidades.Medicacion[ medicacionPK=" + medicacionPK + " ]";
+        return "com.susolabs.redu.modelo.entidades.Medicacion[ idmedicacion=" + idmedicacion + " ]";
     }
     
 }

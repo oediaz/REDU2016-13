@@ -15,7 +15,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -28,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author t4nk
+ * @author PEPE
  */
 @Entity
 @Table(name = "resultadosmamografia")
@@ -64,13 +63,9 @@ public class Resultadosmamografia implements Serializable {
     @Size(max = 32)
     @Column(name = "CLASIFICACIONDISTRIBUCIONHALLAZGOREM")
     private String clasificaciondistribucionhallazgorem;
-    @JoinColumns({
-        @JoinColumn(name = "IDSCREENING", referencedColumnName = "IDSCREENING")
-        , @JoinColumn(name = "IDRESPONSABLEI", referencedColumnName = "IDRESPONSABLEI")
-        , @JoinColumn(name = "IDLABORATORIO", referencedColumnName = "IDLABORATORIO")
-        , @JoinColumn(name = "IDMAMOGRAFIA", referencedColumnName = "IDMAMOGRAFIA")})
-    @ManyToOne
-    private Mamografia mamografia;
+    @JoinColumn(name = "IDMAMOGRAFIA", referencedColumnName = "IDMAMOGRAFIA")
+    @ManyToOne(optional = false)
+    private Mamografia idmamografia;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idresultadom")
     private List<Birads> biradsList;
 
@@ -129,12 +124,12 @@ public class Resultadosmamografia implements Serializable {
         this.clasificaciondistribucionhallazgorem = clasificaciondistribucionhallazgorem;
     }
 
-    public Mamografia getMamografia() {
-        return mamografia;
+    public Mamografia getIdmamografia() {
+        return idmamografia;
     }
 
-    public void setMamografia(Mamografia mamografia) {
-        this.mamografia = mamografia;
+    public void setIdmamografia(Mamografia idmamografia) {
+        this.idmamografia = idmamografia;
     }
 
     @XmlTransient

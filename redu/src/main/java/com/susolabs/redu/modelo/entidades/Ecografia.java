@@ -8,9 +8,12 @@ package com.susolabs.redu.modelo.entidades;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -25,17 +28,14 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author t4nk
+ * @author PEPE
  */
 @Entity
 @Table(name = "ecografia")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Ecografia.findAll", query = "SELECT e FROM Ecografia e")
-    , @NamedQuery(name = "Ecografia.findByIdscreening", query = "SELECT e FROM Ecografia e WHERE e.ecografiaPK.idscreening = :idscreening")
-    , @NamedQuery(name = "Ecografia.findByIdresponsablei", query = "SELECT e FROM Ecografia e WHERE e.ecografiaPK.idresponsablei = :idresponsablei")
-    , @NamedQuery(name = "Ecografia.findByIdlaboratorio", query = "SELECT e FROM Ecografia e WHERE e.ecografiaPK.idlaboratorio = :idlaboratorio")
-    , @NamedQuery(name = "Ecografia.findByIdecografia", query = "SELECT e FROM Ecografia e WHERE e.ecografiaPK.idecografia = :idecografia")
+    , @NamedQuery(name = "Ecografia.findByIdecografia", query = "SELECT e FROM Ecografia e WHERE e.idecografia = :idecografia")
     , @NamedQuery(name = "Ecografia.findByFechaecografia", query = "SELECT e FROM Ecografia e WHERE e.fechaecografia = :fechaecografia")
     , @NamedQuery(name = "Ecografia.findByDescripcionecografia", query = "SELECT e FROM Ecografia e WHERE e.descripcionecografia = :descripcionecografia")
     , @NamedQuery(name = "Ecografia.findByRazonecografia", query = "SELECT e FROM Ecografia e WHERE e.razonecografia = :razonecografia")
@@ -45,8 +45,11 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Ecografia implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected EcografiaPK ecografiaPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "IDECOGRAFIA")
+    private Integer idecografia;
     @Column(name = "FECHAECOGRAFIA")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaecografia;
@@ -65,35 +68,31 @@ public class Ecografia implements Serializable {
     @Size(max = 64)
     @Column(name = "OBSERVACIONESPROTOCOLOE")
     private String observacionesprotocoloe;
-    @JoinColumn(name = "IDSCREENING", referencedColumnName = "IDSCREENING", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Screening screening;
-    @JoinColumn(name = "IDRESPONSABLEI", referencedColumnName = "IDRESPONSABLEI", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Responsableimagen responsableimagen;
-    @JoinColumn(name = "IDLABORATORIO", referencedColumnName = "IDLABORATORIO", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Laboratorio laboratorio;
-    @OneToMany(mappedBy = "ecografia")
+    @OneToMany(mappedBy = "idecografia")
     private List<Resultadosecografia> resultadosecografiaList;
+    @JoinColumn(name = "IDSCREENING", referencedColumnName = "IDSCREENING")
+    @ManyToOne(optional = false)
+    private Screening idscreening;
+    @JoinColumn(name = "IDRESPONSABLEI", referencedColumnName = "IDRESPONSABLEI")
+    @ManyToOne(optional = false)
+    private Responsableimagen idresponsablei;
+    @JoinColumn(name = "IDLABORATORIO", referencedColumnName = "IDLABORATORIO")
+    @ManyToOne(optional = false)
+    private Laboratorio idlaboratorio;
 
     public Ecografia() {
     }
 
-    public Ecografia(EcografiaPK ecografiaPK) {
-        this.ecografiaPK = ecografiaPK;
+    public Ecografia(Integer idecografia) {
+        this.idecografia = idecografia;
     }
 
-    public Ecografia(int idscreening, int idresponsablei, int idlaboratorio, int idecografia) {
-        this.ecografiaPK = new EcografiaPK(idscreening, idresponsablei, idlaboratorio, idecografia);
+    public Integer getIdecografia() {
+        return idecografia;
     }
 
-    public EcografiaPK getEcografiaPK() {
-        return ecografiaPK;
-    }
-
-    public void setEcografiaPK(EcografiaPK ecografiaPK) {
-        this.ecografiaPK = ecografiaPK;
+    public void setIdecografia(Integer idecografia) {
+        this.idecografia = idecografia;
     }
 
     public Date getFechaecografia() {
@@ -144,30 +143,6 @@ public class Ecografia implements Serializable {
         this.observacionesprotocoloe = observacionesprotocoloe;
     }
 
-    public Screening getScreening() {
-        return screening;
-    }
-
-    public void setScreening(Screening screening) {
-        this.screening = screening;
-    }
-
-    public Responsableimagen getResponsableimagen() {
-        return responsableimagen;
-    }
-
-    public void setResponsableimagen(Responsableimagen responsableimagen) {
-        this.responsableimagen = responsableimagen;
-    }
-
-    public Laboratorio getLaboratorio() {
-        return laboratorio;
-    }
-
-    public void setLaboratorio(Laboratorio laboratorio) {
-        this.laboratorio = laboratorio;
-    }
-
     @XmlTransient
     public List<Resultadosecografia> getResultadosecografiaList() {
         return resultadosecografiaList;
@@ -177,10 +152,34 @@ public class Ecografia implements Serializable {
         this.resultadosecografiaList = resultadosecografiaList;
     }
 
+    public Screening getIdscreening() {
+        return idscreening;
+    }
+
+    public void setIdscreening(Screening idscreening) {
+        this.idscreening = idscreening;
+    }
+
+    public Responsableimagen getIdresponsablei() {
+        return idresponsablei;
+    }
+
+    public void setIdresponsablei(Responsableimagen idresponsablei) {
+        this.idresponsablei = idresponsablei;
+    }
+
+    public Laboratorio getIdlaboratorio() {
+        return idlaboratorio;
+    }
+
+    public void setIdlaboratorio(Laboratorio idlaboratorio) {
+        this.idlaboratorio = idlaboratorio;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (ecografiaPK != null ? ecografiaPK.hashCode() : 0);
+        hash += (idecografia != null ? idecografia.hashCode() : 0);
         return hash;
     }
 
@@ -191,7 +190,7 @@ public class Ecografia implements Serializable {
             return false;
         }
         Ecografia other = (Ecografia) object;
-        if ((this.ecografiaPK == null && other.ecografiaPK != null) || (this.ecografiaPK != null && !this.ecografiaPK.equals(other.ecografiaPK))) {
+        if ((this.idecografia == null && other.idecografia != null) || (this.idecografia != null && !this.idecografia.equals(other.idecografia))) {
             return false;
         }
         return true;
@@ -199,7 +198,7 @@ public class Ecografia implements Serializable {
 
     @Override
     public String toString() {
-        return ecografiaPK +", Screening:"+screening.toString();
+        return "com.susolabs.redu.modelo.entidades.Ecografia[ idecografia=" + idecografia + " ]";
     }
     
 }

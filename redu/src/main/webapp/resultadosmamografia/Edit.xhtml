@@ -23,7 +23,7 @@
                         <p:outputLabel value="#{bundle.EditResultadosmamografiaLabel_clasificaciondistribucionhallazgorem}" for="clasificaciondistribucionhallazgorem" />
                         <p:inputText id="clasificaciondistribucionhallazgorem" value="#{resultadosmamografiaController.selected.clasificaciondistribucionhallazgorem}" title="#{bundle.EditResultadosmamografiaTitle_clasificaciondistribucionhallazgorem}" />
                         <p:outputLabel value="#{bundle.EditResultadosmamografiaLabel_mamografia}" for="mamografia" />
-                        <p:selectOneMenu id="mamografia" value="#{resultadosmamografiaController.selected.mamografia}" >
+                        <p:selectOneMenu id="mamografia" value="#{resultadosmamografiaController.selected.idmamografia}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{mamografiaController.itemsAvailableSelectOne}"
                                            var="mamografiaItem"

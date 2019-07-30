@@ -51,20 +51,18 @@ public class BiopsiaController implements Serializable {
     }
 
     protected void setEmbeddableKeys() {
-        selected.getBiopsiaPK().setIdtrtamientocm(selected.getTratamientocancermama().getIdtrtamientocm());
     }
 
     protected void initializeEmbeddableKey() {
-        selected.setBiopsiaPK(new com.susolabs.redu.modelo.entidades.BiopsiaPK());
     }
-
+    
     private BiopsiaFacade getFacade() {
         return ejbFacade;
     }
 
     public Biopsia prepareCreate() {
         selected = new Biopsia();
-        initializeEmbeddableKey();
+     
         return selected;
     }
 
@@ -99,7 +97,7 @@ public class BiopsiaController implements Serializable {
 
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
-            setEmbeddableKeys();
+        
             try {
                 if (persistAction != PersistAction.DELETE) {
                     getFacade().edit(selected);
@@ -125,7 +123,7 @@ public class BiopsiaController implements Serializable {
         }
     }
 
-    public Biopsia getBiopsia(com.susolabs.redu.modelo.entidades.BiopsiaPK id) {
+public Biopsia getBiopsia(java.lang.Integer id) {
         return getFacade().find(id);
     }
 
@@ -136,12 +134,8 @@ public class BiopsiaController implements Serializable {
     public List<Biopsia> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
-
     @FacesConverter(forClass = Biopsia.class)
     public static class BiopsiaControllerConverter implements Converter {
-
-        private static final String SEPARATOR = "#";
-        private static final String SEPARATOR_ESCAPED = "\\#";
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
@@ -149,24 +143,19 @@ public class BiopsiaController implements Serializable {
                 return null;
             }
             BiopsiaController controller = (BiopsiaController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "biopsiaController");
+                    getValue(facesContext.getELContext(), null, "medicamentoController");
             return controller.getBiopsia(getKey(value));
         }
 
-        com.susolabs.redu.modelo.entidades.BiopsiaPK getKey(String value) {
-            com.susolabs.redu.modelo.entidades.BiopsiaPK key;
-            String values[] = value.split(SEPARATOR_ESCAPED);
-            key = new com.susolabs.redu.modelo.entidades.BiopsiaPK();
-            key.setIdtrtamientocm(Integer.parseInt(values[0]));
-            key.setIdbiopsia(Integer.parseInt(values[1]));
+        java.lang.Integer getKey(String value) {
+            java.lang.Integer key;
+            key = Integer.valueOf(value);
             return key;
         }
 
-        String getStringKey(com.susolabs.redu.modelo.entidades.BiopsiaPK value) {
+        String getStringKey(java.lang.Integer value) {
             StringBuilder sb = new StringBuilder();
-            sb.append(value.getIdtrtamientocm());
-            sb.append(SEPARATOR);
-            sb.append(value.getIdbiopsia());
+            sb.append(value);
             return sb.toString();
         }
 
@@ -177,7 +166,7 @@ public class BiopsiaController implements Serializable {
             }
             if (object instanceof Biopsia) {
                 Biopsia o = (Biopsia) object;
-                return getStringKey(o.getBiopsiaPK());
+                return getStringKey(o.getIdbiopsia());
             } else {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Biopsia.class.getName()});
                 return null;
@@ -185,5 +174,6 @@ public class BiopsiaController implements Serializable {
         }
 
     }
+   
 
 }

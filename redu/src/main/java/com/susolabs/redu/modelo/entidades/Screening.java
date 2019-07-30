@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author t4nk
+ * @author PEPE
  */
 @Entity
 @Table(name = "screening")
@@ -67,7 +67,7 @@ public class Screening implements Serializable {
     @Size(max = 65535)
     @Column(name = "OBSERVACIONSCREENING")
     private String observacionscreening;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "screening")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idscreening")
     private List<Mamografia> mamografiaList;
     @JoinColumn(name = "IDMEDICO", referencedColumnName = "IDMEDICO")
     @ManyToOne(optional = false)
@@ -75,11 +75,11 @@ public class Screening implements Serializable {
     @JoinColumn(name = "IDPACIENTE", referencedColumnName = "IDPACIENTE")
     @ManyToOne(optional = false)
     private Paciente idpaciente;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "screening")
-    private List<Ecografia> ecografiaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "screening")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idscreening")
     private List<Resonanciamagnetica> resonanciamagneticaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "screening")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idscreening")
+    private List<Ecografia> ecografiaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idscreening")
     private List<Mamografiaemisionpositrones> mamografiaemisionpositronesList;
 
     public Screening() {
@@ -161,21 +161,21 @@ public class Screening implements Serializable {
     }
 
     @XmlTransient
-    public List<Ecografia> getEcografiaList() {
-        return ecografiaList;
-    }
-
-    public void setEcografiaList(List<Ecografia> ecografiaList) {
-        this.ecografiaList = ecografiaList;
-    }
-
-    @XmlTransient
     public List<Resonanciamagnetica> getResonanciamagneticaList() {
         return resonanciamagneticaList;
     }
 
     public void setResonanciamagneticaList(List<Resonanciamagnetica> resonanciamagneticaList) {
         this.resonanciamagneticaList = resonanciamagneticaList;
+    }
+
+    @XmlTransient
+    public List<Ecografia> getEcografiaList() {
+        return ecografiaList;
+    }
+
+    public void setEcografiaList(List<Ecografia> ecografiaList) {
+        this.ecografiaList = ecografiaList;
     }
 
     @XmlTransient
@@ -209,7 +209,7 @@ public class Screening implements Serializable {
 
     @Override
     public String toString() {
-        return idscreening + " - "+idpaciente.getNombrepaciente()+" "+idpaciente.getApellidopaciente();
+        return "com.susolabs.redu.modelo.entidades.Screening[ idscreening=" + idscreening + " ]";
     }
     
 }

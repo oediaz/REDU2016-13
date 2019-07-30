@@ -16,7 +16,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -28,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author t4nk
+ * @author PEPE
  */
 @Entity
 @Table(name = "resultadosecografia")
@@ -60,13 +59,9 @@ public class Resultadosecografia implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "SENSIBILIDADHALLAZGORE")
     private BigDecimal sensibilidadhallazgore;
-    @JoinColumns({
-        @JoinColumn(name = "IDSCREENING", referencedColumnName = "IDSCREENING")
-        , @JoinColumn(name = "IDRESPONSABLEI", referencedColumnName = "IDRESPONSABLEI")
-        , @JoinColumn(name = "IDLABORATORIO", referencedColumnName = "IDLABORATORIO")
-        , @JoinColumn(name = "IDECOGRAFIA", referencedColumnName = "IDECOGRAFIA")})
+    @JoinColumn(name = "IDECOGRAFIA", referencedColumnName = "IDECOGRAFIA")
     @ManyToOne
-    private Ecografia ecografia;
+    private Ecografia idecografia;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idresultadoe")
     private List<Birads> biradsList;
 
@@ -117,12 +112,12 @@ public class Resultadosecografia implements Serializable {
         this.sensibilidadhallazgore = sensibilidadhallazgore;
     }
 
-    public Ecografia getEcografia() {
-        return ecografia;
+    public Ecografia getIdecografia() {
+        return idecografia;
     }
 
-    public void setEcografia(Ecografia ecografia) {
-        this.ecografia = ecografia;
+    public void setIdecografia(Ecografia idecografia) {
+        this.idecografia = idecografia;
     }
 
     @XmlTransient

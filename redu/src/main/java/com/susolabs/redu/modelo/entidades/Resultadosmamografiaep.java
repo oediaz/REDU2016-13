@@ -14,7 +14,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -26,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author t4nk
+ * @author PEPE
  */
 @Entity
 @Table(name = "resultadosmamografiaep")
@@ -58,13 +57,9 @@ public class Resultadosmamografiaep implements Serializable {
     @Size(max = 32)
     @Column(name = "CAUSAFALSONEGATIVOMEP")
     private String causafalsonegativomep;
-    @JoinColumns({
-        @JoinColumn(name = "IDLABORATORIO", referencedColumnName = "IDLABORATORIO")
-        , @JoinColumn(name = "IDSCREENING", referencedColumnName = "IDSCREENING")
-        , @JoinColumn(name = "IDRESPONSABLEI", referencedColumnName = "IDRESPONSABLEI")
-        , @JoinColumn(name = "IDMAMOGRAFIAEP", referencedColumnName = "IDMAMOGRAFIAEP")})
-    @ManyToOne
-    private Mamografiaemisionpositrones mamografiaemisionpositrones;
+    @JoinColumn(name = "IDMAMOGRAFIAEP", referencedColumnName = "IDMAMOGRAFIAEP")
+    @ManyToOne(optional = false)
+    private Mamografiaemisionpositrones idmamografiaep;
     @OneToMany(mappedBy = "idresultadosmep")
     private List<Birads> biradsList;
 
@@ -115,12 +110,12 @@ public class Resultadosmamografiaep implements Serializable {
         this.causafalsonegativomep = causafalsonegativomep;
     }
 
-    public Mamografiaemisionpositrones getMamografiaemisionpositrones() {
-        return mamografiaemisionpositrones;
+    public Mamografiaemisionpositrones getIdmamografiaep() {
+        return idmamografiaep;
     }
 
-    public void setMamografiaemisionpositrones(Mamografiaemisionpositrones mamografiaemisionpositrones) {
-        this.mamografiaemisionpositrones = mamografiaemisionpositrones;
+    public void setIdmamografiaep(Mamografiaemisionpositrones idmamografiaep) {
+        this.idmamografiaep = idmamografiaep;
     }
 
     @XmlTransient

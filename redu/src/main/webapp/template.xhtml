@@ -22,6 +22,8 @@
                 <h:form id="menuForm">
                     <p:menubar>
                         <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
+                         <p:menuitem value="Conexión y Acceso al Servicio PACS" icon="ui-icon-transferthick-e-w"></p:menuitem>
+                          <p:menuitem value="Repositorio Domestico" icon="ui-icon-transferthick-e-w"></p:menuitem>
                         <p:submenu label="Aspecto Relacional" icon="ui-icon-folder-collapsed">
                             <p:submenu label="Gestión" icon="ui-icon-folder-collapsed">
                                 <p:menuitem value="Médico" outcome="/medico/List.xhtml" />
@@ -74,35 +76,16 @@
                             <p:menuitem value="Gestión de reglas de inferencia" ></p:menuitem>
                             <p:menuitem value="Generación supervisada del reporte BI-RADS" ></p:menuitem>
                         </p:submenu>
-                        <p:menuitem value="Conexión y Acceso al Servicio PACS" icon="ui-icon-transferthick-e-w"></p:menuitem>
+                       
                         <p:menuitem value="Ayuda" icon="ui-icon-help"></p:menuitem>
-
-
-
-
                         <p:submenu label="#{bundle.Maintenance}">
                             <p:menuitem value="Biopsia" outcome="/biopsia/List.xhtml" />
-                            <p:menuitem value="Birads" outcome="/birads/List.xhtml" />
                             <p:menuitem value="Cirugia" outcome="/cirugia/List.xhtml" />
-                            <p:menuitem value="Ecografia" outcome="/ecografia/List.xhtml" />
-                            <p:menuitem value="Examen" outcome="/examen/List.xhtml" />
+                          <p:menuitem value="Examen" outcome="/examen/List.xhtml" />
                             <p:menuitem value="Examinacion" outcome="/examinacion/List.xhtml" />
-                            <p:menuitem value="Laboratorio" outcome="/laboratorio/List.xhtml" />
-                            <p:menuitem value="Mamografia" outcome="/mamografia/List.xhtml" />
-                            <p:menuitem value="Mamografiaemisionpositrones" outcome="/mamografiaemisionpositrones/List.xhtml" />
                             <p:menuitem value="Medicacion" outcome="/medicacion/List.xhtml" />
-                            <p:menuitem value="Medicamento" outcome="/medicamento/List.xhtml" />
-                            <p:menuitem value="Medico" outcome="/medico/List.xhtml" />
-                            <p:menuitem value="Paciente" outcome="/paciente/List.xhtml" />
                             <p:menuitem value="Quimioterapia" outcome="/quimioterapia/List.xhtml" />
                             <p:menuitem value="Radioterapia" outcome="/radioterapia/List.xhtml" />
-                            <p:menuitem value="Resonanciamagnetica" outcome="/resonanciamagnetica/List.xhtml" />
-                            <p:menuitem value="Responsableimagen" outcome="/responsableimagen/List.xhtml" />
-                            <p:menuitem value="Resultadosecografia" outcome="/resultadosecografia/List.xhtml" />
-                            <p:menuitem value="Resultadosmamografia" outcome="/resultadosmamografia/List.xhtml" />
-                            <p:menuitem value="Resultadosmamografiaep" outcome="/resultadosmamografiaep/List.xhtml" />
-                            <p:menuitem value="Resultadosresonanciamagnetica" outcome="/resultadosresonanciamagnetica/List.xhtml" />
-                            <p:menuitem value="Screening" outcome="/screening/List.xhtml" />
                             <p:menuitem value="Tratamientocancermama" outcome="/tratamientocancermama/List.xhtml" />
                         </p:submenu>
                     </p:menubar>

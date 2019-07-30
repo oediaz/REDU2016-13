@@ -7,9 +7,12 @@ package com.susolabs.redu.modelo.entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -21,45 +24,43 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author t4nk
+ * @author PEPE
  */
 @Entity
 @Table(name = "radioterapia")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Radioterapia.findAll", query = "SELECT r FROM Radioterapia r")
-    , @NamedQuery(name = "Radioterapia.findByIdtrtamientocm", query = "SELECT r FROM Radioterapia r WHERE r.radioterapiaPK.idtrtamientocm = :idtrtamientocm")
-    , @NamedQuery(name = "Radioterapia.findByIdterapiaradioterapia", query = "SELECT r FROM Radioterapia r WHERE r.radioterapiaPK.idterapiaradioterapia = :idterapiaradioterapia")
+    , @NamedQuery(name = "Radioterapia.findByIdterapiaradioterapia", query = "SELECT r FROM Radioterapia r WHERE r.idterapiaradioterapia = :idterapiaradioterapia")
     , @NamedQuery(name = "Radioterapia.findByFechainicioradioterapia", query = "SELECT r FROM Radioterapia r WHERE r.fechainicioradioterapia = :fechainicioradioterapia")})
 public class Radioterapia implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected RadioterapiaPK radioterapiaPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "IDTERAPIARADIOTERAPIA")
+    private Integer idterapiaradioterapia;
     @Column(name = "FECHAINICIORADIOTERAPIA")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechainicioradioterapia;
-    @JoinColumn(name = "IDTRTAMIENTOCM", referencedColumnName = "IDTRTAMIENTOCM", insertable = false, updatable = false)
+    @JoinColumn(name = "IDTRTAMIENTOCM", referencedColumnName = "IDTRTAMIENTOCM")
     @ManyToOne(optional = false)
-    private Tratamientocancermama tratamientocancermama;
+    private Tratamientocancermama idtrtamientocm;
 
     public Radioterapia() {
     }
 
-    public Radioterapia(RadioterapiaPK radioterapiaPK) {
-        this.radioterapiaPK = radioterapiaPK;
+    public Radioterapia(Integer idterapiaradioterapia) {
+        this.idterapiaradioterapia = idterapiaradioterapia;
     }
 
-    public Radioterapia(int idtrtamientocm, int idterapiaradioterapia) {
-        this.radioterapiaPK = new RadioterapiaPK(idtrtamientocm, idterapiaradioterapia);
+    public Integer getIdterapiaradioterapia() {
+        return idterapiaradioterapia;
     }
 
-    public RadioterapiaPK getRadioterapiaPK() {
-        return radioterapiaPK;
-    }
-
-    public void setRadioterapiaPK(RadioterapiaPK radioterapiaPK) {
-        this.radioterapiaPK = radioterapiaPK;
+    public void setIdterapiaradioterapia(Integer idterapiaradioterapia) {
+        this.idterapiaradioterapia = idterapiaradioterapia;
     }
 
     public Date getFechainicioradioterapia() {
@@ -70,18 +71,18 @@ public class Radioterapia implements Serializable {
         this.fechainicioradioterapia = fechainicioradioterapia;
     }
 
-    public Tratamientocancermama getTratamientocancermama() {
-        return tratamientocancermama;
+    public Tratamientocancermama getIdtrtamientocm() {
+        return idtrtamientocm;
     }
 
-    public void setTratamientocancermama(Tratamientocancermama tratamientocancermama) {
-        this.tratamientocancermama = tratamientocancermama;
+    public void setIdtrtamientocm(Tratamientocancermama idtrtamientocm) {
+        this.idtrtamientocm = idtrtamientocm;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (radioterapiaPK != null ? radioterapiaPK.hashCode() : 0);
+        hash += (idterapiaradioterapia != null ? idterapiaradioterapia.hashCode() : 0);
         return hash;
     }
 
@@ -92,7 +93,7 @@ public class Radioterapia implements Serializable {
             return false;
         }
         Radioterapia other = (Radioterapia) object;
-        if ((this.radioterapiaPK == null && other.radioterapiaPK != null) || (this.radioterapiaPK != null && !this.radioterapiaPK.equals(other.radioterapiaPK))) {
+        if ((this.idterapiaradioterapia == null && other.idterapiaradioterapia != null) || (this.idterapiaradioterapia != null && !this.idterapiaradioterapia.equals(other.idterapiaradioterapia))) {
             return false;
         }
         return true;
@@ -100,7 +101,7 @@ public class Radioterapia implements Serializable {
 
     @Override
     public String toString() {
-        return "com.susolabs.redu.modelo.entidades.Radioterapia[ radioterapiaPK=" + radioterapiaPK + " ]";
+        return "com.susolabs.redu.modelo.entidades.Radioterapia[ idterapiaradioterapia=" + idterapiaradioterapia + " ]";
     }
     
 }

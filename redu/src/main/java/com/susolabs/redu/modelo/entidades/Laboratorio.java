@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author t4nk
+ * @author PEPE
  */
 @Entity
 @Table(name = "laboratorio")
@@ -52,13 +52,13 @@ public class Laboratorio implements Serializable {
     @Size(max = 16)
     @Column(name = "FONOLABORATORIO")
     private String fonolaboratorio;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "laboratorio")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idlaboratorio")
     private List<Mamografia> mamografiaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "laboratorio")
-    private List<Ecografia> ecografiaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "laboratorio")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idlaboratorio")
     private List<Resonanciamagnetica> resonanciamagneticaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "laboratorio")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idlaboratorio")
+    private List<Ecografia> ecografiaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idlaboratorio")
     private List<Mamografiaemisionpositrones> mamografiaemisionpositronesList;
 
     public Laboratorio() {
@@ -110,21 +110,21 @@ public class Laboratorio implements Serializable {
     }
 
     @XmlTransient
-    public List<Ecografia> getEcografiaList() {
-        return ecografiaList;
-    }
-
-    public void setEcografiaList(List<Ecografia> ecografiaList) {
-        this.ecografiaList = ecografiaList;
-    }
-
-    @XmlTransient
     public List<Resonanciamagnetica> getResonanciamagneticaList() {
         return resonanciamagneticaList;
     }
 
     public void setResonanciamagneticaList(List<Resonanciamagnetica> resonanciamagneticaList) {
         this.resonanciamagneticaList = resonanciamagneticaList;
+    }
+
+    @XmlTransient
+    public List<Ecografia> getEcografiaList() {
+        return ecografiaList;
+    }
+
+    public void setEcografiaList(List<Ecografia> ecografiaList) {
+        this.ecografiaList = ecografiaList;
     }
 
     @XmlTransient
@@ -158,7 +158,7 @@ public class Laboratorio implements Serializable {
 
     @Override
     public String toString() {
-        return  idlaboratorio + " - "+nombrelaboratorio;
+        return "com.susolabs.redu.modelo.entidades.Laboratorio[ idlaboratorio=" + idlaboratorio + " ]";
     }
     
 }

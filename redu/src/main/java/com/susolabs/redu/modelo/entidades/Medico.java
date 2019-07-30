@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author t4nk
+ * @author PEPE
  */
 @Entity
 @Table(name = "medico")
@@ -193,12 +193,7 @@ public class Medico implements Serializable {
 
     @Override
     public String toString() {
-        //return "com.susolabs.redu.modelo.entidades.Medico[ idmedico=" + idmedico + " ]";
-        return cedulamedico+" - "+nombremedico + " " + apellidomedico;
-    }
-    
-    public String nombreCedula(){
-        return cedulamedico+" - "+nombremedico + " " + apellidomedico;
+        return "com.susolabs.redu.modelo.entidades.Medico[ idmedico=" + idmedico + " ]";
     }
     
 }

@@ -15,20 +15,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author t4nk
+ * @author PEPE
  */
 @Entity
 @Table(name = "resultadosresonanciamagnetica")
@@ -42,9 +40,8 @@ public class Resultadosresonanciamagnetica implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "IDRESULTADORM")
     private Integer idresultadorm;
     @Size(max = 32)
@@ -53,13 +50,9 @@ public class Resultadosresonanciamagnetica implements Serializable {
     @Size(max = 64)
     @Column(name = "DESCRIPCIONHALLAZGORRM")
     private String descripcionhallazgorrm;
-    @JoinColumns({
-        @JoinColumn(name = "IDSCREENING", referencedColumnName = "IDSCREENING")
-        , @JoinColumn(name = "IDRESPONSABLEI", referencedColumnName = "IDRESPONSABLEI")
-        , @JoinColumn(name = "IDLABORATORIO", referencedColumnName = "IDLABORATORIO")
-        , @JoinColumn(name = "IDRESONANCIAMAGNETICA", referencedColumnName = "IDRESONANCIAMAGNETICA")})
-    @ManyToOne
-    private Resonanciamagnetica resonanciamagnetica;
+    @JoinColumn(name = "IDRESONANCIAMAGNETICA", referencedColumnName = "IDRESONANCIAMAGNETICA")
+    @ManyToOne(optional = false)
+    private Resonanciamagnetica idresonanciamagnetica;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idresultadorm")
     private List<Birads> biradsList;
 
@@ -94,12 +87,12 @@ public class Resultadosresonanciamagnetica implements Serializable {
         this.descripcionhallazgorrm = descripcionhallazgorrm;
     }
 
-    public Resonanciamagnetica getResonanciamagnetica() {
-        return resonanciamagnetica;
+    public Resonanciamagnetica getIdresonanciamagnetica() {
+        return idresonanciamagnetica;
     }
 
-    public void setResonanciamagnetica(Resonanciamagnetica resonanciamagnetica) {
-        this.resonanciamagnetica = resonanciamagnetica;
+    public void setIdresonanciamagnetica(Resonanciamagnetica idresonanciamagnetica) {
+        this.idresonanciamagnetica = idresonanciamagnetica;
     }
 
     @XmlTransient

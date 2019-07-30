@@ -7,9 +7,12 @@ package com.susolabs.redu.modelo.entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -21,45 +24,43 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author t4nk
+ * @author PEPE
  */
 @Entity
 @Table(name = "cirugia")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Cirugia.findAll", query = "SELECT c FROM Cirugia c")
-    , @NamedQuery(name = "Cirugia.findByIdtrtamientocm", query = "SELECT c FROM Cirugia c WHERE c.cirugiaPK.idtrtamientocm = :idtrtamientocm")
-    , @NamedQuery(name = "Cirugia.findByIdcirugia", query = "SELECT c FROM Cirugia c WHERE c.cirugiaPK.idcirugia = :idcirugia")
+    , @NamedQuery(name = "Cirugia.findByIdcirugia", query = "SELECT c FROM Cirugia c WHERE c.idcirugia = :idcirugia")
     , @NamedQuery(name = "Cirugia.findByFechainiciocirugia", query = "SELECT c FROM Cirugia c WHERE c.fechainiciocirugia = :fechainiciocirugia")})
 public class Cirugia implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected CirugiaPK cirugiaPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "IDCIRUGIA")
+    private Integer idcirugia;
     @Column(name = "FECHAINICIOCIRUGIA")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechainiciocirugia;
-    @JoinColumn(name = "IDTRTAMIENTOCM", referencedColumnName = "IDTRTAMIENTOCM", insertable = false, updatable = false)
+    @JoinColumn(name = "IDTRTAMIENTOCM", referencedColumnName = "IDTRTAMIENTOCM")
     @ManyToOne(optional = false)
-    private Tratamientocancermama tratamientocancermama;
+    private Tratamientocancermama idtrtamientocm;
 
     public Cirugia() {
     }
 
-    public Cirugia(CirugiaPK cirugiaPK) {
-        this.cirugiaPK = cirugiaPK;
+    public Cirugia(Integer idcirugia) {
+        this.idcirugia = idcirugia;
     }
 
-    public Cirugia(int idtrtamientocm, int idcirugia) {
-        this.cirugiaPK = new CirugiaPK(idtrtamientocm, idcirugia);
+    public Integer getIdcirugia() {
+        return idcirugia;
     }
 
-    public CirugiaPK getCirugiaPK() {
-        return cirugiaPK;
-    }
-
-    public void setCirugiaPK(CirugiaPK cirugiaPK) {
-        this.cirugiaPK = cirugiaPK;
+    public void setIdcirugia(Integer idcirugia) {
+        this.idcirugia = idcirugia;
     }
 
     public Date getFechainiciocirugia() {
@@ -70,18 +71,18 @@ public class Cirugia implements Serializable {
         this.fechainiciocirugia = fechainiciocirugia;
     }
 
-    public Tratamientocancermama getTratamientocancermama() {
-        return tratamientocancermama;
+    public Tratamientocancermama getIdtrtamientocm() {
+        return idtrtamientocm;
     }
 
-    public void setTratamientocancermama(Tratamientocancermama tratamientocancermama) {
-        this.tratamientocancermama = tratamientocancermama;
+    public void setIdtrtamientocm(Tratamientocancermama idtrtamientocm) {
+        this.idtrtamientocm = idtrtamientocm;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (cirugiaPK != null ? cirugiaPK.hashCode() : 0);
+        hash += (idcirugia != null ? idcirugia.hashCode() : 0);
         return hash;
     }
 
@@ -92,7 +93,7 @@ public class Cirugia implements Serializable {
             return false;
         }
         Cirugia other = (Cirugia) object;
-        if ((this.cirugiaPK == null && other.cirugiaPK != null) || (this.cirugiaPK != null && !this.cirugiaPK.equals(other.cirugiaPK))) {
+        if ((this.idcirugia == null && other.idcirugia != null) || (this.idcirugia != null && !this.idcirugia.equals(other.idcirugia))) {
             return false;
         }
         return true;
@@ -100,7 +101,7 @@ public class Cirugia implements Serializable {
 
     @Override
     public String toString() {
-        return "com.susolabs.redu.modelo.entidades.Cirugia[ cirugiaPK=" + cirugiaPK + " ]";
+        return "com.susolabs.redu.modelo.entidades.Cirugia[ idcirugia=" + idcirugia + " ]";
     }
     
 }

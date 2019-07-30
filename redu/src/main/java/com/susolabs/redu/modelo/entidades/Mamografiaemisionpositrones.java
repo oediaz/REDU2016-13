@@ -8,9 +8,13 @@ package com.susolabs.redu.modelo.entidades;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -25,17 +29,14 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author t4nk
+ * @author PEPE
  */
 @Entity
 @Table(name = "mamografiaemisionpositrones")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Mamografiaemisionpositrones.findAll", query = "SELECT m FROM Mamografiaemisionpositrones m")
-    , @NamedQuery(name = "Mamografiaemisionpositrones.findByIdlaboratorio", query = "SELECT m FROM Mamografiaemisionpositrones m WHERE m.mamografiaemisionpositronesPK.idlaboratorio = :idlaboratorio")
-    , @NamedQuery(name = "Mamografiaemisionpositrones.findByIdscreening", query = "SELECT m FROM Mamografiaemisionpositrones m WHERE m.mamografiaemisionpositronesPK.idscreening = :idscreening")
-    , @NamedQuery(name = "Mamografiaemisionpositrones.findByIdresponsablei", query = "SELECT m FROM Mamografiaemisionpositrones m WHERE m.mamografiaemisionpositronesPK.idresponsablei = :idresponsablei")
-    , @NamedQuery(name = "Mamografiaemisionpositrones.findByIdmamografiaep", query = "SELECT m FROM Mamografiaemisionpositrones m WHERE m.mamografiaemisionpositronesPK.idmamografiaep = :idmamografiaep")
+    , @NamedQuery(name = "Mamografiaemisionpositrones.findByIdmamografiaep", query = "SELECT m FROM Mamografiaemisionpositrones m WHERE m.idmamografiaep = :idmamografiaep")
     , @NamedQuery(name = "Mamografiaemisionpositrones.findByFechamamografiaep", query = "SELECT m FROM Mamografiaemisionpositrones m WHERE m.fechamamografiaep = :fechamamografiaep")
     , @NamedQuery(name = "Mamografiaemisionpositrones.findByDiagnosticopreviomamografiaep", query = "SELECT m FROM Mamografiaemisionpositrones m WHERE m.diagnosticopreviomamografiaep = :diagnosticopreviomamografiaep")
     , @NamedQuery(name = "Mamografiaemisionpositrones.findByRazonmamografiaep", query = "SELECT m FROM Mamografiaemisionpositrones m WHERE m.razonmamografiaep = :razonmamografiaep")
@@ -45,8 +46,11 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Mamografiaemisionpositrones implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected MamografiaemisionpositronesPK mamografiaemisionpositronesPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "IDMAMOGRAFIAEP")
+    private Integer idmamografiaep;
     @Column(name = "FECHAMAMOGRAFIAEP")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechamamografiaep;
@@ -65,35 +69,31 @@ public class Mamografiaemisionpositrones implements Serializable {
     @Size(max = 64)
     @Column(name = "OBSERVACIONESMETASTASISEP")
     private String observacionesmetastasisep;
-    @OneToMany(mappedBy = "mamografiaemisionpositrones")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idmamografiaep")
     private List<Resultadosmamografiaep> resultadosmamografiaepList;
-    @JoinColumn(name = "IDSCREENING", referencedColumnName = "IDSCREENING", insertable = false, updatable = false)
+    @JoinColumn(name = "IDSCREENING", referencedColumnName = "IDSCREENING")
     @ManyToOne(optional = false)
-    private Screening screening;
-    @JoinColumn(name = "IDRESPONSABLEI", referencedColumnName = "IDRESPONSABLEI", insertable = false, updatable = false)
+    private Screening idscreening;
+    @JoinColumn(name = "IDRESPONSABLEI", referencedColumnName = "IDRESPONSABLEI")
     @ManyToOne(optional = false)
-    private Responsableimagen responsableimagen;
-    @JoinColumn(name = "IDLABORATORIO", referencedColumnName = "IDLABORATORIO", insertable = false, updatable = false)
+    private Responsableimagen idresponsablei;
+    @JoinColumn(name = "IDLABORATORIO", referencedColumnName = "IDLABORATORIO")
     @ManyToOne(optional = false)
-    private Laboratorio laboratorio;
+    private Laboratorio idlaboratorio;
 
     public Mamografiaemisionpositrones() {
     }
 
-    public Mamografiaemisionpositrones(MamografiaemisionpositronesPK mamografiaemisionpositronesPK) {
-        this.mamografiaemisionpositronesPK = mamografiaemisionpositronesPK;
+    public Mamografiaemisionpositrones(Integer idmamografiaep) {
+        this.idmamografiaep = idmamografiaep;
     }
 
-    public Mamografiaemisionpositrones(int idlaboratorio, int idscreening, int idresponsablei, int idmamografiaep) {
-        this.mamografiaemisionpositronesPK = new MamografiaemisionpositronesPK(idlaboratorio, idscreening, idresponsablei, idmamografiaep);
+    public Integer getIdmamografiaep() {
+        return idmamografiaep;
     }
 
-    public MamografiaemisionpositronesPK getMamografiaemisionpositronesPK() {
-        return mamografiaemisionpositronesPK;
-    }
-
-    public void setMamografiaemisionpositronesPK(MamografiaemisionpositronesPK mamografiaemisionpositronesPK) {
-        this.mamografiaemisionpositronesPK = mamografiaemisionpositronesPK;
+    public void setIdmamografiaep(Integer idmamografiaep) {
+        this.idmamografiaep = idmamografiaep;
     }
 
     public Date getFechamamografiaep() {
@@ -153,34 +153,34 @@ public class Mamografiaemisionpositrones implements Serializable {
         this.resultadosmamografiaepList = resultadosmamografiaepList;
     }
 
-    public Screening getScreening() {
-        return screening;
+    public Screening getIdscreening() {
+        return idscreening;
     }
 
-    public void setScreening(Screening screening) {
-        this.screening = screening;
+    public void setIdscreening(Screening idscreening) {
+        this.idscreening = idscreening;
     }
 
-    public Responsableimagen getResponsableimagen() {
-        return responsableimagen;
+    public Responsableimagen getIdresponsablei() {
+        return idresponsablei;
     }
 
-    public void setResponsableimagen(Responsableimagen responsableimagen) {
-        this.responsableimagen = responsableimagen;
+    public void setIdresponsablei(Responsableimagen idresponsablei) {
+        this.idresponsablei = idresponsablei;
     }
 
-    public Laboratorio getLaboratorio() {
-        return laboratorio;
+    public Laboratorio getIdlaboratorio() {
+        return idlaboratorio;
     }
 
-    public void setLaboratorio(Laboratorio laboratorio) {
-        this.laboratorio = laboratorio;
+    public void setIdlaboratorio(Laboratorio idlaboratorio) {
+        this.idlaboratorio = idlaboratorio;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (mamografiaemisionpositronesPK != null ? mamografiaemisionpositronesPK.hashCode() : 0);
+        hash += (idmamografiaep != null ? idmamografiaep.hashCode() : 0);
         return hash;
     }
 
@@ -191,7 +191,7 @@ public class Mamografiaemisionpositrones implements Serializable {
             return false;
         }
         Mamografiaemisionpositrones other = (Mamografiaemisionpositrones) object;
-        if ((this.mamografiaemisionpositronesPK == null && other.mamografiaemisionpositronesPK != null) || (this.mamografiaemisionpositronesPK != null && !this.mamografiaemisionpositronesPK.equals(other.mamografiaemisionpositronesPK))) {
+        if ((this.idmamografiaep == null && other.idmamografiaep != null) || (this.idmamografiaep != null && !this.idmamografiaep.equals(other.idmamografiaep))) {
             return false;
         }
         return true;
@@ -199,7 +199,7 @@ public class Mamografiaemisionpositrones implements Serializable {
 
     @Override
     public String toString() {
-        return mamografiaemisionpositronesPK +", Screening:"+screening.toString();
+        return "com.susolabs.redu.modelo.entidades.Mamografiaemisionpositrones[ idmamografiaep=" + idmamografiaep + " ]";
     }
     
 }

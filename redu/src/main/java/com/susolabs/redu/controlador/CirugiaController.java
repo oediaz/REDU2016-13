@@ -49,21 +49,14 @@ public class CirugiaController implements Serializable {
         this.selected = selected;
     }
 
-    protected void setEmbeddableKeys() {
-        selected.getCirugiaPK().setIdtrtamientocm(selected.getTratamientocancermama().getIdtrtamientocm());
-    }
-
-    protected void initializeEmbeddableKey() {
-        selected.setCirugiaPK(new com.susolabs.redu.modelo.entidades.CirugiaPK());
-    }
-
+   
     private CirugiaFacade getFacade() {
         return ejbFacade;
     }
 
     public Cirugia prepareCreate() {
         selected = new Cirugia();
-        initializeEmbeddableKey();
+      
         return selected;
     }
 
@@ -95,6 +88,11 @@ public class CirugiaController implements Serializable {
         }
         return items;
     }
+ protected void setEmbeddableKeys() {
+    }
+
+    protected void initializeEmbeddableKey() {
+    }
 
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
@@ -124,7 +122,7 @@ public class CirugiaController implements Serializable {
         }
     }
 
-    public Cirugia getCirugia(com.susolabs.redu.modelo.entidades.CirugiaPK id) {
+    public Cirugia getCirugia(java.lang.Integer id) {
         return getFacade().find(id);
     }
 
@@ -139,33 +137,25 @@ public class CirugiaController implements Serializable {
     @FacesConverter(forClass = Cirugia.class)
     public static class CirugiaControllerConverter implements Converter {
 
-        private static final String SEPARATOR = "#";
-        private static final String SEPARATOR_ESCAPED = "\\#";
-
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
             CirugiaController controller = (CirugiaController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "cirugiaController");
+                    getValue(facesContext.getELContext(), null, "medicamentoController");
             return controller.getCirugia(getKey(value));
         }
 
-        com.susolabs.redu.modelo.entidades.CirugiaPK getKey(String value) {
-            com.susolabs.redu.modelo.entidades.CirugiaPK key;
-            String values[] = value.split(SEPARATOR_ESCAPED);
-            key = new com.susolabs.redu.modelo.entidades.CirugiaPK();
-            key.setIdtrtamientocm(Integer.parseInt(values[0]));
-            key.setIdcirugia(Integer.parseInt(values[1]));
+        java.lang.Integer getKey(String value) {
+            java.lang.Integer key;
+            key = Integer.valueOf(value);
             return key;
         }
 
-        String getStringKey(com.susolabs.redu.modelo.entidades.CirugiaPK value) {
+        String getStringKey(java.lang.Integer value) {
             StringBuilder sb = new StringBuilder();
-            sb.append(value.getIdtrtamientocm());
-            sb.append(SEPARATOR);
-            sb.append(value.getIdcirugia());
+            sb.append(value);
             return sb.toString();
         }
 
@@ -176,7 +166,7 @@ public class CirugiaController implements Serializable {
             }
             if (object instanceof Cirugia) {
                 Cirugia o = (Cirugia) object;
-                return getStringKey(o.getCirugiaPK());
+                return getStringKey(o.getIdcirugia());
             } else {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Cirugia.class.getName()});
                 return null;
@@ -184,5 +174,4 @@ public class CirugiaController implements Serializable {
         }
 
     }
-
 }

@@ -8,23 +8,23 @@ package com.susolabs.redu.modelo.entidades;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author t4nk
+ * @author PEPE
  */
 @Entity
 @Table(name = "examen")
@@ -38,8 +38,8 @@ public class Examen implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "IDEXAMEN")
     private Integer idexamen;
     @Size(max = 64)
@@ -48,12 +48,8 @@ public class Examen implements Serializable {
     @Size(max = 512)
     @Column(name = "DESCRIPCIONEXAMEN")
     private String descripcionexamen;
-    @JoinTable(name = "resultadosexamen", joinColumns = {
-        @JoinColumn(name = "IDEXAMEN", referencedColumnName = "IDEXAMEN")}, inverseJoinColumns = {
-        @JoinColumn(name = "IDTRTAMIENTOCM", referencedColumnName = "IDTRTAMIENTOCM")
-        , @JoinColumn(name = "IDEXAMINACION", referencedColumnName = "IDEXAMINACION")})
-    @ManyToMany
-    private List<Examinacion> examinacionList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idexamen")
+    private List<Resultadosexamen> resultadosexamenList;
 
     public Examen() {
     }
@@ -87,12 +83,12 @@ public class Examen implements Serializable {
     }
 
     @XmlTransient
-    public List<Examinacion> getExaminacionList() {
-        return examinacionList;
+    public List<Resultadosexamen> getResultadosexamenList() {
+        return resultadosexamenList;
     }
 
-    public void setExaminacionList(List<Examinacion> examinacionList) {
-        this.examinacionList = examinacionList;
+    public void setResultadosexamenList(List<Resultadosexamen> resultadosexamenList) {
+        this.resultadosexamenList = resultadosexamenList;
     }
 
     @Override
