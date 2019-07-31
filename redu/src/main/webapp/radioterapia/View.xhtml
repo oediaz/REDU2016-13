@@ -13,13 +13,13 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{radioterapiaController.selected != null}">
                         <h:outputText value="#{bundle.ViewRadioterapiaLabel_radioterapiaPK_idterapiaradioterapia}"/>
-                        <h:outputText value="#{radioterapiaController.selected.radioterapiaPK.idterapiaradioterapia}" title="#{bundle.ViewRadioterapiaTitle_radioterapiaPK_idterapiaradioterapia}"/>
+                        <h:outputText value="#{radioterapiaController.selected.idterapiaradioterapia}" title="#{bundle.ViewRadioterapiaTitle_radioterapiaPK_idterapiaradioterapia}"/>
                         <h:outputText value="#{bundle.ViewRadioterapiaLabel_fechainicioradioterapia}"/>
                         <h:outputText value="#{radioterapiaController.selected.fechainicioradioterapia}" title="#{bundle.ViewRadioterapiaTitle_fechainicioradioterapia}">
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
                         <h:outputText value="#{bundle.ViewRadioterapiaLabel_tratamientocancermama}"/>
-                        <h:outputText value="#{radioterapiaController.selected.tratamientocancermama}" title="#{bundle.ViewRadioterapiaTitle_tratamientocancermama}"/>
+                        <h:outputText value="#{radioterapiaController.selected.idtrtamientocm}" title="#{bundle.ViewRadioterapiaTitle_tratamientocancermama}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="RadioterapiaViewDialog.hide()"/>
                 </h:panelGroup>

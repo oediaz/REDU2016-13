@@ -19,7 +19,7 @@
                     <p:dataTable id="datalist" value="#{medicacionController.items}" var="item"
                                  selectionMode="single" selection="#{medicacionController.selected}"
                                  paginator="true"
-                                 rowKey="#{item.medicacionPK}"
+                                 rowKey="#{item.idmedicacion}"
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"   
                                  emptyMessage="No hay coincidencias" 
@@ -29,11 +29,11 @@
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column filterBy="#{item.medicacionPK.idmedicacion}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                        <p:column filterBy="#{item.idmedicacion}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
                             <f:facet name="header">
                                 <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMedicacionTitle_medicacionPK_idmedicacion}"/>
                             </f:facet>
-                            <h:outputText value="#{item.medicacionPK.idmedicacion}"/>
+                            <h:outputText value="#{item.idmedicacion}"/>
                         </p:column>
                         <p:column filterBy="#{item.fechamedicacion}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
                             <f:facet name="header">
@@ -49,11 +49,11 @@
                             </f:facet>
                             <h:outputText value="#{item.descripcionmedicacion}"/>
                         </p:column>
-                        <p:column filterBy="#{item.tratamientocancermama}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                        <p:column filterBy="#{item.idtrtamientocm}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
                             <f:facet name="header">
                                 <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMedicacionTitle_tratamientocancermama}"/>
                             </f:facet>
-                            <h:outputText value="#{item.tratamientocancermama}"/>
+                            <h:outputText value="#{item.idtrtamientocm}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{medicacionController.prepareCreate}" update=":MedicacionCreateForm" oncomplete="PF('MedicacionCreateDialog').show()"/>

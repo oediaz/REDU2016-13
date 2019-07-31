@@ -25,7 +25,7 @@
                     <p:dataTable id="datalist" value="#{mamografiaController.items}" var="item"
                                  selectionMode="single" selection="#{mamografiaController.selected}"
                                  paginator="true"
-                                 rowKey="#{item.mamografiaPK}"
+                                 rowKey="#{item.idmamografia}"
                                  rows="10"
                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  rowsPerPageTemplate="10,20,30,40,50"  
@@ -37,11 +37,11 @@
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column filterBy="#{item.mamografiaPK.idmamografia}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                        <p:column filterBy="#{item.idmamografia}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
                             <f:facet name="header">
                                 <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaTitle_mamografiaPK_idmamografia}"/>
                             </f:facet>
-                            <h:outputText value="#{item.mamografiaPK.idmamografia}"/>
+                            <h:outputText value="#{item.idmamografia}"/>
                         </p:column>
                         <p:column filterBy="#{item.fechamamografia}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
                             <f:facet name="header">
@@ -93,23 +93,23 @@
                             </f:facet>
                             <h:outputText value="#{item.observacionesprotocolom}"/>
                         </p:column>
-                        <p:column filterBy="#{item.screening}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                        <p:column filterBy="#{item.idscreening}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
                             <f:facet name="header">
                                 <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaTitle_screening}"/>
                             </f:facet>
-                            <h:outputText value="#{item.screening}"/>
+                            <h:outputText value="#{item.idscreening}"/>
                         </p:column>
-                        <p:column filterBy="#{item.responsableimagen}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                        <p:column filterBy="#{item.idresponsablei}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
                             <f:facet name="header">
                                 <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaTitle_responsableimagen}"/>
                             </f:facet>
-                            <h:outputText value="#{item.responsableimagen}"/>
+                            <h:outputText value="#{item.idresponsablei}"/>
                         </p:column>
-                        <p:column filterBy="#{item.laboratorio}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                        <p:column filterBy="#{item.idlaboratorio}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
                             <f:facet name="header">
                                 <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaTitle_laboratorio}"/>
                             </f:facet>
-                            <h:outputText value="#{item.laboratorio}"/>
+                            <h:outputText value="#{item.idlaboratorio}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{mamografiaController.prepareCreate}" update=":MamografiaCreateForm" oncomplete="PF('MamografiaCreateDialog').show()"/>

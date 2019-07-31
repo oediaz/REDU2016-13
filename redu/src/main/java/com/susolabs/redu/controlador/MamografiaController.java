@@ -51,14 +51,13 @@ public class MamografiaController implements Serializable {
     }
 
     protected void setEmbeddableKeys() {
-        selected.getMamografiaPK().setIdlaboratorio(selected.getLaboratorio().getIdlaboratorio());
-        selected.getMamografiaPK().setIdresponsablei(selected.getResponsableimagen().getIdresponsablei());
-        selected.getMamografiaPK().setIdscreening(selected.getScreening().getIdscreening());
+     
     }
 
     protected void initializeEmbeddableKey() {
-        selected.setMamografiaPK(new com.susolabs.redu.modelo.entidades.MamografiaPK());
+    
     }
+    
 
     private MamografiaFacade getFacade() {
         return ejbFacade;
@@ -127,7 +126,7 @@ public class MamografiaController implements Serializable {
         }
     }
 
-    public Mamografia getMamografia(com.susolabs.redu.modelo.entidades.MamografiaPK id) {
+    public Mamografia getMamografia(java.lang.Integer id) {
         return getFacade().find(id);
     }
 
@@ -155,26 +154,15 @@ public class MamografiaController implements Serializable {
             return controller.getMamografia(getKey(value));
         }
 
-        com.susolabs.redu.modelo.entidades.MamografiaPK getKey(String value) {
-            com.susolabs.redu.modelo.entidades.MamografiaPK key;
-            String values[] = value.split(SEPARATOR_ESCAPED);
-            key = new com.susolabs.redu.modelo.entidades.MamografiaPK();
-            key.setIdscreening(Integer.parseInt(values[0]));
-            key.setIdresponsablei(Integer.parseInt(values[1]));
-            key.setIdlaboratorio(Integer.parseInt(values[2]));
-            key.setIdmamografia(Integer.parseInt(values[3]));
+        java.lang.Integer getKey(String value) {
+            java.lang.Integer key;
+            key = Integer.valueOf(value);
             return key;
         }
 
-        String getStringKey(com.susolabs.redu.modelo.entidades.MamografiaPK value) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(value.getIdscreening());
-            sb.append(SEPARATOR);
-            sb.append(value.getIdresponsablei());
-            sb.append(SEPARATOR);
-            sb.append(value.getIdlaboratorio());
-            sb.append(SEPARATOR);
-            sb.append(value.getIdmamografia());
+        String getStringKey(java.lang.Integer value) {
+             StringBuilder sb = new StringBuilder();
+            sb.append(value);
             return sb.toString();
         }
 
@@ -185,7 +173,7 @@ public class MamografiaController implements Serializable {
             }
             if (object instanceof Mamografia) {
                 Mamografia o = (Mamografia) object;
-                return getStringKey(o.getMamografiaPK());
+                return getStringKey(o.getIdmamografia());
             } else {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Mamografia.class.getName()});
                 return null;

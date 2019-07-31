@@ -53,11 +53,11 @@
                             </f:facet>
                             <h:outputText value="#{item.descripcionhallazgorrm}"/>
                         </p:column>
-                        <p:column filterBy="#{item.resonanciamagnetica}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                        <p:column filterBy="#{item.idresonanciamagnetica}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
                             <f:facet name="header">
                                 <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResultadosresonanciamagneticaTitle_resonanciamagnetica}"/>
                             </f:facet>
-                            <h:outputText value="#{item.resonanciamagnetica}"/>
+                            <h:outputText value="#{item.idresonanciamagnetica}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{resultadosresonanciamagneticaController.prepareCreate}" update=":ResultadosresonanciamagneticaCreateForm" oncomplete="PF('ResultadosresonanciamagneticaCreateDialog').show()"/>

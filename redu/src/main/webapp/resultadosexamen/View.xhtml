@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ResultadosexamenViewDlg" widgetVar="ResultadosexamenViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{bundle.ViewResultadosexamenTitle}" closeOnEscape="true">
+
+            <h:form id="ResultadosexamenViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{resultadosexamenController.selected != null}">
+
+                        <h:outputText value="#{bundle.ViewResultadosexamenLabel_idresultadosexamen}"/>
+                        <h:outputText value="#{resultadosexamenController.selected.idresultadosexamen}" title="#{bundle.ViewResultadosexamenTitle_idresultadosexamen}"/>
+
+                        <h:outputText value="#{bundle.ViewResultadosexamenLabel_elementoexamen}"/>
+                        <h:outputText value="#{resultadosexamenController.selected.elementoexamen}" title="#{bundle.ViewResultadosexamenTitle_elementoexamen}"/>
+
+                        <h:outputText value="#{bundle.ViewResultadosexamenLabel_datoelementoexamen}"/>
+                        <h:outputText value="#{resultadosexamenController.selected.datoelementoexamen}" title="#{bundle.ViewResultadosexamenTitle_datoelementoexamen}"/>
+
+                        <h:outputText value="#{bundle.ViewResultadosexamenLabel_valorminrefelemexamen}"/>
+                        <h:outputText value="#{resultadosexamenController.selected.valorminrefelemexamen}" title="#{bundle.ViewResultadosexamenTitle_valorminrefelemexamen}"/>
+
+                        <h:outputText value="#{bundle.ViewResultadosexamenLabel_valormaxrefelemexamen}"/>
+                        <h:outputText value="#{resultadosexamenController.selected.valormaxrefelemexamen}" title="#{bundle.ViewResultadosexamenTitle_valormaxrefelemexamen}"/>
+
+                        <h:outputText value="#{bundle.ViewResultadosexamenLabel_idexaminacion}"/>
+                        <h:outputText value="#{resultadosexamenController.selected.idexaminacion.descripcionexaminacion}"/>
+
+                        <h:outputText value="#{bundle.ViewResultadosexamenLabel_idexamen}"/>
+                        <h:outputText value="#{resultadosexamenController.selected.idexamen.descripcionexamen}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PF('ResultadosexamenViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

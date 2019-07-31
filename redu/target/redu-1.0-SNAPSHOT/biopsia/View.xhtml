@@ -13,13 +13,13 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{biopsiaController.selected != null}">
                         <h:outputText value="#{bundle.ViewBiopsiaLabel_biopsiaPK_idbiopsia}"/>
-                        <h:outputText value="#{biopsiaController.selected.biopsiaPK.idbiopsia}" title="#{bundle.ViewBiopsiaTitle_biopsiaPK_idbiopsia}"/>
+                        <h:outputText value="#{biopsiaController.selected.idbiopsia}" title="#{bundle.ViewBiopsiaTitle_biopsiaPK_idbiopsia}"/>
                         <h:outputText value="#{bundle.ViewBiopsiaLabel_fechabiopsia}"/>
                         <h:outputText value="#{biopsiaController.selected.fechabiopsia}" title="#{bundle.ViewBiopsiaTitle_fechabiopsia}">
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
                         <h:outputText value="#{bundle.ViewBiopsiaLabel_tratamientocancermama}"/>
-                        <h:outputText value="#{biopsiaController.selected.tratamientocancermama}" title="#{bundle.ViewBiopsiaTitle_tratamientocancermama}"/>
+                        <h:outputText value="#{biopsiaController.selected.idtrtamientocm}" title="#{bundle.ViewBiopsiaTitle_tratamientocancermama}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="BiopsiaViewDialog.hide()"/>
                 </h:panelGroup>

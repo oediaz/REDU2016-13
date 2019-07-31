@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ResultadosexamenCreateDlg" widgetVar="ResultadosexamenCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateResultadosexamenTitle}" closeOnEscape="true">
+
+            <h:form id="ResultadosexamenCreateForm">
+
+                <h:panelGroup id="display" rendered="#{resultadosexamenController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{bundle.CreateResultadosexamenLabel_elementoexamen}" for="elementoexamen" />
+                        <p:inputText id="elementoexamen" value="#{resultadosexamenController.selected.elementoexamen}" title="#{bundle.CreateResultadosexamenTitle_elementoexamen}" size="32" maxlength="32"/>
+
+                        <p:outputLabel value="#{bundle.CreateResultadosexamenLabel_datoelementoexamen}" for="datoelementoexamen" />
+                        <p:inputText id="datoelementoexamen" value="#{resultadosexamenController.selected.datoelementoexamen}" title="#{bundle.CreateResultadosexamenTitle_datoelementoexamen}"/>
+
+                        <p:outputLabel value="#{bundle.CreateResultadosexamenLabel_valorminrefelemexamen}" for="valorminrefelemexamen" />
+                        <p:inputText id="valorminrefelemexamen" value="#{resultadosexamenController.selected.valorminrefelemexamen}" title="#{bundle.CreateResultadosexamenTitle_valorminrefelemexamen}"/>
+
+                        <p:outputLabel value="#{bundle.CreateResultadosexamenLabel_valormaxrefelemexamen}" for="valormaxrefelemexamen" />
+                        <p:inputText id="valormaxrefelemexamen" value="#{resultadosexamenController.selected.valormaxrefelemexamen}" title="#{bundle.CreateResultadosexamenTitle_valormaxrefelemexamen}"/>
+
+                        <p:outputLabel value="#{bundle.CreateResultadosexamenLabel_idexaminacion}" for="idexaminacion" />
+                        <p:selectOneMenu id="idexaminacion" value="#{resultadosexamenController.selected.idexaminacion}" required="true" requiredMessage="#{bundle.CreateResultadosexamenRequiredMessage_idexaminacion}" converter="examinacionConverter">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{examinacionController.items}"
+                                           var="idexaminacionItem"
+                                           itemValue="#{idexaminacionItem}"
+                                           itemLabel="#{idexaminacionItem.descripcionexaminacion.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{bundle.CreateResultadosexamenLabel_idexamen}" for="idexamen" />
+                        <p:selectOneMenu id="idexamen" value="#{resultadosexamenController.selected.idexamen}" required="true" requiredMessage="#{bundle.CreateResultadosexamenRequiredMessage_idexamen}" converter="examenConverter">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{examenController.items}"
+                                           var="idexamenItem"
+                                           itemValue="#{idexamenItem}"
+                                           itemLabel="#{idexamenItem.descripcionexamen.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{resultadosexamenController.saveNew}" value="#{bundle.Save}" update="display,:ResultadosexamenListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ResultadosexamenCreateDialog'));">
+                        <p:confirm header="#{bundle.ConfirmationHeader}" message="#{bundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{bundle.Cancel}" oncomplete="PF('ResultadosexamenCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

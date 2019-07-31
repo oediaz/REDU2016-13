@@ -13,7 +13,7 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{resonanciamagneticaController.selected != null}">
                         <h:outputText value="#{bundle.ViewResonanciamagneticaLabel_resonanciamagneticaPK_idresonanciamagnetica}"/>
-                        <h:outputText value="#{resonanciamagneticaController.selected.resonanciamagneticaPK.idresonanciamagnetica}" title="#{bundle.ViewResonanciamagneticaTitle_resonanciamagneticaPK_idresonanciamagnetica}"/>
+                        <h:outputText value="#{resonanciamagneticaController.selected.idresonanciamagnetica}" title="#{bundle.ViewResonanciamagneticaTitle_resonanciamagneticaPK_idresonanciamagnetica}"/>
                         <h:outputText value="#{bundle.ViewResonanciamagneticaLabel_fecharm}"/>
                         <h:outputText value="#{resonanciamagneticaController.selected.fecharm}" title="#{bundle.ViewResonanciamagneticaTitle_fecharm}">
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
@@ -33,11 +33,11 @@
                         <h:outputText value="#{bundle.ViewResonanciamagneticaLabel_observacionesprotocolorm}"/>
                         <h:outputText value="#{resonanciamagneticaController.selected.observacionesprotocolorm}" title="#{bundle.ViewResonanciamagneticaTitle_observacionesprotocolorm}"/>
                         <h:outputText value="#{bundle.ViewResonanciamagneticaLabel_screening}"/>
-                        <h:outputText value="#{resonanciamagneticaController.selected.screening}" title="#{bundle.ViewResonanciamagneticaTitle_screening}"/>
+                        <h:outputText value="#{resonanciamagneticaController.selected.idscreening}" title="#{bundle.ViewResonanciamagneticaTitle_screening}"/>
                         <h:outputText value="#{bundle.ViewResonanciamagneticaLabel_responsableimagen}"/>
-                        <h:outputText value="#{resonanciamagneticaController.selected.responsableimagen}" title="#{bundle.ViewResonanciamagneticaTitle_responsableimagen}"/>
+                        <h:outputText value="#{resonanciamagneticaController.selected.idresponsablei}" title="#{bundle.ViewResonanciamagneticaTitle_responsableimagen}"/>
                         <h:outputText value="#{bundle.ViewResonanciamagneticaLabel_laboratorio}"/>
-                        <h:outputText value="#{resonanciamagneticaController.selected.laboratorio}" title="#{bundle.ViewResonanciamagneticaTitle_laboratorio}"/>
+                        <h:outputText value="#{resonanciamagneticaController.selected.idlaboratorio}" title="#{bundle.ViewResonanciamagneticaTitle_laboratorio}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="ResonanciamagneticaViewDialog.hide()"/>
                 </h:panelGroup>

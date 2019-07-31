@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="RecetaEditDlg" widgetVar="RecetaEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{bundle.EditRecetaTitle}" closeOnEscape="true">
+
+            <h:form id="RecetaEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{recetaController.selected != null}">
+
+
+                        <h:outputLabel value="#{bundle.EditRecetaLabel_idreceta}" for="idreceta" />
+                        <h:outputText id="idreceta" value="#{recetaController.selected.idreceta}" />
+
+                        <p:outputLabel value="#{bundle.EditRecetaLabel_docismedicamento}" for="docismedicamento" />
+                        <p:inputText id="docismedicamento" value="#{recetaController.selected.docismedicamento}" title="#{bundle.EditRecetaTitle_docismedicamento}"/>
+
+                        <p:outputLabel value="#{bundle.EditRecetaLabel_frecuenciamedicacion}" for="frecuenciamedicacion" />
+                        <p:inputText id="frecuenciamedicacion" value="#{recetaController.selected.frecuenciamedicacion}" title="#{bundle.EditRecetaTitle_frecuenciamedicacion}" size="32" maxlength="32"/>
+
+                        <p:outputLabel value="#{bundle.EditRecetaLabel_idmedicacion}" for="idmedicacion" />
+                        <p:selectOneMenu id="idmedicacion" value="#{recetaController.selected.idmedicacion}" required="true" requiredMessage="#{bundle.EditRecetaRequiredMessage_idmedicacion}" converter="medicacionConverter">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{medicacionController.items}"
+                                           var="idmedicacionItem"
+                                           itemValue="#{idmedicacionItem}"
+                                           itemLabel="#{idmedicacionItem.descripcionmedicacion.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{bundle.EditRecetaLabel_idmedicamento}" for="idmedicamento" />
+                        <p:selectOneMenu id="idmedicamento" value="#{recetaController.selected.idmedicamento}" required="true" requiredMessage="#{bundle.EditRecetaRequiredMessage_idmedicamento}" converter="medicamentoConverter">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{medicamentoController.items}"
+                                           var="idmedicamentoItem"
+                                           itemValue="#{idmedicamentoItem}"
+                                           itemLabel="#{idmedicamentoItem.descripcionmedicamento.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                     <p:commandButton actionListener="#{recetaController.update}" value="#{bundle.Save}" update="display,:RecetaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'RecetaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="RecetaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

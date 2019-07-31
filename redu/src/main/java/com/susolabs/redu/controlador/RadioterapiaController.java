@@ -51,11 +51,11 @@ public class RadioterapiaController implements Serializable {
     }
 
     protected void setEmbeddableKeys() {
-        selected.getRadioterapiaPK().setIdtrtamientocm(selected.getTratamientocancermama().getIdtrtamientocm());
+    
     }
 
     protected void initializeEmbeddableKey() {
-        selected.setRadioterapiaPK(new com.susolabs.redu.modelo.entidades.RadioterapiaPK());
+    
     }
 
     private RadioterapiaFacade getFacade() {
@@ -125,7 +125,7 @@ public class RadioterapiaController implements Serializable {
         }
     }
 
-    public Radioterapia getRadioterapia(com.susolabs.redu.modelo.entidades.RadioterapiaPK id) {
+    public Radioterapia getRadioterapia(java.lang.Integer id) {
         return getFacade().find(id);
     }
 
@@ -153,20 +153,15 @@ public class RadioterapiaController implements Serializable {
             return controller.getRadioterapia(getKey(value));
         }
 
-        com.susolabs.redu.modelo.entidades.RadioterapiaPK getKey(String value) {
-            com.susolabs.redu.modelo.entidades.RadioterapiaPK key;
-            String values[] = value.split(SEPARATOR_ESCAPED);
-            key = new com.susolabs.redu.modelo.entidades.RadioterapiaPK();
-            key.setIdtrtamientocm(Integer.parseInt(values[0]));
-            key.setIdterapiaradioterapia(Integer.parseInt(values[1]));
+        java.lang.Integer getKey(String value) {
+          java.lang.Integer key;
+            key = Integer.valueOf(value);
             return key;
         }
 
-        String getStringKey(com.susolabs.redu.modelo.entidades.RadioterapiaPK value) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(value.getIdtrtamientocm());
-            sb.append(SEPARATOR);
-            sb.append(value.getIdterapiaradioterapia());
+        String getStringKey(java.lang.Integer value) {
+             StringBuilder sb = new StringBuilder();
+            sb.append(value);
             return sb.toString();
         }
 
@@ -177,7 +172,7 @@ public class RadioterapiaController implements Serializable {
             }
             if (object instanceof Radioterapia) {
                 Radioterapia o = (Radioterapia) object;
-                return getStringKey(o.getRadioterapiaPK());
+                return getStringKey(o.getIdterapiaradioterapia());
             } else {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Radioterapia.class.getName()});
                 return null;

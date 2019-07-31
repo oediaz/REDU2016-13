@@ -13,7 +13,7 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{mamografiaController.selected != null}">
                         <h:outputText value="#{bundle.ViewMamografiaLabel_mamografiaPK_idmamografia}"/>
-                        <h:outputText value="#{mamografiaController.selected.mamografiaPK.idmamografia}" title="#{bundle.ViewMamografiaTitle_mamografiaPK_idmamografia}"/>
+                        <h:outputText value="#{mamografiaController.selected.idmamografia}" title="#{bundle.ViewMamografiaTitle_mamografiaPK_idmamografia}"/>
                         <h:outputText value="#{bundle.ViewMamografiaLabel_fechamamografia}"/>
                         <h:outputText value="#{mamografiaController.selected.fechamamografia}" title="#{bundle.ViewMamografiaTitle_fechamamografia}">
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
@@ -33,11 +33,11 @@
                         <h:outputText value="#{bundle.ViewMamografiaLabel_observacionesprotocolom}"/>
                         <h:outputText value="#{mamografiaController.selected.observacionesprotocolom}" title="#{bundle.ViewMamografiaTitle_observacionesprotocolom}"/>
                         <h:outputText value="#{bundle.ViewMamografiaLabel_screening}"/>
-                        <h:outputText value="#{mamografiaController.selected.screening}" title="#{bundle.ViewMamografiaTitle_screening}"/>
+                        <h:outputText value="#{mamografiaController.selected.idscreening}" title="#{bundle.ViewMamografiaTitle_screening}"/>
                         <h:outputText value="#{bundle.ViewMamografiaLabel_responsableimagen}"/>
-                        <h:outputText value="#{mamografiaController.selected.responsableimagen}" title="#{bundle.ViewMamografiaTitle_responsableimagen}"/>
+                        <h:outputText value="#{mamografiaController.selected.idresponsablei}" title="#{bundle.ViewMamografiaTitle_responsableimagen}"/>
                         <h:outputText value="#{bundle.ViewMamografiaLabel_laboratorio}"/>
-                        <h:outputText value="#{mamografiaController.selected.laboratorio}" title="#{bundle.ViewMamografiaTitle_laboratorio}"/>
+                        <h:outputText value="#{mamografiaController.selected.idlaboratorio}" title="#{bundle.ViewMamografiaTitle_laboratorio}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="MamografiaViewDialog.hide()"/>
                 </h:panelGroup>

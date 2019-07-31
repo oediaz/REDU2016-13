@@ -13,11 +13,11 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{quimioterapiaController.selected != null}">
                         <p:outputLabel value="#{bundle.EditQuimioterapiaLabel_quimioterapiaPK_idquimioterapia}" for="quimioterapiaPK_idquimioterapia" />
-                        <p:inputText id="quimioterapiaPK_idquimioterapia" value="#{quimioterapiaController.selected.quimioterapiaPK.idquimioterapia}" title="#{bundle.EditQuimioterapiaTitle_quimioterapiaPK_idquimioterapia}" required="true" requiredMessage="#{bundle.EditQuimioterapiaRequiredMessage_quimioterapiaPK_idquimioterapia}"/>
+                        <p:inputText id="quimioterapiaPK_idquimioterapia" value="#{quimioterapiaController.selected.idquimioterapia}" title="#{bundle.EditQuimioterapiaTitle_quimioterapiaPK_idquimioterapia}" required="true" requiredMessage="#{bundle.EditQuimioterapiaRequiredMessage_quimioterapiaPK_idquimioterapia}"/>
                         <p:outputLabel value="#{bundle.EditQuimioterapiaLabel_fechainicioquimioterapia}" for="fechainicioquimioterapia" />
                         <p:calendar id="fechainicioquimioterapia" pattern="MM/dd/yyyy HH:mm:ss" value="#{quimioterapiaController.selected.fechainicioquimioterapia}" title="#{bundle.EditQuimioterapiaTitle_fechainicioquimioterapia}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.EditQuimioterapiaLabel_tratamientocancermama}" for="tratamientocancermama" />
-                        <p:selectOneMenu id="tratamientocancermama" value="#{quimioterapiaController.selected.tratamientocancermama}" required="true" requiredMessage="#{bundle.EditQuimioterapiaRequiredMessage_tratamientocancermama}">
+                        <p:selectOneMenu id="tratamientocancermama" value="#{quimioterapiaController.selected.idtrtamientocm}" required="true" requiredMessage="#{bundle.EditQuimioterapiaRequiredMessage_tratamientocancermama}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{tratamientocancermamaController.itemsAvailableSelectOne}"
                                            var="tratamientocancermamaItem"

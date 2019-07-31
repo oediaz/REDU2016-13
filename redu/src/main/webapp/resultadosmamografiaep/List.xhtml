@@ -65,11 +65,11 @@
                             </f:facet>
                             <h:outputText value="#{item.causafalsonegativomep}"/>
                         </p:column>
-                        <p:column filterBy="#{item.mamografiaemisionpositrones}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                        <p:column filterBy="#{item.idmamografiaep}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
                             <f:facet name="header">
                                 <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResultadosmamografiaepTitle_mamografiaemisionpositrones}"/>
                             </f:facet>
-                            <h:outputText value="#{item.mamografiaemisionpositrones}"/>
+                            <h:outputText value="#{item.idmamografiaep}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{resultadosmamografiaepController.prepareCreate}" update=":ResultadosmamografiaepCreateForm" oncomplete="PF('ResultadosmamografiaepCreateDialog').show()"/>

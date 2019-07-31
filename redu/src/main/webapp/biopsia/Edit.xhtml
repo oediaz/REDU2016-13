@@ -13,11 +13,11 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{biopsiaController.selected != null}">
                         <p:outputLabel value="#{bundle.EditBiopsiaLabel_biopsiaPK_idbiopsia}" for="biopsiaPK_idbiopsia" />
-                        <p:inputText id="biopsiaPK_idbiopsia" value="#{biopsiaController.selected.biopsiaPK.idbiopsia}" title="#{bundle.EditBiopsiaTitle_biopsiaPK_idbiopsia}" required="true" requiredMessage="#{bundle.EditBiopsiaRequiredMessage_biopsiaPK_idbiopsia}"/>
+                        <p:inputText id="biopsiaPK_idbiopsia" value="#{biopsiaController.selected.idbiopsia}" title="#{bundle.EditBiopsiaTitle_biopsiaPK_idbiopsia}" required="true" requiredMessage="#{bundle.EditBiopsiaRequiredMessage_biopsiaPK_idbiopsia}"/>
                         <p:outputLabel value="#{bundle.EditBiopsiaLabel_fechabiopsia}" for="fechabiopsia" />
                         <p:calendar id="fechabiopsia" pattern="MM/dd/yyyy HH:mm:ss" value="#{biopsiaController.selected.fechabiopsia}" title="#{bundle.EditBiopsiaTitle_fechabiopsia}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.EditBiopsiaLabel_tratamientocancermama}" for="tratamientocancermama" />
-                        <p:selectOneMenu id="tratamientocancermama" value="#{biopsiaController.selected.tratamientocancermama}" required="true" requiredMessage="#{bundle.EditBiopsiaRequiredMessage_tratamientocancermama}">
+                        <p:selectOneMenu id="tratamientocancermama" value="#{biopsiaController.selected.idtrtamientocm}" required="true" requiredMessage="#{bundle.EditBiopsiaRequiredMessage_tratamientocancermama}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{tratamientocancermamaController.itemsAvailableSelectOne}"
                                            var="tratamientocancermamaItem"

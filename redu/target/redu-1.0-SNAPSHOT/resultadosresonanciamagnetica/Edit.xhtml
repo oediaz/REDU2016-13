@@ -17,7 +17,7 @@
                         <p:outputLabel value="#{bundle.EditResultadosresonanciamagneticaLabel_descripcionhallazgorrm}" for="descripcionhallazgorrm" />
                         <p:inputText id="descripcionhallazgorrm" value="#{resultadosresonanciamagneticaController.selected.descripcionhallazgorrm}" title="#{bundle.EditResultadosresonanciamagneticaTitle_descripcionhallazgorrm}" />
                         <p:outputLabel value="#{bundle.EditResultadosresonanciamagneticaLabel_resonanciamagnetica}" for="resonanciamagnetica" />
-                        <p:selectOneMenu id="resonanciamagnetica" value="#{resultadosresonanciamagneticaController.selected.resonanciamagnetica}" >
+                        <p:selectOneMenu id="resonanciamagnetica" value="#{resultadosresonanciamagneticaController.selected.idresonanciamagnetica}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{resonanciamagneticaController.itemsAvailableSelectOne}"
                                            var="resonanciamagneticaItem"

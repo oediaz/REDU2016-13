@@ -13,7 +13,7 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{examinacionController.selected != null}">
                         <h:outputText value="#{bundle.ViewExaminacionLabel_examinacionPK_idexaminacion}"/>
-                        <h:outputText value="#{examinacionController.selected.examinacionPK.idexaminacion}" title="#{bundle.ViewExaminacionTitle_examinacionPK_idexaminacion}"/>
+                        <h:outputText value="#{examinacionController.selected.idexaminacion}" title="#{bundle.ViewExaminacionTitle_examinacionPK_idexaminacion}"/>
                         <h:outputText value="#{bundle.ViewExaminacionLabel_fechaexaminacion}"/>
                         <h:outputText value="#{examinacionController.selected.fechaexaminacion}" title="#{bundle.ViewExaminacionTitle_fechaexaminacion}">
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
@@ -23,7 +23,7 @@
                         <h:outputText value="#{bundle.ViewExaminacionLabel_observacionexaminacion}"/>
                         <h:outputText value="#{examinacionController.selected.observacionexaminacion}" title="#{bundle.ViewExaminacionTitle_observacionexaminacion}"/>
                         <h:outputText value="#{bundle.ViewExaminacionLabel_tratamientocancermama}"/>
-                        <h:outputText value="#{examinacionController.selected.tratamientocancermama}" title="#{bundle.ViewExaminacionTitle_tratamientocancermama}"/>
+                        <h:outputText value="#{examinacionController.selected.idtrtamientocm}" title="#{bundle.ViewExaminacionTitle_tratamientocancermama}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="ExaminacionViewDialog.hide()"/>
                 </h:panelGroup>

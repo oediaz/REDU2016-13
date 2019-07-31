@@ -51,11 +51,9 @@ public class QuimioterapiaController implements Serializable {
     }
 
     protected void setEmbeddableKeys() {
-        selected.getQuimioterapiaPK().setIdtrtamientocm(selected.getTratamientocancermama().getIdtrtamientocm());
     }
 
     protected void initializeEmbeddableKey() {
-        selected.setQuimioterapiaPK(new com.susolabs.redu.modelo.entidades.QuimioterapiaPK());
     }
 
     private QuimioterapiaFacade getFacade() {
@@ -125,7 +123,7 @@ public class QuimioterapiaController implements Serializable {
         }
     }
 
-    public Quimioterapia getQuimioterapia(com.susolabs.redu.modelo.entidades.QuimioterapiaPK id) {
+    public Quimioterapia getQuimioterapia(java.lang.Integer id) {
         return getFacade().find(id);
     }
 
@@ -153,20 +151,15 @@ public class QuimioterapiaController implements Serializable {
             return controller.getQuimioterapia(getKey(value));
         }
 
-        com.susolabs.redu.modelo.entidades.QuimioterapiaPK getKey(String value) {
-            com.susolabs.redu.modelo.entidades.QuimioterapiaPK key;
-            String values[] = value.split(SEPARATOR_ESCAPED);
-            key = new com.susolabs.redu.modelo.entidades.QuimioterapiaPK();
-            key.setIdtrtamientocm(Integer.parseInt(values[0]));
-            key.setIdquimioterapia(Integer.parseInt(values[1]));
+        java.lang.Integer getKey(String value) {
+            java.lang.Integer key;
+            key = Integer.valueOf(value);
             return key;
         }
 
-        String getStringKey(com.susolabs.redu.modelo.entidades.QuimioterapiaPK value) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(value.getIdtrtamientocm());
-            sb.append(SEPARATOR);
-            sb.append(value.getIdquimioterapia());
+        String getStringKey(java.lang.Integer value) {
+         StringBuilder sb = new StringBuilder();
+            sb.append(value);
             return sb.toString();
         }
 
@@ -177,7 +170,7 @@ public class QuimioterapiaController implements Serializable {
             }
             if (object instanceof Quimioterapia) {
                 Quimioterapia o = (Quimioterapia) object;
-                return getStringKey(o.getQuimioterapiaPK());
+                return getStringKey(o.getIdquimioterapia());
             } else {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Quimioterapia.class.getName()});
                 return null;

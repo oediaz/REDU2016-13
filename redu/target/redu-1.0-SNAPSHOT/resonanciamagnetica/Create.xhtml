@@ -35,27 +35,27 @@
                             <p:ajax listener="#{screeningController.filtrar}" update="screening" />
                             <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"
                                            var="idpacienteItem"
-                                           itemLabel="#{idpacienteItem.nombreCedula()}"
+                                           itemLabel="#{idpacienteItem.nombrepaciente}"
                                            itemValue="#{idpacienteItem}"/>
                             <p:column>
-                                <h:outputText value="#{t.nombreCedula()}" />
+                                <h:outputText value="#{t.nombrepaciente}" />
                             </p:column>
                         </p:selectOneMenu>
                         
                         <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_screening}" for="screening" />
-                        <p:selectOneMenu id="screening" value="#{resonanciamagneticaController.selected.screening}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_screening}">
+                        <p:selectOneMenu id="screening" value="#{resonanciamagneticaController.selected.idscreening}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_screening}">
                             <f:selectItems value="#{screeningController.screPaciente}"
                                            var="screeningItem"
                                            itemValue="#{screeningItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_responsableimagen}" for="responsableimagen" />
-                        <p:selectOneMenu id="responsableimagen" value="#{resonanciamagneticaController.selected.responsableimagen}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_responsableimagen}">
+                        <p:selectOneMenu id="responsableimagen" value="#{resonanciamagneticaController.selected.idresponsablei}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_responsableimagen}">
                             <f:selectItems value="#{responsableimagenController.itemsAvailableSelectOne}"
                                            var="responsableimagenItem"
                                            itemValue="#{responsableimagenItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_laboratorio}" for="laboratorio" />
-                        <p:selectOneMenu id="laboratorio" value="#{resonanciamagneticaController.selected.laboratorio}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_laboratorio}">
+                        <p:selectOneMenu id="laboratorio" value="#{resonanciamagneticaController.selected.idlaboratorio}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_laboratorio}">
                             <f:selectItems value="#{laboratorioController.itemsAvailableSelectOne}"
                                            var="laboratorioItem"
                                            itemValue="#{laboratorioItem}"/>

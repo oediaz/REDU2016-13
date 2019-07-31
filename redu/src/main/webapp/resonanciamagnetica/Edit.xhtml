@@ -29,21 +29,21 @@
                         <p:outputLabel value="#{bundle.EditResonanciamagneticaLabel_observacionesprotocolorm}" for="observacionesprotocolorm" />
                         <p:inputText id="observacionesprotocolorm" value="#{resonanciamagneticaController.selected.observacionesprotocolorm}" title="#{bundle.EditResonanciamagneticaTitle_observacionesprotocolorm}" />
                         <p:outputLabel value="#{bundle.EditResonanciamagneticaLabel_screening}" for="screening" />
-                        <p:selectOneMenu id="screening" value="#{resonanciamagneticaController.selected.screening}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_screening}">
+                        <p:selectOneMenu id="screening" value="#{resonanciamagneticaController.selected.idscreening}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_screening}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{screeningController.itemsAvailableSelectOne}"
                                            var="screeningItem"
                                            itemValue="#{screeningItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditResonanciamagneticaLabel_responsableimagen}" for="responsableimagen" />
-                        <p:selectOneMenu id="responsableimagen" value="#{resonanciamagneticaController.selected.responsableimagen}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_responsableimagen}">
+                        <p:selectOneMenu id="responsableimagen" value="#{resonanciamagneticaController.selected.idresponsablei}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_responsableimagen}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{responsableimagenController.itemsAvailableSelectOne}"
                                            var="responsableimagenItem"
                                            itemValue="#{responsableimagenItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditResonanciamagneticaLabel_laboratorio}" for="laboratorio" />
-                        <p:selectOneMenu id="laboratorio" value="#{resonanciamagneticaController.selected.laboratorio}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_laboratorio}">
+                        <p:selectOneMenu id="laboratorio" value="#{resonanciamagneticaController.selected.idlaboratorio}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_laboratorio}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{laboratorioController.itemsAvailableSelectOne}"
                                            var="laboratorioItem"

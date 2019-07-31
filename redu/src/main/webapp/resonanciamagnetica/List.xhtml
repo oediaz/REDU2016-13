@@ -25,7 +25,7 @@
                     <p:dataTable id="datalist" value="#{resonanciamagneticaController.items}" var="item"
                                  selectionMode="single" selection="#{resonanciamagneticaController.selected}"
                                  paginator="true"
-                                 rowKey="#{item.resonanciamagneticaPK}"
+                                 rowKey="#{item.idresonanciamagnetica}"
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"
                                  emptyMessage="No hay coincidencias"  
@@ -35,11 +35,11 @@
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column filterBy="#{item.resonanciamagneticaPK.idresonanciamagnetica}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                        <p:column filterBy="#{item.idresonanciamagnetica}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
                             <f:facet name="header">
                                 <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResonanciamagneticaTitle_resonanciamagneticaPK_idresonanciamagnetica}"/>
                             </f:facet>
-                            <h:outputText value="#{item.resonanciamagneticaPK.idresonanciamagnetica}"/>
+                            <h:outputText value="#{item.idresonanciamagnetica}"/>
                         </p:column>
                         <p:column filterBy="#{item.fecharm}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
                             <f:facet name="header">
@@ -91,23 +91,23 @@
                             </f:facet>
                             <h:outputText value="#{item.observacionesprotocolorm}"/>
                         </p:column>
-                        <p:column filterBy="#{item.screening}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                        <p:column filterBy="#{item.idscreening}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
                             <f:facet name="header">
                                 <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResonanciamagneticaTitle_screening}"/>
                             </f:facet>
-                            <h:outputText value="#{item.screening}"/>
+                            <h:outputText value="#{item.idscreening}"/>
                         </p:column>
-                        <p:column filterBy="#{item.responsableimagen}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                        <p:column filterBy="#{item.idresponsablei}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
                             <f:facet name="header">
                                 <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResonanciamagneticaTitle_responsableimagen}"/>
                             </f:facet>
-                            <h:outputText value="#{item.responsableimagen}"/>
+                            <h:outputText value="#{item.idresponsablei}"/>
                         </p:column>
-                        <p:column filterBy="#{item.laboratorio}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                        <p:column filterBy="#{item.idlaboratorio}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
                             <f:facet name="header">
                                 <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResonanciamagneticaTitle_laboratorio}"/>
                             </f:facet>
-                            <h:outputText value="#{item.laboratorio}"/>
+                            <h:outputText value="#{item.idlaboratorio}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{resonanciamagneticaController.prepareCreate}" update=":ResonanciamagneticaCreateForm" oncomplete="PF('ResonanciamagneticaCreateDialog').show()"/>

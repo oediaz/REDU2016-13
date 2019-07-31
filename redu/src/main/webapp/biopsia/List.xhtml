@@ -19,7 +19,7 @@
                     <p:dataTable id="datalist" value="#{biopsiaController.items}" var="item"
                                  selectionMode="single" selection="#{biopsiaController.selected}"
                                  paginator="true"
-                                 rowKey="#{item.biopsiaPK}"
+                                 rowKey="#{item.idbiopsia}"
                                  rows="10"                                  
                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  rowsPerPageTemplate="10,20,30,40,50"
@@ -31,14 +31,14 @@
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column filterBy="#{item.biopsiaPK.idbiopsia}" filterMatchMode="contains">
+                        <p:column filterBy="#{item.idbiopsia}" filterMatchMode="contains">
                             <f:facet name="filter">
                                 <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
                             </f:facet>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListBiopsiaTitle_biopsiaPK_idbiopsia}" style="text-transform: uppercase"  />
                             </f:facet>
-                            <h:outputText value="#{item.biopsiaPK.idbiopsia}"/>
+                            <h:outputText value="#{item.idbiopsia}"/>
                         </p:column>
                         <p:column filterBy="#{item.fechabiopsia}" filterMatchMode="contains">
                             <f:facet name="filter">
@@ -51,14 +51,14 @@
                                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                             </h:outputText>
                         </p:column>
-                        <p:column filterBy="#{item.tratamientocancermama}" filterMatchMode="contains">
+                        <p:column filterBy="#{item.idtrtamientocm}" filterMatchMode="contains">
                             <f:facet name="filter">
                                 <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
                             </f:facet>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListBiopsiaTitle_tratamientocancermama}" style="text-transform: uppercase"  />
                             </f:facet>
-                            <h:outputText value="#{item.tratamientocancermama}"/>
+                            <h:outputText value="#{item.idtrtamientocm}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{biopsiaController.prepareCreate}" update=":BiopsiaCreateForm" oncomplete="PF('BiopsiaCreateDialog').show()"/>

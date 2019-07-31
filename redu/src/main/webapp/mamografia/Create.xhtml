@@ -36,15 +36,15 @@
                             <p:ajax listener="#{screeningController.filtrar}" update="screening" />
                             <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"
                                            var="idpacienteItem"
-                                           itemLabel="#{idpacienteItem.nombreCedula()}"
+                                           itemLabel="#{idpacienteItem.nombrepaciente}"
                                            itemValue="#{idpacienteItem}"/>
                             <p:column>
-                                <h:outputText value="#{t.nombreCedula()}" />
+                                <h:outputText value="#{t.nombrepaciente}" />
                             </p:column>
                         </p:selectOneMenu>
 
                         <p:outputLabel value="#{bundle.CreateMamografiaLabel_screening}" for="screening" />
-                        <p:selectOneMenu id="screening" value="#{mamografiaController.selected.screening}" required="true" requiredMessage="#{bundle.EditMamografiaRequiredMessage_screening}"
+                        <p:selectOneMenu id="screening" value="#{mamografiaController.selected.idscreening}" required="true" requiredMessage="#{bundle.EditMamografiaRequiredMessage_screening}"
                                          effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith">
                             <f:selectItems value="#{screeningController.screPaciente}"
                                            var="screeningItem"
@@ -55,18 +55,18 @@
                             </p:column>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateMamografiaLabel_responsableimagen}" for="responsableimagen" />
-                        <p:selectOneMenu id="responsableimagen" value="#{mamografiaController.selected.responsableimagen}" required="true" requiredMessage="#{bundle.EditMamografiaRequiredMessage_responsableimagen}"
+                        <p:selectOneMenu id="responsableimagen" value="#{mamografiaController.selected.idresponsablei}" required="true" requiredMessage="#{bundle.EditMamografiaRequiredMessage_responsableimagen}"
                                          effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith">
                             <f:selectItems value="#{responsableimagenController.itemsAvailableSelectOne}"
                                            var="responsableimagenItem"
-                                           itemLabel="#{responsableimagenItem.nombreCedula()}"
+                                           itemLabel="#{responsableimagenItem.nombreresponsablei}"
                                            itemValue="#{responsableimagenItem}"/>
                             <p:column>
-                                <h:outputText value="#{t.nombreCedula()}" />
+                                <h:outputText value="#{t.nombreresponsablei}" />
                             </p:column>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateMamografiaLabel_laboratorio}" for="laboratorio" />
-                        <p:selectOneMenu id="laboratorio" value="#{mamografiaController.selected.laboratorio}" required="true" requiredMessage="#{bundle.EditMamografiaRequiredMessage_laboratorio}"
+                        <p:selectOneMenu id="laboratorio" value="#{mamografiaController.selected.idlaboratorio}" required="true" requiredMessage="#{bundle.EditMamografiaRequiredMessage_laboratorio}"
                                          effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith">
                             <f:selectItems value="#{laboratorioController.itemsAvailableSelectOne}"
                                            var="laboratorioItem"

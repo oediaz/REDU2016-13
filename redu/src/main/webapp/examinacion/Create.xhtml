@@ -13,7 +13,7 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{examinacionController.selected != null}">
                         <p:outputLabel value="#{bundle.CreateExaminacionLabel_examinacionPK_idexaminacion}" for="examinacionPK_idexaminacion" />
-                        <p:inputText id="examinacionPK_idexaminacion" value="#{examinacionController.selected.examinacionPK.idexaminacion}" title="#{bundle.CreateExaminacionTitle_examinacionPK_idexaminacion}" required="true" requiredMessage="#{bundle.CreateExaminacionRequiredMessage_examinacionPK_idexaminacion}"/>
+                        <p:inputText id="examinacionPK_idexaminacion" value="#{examinacionController.selected.idexaminacion}" title="#{bundle.CreateExaminacionTitle_examinacionPK_idexaminacion}" required="true" requiredMessage="#{bundle.CreateExaminacionRequiredMessage_examinacionPK_idexaminacion}"/>
                         <p:outputLabel value="#{bundle.CreateExaminacionLabel_fechaexaminacion}" for="fechaexaminacion" />
                         <p:calendar id="fechaexaminacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{examinacionController.selected.fechaexaminacion}" title="#{bundle.EditExaminacionTitle_fechaexaminacion}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateExaminacionLabel_descripcionexaminacion}" for="descripcionexaminacion" />
@@ -21,7 +21,7 @@
                         <p:outputLabel value="#{bundle.CreateExaminacionLabel_observacionexaminacion}" for="observacionexaminacion" />
                         <p:inputText id="observacionexaminacion" value="#{examinacionController.selected.observacionexaminacion}" title="#{bundle.CreateExaminacionTitle_observacionexaminacion}" />
                         <p:outputLabel value="#{bundle.CreateExaminacionLabel_tratamientocancermama}" for="tratamientocancermama" />
-                        <p:selectOneMenu id="tratamientocancermama" value="#{examinacionController.selected.tratamientocancermama}" required="true" requiredMessage="#{bundle.EditExaminacionRequiredMessage_tratamientocancermama}">
+                        <p:selectOneMenu id="tratamientocancermama" value="#{examinacionController.selected.idtrtamientocm}" required="true" requiredMessage="#{bundle.EditExaminacionRequiredMessage_tratamientocancermama}">
                             <f:selectItems value="#{tratamientocancermamaController.itemsAvailableSelectOne}"
                                            var="tratamientocancermamaItem"
                                            itemValue="#{tratamientocancermamaItem}"/>

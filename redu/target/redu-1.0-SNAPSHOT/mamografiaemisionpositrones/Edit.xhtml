@@ -37,21 +37,21 @@
                         <p:outputLabel value="#{bundle.EditMamografiaemisionpositronesLabel_observacionesmetastasisep}" for="observacionesmetastasisep" />
                         <p:inputText id="observacionesmetastasisep" value="#{mamografiaemisionpositronesController.selected.observacionesmetastasisep}" title="#{bundle.EditMamografiaemisionpositronesTitle_observacionesmetastasisep}" />
                         <p:outputLabel value="#{bundle.EditMamografiaemisionpositronesLabel_screening}" for="screening" />
-                        <p:selectOneMenu id="screening" value="#{mamografiaemisionpositronesController.selected.screening}" required="true" requiredMessage="#{bundle.EditMamografiaemisionpositronesRequiredMessage_screening}">
+                        <p:selectOneMenu id="screening" value="#{mamografiaemisionpositronesController.selected.idscreening}" required="true" requiredMessage="#{bundle.EditMamografiaemisionpositronesRequiredMessage_screening}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{screeningController.itemsAvailableSelectOne}"
                                            var="screeningItem"
                                            itemValue="#{screeningItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditMamografiaemisionpositronesLabel_responsableimagen}" for="responsableimagen" />
-                        <p:selectOneMenu id="responsableimagen" value="#{mamografiaemisionpositronesController.selected.responsableimagen}" required="true" requiredMessage="#{bundle.EditMamografiaemisionpositronesRequiredMessage_responsableimagen}">
+                        <p:selectOneMenu id="responsableimagen" value="#{mamografiaemisionpositronesController.selected.idresponsablei}" required="true" requiredMessage="#{bundle.EditMamografiaemisionpositronesRequiredMessage_responsableimagen}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{responsableimagenController.itemsAvailableSelectOne}"
                                            var="responsableimagenItem"
                                            itemValue="#{responsableimagenItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditMamografiaemisionpositronesLabel_laboratorio}" for="laboratorio" />
-                        <p:selectOneMenu id="laboratorio" value="#{mamografiaemisionpositronesController.selected.laboratorio}" required="true" requiredMessage="#{bundle.EditMamografiaemisionpositronesRequiredMessage_laboratorio}">
+                        <p:selectOneMenu id="laboratorio" value="#{mamografiaemisionpositronesController.selected.idlaboratorio}" required="true" requiredMessage="#{bundle.EditMamografiaemisionpositronesRequiredMessage_laboratorio}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{laboratorioController.itemsAvailableSelectOne}"
                                            var="laboratorioItem"

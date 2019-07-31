@@ -13,13 +13,13 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{quimioterapiaController.selected != null}">
                         <h:outputText value="#{bundle.ViewQuimioterapiaLabel_quimioterapiaPK_idquimioterapia}"/>
-                        <h:outputText value="#{quimioterapiaController.selected.quimioterapiaPK.idquimioterapia}" title="#{bundle.ViewQuimioterapiaTitle_quimioterapiaPK_idquimioterapia}"/>
+                        <h:outputText value="#{quimioterapiaController.selected.idquimioterapia}" title="#{bundle.ViewQuimioterapiaTitle_quimioterapiaPK_idquimioterapia}"/>
                         <h:outputText value="#{bundle.ViewQuimioterapiaLabel_fechainicioquimioterapia}"/>
                         <h:outputText value="#{quimioterapiaController.selected.fechainicioquimioterapia}" title="#{bundle.ViewQuimioterapiaTitle_fechainicioquimioterapia}">
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
                         <h:outputText value="#{bundle.ViewQuimioterapiaLabel_tratamientocancermama}"/>
-                        <h:outputText value="#{quimioterapiaController.selected.tratamientocancermama}" title="#{bundle.ViewQuimioterapiaTitle_tratamientocancermama}"/>
+                        <h:outputText value="#{quimioterapiaController.selected.idtrtamientocm}" title="#{bundle.ViewQuimioterapiaTitle_tratamientocancermama}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="QuimioterapiaViewDialog.hide()"/>
                 </h:panelGroup>

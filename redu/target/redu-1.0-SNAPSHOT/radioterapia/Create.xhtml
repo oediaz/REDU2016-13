@@ -13,11 +13,11 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{radioterapiaController.selected != null}">
                         <p:outputLabel value="#{bundle.CreateRadioterapiaLabel_radioterapiaPK_idterapiaradioterapia}" for="radioterapiaPK_idterapiaradioterapia" />
-                        <p:inputText id="radioterapiaPK_idterapiaradioterapia" value="#{radioterapiaController.selected.radioterapiaPK.idterapiaradioterapia}" title="#{bundle.CreateRadioterapiaTitle_radioterapiaPK_idterapiaradioterapia}" required="true" requiredMessage="#{bundle.CreateRadioterapiaRequiredMessage_radioterapiaPK_idterapiaradioterapia}"/>
+                        <p:inputText id="radioterapiaPK_idterapiaradioterapia" value="#{radioterapiaController.selected.idterapiaradioterapia}" title="#{bundle.CreateRadioterapiaTitle_radioterapiaPK_idterapiaradioterapia}" required="true" requiredMessage="#{bundle.CreateRadioterapiaRequiredMessage_radioterapiaPK_idterapiaradioterapia}"/>
                         <p:outputLabel value="#{bundle.CreateRadioterapiaLabel_fechainicioradioterapia}" for="fechainicioradioterapia" />
                         <p:calendar id="fechainicioradioterapia" pattern="MM/dd/yyyy HH:mm:ss" value="#{radioterapiaController.selected.fechainicioradioterapia}" title="#{bundle.EditRadioterapiaTitle_fechainicioradioterapia}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateRadioterapiaLabel_tratamientocancermama}" for="tratamientocancermama" />
-                        <p:selectOneMenu id="tratamientocancermama" value="#{radioterapiaController.selected.tratamientocancermama}" required="true" requiredMessage="#{bundle.EditRadioterapiaRequiredMessage_tratamientocancermama}">
+                        <p:selectOneMenu id="tratamientocancermama" value="#{radioterapiaController.selected.idtrtamientocm}" required="true" requiredMessage="#{bundle.EditRadioterapiaRequiredMessage_tratamientocancermama}">
                             <f:selectItems value="#{tratamientocancermamaController.itemsAvailableSelectOne}"
                                            var="tratamientocancermamaItem"
                                            itemValue="#{tratamientocancermamaItem}"/>

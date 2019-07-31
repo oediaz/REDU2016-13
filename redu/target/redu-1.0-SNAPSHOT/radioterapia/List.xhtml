@@ -19,7 +19,7 @@
                     <p:dataTable id="datalist" value="#{radioterapiaController.items}" var="item"
                                  selectionMode="single" selection="#{radioterapiaController.selected}"
                                  paginator="true"
-                                 rowKey="#{item.radioterapiaPK}"
+                                 rowKey="#{item.idterapiaradioterapia}"
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"     
                                  emptyMessage="No hay coincidencias"   
@@ -29,11 +29,11 @@
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column filterBy="#{item.radioterapiaPK.idterapiaradioterapia}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                        <p:column filterBy="#{item.idterapiaradioterapia}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
                             <f:facet name="header">
                                 <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListRadioterapiaTitle_radioterapiaPK_idterapiaradioterapia}"/>
                             </f:facet>
-                            <h:outputText value="#{item.radioterapiaPK.idterapiaradioterapia}"/>
+                            <h:outputText value="#{item.idterapiaradioterapia}"/>
                         </p:column>
                         <p:column filterBy="#{item.fechainicioradioterapia}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
                             <f:facet name="header">
@@ -43,11 +43,11 @@
                                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                             </h:outputText>
                         </p:column>
-                        <p:column filterBy="#{item.tratamientocancermama}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                        <p:column filterBy="#{item.idtrtamientocm}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
                             <f:facet name="header">
                                 <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListRadioterapiaTitle_tratamientocancermama}"/>
                             </f:facet>
-                            <h:outputText value="#{item.tratamientocancermama}"/>
+                            <h:outputText value="#{item.idtrtamientocm}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{radioterapiaController.prepareCreate}" update=":RadioterapiaCreateForm" oncomplete="PF('RadioterapiaCreateDialog').show()"/>

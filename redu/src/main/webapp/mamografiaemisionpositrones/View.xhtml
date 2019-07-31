@@ -13,7 +13,7 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{mamografiaemisionpositronesController.selected != null}">
                         <h:outputText value="#{bundle.ViewMamografiaemisionpositronesLabel_mamografiaemisionpositronesPK_idmamografiaep}"/>
-                        <h:outputText value="#{mamografiaemisionpositronesController.selected.mamografiaemisionpositronesPK.idmamografiaep}" title="#{bundle.ViewMamografiaemisionpositronesTitle_mamografiaemisionpositronesPK_idmamografiaep}"/>
+                        <h:outputText value="#{mamografiaemisionpositronesController.selected.idmamografiaep}" title="#{bundle.ViewMamografiaemisionpositronesTitle_mamografiaemisionpositronesPK_idmamografiaep}"/>
                         <h:outputText value="#{bundle.ViewMamografiaemisionpositronesLabel_fechamamografiaep}"/>
                         <h:outputText value="#{mamografiaemisionpositronesController.selected.fechamamografiaep}" title="#{bundle.ViewMamografiaemisionpositronesTitle_fechamamografiaep}">
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
@@ -29,11 +29,11 @@
                         <h:outputText value="#{bundle.ViewMamografiaemisionpositronesLabel_observacionesmetastasisep}"/>
                         <h:outputText value="#{mamografiaemisionpositronesController.selected.observacionesmetastasisep}" title="#{bundle.ViewMamografiaemisionpositronesTitle_observacionesmetastasisep}"/>
                         <h:outputText value="#{bundle.ViewMamografiaemisionpositronesLabel_screening}"/>
-                        <h:outputText value="#{mamografiaemisionpositronesController.selected.screening}" title="#{bundle.ViewMamografiaemisionpositronesTitle_screening}"/>
+                        <h:outputText value="#{mamografiaemisionpositronesController.selected.idscreening}" title="#{bundle.ViewMamografiaemisionpositronesTitle_screening}"/>
                         <h:outputText value="#{bundle.ViewMamografiaemisionpositronesLabel_responsableimagen}"/>
-                        <h:outputText value="#{mamografiaemisionpositronesController.selected.responsableimagen}" title="#{bundle.ViewMamografiaemisionpositronesTitle_responsableimagen}"/>
+                        <h:outputText value="#{mamografiaemisionpositronesController.selected.idresponsablei}" title="#{bundle.ViewMamografiaemisionpositronesTitle_responsableimagen}"/>
                         <h:outputText value="#{bundle.ViewMamografiaemisionpositronesLabel_laboratorio}"/>
-                        <h:outputText value="#{mamografiaemisionpositronesController.selected.laboratorio}" title="#{bundle.ViewMamografiaemisionpositronesTitle_laboratorio}"/>
+                        <h:outputText value="#{mamografiaemisionpositronesController.selected.idlaboratorio}" title="#{bundle.ViewMamografiaemisionpositronesTitle_laboratorio}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="MamografiaemisionpositronesViewDialog.hide()"/>
                 </h:panelGroup>

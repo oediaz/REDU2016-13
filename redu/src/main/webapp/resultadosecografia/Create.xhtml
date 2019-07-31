@@ -21,7 +21,7 @@
                         <p:outputLabel value="#{bundle.CreateResultadosecografiaLabel_sensibilidadhallazgore}" for="sensibilidadhallazgore" />
                         <p:inputText id="sensibilidadhallazgore" value="#{resultadosecografiaController.selected.sensibilidadhallazgore}" title="#{bundle.CreateResultadosecografiaTitle_sensibilidadhallazgore}" />
                         <p:outputLabel value="#{bundle.CreateResultadosecografiaLabel_ecografia}" for="ecografia" />
-                        <p:selectOneMenu id="ecografia" value="#{resultadosecografiaController.selected.ecografia}" >
+                        <p:selectOneMenu id="ecografia" value="#{resultadosecografiaController.selected.idecografia}" >
                             <f:selectItems value="#{ecografiaController.itemsAvailableSelectOne}"
                                            var="ecografiaItem"
                                            itemValue="#{ecografiaItem}"/>

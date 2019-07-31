@@ -50,13 +50,11 @@ public class MamografiaemisionpositronesController implements Serializable {
     }
 
     protected void setEmbeddableKeys() {
-        selected.getMamografiaemisionpositronesPK().setIdresponsablei(selected.getResponsableimagen().getIdresponsablei());
-        selected.getMamografiaemisionpositronesPK().setIdscreening(selected.getScreening().getIdscreening());
-        selected.getMamografiaemisionpositronesPK().setIdlaboratorio(selected.getLaboratorio().getIdlaboratorio());
+     
     }
 
     protected void initializeEmbeddableKey() {
-        selected.setMamografiaemisionpositronesPK(new com.susolabs.redu.modelo.entidades.MamografiaemisionpositronesPK());
+    
     }
 
     private MamografiaemisionpositronesFacade getFacade() {
@@ -126,7 +124,7 @@ public class MamografiaemisionpositronesController implements Serializable {
         }
     }
 
-    public Mamografiaemisionpositrones getMamografiaemisionpositrones(com.susolabs.redu.modelo.entidades.MamografiaemisionpositronesPK id) {
+    public Mamografiaemisionpositrones getMamografiaemisionpositrones(java.lang.Integer id) {
         return getFacade().find(id);
     }
 
@@ -154,26 +152,15 @@ public class MamografiaemisionpositronesController implements Serializable {
             return controller.getMamografiaemisionpositrones(getKey(value));
         }
 
-        com.susolabs.redu.modelo.entidades.MamografiaemisionpositronesPK getKey(String value) {
-            com.susolabs.redu.modelo.entidades.MamografiaemisionpositronesPK key;
-            String values[] = value.split(SEPARATOR_ESCAPED);
-            key = new com.susolabs.redu.modelo.entidades.MamografiaemisionpositronesPK();
-            key.setIdlaboratorio(Integer.parseInt(values[0]));
-            key.setIdscreening(Integer.parseInt(values[1]));
-            key.setIdresponsablei(Integer.parseInt(values[2]));
-            key.setIdmamografiaep(Integer.parseInt(values[3]));
+        java.lang.Integer getKey(String value) {
+             java.lang.Integer key;
+            key = Integer.valueOf(value);
             return key;
         }
 
-        String getStringKey(com.susolabs.redu.modelo.entidades.MamografiaemisionpositronesPK value) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(value.getIdlaboratorio());
-            sb.append(SEPARATOR);
-            sb.append(value.getIdscreening());
-            sb.append(SEPARATOR);
-            sb.append(value.getIdresponsablei());
-            sb.append(SEPARATOR);
-            sb.append(value.getIdmamografiaep());
+        String getStringKey(java.lang.Integer value) {
+           StringBuilder sb = new StringBuilder();
+            sb.append(value);
             return sb.toString();
         }
 
@@ -184,7 +171,7 @@ public class MamografiaemisionpositronesController implements Serializable {
             }
             if (object instanceof Mamografiaemisionpositrones) {
                 Mamografiaemisionpositrones o = (Mamografiaemisionpositrones) object;
-                return getStringKey(o.getMamografiaemisionpositronesPK());
+                return getStringKey(o.getIdmamografiaep());
             } else {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Mamografiaemisionpositrones.class.getName()});
                 return null;

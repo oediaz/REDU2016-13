@@ -25,21 +25,21 @@
                         <p:outputLabel value="#{bundle.EditEcografiaLabel_observacionesprotocoloe}" for="observacionesprotocoloe" />
                         <p:inputText id="observacionesprotocoloe" value="#{ecografiaController.selected.observacionesprotocoloe}" title="#{bundle.EditEcografiaTitle_observacionesprotocoloe}" />
                         <p:outputLabel value="#{bundle.EditEcografiaLabel_screening}" for="screening" />
-                        <p:selectOneMenu id="screening" value="#{ecografiaController.selected.screening}" required="true" requiredMessage="#{bundle.EditEcografiaRequiredMessage_screening}">
+                        <p:selectOneMenu id="screening" value="#{ecografiaController.selected.idscreening}" required="true" requiredMessage="#{bundle.EditEcografiaRequiredMessage_screening}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{screeningController.itemsAvailableSelectOne}"
                                            var="screeningItem"
                                            itemValue="#{screeningItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditEcografiaLabel_responsableimagen}" for="responsableimagen" />
-                        <p:selectOneMenu id="responsableimagen" value="#{ecografiaController.selected.responsableimagen}" required="true" requiredMessage="#{bundle.EditEcografiaRequiredMessage_responsableimagen}">
+                        <p:selectOneMenu id="responsableimagen" value="#{ecografiaController.selected.idresponsablei}" required="true" requiredMessage="#{bundle.EditEcografiaRequiredMessage_responsableimagen}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{responsableimagenController.itemsAvailableSelectOne}"
                                            var="responsableimagenItem"
                                            itemValue="#{responsableimagenItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditEcografiaLabel_laboratorio}" for="laboratorio" />
-                        <p:selectOneMenu id="laboratorio" value="#{ecografiaController.selected.laboratorio}" required="true" requiredMessage="#{bundle.EditEcografiaRequiredMessage_laboratorio}">
+                        <p:selectOneMenu id="laboratorio" value="#{ecografiaController.selected.idlaboratorio}" required="true" requiredMessage="#{bundle.EditEcografiaRequiredMessage_laboratorio}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{laboratorioController.itemsAvailableSelectOne}"
                                            var="laboratorioItem"

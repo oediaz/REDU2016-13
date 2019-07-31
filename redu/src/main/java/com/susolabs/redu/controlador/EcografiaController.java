@@ -50,13 +50,9 @@ public class EcografiaController implements Serializable {
     }
 
     protected void setEmbeddableKeys() {
-        selected.getEcografiaPK().setIdscreening(selected.getScreening().getIdscreening());
-        selected.getEcografiaPK().setIdlaboratorio(selected.getLaboratorio().getIdlaboratorio());
-        selected.getEcografiaPK().setIdresponsablei(selected.getResponsableimagen().getIdresponsablei());
     }
 
     protected void initializeEmbeddableKey() {
-        selected.setEcografiaPK(new com.susolabs.redu.modelo.entidades.EcografiaPK());
     }
 
     private EcografiaFacade getFacade() {
@@ -126,7 +122,7 @@ public class EcografiaController implements Serializable {
         }
     }
 
-    public Ecografia getEcografia(com.susolabs.redu.modelo.entidades.EcografiaPK id) {
+    public Ecografia getEcografia(java.lang.Integer id) {
         return getFacade().find(id);
     }
 
@@ -154,26 +150,15 @@ public class EcografiaController implements Serializable {
             return controller.getEcografia(getKey(value));
         }
 
-        com.susolabs.redu.modelo.entidades.EcografiaPK getKey(String value) {
-            com.susolabs.redu.modelo.entidades.EcografiaPK key;
-            String values[] = value.split(SEPARATOR_ESCAPED);
-            key = new com.susolabs.redu.modelo.entidades.EcografiaPK();
-            key.setIdscreening(Integer.parseInt(values[0]));
-            key.setIdresponsablei(Integer.parseInt(values[1]));
-            key.setIdlaboratorio(Integer.parseInt(values[2]));
-            key.setIdecografia(Integer.parseInt(values[3]));
+        java.lang.Integer getKey(String value) {
+             java.lang.Integer key;
+            key = Integer.valueOf(value);
             return key;
         }
 
-        String getStringKey(com.susolabs.redu.modelo.entidades.EcografiaPK value) {
+        String getStringKey(java.lang.Integer value) {
             StringBuilder sb = new StringBuilder();
-            sb.append(value.getIdscreening());
-            sb.append(SEPARATOR);
-            sb.append(value.getIdresponsablei());
-            sb.append(SEPARATOR);
-            sb.append(value.getIdlaboratorio());
-            sb.append(SEPARATOR);
-            sb.append(value.getIdecografia());
+            sb.append(value);
             return sb.toString();
         }
 
@@ -184,7 +169,7 @@ public class EcografiaController implements Serializable {
             }
             if (object instanceof Ecografia) {
                 Ecografia o = (Ecografia) object;
-                return getStringKey(o.getEcografiaPK());
+                return getStringKey(o.getIdecografia());
             } else {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Ecografia.class.getName()});
                 return null;

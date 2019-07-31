@@ -51,11 +51,11 @@ public class MedicacionController implements Serializable {
     }
 
     protected void setEmbeddableKeys() {
-        selected.getMedicacionPK().setIdtrtamientocm(selected.getTratamientocancermama().getIdtrtamientocm());
+   
     }
 
     protected void initializeEmbeddableKey() {
-        selected.setMedicacionPK(new com.susolabs.redu.modelo.entidades.MedicacionPK());
+    
     }
 
     private MedicacionFacade getFacade() {
@@ -125,7 +125,7 @@ public class MedicacionController implements Serializable {
         }
     }
 
-    public Medicacion getMedicacion(com.susolabs.redu.modelo.entidades.MedicacionPK id) {
+    public Medicacion getMedicacion(java.lang.Integer id) {
         return getFacade().find(id);
     }
 
@@ -153,20 +153,15 @@ public class MedicacionController implements Serializable {
             return controller.getMedicacion(getKey(value));
         }
 
-        com.susolabs.redu.modelo.entidades.MedicacionPK getKey(String value) {
-            com.susolabs.redu.modelo.entidades.MedicacionPK key;
-            String values[] = value.split(SEPARATOR_ESCAPED);
-            key = new com.susolabs.redu.modelo.entidades.MedicacionPK();
-            key.setIdtrtamientocm(Integer.parseInt(values[0]));
-            key.setIdmedicacion(Integer.parseInt(values[1]));
+        java.lang.Integer getKey(String value) {
+              java.lang.Integer key;
+            key = Integer.valueOf(value);
             return key;
         }
 
-        String getStringKey(com.susolabs.redu.modelo.entidades.MedicacionPK value) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(value.getIdtrtamientocm());
-            sb.append(SEPARATOR);
-            sb.append(value.getIdmedicacion());
+        String getStringKey(java.lang.Integer value) {
+           StringBuilder sb = new StringBuilder();
+            sb.append(value);
             return sb.toString();
         }
 
@@ -177,7 +172,7 @@ public class MedicacionController implements Serializable {
             }
             if (object instanceof Medicacion) {
                 Medicacion o = (Medicacion) object;
-                return getStringKey(o.getMedicacionPK());
+                return getStringKey(o.getIdmedicacion());
             } else {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Medicacion.class.getName()});
                 return null;

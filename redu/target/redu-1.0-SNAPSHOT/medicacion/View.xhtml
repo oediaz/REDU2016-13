@@ -13,7 +13,7 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{medicacionController.selected != null}">
                         <h:outputText value="#{bundle.ViewMedicacionLabel_medicacionPK_idmedicacion}"/>
-                        <h:outputText value="#{medicacionController.selected.medicacionPK.idmedicacion}" title="#{bundle.ViewMedicacionTitle_medicacionPK_idmedicacion}"/>
+                        <h:outputText value="#{medicacionController.selected.idmedicacion}" title="#{bundle.ViewMedicacionTitle_medicacionPK_idmedicacion}"/>
                         <h:outputText value="#{bundle.ViewMedicacionLabel_fechamedicacion}"/>
                         <h:outputText value="#{medicacionController.selected.fechamedicacion}" title="#{bundle.ViewMedicacionTitle_fechamedicacion}">
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
@@ -21,7 +21,7 @@
                         <h:outputText value="#{bundle.ViewMedicacionLabel_descripcionmedicacion}"/>
                         <h:outputText value="#{medicacionController.selected.descripcionmedicacion}" title="#{bundle.ViewMedicacionTitle_descripcionmedicacion}"/>
                         <h:outputText value="#{bundle.ViewMedicacionLabel_tratamientocancermama}"/>
-                        <h:outputText value="#{medicacionController.selected.tratamientocancermama}" title="#{bundle.ViewMedicacionTitle_tratamientocancermama}"/>
+                        <h:outputText value="#{medicacionController.selected.idtrtamientocm}" title="#{bundle.ViewMedicacionTitle_tratamientocancermama}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="MedicacionViewDialog.hide()"/>
                 </h:panelGroup>

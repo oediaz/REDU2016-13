@@ -13,7 +13,7 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{ecografiaController.selected != null}">
                         <h:outputText value="#{bundle.ViewEcografiaLabel_ecografiaPK_idecografia}"/>
-                        <h:outputText value="#{ecografiaController.selected.ecografiaPK.idecografia}" title="#{bundle.ViewEcografiaTitle_ecografiaPK_idecografia}"/>
+                        <h:outputText value="#{ecografiaController.selected.idecografia}" title="#{bundle.ViewEcografiaTitle_ecografiaPK_idecografia}"/>
                         <h:outputText value="#{bundle.ViewEcografiaLabel_fechaecografia}"/>
                         <h:outputText value="#{ecografiaController.selected.fechaecografia}" title="#{bundle.ViewEcografiaTitle_fechaecografia}">
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
@@ -29,11 +29,11 @@
                         <h:outputText value="#{bundle.ViewEcografiaLabel_observacionesprotocoloe}"/>
                         <h:outputText value="#{ecografiaController.selected.observacionesprotocoloe}" title="#{bundle.ViewEcografiaTitle_observacionesprotocoloe}"/>
                         <h:outputText value="#{bundle.ViewEcografiaLabel_screening}"/>
-                        <h:outputText value="#{ecografiaController.selected.screening}" title="#{bundle.ViewEcografiaTitle_screening}"/>
+                        <h:outputText value="#{ecografiaController.selected.idscreening}" title="#{bundle.ViewEcografiaTitle_screening}"/>
                         <h:outputText value="#{bundle.ViewEcografiaLabel_responsableimagen}"/>
-                        <h:outputText value="#{ecografiaController.selected.responsableimagen}" title="#{bundle.ViewEcografiaTitle_responsableimagen}"/>
+                        <h:outputText value="#{ecografiaController.selected.idresponsablei}" title="#{bundle.ViewEcografiaTitle_responsableimagen}"/>
                         <h:outputText value="#{bundle.ViewEcografiaLabel_laboratorio}"/>
-                        <h:outputText value="#{ecografiaController.selected.laboratorio}" title="#{bundle.ViewEcografiaTitle_laboratorio}"/>
+                        <h:outputText value="#{ecografiaController.selected.idlaboratorio}" title="#{bundle.ViewEcografiaTitle_laboratorio}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="EcografiaViewDialog.hide()"/>
                 </h:panelGroup>

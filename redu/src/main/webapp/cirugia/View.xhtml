@@ -13,13 +13,13 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{cirugiaController.selected != null}">
                         <h:outputText value="#{bundle.ViewCirugiaLabel_cirugiaPK_idcirugia}"/>
-                        <h:outputText value="#{cirugiaController.selected.cirugiaPK.idcirugia}" title="#{bundle.ViewCirugiaTitle_cirugiaPK_idcirugia}"/>
+                        <h:outputText value="#{cirugiaController.selected.idcirugia}" title="#{bundle.ViewCirugiaTitle_cirugiaPK_idcirugia}"/>
                         <h:outputText value="#{bundle.ViewCirugiaLabel_fechainiciocirugia}"/>
                         <h:outputText value="#{cirugiaController.selected.fechainiciocirugia}" title="#{bundle.ViewCirugiaTitle_fechainiciocirugia}">
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
                         <h:outputText value="#{bundle.ViewCirugiaLabel_tratamientocancermama}"/>
-                        <h:outputText value="#{cirugiaController.selected.tratamientocancermama}" title="#{bundle.ViewCirugiaTitle_tratamientocancermama}"/>
+                        <h:outputText value="#{cirugiaController.selected.idtrtamientocm}" title="#{bundle.ViewCirugiaTitle_tratamientocancermama}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="CirugiaViewDialog.hide()"/>
                 </h:panelGroup>
