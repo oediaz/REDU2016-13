@@ -6,6 +6,7 @@
 package com.susolabs.redu.modelo.entidades;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -223,7 +224,9 @@ public class Mamografia implements Serializable {
 
     @Override
     public String toString() {
-        return "com.susolabs.redu.modelo.entidades.Mamografia[ idmamografia=" + idmamografia + " ]";
+          String dato=""+new SimpleDateFormat("dd-MM-yyyy").format(fechamamografia);
+        String fecha=dato.replace('-', '/');
+        return "" +fecha  + "-"+caracteristicapredominantem;
     }
     
 }

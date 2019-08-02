@@ -145,7 +145,7 @@ public class Resultadosexamen implements Serializable {
 
     @Override
     public String toString() {
-        return "com.susolabs.redu.modelo.entidades.Resultadosexamen[ idresultadosexamen=" + idresultadosexamen + " ]";
+        return elementoexamen;
     }
     
 }

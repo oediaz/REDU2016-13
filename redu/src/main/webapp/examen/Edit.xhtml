@@ -12,8 +12,6 @@
             <h:form id="ExamenEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{examenController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditExamenLabel_idexamen}" for="idexamen" />
-                        <p:inputText id="idexamen" value="#{examenController.selected.idexamen}" title="#{bundle.EditExamenTitle_idexamen}" required="true" requiredMessage="#{bundle.EditExamenRequiredMessage_idexamen}"/>
                         <p:outputLabel value="#{bundle.EditExamenLabel_nombreexamen}" for="nombreexamen" />
                         <p:inputText id="nombreexamen" value="#{examenController.selected.nombreexamen}" title="#{bundle.EditExamenTitle_nombreexamen}" />
                         <p:outputLabel value="#{bundle.EditExamenLabel_descripcionexamen}" for="descripcionexamen" />

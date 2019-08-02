@@ -15,10 +15,17 @@
 
         <ui:define name="body">
             <h:form id="RecetaListForm">
-
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <center>
+                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </center>
+                </p:confirmDialog>
                 <p:panel header="#{bundle.ListRecetaTitle}">
 
-                    <p:dataTable id="datalist" value="#{recetaController.items}" var="item"
+                    <p:dataTable id="datalist" 
+                                 value="#{recetaController.items}"
+                                 var="item"
                                  selectionMode="single"  selection="#{recetaController.selected}"
                                  paginator="true"
                                  rowKey="#{item.idreceta}"
@@ -79,10 +86,12 @@
                             <h:outputText value="#{item.idmedicamento.descripcionmedicamento}"/>
                         </p:column>
                         <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{recetaController.prepareCreate}" update=":RadioterapiaCreateForm" oncomplete="PF('RecetaCreateDialog').show()"/>
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{recetaController.prepareCreate}" update=":RecetaCreateForm" oncomplete="PF('RecetaCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":RecetaViewForm" oncomplete="PF('RecetaViewDialog').show()" disabled="#{empty recetaController.selected}"/>
                             <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":RecetaEditForm" oncomplete="PF('RecetaEditDialog').show()" disabled="#{empty recetaController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{recetaController.destroy}" update=":growl,datalist" disabled="#{empty recetaController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{recetaController.destroy}" update=":growl,datalist" disabled="#{empty recetaController.selected}">
+                                <p:confirm header="Eliminación de Receta" message="¿Está seguro de querer eliminar?" icon="ui-icon-alert" />
+                            </p:commandButton>
                         </f:facet>
                     </p:dataTable>
 

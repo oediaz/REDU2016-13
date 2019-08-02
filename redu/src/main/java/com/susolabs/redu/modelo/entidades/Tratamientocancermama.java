@@ -6,6 +6,7 @@
 package com.susolabs.redu.modelo.entidades;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -196,7 +197,9 @@ public class Tratamientocancermama implements Serializable {
 
     @Override
     public String toString() {
-        return "com.susolabs.redu.modelo.entidades.Tratamientocancermama[ idtrtamientocm=" + idtrtamientocm + " ]";
+          String dato=""+new SimpleDateFormat("dd-MM-yyyy").format(fechainiciotcm);
+        String fecha=dato.replace('-', '/');
+        return "" +fecha  + "-"+descripciontcm;
     }
     
 }

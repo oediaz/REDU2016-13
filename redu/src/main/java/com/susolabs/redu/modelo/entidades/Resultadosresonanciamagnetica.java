@@ -126,7 +126,7 @@ public class Resultadosresonanciamagnetica implements Serializable {
 
     @Override
     public String toString() {
-        return "com.susolabs.redu.modelo.entidades.Resultadosresonanciamagnetica[ idresultadorm=" + idresultadorm + " ]";
+        return tipohallazgormm;
     }
     
 }

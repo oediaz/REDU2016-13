@@ -20,7 +20,7 @@
                         <p:inputText id="frecuenciamedicacion" value="#{recetaController.selected.frecuenciamedicacion}" title="#{bundle.CreateRecetaTitle_frecuenciamedicacion}" size="32" maxlength="32"/>
 
                         <p:outputLabel value="#{bundle.CreateRecetaLabel_idmedicacion}" for="idmedicacion" />
-                        <p:selectOneMenu id="idmedicacion" value="#{recetaController.selected.idmedicacion}" required="true" requiredMessage="#{bundle.CreateRecetaRequiredMessage_idmedicacion}" converter="medicacionConverter">
+                        <p:selectOneMenu id="idmedicacion" value="#{recetaController.selected.idmedicacion}" required="true" requiredMessage="#{bundle.CreateRecetaRequiredMessage_idmedicacion}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{medicacionController.items}"
                                            var="idmedicacionItem"
@@ -31,7 +31,7 @@
                         </p:selectOneMenu>
 
                         <p:outputLabel value="#{bundle.CreateRecetaLabel_idmedicamento}" for="idmedicamento" />
-                        <p:selectOneMenu id="idmedicamento" value="#{recetaController.selected.idmedicamento}" required="true" requiredMessage="#{bundle.CreateRecetaRequiredMessage_idmedicamento}" converter="medicamentoConverter">
+                        <p:selectOneMenu id="idmedicamento" value="#{recetaController.selected.idmedicamento}" required="true" requiredMessage="#{bundle.CreateRecetaRequiredMessage_idmedicamento}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{medicamentoController.items}"
                                            var="idmedicamentoItem"

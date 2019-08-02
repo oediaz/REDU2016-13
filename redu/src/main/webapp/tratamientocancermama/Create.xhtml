@@ -12,8 +12,6 @@
             <h:form id="TratamientocancermamaCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{tratamientocancermamaController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateTratamientocancermamaLabel_idtrtamientocm}" for="idtrtamientocm" />
-                        <p:inputText id="idtrtamientocm" value="#{tratamientocancermamaController.selected.idtrtamientocm}" title="#{bundle.CreateTratamientocancermamaTitle_idtrtamientocm}" required="true" requiredMessage="#{bundle.CreateTratamientocancermamaRequiredMessage_idtrtamientocm}"/>
                         <p:outputLabel value="#{bundle.CreateTratamientocancermamaLabel_fechainiciotcm}" for="fechainiciotcm" />
                         <p:calendar id="fechainiciotcm" pattern="MM/dd/yyyy HH:mm:ss" value="#{tratamientocancermamaController.selected.fechainiciotcm}" title="#{bundle.EditTratamientocancermamaTitle_fechainiciotcm}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateTratamientocancermamaLabel_descripciontcm}" for="descripciontcm" />

@@ -12,8 +12,6 @@
             <h:form id="CirugiaEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{cirugiaController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditCirugiaLabel_cirugiaPK_idcirugia}" for="cirugiaPK_idcirugia" />
-                        <p:inputText id="cirugiaPK_idcirugia" value="#{cirugiaController.selected.idcirugia}" title="#{bundle.EditCirugiaTitle_cirugiaPK_idcirugia}" required="true" requiredMessage="#{bundle.EditCirugiaRequiredMessage_cirugiaPK_idcirugia}"/>
                         <p:outputLabel value="#{bundle.EditCirugiaLabel_fechainiciocirugia}" for="fechainiciocirugia" />
                         <p:calendar id="fechainiciocirugia" pattern="MM/dd/yyyy HH:mm:ss" value="#{cirugiaController.selected.fechainiciocirugia}" title="#{bundle.EditCirugiaTitle_fechainiciocirugia}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.EditCirugiaLabel_tratamientocancermama}" for="tratamientocancermama" />

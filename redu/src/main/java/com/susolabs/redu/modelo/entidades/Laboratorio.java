@@ -158,7 +158,7 @@ public class Laboratorio implements Serializable {
 
     @Override
     public String toString() {
-        return "com.susolabs.redu.modelo.entidades.Laboratorio[ idlaboratorio=" + idlaboratorio + " ]";
+        return nombrelaboratorio;
     }
     
 }

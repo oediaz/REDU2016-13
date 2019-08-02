@@ -12,8 +12,6 @@
             <h:form id="ExamenCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{examenController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateExamenLabel_idexamen}" for="idexamen" />
-                        <p:inputText id="idexamen" value="#{examenController.selected.idexamen}" title="#{bundle.CreateExamenTitle_idexamen}" required="true" requiredMessage="#{bundle.CreateExamenRequiredMessage_idexamen}"/>
                         <p:outputLabel value="#{bundle.CreateExamenLabel_nombreexamen}" for="nombreexamen" />
                         <p:inputText id="nombreexamen" value="#{examenController.selected.nombreexamen}" title="#{bundle.CreateExamenTitle_nombreexamen}" />
                         <p:outputLabel value="#{bundle.CreateExamenLabel_descripcionexamen}" for="descripcionexamen" />

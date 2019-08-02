@@ -15,104 +15,95 @@
 
         <ui:define name="body">
             <h:form id="ResultadosexamenForm">
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <center>
+                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </center>
+                </p:confirmDialog>
+                <p:panel header="#{bundle.ListResultadosexamenTitle}">
 
-        <p:panel header="#{bundle.ListResultadosexamenTitle}">
-            <p:contextMenu id="ResultadosexamenDataTableContextMenu" for="datalist">  
-                <p:menuitem value="#{bundle.Create}" onclick="document.getElementById('ResultadosexamenListForm:createButton').click();" icon="ui-icon-plus"/>
-                <p:menuitem value="#{bundle.View}" onclick="document.getElementById('ResultadosexamenListForm:viewButton').click();" icon="ui-icon-search"/>
-                <p:menuitem value="#{bundle.Edit}" onclick="document.getElementById('ResultadosexamenListForm:editButton').click();" icon="ui-icon-pencil"/>
-                <p:menuitem value="#{bundle.Delete}" onclick="document.getElementById('ResultadosexamenListForm:deleteButton').click();" icon="ui-icon-trash"/>
-                <p:separator/>
-                <p:menuitem value="#{bundle.ResultadosexamenMenuItem_idexaminacion}" icon="ui-icon-search"  actionListener="#{resultadosexamenController.prepareIdexaminacion}" update=":ExaminacionViewForm" oncomplete="PF('ExaminacionViewDialog').show()" disabled="#{empty resultadosexamenController.selected.idexaminacion}"/>  
-                <p:menuitem value="#{bundle.ResultadosexamenMenuItem_idexamen}" icon="ui-icon-search"  actionListener="#{resultadosexamenController.prepareIdexamen}" update=":ExamenViewForm" oncomplete="PF('ExamenViewDialog').show()" disabled="#{empty resultadosexamenController.selected.idexamen}"/>  
-            </p:contextMenu>
-            <p:dataTable id="datalist"
-                         value="#{resultadosexamenController.items}"
-                         lazy="false"
-                         rowKey="#{item.idresultadosexamen}"
-                         var="item"
-                         paginator="true"
-                         rows="10"
-                         rowsPerPageTemplate="10,20,30,40,50"
-                         selectionMode="single"
-                         selection="#{resultadosexamenController.selected}"
-                         filteredValue="#{resultadosexamenController.filteredItems}">
-                <!--
-                         To enable Lazy Loading, please copy/replace the following lines above,
-                         and be sure to replace the word HASH with the # symbol:
-                
-                         value="HASH{resultadosexamenController.lazyItems}"
-                         lazy="true"
-                         rowKey="HASH{item.idresultadosexamen}"  <<< Remove this line
-                -->
+                    <p:dataTable id="datalist"
+                                 value="#{resultadoexamenController.items}"
+                                 var="item"
+                                 selectionMode="single"
+                                 selection="#{resultadoexamenController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idresultadosexamen}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 emptyMessage="No hay coincidencias"   
+                                 widgetVar="datalist"
 
-
-                <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:ResultadosexamenDataTableContextMenu" listener="#{resultadosexamenController.resetParents}"/>
-                <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:ResultadosexamenDataTableContextMenu" listener="#{resultadosexamenController.resetParents}"/>
-                <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{resultadosexamenController.resetParents}"/>
-                <p:ajax event="rowDblselect" onsuccess="document.getElementById('ResultadosexamenListForm:viewButton').click();"/>
-
-                <p:column sortBy="#{item.idresultadosexamen}" filterBy="#{item.idresultadosexamen}">
-                    <f:facet name="header">
-                        <h:outputText value="#{bundle.ListResultadosexamenTitle_idresultadosexamen}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.idresultadosexamen}"/>
-                </p:column>
+                                 >
+                        <!--
+                                 To enable Lazy Loading, please copy/replace the following lines above,
+                                 and be sure to replace the word HASH with the # symbol:
+                        
+                                 value="HASH{resultadoexamenController.lazyItems}"
+                                 lazy="true"
+                                 rowKey="HASH{item.idresultadosexamen}"  <<< Remove this line
+                        -->
 
 
-                <p:column sortBy="#{item.elementoexamen}" filterBy="#{item.elementoexamen}">
-                    <f:facet name="header">
-                        <h:outputText value="#{bundle.ListResultadosexamenTitle_elementoexamen}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.elementoexamen}"/>
-                </p:column>
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column sortBy="#{item.idresultadosexamen}" filterBy="#{item.idresultadosexamen}">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResultadosexamenTitle_idresultadosexamen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idresultadosexamen}"/>
+                        </p:column>
 
 
-                <p:column sortBy="#{item.datoelementoexamen}" filterBy="#{item.datoelementoexamen}">
-                    <f:facet name="header">
-                        <h:outputText value="#{bundle.ListResultadosexamenTitle_datoelementoexamen}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.datoelementoexamen}"/>
-                </p:column>
+                        <p:column sortBy="#{item.elementoexamen}" filterBy="#{item.elementoexamen}">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResultadosexamenTitle_elementoexamen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.elementoexamen}"/>
+                        </p:column>
 
 
-                <p:column sortBy="#{item.valorminrefelemexamen}" filterBy="#{item.valorminrefelemexamen}">
-                    <f:facet name="header">
-                        <h:outputText value="#{bundle.ListResultadosexamenTitle_valorminrefelemexamen}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.valorminrefelemexamen}"/>
-                </p:column>
+                        <p:column sortBy="#{item.datoelementoexamen}" filterBy="#{item.datoelementoexamen}">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResultadosexamenTitle_datoelementoexamen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.datoelementoexamen}"/>
+                        </p:column>
 
 
-                <p:column sortBy="#{item.valormaxrefelemexamen}" filterBy="#{item.valormaxrefelemexamen}">
-                    <f:facet name="header">
-                        <h:outputText value="#{bundle.ListResultadosexamenTitle_valormaxrefelemexamen}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.valormaxrefelemexamen}"/>
-                </p:column>
+                        <p:column sortBy="#{item.valorminrefelemexamen}" filterBy="#{item.valorminrefelemexamen}">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResultadosexamenTitle_valorminrefelemexamen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valorminrefelemexamen}"/>
+                        </p:column>
 
 
-                <p:column sortBy="#{item.idexaminacion.descripcionexaminacion}" filterBy="#{item.idexaminacion.descripcionexaminacion}">
-                    <f:facet name="header">
-                        <h:outputText value="#{bundle.ListResultadosexamenTitle_idexaminacion}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.idexaminacion.descripcionexaminacion}"/>
-                </p:column>
+                        <p:column sortBy="#{item.valormaxrefelemexamen}" filterBy="#{item.valormaxrefelemexamen}">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResultadosexamenTitle_valormaxrefelemexamen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valormaxrefelemexamen}"/>
+                        </p:column>
 
-                <ui:remove>
-                    <p:column sortBy="#{item.idexamen.descripcionexamen}" filterBy="#{item.idexamen.descripcionexamen}">
-                        <f:facet name="header">
-                            <h:outputText value="#{bundle.ListResultadosexamenTitle_idexamen}"/>
-                        </f:facet>
-                        <h:outputText value="#{item.idexamen.descripcionexamen}"/>
-                    </p:column>
-                </ui:remove>
 
-             <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{ResultadoexamenController.prepareCreate}" update=":RadioterapiaCreateForm" oncomplete="PF('RecetaCreateDialog').show()"/>
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":RecetaViewForm" oncomplete="PF('RecetaViewDialog').show()" disabled="#{empty ResultadoexamenController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":RecetaEditForm" oncomplete="PF('RecetaEditDialog').show()" disabled="#{empty ResultadoexamenController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{ResultadoexamenController.destroy}" update=":growl,datalist" disabled="#{empty ResultadoexamenController.selected}"/>
+                        <p:column sortBy="#{item.idexaminacion.descripcionexaminacion}" filterBy="#{item.idexaminacion.descripcionexaminacion}">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResultadosexamenTitle_idexaminacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idexaminacion.descripcionexaminacion}"/>
+                        </p:column>
+
+                    
+                      <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{resultadoexamenController.prepareCreate}" update=":ResultadosexamenCreateForm" oncomplete="PF('ResultadosexamenCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ResultadosexamenViewForm" oncomplete="PF('ResultadosexamenVieialogwDialog').show()" disabled="#{empty resultadoexamenController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ResultadosexamenEditForm" oncomplete="PF('ResultadosexamenEditDialog').show()" disabled="#{empty resultadoexamenController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{resultadoexamenController.destroy}" update=":growl,datalist" disabled="#{empty resultadoexamenController.selected}">
+                                <p:confirm header="Eliminación de Resultadosexamen" message="¿Está seguro de querer eliminar?" icon="ui-icon-alert" />
+                            </p:commandButton>
                         </f:facet>
                     </p:dataTable>
 

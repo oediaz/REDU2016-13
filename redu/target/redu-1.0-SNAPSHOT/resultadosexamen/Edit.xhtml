@@ -31,7 +31,7 @@
                         <p:inputText id="valormaxrefelemexamen" value="#{resultadosexamenController.selected.valormaxrefelemexamen}" title="#{bundle.EditResultadosexamenTitle_valormaxrefelemexamen}"/>
 
                         <p:outputLabel value="#{bundle.EditResultadosexamenLabel_idexaminacion}" for="idexaminacion" />
-                        <p:selectOneMenu id="idexaminacion" value="#{resultadosexamenController.selected.idexaminacion}" required="true" requiredMessage="#{bundle.EditResultadosexamenRequiredMessage_idexaminacion}" converter="examinacionConverter">
+                        <p:selectOneMenu id="idexaminacion" value="#{resultadosexamenController.selected.idexaminacion}" required="true" requiredMessage="#{bundle.EditResultadosexamenRequiredMessage_idexaminacion}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{examinacionController.items}"
                                            var="idexaminacionItem"
@@ -42,7 +42,7 @@
                         </p:selectOneMenu>
 
                         <p:outputLabel value="#{bundle.EditResultadosexamenLabel_idexamen}" for="idexamen" />
-                        <p:selectOneMenu id="idexamen" value="#{resultadosexamenController.selected.idexamen}" required="true" requiredMessage="#{bundle.EditResultadosexamenRequiredMessage_idexamen}" converter="examenConverter">
+                        <p:selectOneMenu id="idexamen" value="#{resultadosexamenController.selected.idexamen}" required="true" requiredMessage="#{bundle.EditResultadosexamenRequiredMessage_idexamen}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{examenController.items}"
                                            var="idexamenItem"
@@ -52,11 +52,10 @@
 
                         </p:selectOneMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{resultadosexamenController.save}" value="#{bundle.Save}" update="display,:ResultadosexamenListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ResultadosexamenEditDialog'));">
-                        <p:confirm header="#{bundle.ConfirmationHeader}" message="#{bundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
-                    </p:commandButton>
-                    <p:commandButton value="#{bundle.Cancel}" oncomplete="PF('ResultadosexamenEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
-                </h:panelGroup>
+                     <center>
+                        <p:commandButton actionListener="#{resultadoexamenController.update}" value="#{bundle.Save}" update="display,:ResultadosexamenForm:datalist,:growl" oncomplete="handleSubmit(args, 'ResultadosexamenEditDialog');"/>
+                        <p:commandButton value="#{bundle.Cancel}" onclick="ResultadosexamenEditDialog.hide()"/>
+                    </center>  </h:panelGroup>
 
             </h:form>
 

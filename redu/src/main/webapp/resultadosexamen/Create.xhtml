@@ -28,7 +28,7 @@
                         <p:inputText id="valormaxrefelemexamen" value="#{resultadosexamenController.selected.valormaxrefelemexamen}" title="#{bundle.CreateResultadosexamenTitle_valormaxrefelemexamen}"/>
 
                         <p:outputLabel value="#{bundle.CreateResultadosexamenLabel_idexaminacion}" for="idexaminacion" />
-                        <p:selectOneMenu id="idexaminacion" value="#{resultadosexamenController.selected.idexaminacion}" required="true" requiredMessage="#{bundle.CreateResultadosexamenRequiredMessage_idexaminacion}" converter="examinacionConverter">
+                        <p:selectOneMenu id="idexaminacion" value="#{resultadosexamenController.selected.idexaminacion}" required="true" requiredMessage="#{bundle.CreateResultadosexamenRequiredMessage_idexaminacion}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{examinacionController.items}"
                                            var="idexaminacionItem"
@@ -39,7 +39,7 @@
                         </p:selectOneMenu>
 
                         <p:outputLabel value="#{bundle.CreateResultadosexamenLabel_idexamen}" for="idexamen" />
-                        <p:selectOneMenu id="idexamen" value="#{resultadosexamenController.selected.idexamen}" required="true" requiredMessage="#{bundle.CreateResultadosexamenRequiredMessage_idexamen}" converter="examenConverter">
+                        <p:selectOneMenu id="idexamen" value="#{resultadosexamenController.selected.idexamen}" required="true" requiredMessage="#{bundle.CreateResultadosexamenRequiredMessage_idexamen}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{examenController.items}"
                                            var="idexamenItem"

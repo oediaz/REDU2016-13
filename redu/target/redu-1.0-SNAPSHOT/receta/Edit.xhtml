@@ -15,9 +15,6 @@
                     <p:panelGrid  columns="2" columnClasses="column" rendered="#{recetaController.selected != null}">
 
 
-                        <h:outputLabel value="#{bundle.EditRecetaLabel_idreceta}" for="idreceta" />
-                        <h:outputText id="idreceta" value="#{recetaController.selected.idreceta}" />
-
                         <p:outputLabel value="#{bundle.EditRecetaLabel_docismedicamento}" for="docismedicamento" />
                         <p:inputText id="docismedicamento" value="#{recetaController.selected.docismedicamento}" title="#{bundle.EditRecetaTitle_docismedicamento}"/>
 
@@ -25,7 +22,7 @@
                         <p:inputText id="frecuenciamedicacion" value="#{recetaController.selected.frecuenciamedicacion}" title="#{bundle.EditRecetaTitle_frecuenciamedicacion}" size="32" maxlength="32"/>
 
                         <p:outputLabel value="#{bundle.EditRecetaLabel_idmedicacion}" for="idmedicacion" />
-                        <p:selectOneMenu id="idmedicacion" value="#{recetaController.selected.idmedicacion}" required="true" requiredMessage="#{bundle.EditRecetaRequiredMessage_idmedicacion}" converter="medicacionConverter">
+                        <p:selectOneMenu id="idmedicacion" value="#{recetaController.selected.idmedicacion}" required="true" requiredMessage="#{bundle.EditRecetaRequiredMessage_idmedicacion}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{medicacionController.items}"
                                            var="idmedicacionItem"
@@ -36,7 +33,7 @@
                         </p:selectOneMenu>
 
                         <p:outputLabel value="#{bundle.EditRecetaLabel_idmedicamento}" for="idmedicamento" />
-                        <p:selectOneMenu id="idmedicamento" value="#{recetaController.selected.idmedicamento}" required="true" requiredMessage="#{bundle.EditRecetaRequiredMessage_idmedicamento}" converter="medicamentoConverter">
+                        <p:selectOneMenu id="idmedicamento" value="#{recetaController.selected.idmedicamento}" required="true" requiredMessage="#{bundle.EditRecetaRequiredMessage_idmedicamento}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{medicamentoController.items}"
                                            var="idmedicamentoItem"

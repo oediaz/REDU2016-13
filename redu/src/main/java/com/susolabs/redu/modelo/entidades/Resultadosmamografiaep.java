@@ -149,7 +149,7 @@ public class Resultadosmamografiaep implements Serializable {
 
     @Override
     public String toString() {
-        return "com.susolabs.redu.modelo.entidades.Resultadosmamografiaep[ idresultadosmep=" + idresultadosmep + " ]";
+        return hallazgomep;
     }
     
 }

@@ -31,10 +31,10 @@
                                          effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith">
                             <f:selectItems value="#{medicoController.itemsAvailableSelectOne}"
                                            var="idmedicoItem"
-                                           itemLabel="#{idmedicoItem.nombremedico}"
+                                           itemLabel="#{idmedicoItem.cedulamedico}-#{idmedicoItem.nombremedico} #{idmedicoItem.apellidomedico}"
                                            itemValue="#{idmedicoItem}"/>
                             <p:column>
-                                <h:outputText value="#{t.nombremedico}" />
+                                <h:outputText value="#{t.cedulamedico}-#{t.nombremedico} #{t.apellidomedico}" />
                             </p:column>
                         </p:selectOneMenu>
 
@@ -43,10 +43,10 @@
                                          effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith">
                             <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"
                                            var="idpacienteItem"
-                                           itemLabel="#{idpacienteItem.nombrepaciente}"
+                                           itemLabel="#{idpacienteItem.cedulapaciente}-#{idpacienteItem.nombrepaciente} #{idpacienteItem.apellidopaciente}"
                                            itemValue="#{idpacienteItem}"/>
                             <p:column>
-                                <h:outputText value="#{t.nombrepaciente}" />
+                                <h:outputText value="#{t.cedulapaciente}-#{t.nombrepaciente} #{t.apellidopaciente}" />
                             </p:column>
                         </p:selectOneMenu>
                     </p:panelGrid>

@@ -193,7 +193,7 @@ public class Medico implements Serializable {
 
     @Override
     public String toString() {
-        return "com.susolabs.redu.modelo.entidades.Medico[ idmedico=" + idmedico + " ]";
+        return cedulamedico+"-"+nombremedico+" "+apellidomedico;
     }
     
 }

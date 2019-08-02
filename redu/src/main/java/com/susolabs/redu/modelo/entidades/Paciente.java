@@ -199,7 +199,7 @@ public class Paciente implements Serializable {
 
     @Override
     public String toString() {
-        return "com.susolabs.redu.modelo.entidades.Paciente[ idpaciente=" + idpaciente + " ]";
+        return cedulapaciente+"-"+nombrepaciente+" "+apellidopaciente;
     }
     
 }

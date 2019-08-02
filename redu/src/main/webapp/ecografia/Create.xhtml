@@ -31,10 +31,10 @@
                             <p:ajax listener="#{screeningController.filtrar}" update="screening" />
                             <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"
                                            var="idpacienteItem"
-                                           itemLabel="#{idpacienteItem.nombrepaciente}"
+                                           itemLabel="#{idpacienteItem.toString()}"
                                            itemValue="#{idpacienteItem}"/>
                             <p:column>
-                                <h:outputText value="#{t.nombrepaciente}" />
+                                <h:outputText value="#{t.toString()}" />
                             </p:column>
                         </p:selectOneMenu>
                         
@@ -54,10 +54,10 @@
                                          effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith">
                             <f:selectItems value="#{responsableimagenController.itemsAvailableSelectOne}"
                                            var="responsableimagenItem"
-                                           itemLabel="#{responsableimagenItem.nombreresponsablei}"
+                                           itemLabel="#{responsableimagenItem.toString()}"
                                            itemValue="#{responsableimagenItem}"/>
                             <p:column>
-                                <h:outputText value="#{t.nombreresponsablei}" />
+                                <h:outputText value="#{t.toString()}" />
                             </p:column>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateEcografiaLabel_laboratorio}" for="laboratorio" />

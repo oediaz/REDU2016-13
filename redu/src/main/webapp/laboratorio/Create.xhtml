@@ -13,12 +13,14 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{laboratorioController.selected != null}">
                         <p:outputLabel value="Nombre:" for="nombrelaboratorio" />
-                        <p:inputText id="nombrelaboratorio" value="#{laboratorioController.selected.nombrelaboratorio}" title="#{bundle.CreateLaboratorioTitle_nombrelaboratorio}" />
+                        <p:inputText id="nombrelaboratorio" required="true" value="#{laboratorioController.selected.nombrelaboratorio}" title="#{bundle.CreateLaboratorioTitle_nombrelaboratorio}" />
                         <p:outputLabel value="Dirección:" for="direccionlaboratorio" />
                         <p:inputText id="direccionlaboratorio" value="#{laboratorioController.selected.direccionlaboratorio}" title="#{bundle.CreateLaboratorioTitle_direccionlaboratorio}" />
                         <p:outputLabel value="Teléfono:" for="fonolaboratorio" />
                         <p:inputText id="fonolaboratorio" value="#{laboratorioController.selected.fonolaboratorio}" title="#{bundle.CreateLaboratorioTitle_fonolaboratorio}" />
                     </p:panelGrid>
+                    <p:keyFilter for="fonolaboratorio" mask="num"/>
+                    <p:keyFilter for="nombrelaboratorio" regEx="/[ABCDEFGHIJKLMNOPQRSTUVWXYZÑÁÉÍÓÚ]/i"/>
                     <center>
                         <p:commandButton actionListener="#{laboratorioController.create}" value="#{bundle.Save}" update="display,:LaboratorioListForm:datalist,:growl" oncomplete="handleSubmit(args,'LaboratorioCreateDialog');"/>
                         <p:commandButton value="#{bundle.Cancel}" onclick="LaboratorioCreateDialog.hide()"/>

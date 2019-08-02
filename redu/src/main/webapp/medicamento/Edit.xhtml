@@ -12,10 +12,8 @@
             <h:form id="MedicamentoEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{medicamentoController.selected != null}">
-                        <p:outputLabel value="ID:" for="idmedicamento" />
-                        <p:inputText id="idmedicamento" value="#{medicamentoController.selected.idmedicamento}" title="#{bundle.CreateMedicamentoTitle_idmedicamento}" required="true" requiredMessage="#{bundle.CreateMedicamentoRequiredMessage_idmedicamento}" readonly="true"/>
                         <p:outputLabel value="Nombre:" for="nombremedicamento" />
-                        <p:inputText id="nombremedicamento" value="#{medicamentoController.selected.nombremedicamento}" title="#{bundle.EditMedicamentoTitle_nombremedicamento}" />
+                        <p:inputText id="nombremedicamento" value="#{medicamentoController.selected.nombremedicamento}"  required="true"  title="#{bundle.EditMedicamentoTitle_nombremedicamento}" />
                         <p:outputLabel value="Nombre Genérico:" for="nombregenericomedicamento" />
                         <p:inputText id="nombregenericomedicamento" value="#{medicamentoController.selected.nombregenericomedicamento}" title="#{bundle.EditMedicamentoTitle_nombregenericomedicamento}" />
                         <p:outputLabel value="Presentación:" for="presentacionmedicamento" />

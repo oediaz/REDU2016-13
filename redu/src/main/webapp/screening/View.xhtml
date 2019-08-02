@@ -10,7 +10,7 @@
 
         <p:dialog id="ScreeningViewDlg" widgetVar="ScreeningViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewScreeningTitle}">
             <h:form id="ScreeningViewForm">
-                <h:panelGroup id="display">
+                <h:panelGroup id="display" >
                     <p:panelGrid columns="2" rendered="#{screeningController.selected != null}">
                         <h:outputText value="ID:"/>
                         <h:outputText value="#{screeningController.selected.idscreening}" title="#{bundle.ViewScreeningTitle_idscreening}"/>

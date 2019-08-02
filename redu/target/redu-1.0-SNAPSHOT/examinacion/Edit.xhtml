@@ -12,8 +12,6 @@
             <h:form id="ExaminacionEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{examinacionController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditExaminacionLabel_examinacionPK_idexaminacion}" for="examinacionPK_idexaminacion" />
-                        <p:inputText id="examinacionPK_idexaminacion" value="#{examinacionController.selected.idexaminacion}" title="#{bundle.EditExaminacionTitle_examinacionPK_idexaminacion}" required="true" requiredMessage="#{bundle.EditExaminacionRequiredMessage_examinacionPK_idexaminacion}"/>
                         <p:outputLabel value="#{bundle.EditExaminacionLabel_fechaexaminacion}" for="fechaexaminacion" />
                         <p:calendar id="fechaexaminacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{examinacionController.selected.fechaexaminacion}" title="#{bundle.EditExaminacionTitle_fechaexaminacion}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.EditExaminacionLabel_descripcionexaminacion}" for="descripcionexaminacion" />

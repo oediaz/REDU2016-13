@@ -151,7 +151,7 @@ public class Resultadosecografia implements Serializable {
 
     @Override
     public String toString() {
-        return "com.susolabs.redu.modelo.entidades.Resultadosecografia[ idresultadoe=" + idresultadoe + " ]";
+        return tipohallazgore;
     }
     
 }

@@ -182,7 +182,7 @@ public class Responsableimagen implements Serializable {
 
     @Override
     public String toString() {
-        return "com.susolabs.redu.modelo.entidades.Responsableimagen[ idresponsablei=" + idresponsablei + " ]";
+        return cedularesponsablei+"-"+nombreresponsablei;
     }
     
 }

@@ -12,8 +12,6 @@
             <h:form id="MedicacionCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{medicacionController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateMedicacionLabel_medicacionPK_idmedicacion}" for="medicacionPK_idmedicacion" />
-                        <p:inputText id="medicacionPK_idmedicacion" value="#{medicacionController.selected.idmedicacion}" title="#{bundle.CreateMedicacionTitle_medicacionPK_idmedicacion}" required="true" requiredMessage="#{bundle.CreateMedicacionRequiredMessage_medicacionPK_idmedicacion}"/>
                         <p:outputLabel value="#{bundle.CreateMedicacionLabel_fechamedicacion}" for="fechamedicacion" />
                         <p:calendar id="fechamedicacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{medicacionController.selected.fechamedicacion}" title="#{bundle.EditMedicacionTitle_fechamedicacion}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateMedicacionLabel_descripcionmedicacion}" for="descripcionmedicacion" />

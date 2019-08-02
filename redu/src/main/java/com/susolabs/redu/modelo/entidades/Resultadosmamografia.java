@@ -163,7 +163,7 @@ public class Resultadosmamografia implements Serializable {
 
     @Override
     public String toString() {
-        return "com.susolabs.redu.modelo.entidades.Resultadosmamografia[ idresultadom=" + idresultadom + " ]";
+        return tipohallazgorem;
     }
     
 }

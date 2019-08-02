@@ -8,11 +8,9 @@
 
     <ui:composition>
 
-        <p:dialog id="ResultadosexamenViewDlg" widgetVar="ResultadosexamenViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{bundle.ViewResultadosexamenTitle}" closeOnEscape="true">
-
+        <p:dialog id="ResultadosexamenViewDlg" widgetVar="ResultadosexamenVieialogwDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{bundle.ViewResultadosexamenTitle}" closeOnEscape="true">
             <h:form id="ResultadosexamenViewForm">
-
-                <h:panelGroup id="display">
+                <h:panelGroup id="display" >
                     <p:panelGrid columns="2" columnClasses="column" rendered="#{resultadosexamenController.selected != null}">
 
                         <h:outputText value="#{bundle.ViewResultadosexamenLabel_idresultadosexamen}"/>

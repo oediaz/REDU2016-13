@@ -12,8 +12,6 @@
             <h:form id="ScreeningEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{screeningController.selected != null}">
-                        <p:outputLabel value="ID:" for="idscreening" />
-                        <p:inputText id="idscreening" readonly="true" value="#{screeningController.selected.idscreening}" title="#{bundle.EditScreeningTitle_idscreening}" required="true" requiredMessage="#{bundle.EditScreeningRequiredMessage_idscreening}"/>
                         <p:outputLabel value="Fecha:" for="fechascreening" />
                         <p:calendar id="fechascreening" placeholder="dd/mm/yyyy" yearRange="1950:2019" locale="de" navigator="true" pattern="dd/MM/yyyy" value="#{screeningController.selected.fechascreening}" title="#{bundle.EditScreeningTitle_fechascreening}" required="true" requiredMessage="#{bundle.EditScreeningRequiredMessage_fechascreening}" showOn="button"/>
                         
@@ -34,10 +32,10 @@
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{medicoController.itemsAvailableSelectOne}"
                                            var="idmedicoItem"
-                                           itemLabel="#{idmedicoItem.nombremedico}"
+                                           itemLabel="#{idmedicoItem.cedulamedico}-#{idmedicoItem.nombremedico} #{idmedicoItem.apellidomedico}"
                                            itemValue="#{idmedicoItem}"/>
                             <p:column>
-                                <h:outputText value="#{t.nombremedico}" />
+                                <h:outputText value="#{t.cedulamedico}-#{t.nombremedico} #{t.apellidomedico}" />
                             </p:column>
                         </p:selectOneMenu>
                         <p:outputLabel value="Paciente:" for="idpaciente" />
@@ -46,10 +44,10 @@
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"
                                            var="idpacienteItem"
-                                           itemLabel="#{idpacienteItem.nombrepaciente}"
+                                           itemLabel="#{idpacienteItem.cedulapaciente}-#{idpacienteItem.nombrepaciente} #{idpacienteItem.apellidopaciente}"
                                            itemValue="#{idpacienteItem}"/>
                             <p:column>
-                                <h:outputText value="#{t.nombrepaciente}" />
+                                <h:outputText value="#{t.cedulapaciente}-#{t.nombrepaciente} #{t.apellidopaciente}" />
                             </p:column>
                         </p:selectOneMenu>
                     </p:panelGrid>
