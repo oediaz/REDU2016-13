@@ -40,7 +40,6 @@
                                            />
 
                         </p:selectOneMenu>
-
                         <p:outputLabel value="#{bundle.EditResultadosexamenLabel_idexamen}" for="idexamen" />
                         <p:selectOneMenu id="idexamen" value="#{resultadosexamenController.selected.idexamen}" required="true" requiredMessage="#{bundle.EditResultadosexamenRequiredMessage_idexamen}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
@@ -49,10 +48,9 @@
                                            itemValue="#{idexamenItem}"
                                            itemLabel="#{idexamenItem.descripcionexamen.toString()}"
                                            />
-
                         </p:selectOneMenu>
                     </p:panelGrid>
-                     <center>
+                    <center>
                         <p:commandButton actionListener="#{resultadoexamenController.update}" value="#{bundle.Save}" update="display,:ResultadosexamenForm:datalist,:growl" oncomplete="handleSubmit(args, 'ResultadosexamenEditDialog');"/>
                         <p:commandButton value="#{bundle.Cancel}" onclick="ResultadosexamenEditDialog.hide()"/>
                     </center>  </h:panelGroup>
