@@ -4,7 +4,10 @@ import com.susolabs.redu.modelo.facade.BiradsFacade;
 import com.susolabs.redu.modelo.entidades.Birads;
 import com.susolabs.redu.controlador.util.JsfUtil;
 import com.susolabs.redu.controlador.util.JsfUtil.PersistAction;
-
+import com.susolabs.redu.modelo.entidades.Paciente;
+import com.susolabs.redu.modelo.entidades.Screening;
+import com.susolabs.redu.modelo.entidades.Responsableimagen;
+import com.susolabs.redu.modelo.entidades.Laboratorio;
 import java.io.Serializable;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -25,9 +28,19 @@ public class BiradsController implements Serializable {
 
     @EJB
     private com.susolabs.redu.modelo.facade.BiradsFacade ejbFacade;
+    @EJB
+    private com.susolabs.redu.modelo.facade.PacienteFacade ejbPaciente;
+
+    @EJB
+    private com.susolabs.redu.modelo.facade.ScreeningFacade ejbScreening;
     private List<Birads> items = null;
     private Birads selected;
     private List<Birads> seleccion;
+    private Paciente filtropaciente = new Paciente();
+    private Screening filtroscreening = new Screening();
+    private Responsableimagen filtroresponsablei = new Responsableimagen();
+    private Laboratorio filtrolaboratorio = new Laboratorio();
+    private List<Screening> screPaciente = null;
 
     public BiradsController() {
     }
@@ -39,8 +52,6 @@ public class BiradsController implements Serializable {
     public void setSeleccion(List<Birads> seleccion) {
         this.seleccion = seleccion;
     }
-    
-    
 
     public Birads getSelected() {
         return selected;
@@ -133,6 +144,54 @@ public class BiradsController implements Serializable {
 
     public List<Birads> getItemsAvailableSelectOne() {
         return getFacade().findAll();
+    }
+
+    public Paciente getFiltropaciente() {
+        return filtropaciente;
+    }
+
+    public void setFiltropaciente(Paciente filtropaciente) {
+        this.filtropaciente = filtropaciente;
+    }
+
+    public Screening getFiltroscreening() {
+        return filtroscreening;
+    }
+
+    public void setFiltroscreening(Screening filtroscreening) {
+        this.filtroscreening = filtroscreening;
+    }
+
+    public Responsableimagen getFiltroresponsablei() {
+        return filtroresponsablei;
+    }
+
+    public void setFiltroresponsablei(Responsableimagen filtroresponsablei) {
+        this.filtroresponsablei = filtroresponsablei;
+    }
+
+    public Laboratorio getFiltrolaboratorio() {
+        return filtrolaboratorio;
+    }
+
+    public void setFiltrolaboratorio(Laboratorio filtrolaboratorio) {
+        this.filtrolaboratorio = filtrolaboratorio;
+    }
+    
+
+    public void filtrarscreening() {
+        screPaciente = ejbPaciente.find(filtropaciente.getIdpaciente()).getScreeningList();
+    }
+
+    public List<Screening> getScrePaciente() {
+        if (screPaciente == null) {
+            return ejbScreening.findAll();
+        }
+        return screPaciente;
+    }
+
+    public void setScrePaciente(List<Screening> screPaciente) {
+        this.screPaciente = screPaciente;
     }
 
     @FacesConverter(forClass = Birads.class)

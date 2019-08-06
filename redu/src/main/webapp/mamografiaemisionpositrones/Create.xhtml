@@ -36,7 +36,7 @@
                         <p:inputText id="especificadadmetastasisep" value="#{mamografiaemisionpositronesController.selected.especificadadmetastasisep}" title="#{bundle.CreateMamografiaemisionpositronesTitle_especificadadmetastasisep}" />
                         <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_observacionesmetastasisep}" for="observacionesmetastasisep" />
                         <p:inputText id="observacionesmetastasisep" value="#{mamografiaemisionpositronesController.selected.observacionesmetastasisep}" title="#{bundle.CreateMamografiaemisionpositronesTitle_observacionesmetastasisep}" />
-                        
+
                         <p:outputLabel value="Paciente:" for="idpaciente" />
                         <p:selectOneMenu id="idpaciente" required="true" value="#{screeningController.filtro}"
                                          effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith">
@@ -49,24 +49,41 @@
                                 <h:outputText value="#{t.nombrepaciente}" />
                             </p:column>
                         </p:selectOneMenu>
-                        
+
                         <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_screening}" for="screening" />
-                        <p:selectOneMenu id="screening" value="#{mamografiaemisionpositronesController.selected.idscreening}" required="true" requiredMessage="#{bundle.EditMamografiaemisionpositronesRequiredMessage_screening}">
+                        <p:selectOneMenu id="screening" value="#{mamografiaemisionpositronesController.selected.idscreening}" required="true" requiredMessage="#{bundle.EditMamografiaemisionpositronesRequiredMessage_screening}"
+                                         effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith" >
+
                             <f:selectItems value="#{screeningController.screPaciente}"
                                            var="screeningItem"
+                                           itemLabel="#{screeningItem.toString()}"
                                            itemValue="#{screeningItem}"/>
+                            <p:column>
+                                <h:outputText value="#{t.toString()}" />
+                            </p:column>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_responsableimagen}" for="responsableimagen" />
-                        <p:selectOneMenu id="responsableimagen" value="#{mamografiaemisionpositronesController.selected.idresponsablei}" required="true" requiredMessage="#{bundle.EditMamografiaemisionpositronesRequiredMessage_responsableimagen}">
+                        <p:selectOneMenu id="responsableimagen" value="#{mamografiaemisionpositronesController.selected.idresponsablei}" required="true" requiredMessage="#{bundle.EditMamografiaemisionpositronesRequiredMessage_responsableimagen}"
+                                         effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith" >
                             <f:selectItems value="#{responsableimagenController.itemsAvailableSelectOne}"
                                            var="responsableimagenItem"
+                                           itemLabel="#{responsableimagenItem.toString()}"
                                            itemValue="#{responsableimagenItem}"/>
+                            <p:column>
+                                <h:outputText value="#{t.toString()}" />
+                            </p:column>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_laboratorio}" for="laboratorio" />
-                        <p:selectOneMenu id="laboratorio" value="#{mamografiaemisionpositronesController.selected.idlaboratorio}" required="true" requiredMessage="#{bundle.EditMamografiaemisionpositronesRequiredMessage_laboratorio}">
+                        <p:selectOneMenu id="laboratorio" value="#{mamografiaemisionpositronesController.selected.idlaboratorio}" required="true" requiredMessage="#{bundle.EditMamografiaemisionpositronesRequiredMessage_laboratorio}"
+                                         effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith" >
+                         
                             <f:selectItems value="#{laboratorioController.itemsAvailableSelectOne}"
                                            var="laboratorioItem"
+                                            itemLabel="#{laboratorioItem.toString()}"
                                            itemValue="#{laboratorioItem}"/>
+                            <p:column>
+                                <h:outputText value="#{t.toString()}" />
+                            </p:column>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{mamografiaemisionpositronesController.create}" value="#{bundle.Save}" update="display,:MamografiaemisionpositronesListForm:datalist,:growl" oncomplete="handleSubmit(args,'MamografiaemisionpositronesCreateDialog');"/>

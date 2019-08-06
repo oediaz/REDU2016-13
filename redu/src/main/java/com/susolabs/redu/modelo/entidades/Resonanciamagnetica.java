@@ -226,7 +226,7 @@ public class Resonanciamagnetica implements Serializable {
     public String toString() {
        String dato=""+new SimpleDateFormat("dd-MM-yyyy").format(fecharm);
         String fecha=dato.replace('-', '/');
-        return "" +fecha  + "-"+descripcionrm;
+        return "" +fecha  + "-"+idresonanciamagnetica;
     }
     
 }

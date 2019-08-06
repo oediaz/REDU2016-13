@@ -28,7 +28,7 @@
                         <p:inputText id="protocolorm" value="#{resonanciamagneticaController.selected.protocolorm}" title="#{bundle.CreateResonanciamagneticaTitle_protocolorm}" />
                         <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_observacionesprotocolorm}" for="observacionesprotocolorm" />
                         <p:inputText id="observacionesprotocolorm" value="#{resonanciamagneticaController.selected.observacionesprotocolorm}" title="#{bundle.CreateResonanciamagneticaTitle_observacionesprotocolorm}" />
-                        
+
                         <p:outputLabel value="Paciente:" for="idpaciente" />
                         <p:selectOneMenu id="idpaciente" required="true" value="#{screeningController.filtro}"
                                          effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith">
@@ -41,24 +41,39 @@
                                 <h:outputText value="#{t.nombrepaciente}" />
                             </p:column>
                         </p:selectOneMenu>
-                        
+
                         <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_screening}" for="screening" />
-                        <p:selectOneMenu id="screening" value="#{resonanciamagneticaController.selected.idscreening}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_screening}">
+                        <p:selectOneMenu id="screening" value="#{resonanciamagneticaController.selected.idscreening}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_screening}"
+                                         effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith" >
                             <f:selectItems value="#{screeningController.screPaciente}"
                                            var="screeningItem"
+                                           itemLabel="#{screeningItem.toString()}"
                                            itemValue="#{screeningItem}"/>
+                            <p:column>
+                                <h:outputText value="#{t.toString()}" />
+                            </p:column>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_responsableimagen}" for="responsableimagen" />
-                        <p:selectOneMenu id="responsableimagen" value="#{resonanciamagneticaController.selected.idresponsablei}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_responsableimagen}">
+                        <p:selectOneMenu id="responsableimagen" value="#{resonanciamagneticaController.selected.idresponsablei}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_responsableimagen}"
+                                         effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith" >
                             <f:selectItems value="#{responsableimagenController.itemsAvailableSelectOne}"
                                            var="responsableimagenItem"
+                                           itemLabel="#{responsableimagenItem.toString()}"
                                            itemValue="#{responsableimagenItem}"/>
+                            <p:column>
+                                <h:outputText value="#{t.toString()}" />
+                            </p:column>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_laboratorio}" for="laboratorio" />
-                        <p:selectOneMenu id="laboratorio" value="#{resonanciamagneticaController.selected.idlaboratorio}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_laboratorio}">
+                        <p:selectOneMenu id="laboratorio" value="#{resonanciamagneticaController.selected.idlaboratorio}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_laboratorio}"
+                                         effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith" >
                             <f:selectItems value="#{laboratorioController.itemsAvailableSelectOne}"
                                            var="laboratorioItem"
+                                           itemLabel="#{laboratorioItem.toString()}"
                                            itemValue="#{laboratorioItem}"/>
+                            <p:column>
+                                <h:outputText value="#{t.toString()}" />
+                            </p:column>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{resonanciamagneticaController.create}" value="#{bundle.Save}" update="display,:ResonanciamagneticaListForm:datalist,:growl" oncomplete="handleSubmit(args,'ResonanciamagneticaCreateDialog');"/>

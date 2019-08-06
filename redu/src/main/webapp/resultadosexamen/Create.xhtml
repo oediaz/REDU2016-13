@@ -12,23 +12,23 @@
 
             <h:form id="ResultadosexamenCreateForm">
 
-                <h:panelGroup id="display" rendered="#{resultadosexamenController.selected != null}">
+                <h:panelGroup id="display" rendered="#{resultadoexamenController.selected != null}">
                     <p:panelGrid columns="2" columnClasses="column">
 
                         <p:outputLabel value="#{bundle.CreateResultadosexamenLabel_elementoexamen}" for="elementoexamen" />
-                        <p:inputText id="elementoexamen" value="#{resultadosexamenController.selected.elementoexamen}" title="#{bundle.CreateResultadosexamenTitle_elementoexamen}" size="32" maxlength="32"/>
+                        <p:inputText id="elementoexamen" value="#{resultadoexamenController.selected.elementoexamen}" title="#{bundle.CreateResultadosexamenLabel_elementoexamen}" size="32" maxlength="32"/>
 
                         <p:outputLabel value="#{bundle.CreateResultadosexamenLabel_datoelementoexamen}" for="datoelementoexamen" />
-                        <p:inputText id="datoelementoexamen" value="#{resultadosexamenController.selected.datoelementoexamen}" title="#{bundle.CreateResultadosexamenTitle_datoelementoexamen}"/>
+                        <p:inputText id="datoelementoexamen" value="#{resultadoexamenController.selected.datoelementoexamen}" title="#{bundle.CreateResultadosexamenLabel_datoelementoexamen}"/>
 
                         <p:outputLabel value="#{bundle.CreateResultadosexamenLabel_valorminrefelemexamen}" for="valorminrefelemexamen" />
-                        <p:inputText id="valorminrefelemexamen" value="#{resultadosexamenController.selected.valorminrefelemexamen}" title="#{bundle.CreateResultadosexamenTitle_valorminrefelemexamen}"/>
+                        <p:inputText id="valorminrefelemexamen" value="#{resultadoexamenController.selected.valorminrefelemexamen}" title="#{bundle.CreateResultadosexamenLabel_valorminrefelemexamen}"/>
 
                         <p:outputLabel value="#{bundle.CreateResultadosexamenLabel_valormaxrefelemexamen}" for="valormaxrefelemexamen" />
-                        <p:inputText id="valormaxrefelemexamen" value="#{resultadosexamenController.selected.valormaxrefelemexamen}" title="#{bundle.CreateResultadosexamenTitle_valormaxrefelemexamen}"/>
+                        <p:inputText id="valormaxrefelemexamen" value="#{resultadoexamenController.selected.valormaxrefelemexamen}" title="#{bundle.CreateResultadosexamenLabel_valormaxrefelemexamen}"/>
 
                         <p:outputLabel value="#{bundle.CreateResultadosexamenLabel_idexaminacion}" for="idexaminacion" />
-                        <p:selectOneMenu id="idexaminacion" value="#{resultadosexamenController.selected.idexaminacion}" required="true" requiredMessage="#{bundle.CreateResultadosexamenRequiredMessage_idexaminacion}" >
+                        <p:selectOneMenu id="idexaminacion" value="#{resultadoexamenController.selected.idexaminacion}" required="true" requiredMessage="#{bundle.CreateResultadosexamenRequiredMessage_idexaminacion}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{examinacionController.items}"
                                            var="idexaminacionItem"
@@ -39,7 +39,7 @@
                         </p:selectOneMenu>
 
                         <p:outputLabel value="#{bundle.CreateResultadosexamenLabel_idexamen}" for="idexamen" />
-                        <p:selectOneMenu id="idexamen" value="#{resultadosexamenController.selected.idexamen}" required="true" requiredMessage="#{bundle.CreateResultadosexamenRequiredMessage_idexamen}" >
+                        <p:selectOneMenu id="idexamen" value="#{resultadoexamenController.selected.idexamen}" required="true" requiredMessage="#{bundle.CreateResultadosexamenRequiredMessage_idexamen}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{examenController.items}"
                                            var="idexamenItem"
@@ -49,7 +49,7 @@
 
                         </p:selectOneMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{resultadosexamenController.saveNew}" value="#{bundle.Save}" update="display,:ResultadosexamenListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ResultadosexamenCreateDialog'));">
+                    <p:commandButton actionListener="#{resultadoexamenController.saveNew}" value="#{bundle.Save}" update="display,:ResultadosexamenForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ResultadosexamenCreateDialog'));">
                         <p:confirm header="#{bundle.ConfirmationHeader}" message="#{bundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
                     </p:commandButton>
 

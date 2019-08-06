@@ -11,28 +11,28 @@
         <p:dialog id="ResultadosexamenViewDlg" widgetVar="ResultadosexamenVieialogwDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{bundle.ViewResultadosexamenTitle}" closeOnEscape="true">
             <h:form id="ResultadosexamenViewForm">
                 <h:panelGroup id="display" >
-                    <p:panelGrid columns="2" columnClasses="column" rendered="#{resultadosexamenController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{resultadoexamenController.selected != null}">
 
                         <h:outputText value="#{bundle.ViewResultadosexamenLabel_idresultadosexamen}"/>
-                        <h:outputText value="#{resultadosexamenController.selected.idresultadosexamen}" title="#{bundle.ViewResultadosexamenTitle_idresultadosexamen}"/>
+                        <h:outputText value="#{resultadoexamenController.selected.idresultadosexamen}" title="#{bundle.ViewResultadosexamenTitle_idresultadosexamen}"/>
 
                         <h:outputText value="#{bundle.ViewResultadosexamenLabel_elementoexamen}"/>
-                        <h:outputText value="#{resultadosexamenController.selected.elementoexamen}" title="#{bundle.ViewResultadosexamenTitle_elementoexamen}"/>
+                        <h:outputText value="#{resultadoexamenController.selected.elementoexamen}" title="#{bundle.ViewResultadosexamenTitle_elementoexamen}"/>
 
                         <h:outputText value="#{bundle.ViewResultadosexamenLabel_datoelementoexamen}"/>
-                        <h:outputText value="#{resultadosexamenController.selected.datoelementoexamen}" title="#{bundle.ViewResultadosexamenTitle_datoelementoexamen}"/>
+                        <h:outputText value="#{resultadoexamenController.selected.datoelementoexamen}" title="#{bundle.ViewResultadosexamenTitle_datoelementoexamen}"/>
 
                         <h:outputText value="#{bundle.ViewResultadosexamenLabel_valorminrefelemexamen}"/>
-                        <h:outputText value="#{resultadosexamenController.selected.valorminrefelemexamen}" title="#{bundle.ViewResultadosexamenTitle_valorminrefelemexamen}"/>
+                        <h:outputText value="#{resultadoexamenController.selected.valorminrefelemexamen}" title="#{bundle.ViewResultadosexamenTitle_valorminrefelemexamen}"/>
 
                         <h:outputText value="#{bundle.ViewResultadosexamenLabel_valormaxrefelemexamen}"/>
-                        <h:outputText value="#{resultadosexamenController.selected.valormaxrefelemexamen}" title="#{bundle.ViewResultadosexamenTitle_valormaxrefelemexamen}"/>
+                        <h:outputText value="#{resultadoexamenController.selected.valormaxrefelemexamen}" title="#{bundle.ViewResultadosexamenTitle_valormaxrefelemexamen}"/>
 
                         <h:outputText value="#{bundle.ViewResultadosexamenLabel_idexaminacion}"/>
-                        <h:outputText value="#{resultadosexamenController.selected.idexaminacion.descripcionexaminacion}"/>
+                        <h:outputText value="#{resultadoexamenController.selected.idexaminacion.descripcionexaminacion}"/>
 
                         <h:outputText value="#{bundle.ViewResultadosexamenLabel_idexamen}"/>
-                        <h:outputText value="#{resultadosexamenController.selected.idexamen.descripcionexamen}"/>
+                        <h:outputText value="#{resultadoexamenController.selected.idexamen.descripcionexamen}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="PF('ResultadosexamenViewDialog').hide()"/>
                 </h:panelGroup>

@@ -202,7 +202,7 @@ public class Mamografiaemisionpositrones implements Serializable {
     public String toString() {
         String dato=""+new SimpleDateFormat("dd-MM-yyyy").format(fechamamografiaep);
         String fecha=dato.replace('-', '/');
-        return "" +fecha  + "-"+diagnosticopreviomamografiaep;
+        return "" +fecha  + "-"+idmamografiaep;
     }
     
 }

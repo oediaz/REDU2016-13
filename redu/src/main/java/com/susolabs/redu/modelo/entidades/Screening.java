@@ -212,7 +212,7 @@ public class Screening implements Serializable {
     public String toString() {
         String dato=""+new SimpleDateFormat("dd-MM-yyyy").format(fechascreening);
         String fecha=dato.replace('-', '/');
-        return "" +fecha  + "-"+metodoscreening;
+        return "" +fecha  + "-"+idscreening;
     }
     
 }

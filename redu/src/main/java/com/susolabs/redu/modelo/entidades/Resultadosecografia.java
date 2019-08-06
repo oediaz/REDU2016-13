@@ -151,7 +151,7 @@ public class Resultadosecografia implements Serializable {
 
     @Override
     public String toString() {
-        return tipohallazgore;
+        return idresultadoe+"-"+tipohallazgore;
     }
     
 }

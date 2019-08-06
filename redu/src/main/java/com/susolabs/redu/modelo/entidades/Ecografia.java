@@ -201,7 +201,7 @@ public class Ecografia implements Serializable {
     public String toString() {
         String dato=""+new SimpleDateFormat("dd-MM-yyyy").format(fechaecografia);
         String fecha=dato.replace('-', '/');
-        return "" +fecha  + "-"+descripcionecografia;
+        return "" +fecha  + "-"+idecografia;
     }
     
 }

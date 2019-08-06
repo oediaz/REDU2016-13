@@ -149,7 +149,7 @@ public class Resultadosmamografiaep implements Serializable {
 
     @Override
     public String toString() {
-        return hallazgomep;
+        return idresultadosmep+"-"+hallazgomep;
     }
     
 }

@@ -101,7 +101,7 @@ public class Biopsia implements Serializable {
 
     @Override
     public String toString() {
-        return "com.susolabs.redu.modelo.entidades.Biopsia[ idbiopsia=" + idbiopsia + " ]";
+        return ""+idbiopsia;
     }
     
 }

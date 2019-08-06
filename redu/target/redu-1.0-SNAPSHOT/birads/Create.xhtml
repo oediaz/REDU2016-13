@@ -39,6 +39,53 @@
                     </p:tab>
                     <p:tab title="Resultados">
                         <p:panelGrid columns="2" rendered="#{biradsController.selected != null}">
+                            <p:outputLabel value="Paciente:" for="idpaciente" />
+                            <p:selectOneMenu id="idpaciente" required="true" value="#{biradsController.filtropaciente}"
+                                             effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith">
+                                <p:ajax listener="#{biradsController.filtrarscreening}" update="screening" />
+                                <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"
+                                               var="idpacienteItem"
+                                               itemLabel="#{idpacienteItem.nombrepaciente}"
+                                               itemValue="#{idpacienteItem}"/>
+                                <p:column>
+                                    <h:outputText value="#{t.nombrepaciente}" />
+                                </p:column>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_screening}" for="screening" />
+                            <p:selectOneMenu id="screening" value="#{biradsController.filtroscreening}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_screening}"
+                                             effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith" >
+                                 <p:ajax listener="#{screeningController.filtrar}" update="screening" />
+                                <f:selectItems value="#{screeningController.screPaciente}"
+                                               var="screeningItem"
+                                               itemLabel="#{screeningItem.toString()}"
+                                               itemValue="#{screeningItem}"/>
+                                <p:column>
+                                    <h:outputText value="#{t.toString()}" />
+                                </p:column>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_responsableimagen}" for="responsableimagen" />
+                        <p:selectOneMenu id="responsableimagen" value="#{biradsController.filtroresponsablei}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_responsableimagen}"
+                                         effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith" >
+                            <f:selectItems value="#{responsableimagenController.itemsAvailableSelectOne}"
+                                           var="responsableimagenItem"
+                                           itemLabel="#{responsableimagenItem.toString()}"
+                                           itemValue="#{responsableimagenItem}"/>
+                            <p:column>
+                                <h:outputText value="#{t.toString()}" />
+                            </p:column>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_laboratorio}" for="laboratorio" />
+                        <p:selectOneMenu id="laboratorio" value="#{biradsController.filtrolaboratorio}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_laboratorio}"
+                                         effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith" >
+                            <f:selectItems value="#{laboratorioController.itemsAvailableSelectOne}"
+                                           var="laboratorioItem"
+                                           itemLabel="#{laboratorioItem.toString()}"
+                                           itemValue="#{laboratorioItem}"/>
+                            <p:column>
+                                <h:outputText value="#{t.toString()}" />
+                            </p:column>
+                        </p:selectOneMenu>
                             <p:outputLabel value="#{bundle.CreateBiradsLabel_idresultadoe}" for="idresultadoe" />
                             <p:selectOneMenu id="idresultadoe" value="#{biradsController.selected.idresultadoe}" required="true" requiredMessage="#{bundle.EditBiradsRequiredMessage_idresultadoe}">
                                 <f:selectItems value="#{resultadosecografiaController.itemsAvailableSelectOne}"
@@ -59,7 +106,7 @@
                             </p:selectOneMenu>
                             <p:outputLabel value="#{bundle.CreateBiradsLabel_idresultadorm}" for="idresultadorm" />
                             <p:selectOneMenu id="idresultadorm" value="#{biradsController.selected.idresultadorm}" required="true" requiredMessage="#{bundle.EditBiradsRequiredMessage_idresultadorm}">
-                                <f:selectItems value="#{resultadosresonanciamagneticaController.itemsAvailableSelectOne}"
+                                <f:selectItems value="#{resultadosbiradsController.itemsAvailableSelectOne}"
                                                var="idresultadormItem"
                                                itemValue="#{idresultadormItem}"/>
                             </p:selectOneMenu>

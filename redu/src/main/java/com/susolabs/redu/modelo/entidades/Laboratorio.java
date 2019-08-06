@@ -158,7 +158,7 @@ public class Laboratorio implements Serializable {
 
     @Override
     public String toString() {
-        return nombrelaboratorio;
+        return idlaboratorio+"-"+nombrelaboratorio;
     }
     
 }

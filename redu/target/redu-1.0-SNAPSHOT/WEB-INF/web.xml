@@ -9,6 +9,12 @@
         <param-name>primefaces.THEME</param-name>
         <param-value>luna-blue</param-value>
     </context-param>
+    
+    <context-param>
+        <param-name>facelets.SKIP_COMMENTS</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -28,19 +34,19 @@
     </welcome-file-list>
     
     <mime-mapping>
-		<extension>ttf</extension>
-		<mime-type>web/x-font-ttf</mime-type>
-	</mime-mapping>
-	<mime-mapping>
-		<extension>woff</extension>
-		<mime-type>web/x-font-woff</mime-type>
-	</mime-mapping>
-	<mime-mapping>
-		<extension>woff2</extension>
-		<mime-type>web/x-font-woff2</mime-type>
-	</mime-mapping>
-	<mime-mapping>
-		<extension>eot</extension>
-		<mime-type>web/x-font-eot</mime-type>
-	</mime-mapping>
+        <extension>ttf</extension>
+        <mime-type>web/x-font-ttf</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>woff</extension>
+        <mime-type>web/x-font-woff</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>woff2</extension>
+        <mime-type>web/x-font-woff2</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>eot</extension>
+        <mime-type>web/x-font-eot</mime-type>
+    </mime-mapping>
 </web-app>

@@ -226,7 +226,7 @@ public class Mamografia implements Serializable {
     public String toString() {
           String dato=""+new SimpleDateFormat("dd-MM-yyyy").format(fechamamografia);
         String fecha=dato.replace('-', '/');
-        return "" +fecha  + "-"+caracteristicapredominantem;
+        return "" +fecha  + "-"+idmamografia;
     }
     
 }

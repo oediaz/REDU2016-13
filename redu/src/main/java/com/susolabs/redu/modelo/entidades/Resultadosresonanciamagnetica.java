@@ -126,7 +126,7 @@ public class Resultadosresonanciamagnetica implements Serializable {
 
     @Override
     public String toString() {
-        return tipohallazgormm;
+        return idresultadorm+"-"+tipohallazgormm;
     }
     
 }

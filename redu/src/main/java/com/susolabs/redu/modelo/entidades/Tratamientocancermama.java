@@ -199,7 +199,7 @@ public class Tratamientocancermama implements Serializable {
     public String toString() {
           String dato=""+new SimpleDateFormat("dd-MM-yyyy").format(fechainiciotcm);
         String fecha=dato.replace('-', '/');
-        return "" +fecha  + "-"+descripciontcm;
+        return "" +fecha  + "-"+idtrtamientocm;
     }
     
 }

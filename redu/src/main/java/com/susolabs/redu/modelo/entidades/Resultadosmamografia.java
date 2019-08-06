@@ -163,7 +163,7 @@ public class Resultadosmamografia implements Serializable {
 
     @Override
     public String toString() {
-        return tipohallazgorem;
+        return idresultadom+"-"+tipohallazgorem;
     }
     
 }

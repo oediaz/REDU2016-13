@@ -245,7 +245,7 @@ public class Birads implements Serializable {
     public String toString() {
           String dato=""+new SimpleDateFormat("dd-MM-yyyy").format(fechabirads);
         String fecha=dato.replace('-', '/');
-        return "" +fecha  + "-"+razonbirads;
+        return "" +fecha  + "-"+idbirads;
     }
     
 }
