@@ -55,8 +55,11 @@
                             <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_screening}" for="screening" />
                             <p:selectOneMenu id="screening" value="#{biradsController.filtroscreening}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_screening}"
                                              effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith" >
-                                 <p:ajax listener="#{screeningController.filtrar}" update="screening" />
-                                <f:selectItems value="#{screeningController.screPaciente}"
+                                <p:ajax listener="#{biradsController.filtrar}" update="idresultadoe" />
+                                <p:ajax listener="#{biradsController.filtrar}" update="idresultadom" />
+                                <p:ajax listener="#{biradsController.filtrar}" update="idresultadosmep" />
+                                <p:ajax listener="#{biradsController.filtrar}" update="idresultadorm" />
+                                 <f:selectItems value="#{biradsController.screPaciente}"
                                                var="screeningItem"
                                                itemLabel="#{screeningItem.toString()}"
                                                itemValue="#{screeningItem}"/>
@@ -67,6 +70,10 @@
                             <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_responsableimagen}" for="responsableimagen" />
                         <p:selectOneMenu id="responsableimagen" value="#{biradsController.filtroresponsablei}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_responsableimagen}"
                                          effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith" >
+                             <p:ajax listener="#{biradsController.filtrar}" update="idresultadoe" />
+                                <p:ajax listener="#{biradsController.filtrar}" update="idresultadom" />
+                                <p:ajax listener="#{biradsController.filtrar}" update="idresultadosmep" />
+                                <p:ajax listener="#{biradsController.filtrar}" update="idresultadorm" />
                             <f:selectItems value="#{responsableimagenController.itemsAvailableSelectOne}"
                                            var="responsableimagenItem"
                                            itemLabel="#{responsableimagenItem.toString()}"
@@ -78,6 +85,10 @@
                         <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_laboratorio}" for="laboratorio" />
                         <p:selectOneMenu id="laboratorio" value="#{biradsController.filtrolaboratorio}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_laboratorio}"
                                          effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith" >
+                             <p:ajax listener="#{biradsController.filtrar}" update="idresultadoe" />
+                                <p:ajax listener="#{biradsController.filtrar}" update="idresultadom" />
+                                <p:ajax listener="#{biradsController.filtrar}" update="idresultadosmep" />
+                                <p:ajax listener="#{biradsController.filtrar}" update="idresultadorm" />
                             <f:selectItems value="#{laboratorioController.itemsAvailableSelectOne}"
                                            var="laboratorioItem"
                                            itemLabel="#{laboratorioItem.toString()}"
@@ -88,25 +99,25 @@
                         </p:selectOneMenu>
                             <p:outputLabel value="#{bundle.CreateBiradsLabel_idresultadoe}" for="idresultadoe" />
                             <p:selectOneMenu id="idresultadoe" value="#{biradsController.selected.idresultadoe}" required="true" requiredMessage="#{bundle.EditBiradsRequiredMessage_idresultadoe}">
-                                <f:selectItems value="#{resultadosecografiaController.itemsAvailableSelectOne}"
+                                <f:selectItems value="#{biradsController.resultadosecografia}"
                                                var="idresultadoeItem"
                                                itemValue="#{idresultadoeItem}"/>
                             </p:selectOneMenu>
                             <p:outputLabel value="#{bundle.CreateBiradsLabel_idresultadom}" for="idresultadom" />
                             <p:selectOneMenu id="idresultadom" value="#{biradsController.selected.idresultadom}" required="true" requiredMessage="#{bundle.EditBiradsRequiredMessage_idresultadom}">
-                                <f:selectItems value="#{resultadosmamografiaController.itemsAvailableSelectOne}"
+                                <f:selectItems value="#{biradsController.resultadosmamografia}"
                                                var="idresultadomItem"
                                                itemValue="#{idresultadomItem}"/>
                             </p:selectOneMenu>
                             <p:outputLabel value="#{bundle.CreateBiradsLabel_idresultadosmep}" for="idresultadosmep" />
                             <p:selectOneMenu id="idresultadosmep" value="#{biradsController.selected.idresultadosmep}" >
-                                <f:selectItems value="#{resultadosmamografiaepController.itemsAvailableSelectOne}"
+                                <f:selectItems value="#{biradsController.resultadosmamografiaep}"
                                                var="idresultadosmepItem"
                                                itemValue="#{idresultadosmepItem}"/>
                             </p:selectOneMenu>
                             <p:outputLabel value="#{bundle.CreateBiradsLabel_idresultadorm}" for="idresultadorm" />
                             <p:selectOneMenu id="idresultadorm" value="#{biradsController.selected.idresultadorm}" required="true" requiredMessage="#{bundle.EditBiradsRequiredMessage_idresultadorm}">
-                                <f:selectItems value="#{resultadosbiradsController.itemsAvailableSelectOne}"
+                                <f:selectItems value="#{biradsController.resultadosrm}"
                                                var="idresultadormItem"
                                                itemValue="#{idresultadormItem}"/>
                             </p:selectOneMenu>

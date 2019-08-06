@@ -8,7 +8,12 @@ import com.susolabs.redu.modelo.entidades.Paciente;
 import com.susolabs.redu.modelo.entidades.Screening;
 import com.susolabs.redu.modelo.entidades.Responsableimagen;
 import com.susolabs.redu.modelo.entidades.Laboratorio;
+import com.susolabs.redu.modelo.entidades.Resultadosecografia;
+import com.susolabs.redu.modelo.entidades.Resultadosmamografia;
+import com.susolabs.redu.modelo.entidades.Resultadosmamografiaep;
+import com.susolabs.redu.modelo.entidades.Resultadosresonanciamagnetica;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -33,6 +38,27 @@ public class BiradsController implements Serializable {
 
     @EJB
     private com.susolabs.redu.modelo.facade.ScreeningFacade ejbScreening;
+
+    @EJB
+    private com.susolabs.redu.modelo.facade.EcografiaFacade ejbEcografia;
+    @EJB
+    private com.susolabs.redu.modelo.facade.ResultadosecografiaFacade ejbREcografia;
+
+    @EJB
+    private com.susolabs.redu.modelo.facade.MamografiaFacade ejbMamografia;
+    @EJB
+    private com.susolabs.redu.modelo.facade.ResultadosmamografiaFacade ejbRMamografia;
+
+    @EJB
+    private com.susolabs.redu.modelo.facade.MamografiaemisionpositronesFacade ejbMamografiaep;
+    @EJB
+    private com.susolabs.redu.modelo.facade.ResultadosmamografiaepFacade ejbRMamografiaep;
+
+    @EJB
+    private com.susolabs.redu.modelo.facade.ResonanciamagneticaFacade ejbResonancia;
+    @EJB
+    private com.susolabs.redu.modelo.facade.ResultadosresonanciamagneticaFacade ejbRResonancia;
+
     private List<Birads> items = null;
     private Birads selected;
     private List<Birads> seleccion;
@@ -41,6 +67,10 @@ public class BiradsController implements Serializable {
     private Responsableimagen filtroresponsablei = new Responsableimagen();
     private Laboratorio filtrolaboratorio = new Laboratorio();
     private List<Screening> screPaciente = null;
+    private List<Resultadosecografia> resultadosecografia = null;
+    private List<Resultadosmamografia> resultadosmamografia = null;
+    private List<Resultadosmamografiaep> resultadosmamografiaep = null;
+    private List<Resultadosresonanciamagnetica> resultadosrm = null;
 
     public BiradsController() {
     }
@@ -177,10 +207,94 @@ public class BiradsController implements Serializable {
     public void setFiltrolaboratorio(Laboratorio filtrolaboratorio) {
         this.filtrolaboratorio = filtrolaboratorio;
     }
-    
 
     public void filtrarscreening() {
         screPaciente = ejbPaciente.find(filtropaciente.getIdpaciente()).getScreeningList();
+    }
+
+    public void filtrar() {
+
+        resultadosecografia = new ArrayList<Resultadosecografia>();
+        List<Resultadosecografia> resultado = ejbEcografia.find(filtroscreening.getIdscreening()).getResultadosecografiaList();
+        for (int i = 0; i < resultado.size(); i++) {
+            if (resultado.get(i).getIdecografia().getIdlaboratorio().getIdlaboratorio() == filtrolaboratorio.getIdlaboratorio()) {
+                if (resultado.get(i).getIdecografia().getIdresponsablei().getIdresponsablei() == filtroresponsablei.getIdresponsablei()) {
+                    resultadosecografia.add(resultado.get(i));
+                }
+            }
+        }
+        resultadosmamografia = new ArrayList<Resultadosmamografia>();
+        List<Resultadosmamografia> resultadom = ejbMamografia.find(filtroscreening.getIdscreening()).getResultadosmamografiaList();
+        for (int i = 0; i < resultadom.size(); i++) {
+            if (resultadom.get(i).getIdmamografia().getIdlaboratorio().getIdlaboratorio() == filtrolaboratorio.getIdlaboratorio()) {
+                if (resultadom.get(i).getIdmamografia().getIdresponsablei().getIdresponsablei() == filtroresponsablei.getIdresponsablei()) {
+                    resultadosecografia.add(resultado.get(i));
+                }
+            }
+        }
+        resultadosmamografiaep = new ArrayList<Resultadosmamografiaep>();
+        List<Resultadosmamografiaep> resultadomep = ejbMamografiaep.find(filtroscreening.getIdscreening()).getResultadosmamografiaepList();
+        for (int i = 0; i < resultadomep.size(); i++) {
+            if (resultadomep.get(i).getIdmamografiaep().getIdlaboratorio().getIdlaboratorio() == filtrolaboratorio.getIdlaboratorio()) {
+                if (resultadomep.get(i).getIdmamografiaep().getIdresponsablei().getIdresponsablei() == filtroresponsablei.getIdresponsablei()) {
+                    resultadosecografia.add(resultado.get(i));
+                }
+            }
+        }
+        resultadosrm = new ArrayList<Resultadosresonanciamagnetica>();
+        List<Resultadosresonanciamagnetica> resultadorm = ejbResonancia.find(filtroscreening.getIdscreening()).getResultadosresonanciamagneticaList();
+        for (int i = 0; i < resultadorm.size(); i++) {
+            if (resultadorm.get(i).getIdresonanciamagnetica().getIdlaboratorio().getIdlaboratorio() == filtrolaboratorio.getIdlaboratorio()) {
+                if (resultadorm.get(i).getIdresonanciamagnetica().getIdresponsablei().getIdresponsablei() == filtroresponsablei.getIdresponsablei()) {
+                    resultadosecografia.add(resultado.get(i));
+                }
+            }
+        }
+
+    }
+
+    public List<Resultadosmamografia> getResultadosmamografia() {
+        if (resultadosmamografia == null) {
+            return ejbRMamografia.findAll();
+        }
+        return resultadosmamografia;
+    }
+
+    public void setResultadosmamografia(List<Resultadosmamografia> resultadosmamografia) {
+        this.resultadosmamografia = resultadosmamografia;
+    }
+
+    public List<Resultadosmamografiaep> getResultadosmamografiaep() {
+        if (resultadosmamografiaep == null) {
+            return ejbRMamografiaep.findAll();
+        }
+        return resultadosmamografiaep;
+    }
+
+    public void setResultadosmamografiaep(List<Resultadosmamografiaep> resultadosmamografiaep) {
+        this.resultadosmamografiaep = resultadosmamografiaep;
+    }
+
+    public List<Resultadosresonanciamagnetica> getResultadosrm() {
+        if (resultadosrm == null) {
+            return ejbRResonancia.findAll();
+        }
+        return resultadosrm;
+    }
+
+    public void setResultadosrm(List<Resultadosresonanciamagnetica> resultadosrm) {
+        this.resultadosrm = resultadosrm;
+    }
+
+    public List<Resultadosecografia> getResultadosecografia() {
+        if (resultadosecografia == null) {
+            return ejbREcografia.findAll();
+        }
+        return resultadosecografia;
+    }
+
+    public void setResultadosecografia(List<Resultadosecografia> resultadosecografia) {
+        this.resultadosecografia = resultadosecografia;
     }
 
     public List<Screening> getScrePaciente() {
