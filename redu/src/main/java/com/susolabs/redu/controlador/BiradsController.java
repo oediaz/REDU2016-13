@@ -15,6 +15,7 @@ import com.susolabs.redu.modelo.entidades.Resultadosresonanciamagnetica;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -213,42 +214,58 @@ public class BiradsController implements Serializable {
     }
 
     public void filtrar() {
-
         resultadosecografia = new ArrayList<Resultadosecografia>();
-        List<Resultadosecografia> resultado = ejbEcografia.find(filtroscreening.getIdscreening()).getResultadosecografiaList();
-        for (int i = 0; i < resultado.size(); i++) {
-            if (resultado.get(i).getIdecografia().getIdlaboratorio().getIdlaboratorio() == filtrolaboratorio.getIdlaboratorio()) {
-                if (resultado.get(i).getIdecografia().getIdresponsablei().getIdresponsablei() == filtroresponsablei.getIdresponsablei()) {
-                    resultadosecografia.add(resultado.get(i));
-                }
-            }
-        }
         resultadosmamografia = new ArrayList<Resultadosmamografia>();
-        List<Resultadosmamografia> resultadom = ejbMamografia.find(filtroscreening.getIdscreening()).getResultadosmamografiaList();
-        for (int i = 0; i < resultadom.size(); i++) {
-            if (resultadom.get(i).getIdmamografia().getIdlaboratorio().getIdlaboratorio() == filtrolaboratorio.getIdlaboratorio()) {
-                if (resultadom.get(i).getIdmamografia().getIdresponsablei().getIdresponsablei() == filtroresponsablei.getIdresponsablei()) {
-                    resultadosecografia.add(resultado.get(i));
-                }
-            }
-        }
         resultadosmamografiaep = new ArrayList<Resultadosmamografiaep>();
-        List<Resultadosmamografiaep> resultadomep = ejbMamografiaep.find(filtroscreening.getIdscreening()).getResultadosmamografiaepList();
-        for (int i = 0; i < resultadomep.size(); i++) {
-            if (resultadomep.get(i).getIdmamografiaep().getIdlaboratorio().getIdlaboratorio() == filtrolaboratorio.getIdlaboratorio()) {
-                if (resultadomep.get(i).getIdmamografiaep().getIdresponsablei().getIdresponsablei() == filtroresponsablei.getIdresponsablei()) {
-                    resultadosecografia.add(resultado.get(i));
-                }
-            }
-        }
         resultadosrm = new ArrayList<Resultadosresonanciamagnetica>();
-        List<Resultadosresonanciamagnetica> resultadorm = ejbResonancia.find(filtroscreening.getIdscreening()).getResultadosresonanciamagneticaList();
-        for (int i = 0; i < resultadorm.size(); i++) {
-            if (resultadorm.get(i).getIdresonanciamagnetica().getIdlaboratorio().getIdlaboratorio() == filtrolaboratorio.getIdlaboratorio()) {
-                if (resultadorm.get(i).getIdresonanciamagnetica().getIdresponsablei().getIdresponsablei() == filtroresponsablei.getIdresponsablei()) {
-                    resultadosecografia.add(resultado.get(i));
+        try {
+
+            List<Resultadosecografia> resultado = ejbEcografia.find(filtroscreening.getIdscreening()).getResultadosecografiaList();
+            for (int i = 0; i < resultado.size(); i++) {
+                if (Objects.equals(resultado.get(i).getIdecografia().getIdlaboratorio().getIdlaboratorio(), filtrolaboratorio.getIdlaboratorio())) {
+                    if (Objects.equals(resultado.get(i).getIdecografia().getIdresponsablei().getIdresponsablei(), filtroresponsablei.getIdresponsablei())) {
+                        resultadosecografia.add(resultado.get(i));
+                    }
                 }
             }
+        } catch (Exception e) {
+
+        }
+        try {
+            List<Resultadosmamografia> resultadom = ejbMamografia.find(filtroscreening.getIdscreening()).getResultadosmamografiaList();
+            for (int i = 0; i < resultadom.size(); i++) {
+                if (Objects.equals(resultadom.get(i).getIdmamografia().getIdlaboratorio().getIdlaboratorio(), filtrolaboratorio.getIdlaboratorio())) {
+                    if (Objects.equals(resultadom.get(i).getIdmamografia().getIdresponsablei().getIdresponsablei(), filtroresponsablei.getIdresponsablei())) {
+                        resultadosmamografia.add(resultadom.get(i));
+                    }
+                }
+            }
+        } catch (Exception e) {
+
+        }
+        try {
+            List<Resultadosmamografiaep> resultadomep = ejbMamografiaep.find(filtroscreening.getIdscreening()).getResultadosmamografiaepList();
+            for (int i = 0; i < resultadomep.size(); i++) {
+                if (Objects.equals(resultadomep.get(i).getIdmamografiaep().getIdlaboratorio().getIdlaboratorio(), filtrolaboratorio.getIdlaboratorio())) {
+                    if (Objects.equals(resultadomep.get(i).getIdmamografiaep().getIdresponsablei().getIdresponsablei(), filtroresponsablei.getIdresponsablei())) {
+                        resultadosmamografiaep.add(resultadomep.get(i));
+                    }
+                }
+            }
+        } catch (Exception e) {
+
+        }
+        try {
+            List<Resultadosresonanciamagnetica> resultadorm = ejbResonancia.find(filtroscreening.getIdscreening()).getResultadosresonanciamagneticaList();
+            for (int i = 0; i < resultadorm.size(); i++) {
+                if (Objects.equals(resultadorm.get(i).getIdresonanciamagnetica().getIdlaboratorio().getIdlaboratorio(), filtrolaboratorio.getIdlaboratorio())) {
+                    if (Objects.equals(resultadorm.get(i).getIdresonanciamagnetica().getIdresponsablei().getIdresponsablei(), filtroresponsablei.getIdresponsablei())) {
+                        resultadosrm.add(resultadorm.get(i));
+                    }
+                }
+            }
+        } catch (Exception e) {
+
         }
 
     }
