@@ -41,22 +41,14 @@ public class BiradsController implements Serializable {
     private com.susolabs.redu.modelo.facade.ScreeningFacade ejbScreening;
 
     @EJB
-    private com.susolabs.redu.modelo.facade.EcografiaFacade ejbEcografia;
-    @EJB
     private com.susolabs.redu.modelo.facade.ResultadosecografiaFacade ejbREcografia;
 
-    @EJB
-    private com.susolabs.redu.modelo.facade.MamografiaFacade ejbMamografia;
     @EJB
     private com.susolabs.redu.modelo.facade.ResultadosmamografiaFacade ejbRMamografia;
 
     @EJB
-    private com.susolabs.redu.modelo.facade.MamografiaemisionpositronesFacade ejbMamografiaep;
-    @EJB
     private com.susolabs.redu.modelo.facade.ResultadosmamografiaepFacade ejbRMamografiaep;
 
-    @EJB
-    private com.susolabs.redu.modelo.facade.ResonanciamagneticaFacade ejbResonancia;
     @EJB
     private com.susolabs.redu.modelo.facade.ResultadosresonanciamagneticaFacade ejbRResonancia;
 
@@ -219,12 +211,13 @@ public class BiradsController implements Serializable {
         resultadosmamografiaep = new ArrayList<Resultadosmamografiaep>();
         resultadosrm = new ArrayList<Resultadosresonanciamagnetica>();
         try {
-
-            List<Resultadosecografia> resultado = ejbEcografia.find(filtroscreening.getIdscreening()).getResultadosecografiaList();
+            List<Resultadosecografia> resultado = ejbREcografia.findAll();
             for (int i = 0; i < resultado.size(); i++) {
                 if (Objects.equals(resultado.get(i).getIdecografia().getIdlaboratorio().getIdlaboratorio(), filtrolaboratorio.getIdlaboratorio())) {
                     if (Objects.equals(resultado.get(i).getIdecografia().getIdresponsablei().getIdresponsablei(), filtroresponsablei.getIdresponsablei())) {
-                        resultadosecografia.add(resultado.get(i));
+                        if (Objects.equals(resultado.get(i).getIdecografia().getIdscreening().getIdscreening(), filtroscreening.getIdscreening())) {
+                            resultadosecografia.add(resultado.get(i));
+                        }
                     }
                 }
             }
@@ -232,11 +225,13 @@ public class BiradsController implements Serializable {
 
         }
         try {
-            List<Resultadosmamografia> resultadom = ejbMamografia.find(filtroscreening.getIdscreening()).getResultadosmamografiaList();
+            List<Resultadosmamografia> resultadom = ejbRMamografia.findAll();
             for (int i = 0; i < resultadom.size(); i++) {
                 if (Objects.equals(resultadom.get(i).getIdmamografia().getIdlaboratorio().getIdlaboratorio(), filtrolaboratorio.getIdlaboratorio())) {
                     if (Objects.equals(resultadom.get(i).getIdmamografia().getIdresponsablei().getIdresponsablei(), filtroresponsablei.getIdresponsablei())) {
-                        resultadosmamografia.add(resultadom.get(i));
+                        if (Objects.equals(resultadom.get(i).getIdmamografia().getIdscreening().getIdscreening(), filtroscreening.getIdscreening())) {
+                            resultadosmamografia.add(resultadom.get(i));
+                        }
                     }
                 }
             }
@@ -244,11 +239,13 @@ public class BiradsController implements Serializable {
 
         }
         try {
-            List<Resultadosmamografiaep> resultadomep = ejbMamografiaep.find(filtroscreening.getIdscreening()).getResultadosmamografiaepList();
+            List<Resultadosmamografiaep> resultadomep = ejbRMamografiaep.findAll();
             for (int i = 0; i < resultadomep.size(); i++) {
                 if (Objects.equals(resultadomep.get(i).getIdmamografiaep().getIdlaboratorio().getIdlaboratorio(), filtrolaboratorio.getIdlaboratorio())) {
                     if (Objects.equals(resultadomep.get(i).getIdmamografiaep().getIdresponsablei().getIdresponsablei(), filtroresponsablei.getIdresponsablei())) {
-                        resultadosmamografiaep.add(resultadomep.get(i));
+                        if (Objects.equals(resultadomep.get(i).getIdmamografiaep().getIdscreening().getIdscreening(), filtroscreening.getIdscreening())) {
+                            resultadosmamografiaep.add(resultadomep.get(i));
+                        }
                     }
                 }
             }
@@ -256,11 +253,13 @@ public class BiradsController implements Serializable {
 
         }
         try {
-            List<Resultadosresonanciamagnetica> resultadorm = ejbResonancia.find(filtroscreening.getIdscreening()).getResultadosresonanciamagneticaList();
+            List<Resultadosresonanciamagnetica> resultadorm = ejbRResonancia.findAll();
             for (int i = 0; i < resultadorm.size(); i++) {
                 if (Objects.equals(resultadorm.get(i).getIdresonanciamagnetica().getIdlaboratorio().getIdlaboratorio(), filtrolaboratorio.getIdlaboratorio())) {
                     if (Objects.equals(resultadorm.get(i).getIdresonanciamagnetica().getIdresponsablei().getIdresponsablei(), filtroresponsablei.getIdresponsablei())) {
-                        resultadosrm.add(resultadorm.get(i));
+                        if (Objects.equals(resultadorm.get(i).getIdresonanciamagnetica().getIdscreening().getIdscreening(), filtroscreening.getIdscreening())) {
+                            resultadosrm.add(resultadorm.get(i));
+                        }
                     }
                 }
             }
