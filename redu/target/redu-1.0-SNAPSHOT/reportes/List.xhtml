@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListBiradsTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+
+
+            <h:form id="BiradsListForm">
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <center>
+                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </center>
+                </p:confirmDialog>
+
+
+                <p:panel header="Reportes">
+                    <center>
+                        <p:panelGrid columns="2" >
+                            <p:outputLabel value="Paciente:" for="idpaciente" />
+                            <p:selectOneMenu id="idpaciente" required="true" value="#{biradsController.filtropaciente}"
+                                             effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith">
+                                <p:ajax listener="#{biradsController.filtrarscreening}" update="screening" />
+                                <p:ajax listener="#{biradsController.filtrar}" update="datalist" />
+                                <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"
+                                               var="idpacienteItem"
+                                               itemLabel="#{idpacienteItem.nombrepaciente}"
+                                               itemValue="#{idpacienteItem}"/>
+                                <p:column>
+                                    <h:outputText value="#{t.nombrepaciente}" />
+                                </p:column>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_screening}" for="screening" />
+                            <p:selectOneMenu id="screening" value="#{biradsController.filtroscreening}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_screening}"
+                                             effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith" >
+                                <p:ajax listener="#{biradsController.filtrar}" update="datalist" />
+                                <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{biradsController.screPaciente}"
+                                               var="screeningItem"
+                                               itemLabel="#{screeningItem.toString()}"
+                                               itemValue="#{screeningItem}"/>
+                                <p:column>
+                                    <h:outputText value="#{t.toString()}" />
+                                </p:column>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_responsableimagen}" for="responsableimagen" />
+                            <p:selectOneMenu id="responsableimagen" value="#{biradsController.filtroresponsablei}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_responsableimagen}"
+                                             effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith" >
+                                <p:ajax listener="#{biradsController.filtrar}" update="datalist" />
+                                <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{responsableimagenController.itemsAvailableSelectOne}"
+                                               var="responsableimagenItem"
+                                               itemLabel="#{responsableimagenItem.toString()}"
+                                               itemValue="#{responsableimagenItem}"/>
+                                <p:column>
+                                    <h:outputText value="#{t.toString()}" />
+                                </p:column>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_laboratorio}" for="laboratorio" />
+                            <p:selectOneMenu id="laboratorio" value="#{biradsController.filtrolaboratorio}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_laboratorio}"
+                                             effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith" >
+                                <p:ajax listener="#{biradsController.filtrar}" update="datalist" />
+                                <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{laboratorioController.itemsAvailableSelectOne}"
+                                               var="laboratorioItem"
+                                               itemLabel="#{laboratorioItem.toString()}"
+                                               itemValue="#{laboratorioItem}"/>
+                                <p:column>
+                                    <h:outputText value="#{t.toString()}" />
+                                </p:column>
+                            </p:selectOneMenu>
+
+                        </p:panelGrid>
+                    </center>
+                    <p:dataTable id="datalist" value="#{biradsController.birad}" var="item"
+                                 selectionMode="single" selection="#{biradsController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idbirads}"
+                                 rows="10"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 emptyMessage="No hay coincidencias"
+                                 widgetVar="datalist"
+
+                                 >
+
+
+                        <p:column filterBy="#{item.idbirads}" filterMatchMode="contains">
+                            <f:facet name="filter">
+                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListBiradsTitle_idbirads}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idbirads}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.fechabirads}" filterMatchMode="contains">
+                            <f:facet name="filter">
+                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListBiradsTitle_fechabirads}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechabirads}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column filterBy="#{item.razonbirads}" filterMatchMode="contains">
+                            <f:facet name="filter">
+                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListBiradsTitle_razonbirads}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.razonbirads}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.descripcionbirads}" filterMatchMode="contains">
+                            <f:facet name="filter">
+                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListBiradsTitle_descripcionbirads}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcionbirads}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.categoriabirads}" filterMatchMode="contains">
+                            <f:facet name="filter">
+                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListBiradsTitle_categoriabirads}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.categoriabirads}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.definicionbirads}" filterMatchMode="contains">
+                            <f:facet name="filter">
+                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListBiradsTitle_definicionbirads}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.definicionbirads}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.evaluacionbirads}" filterMatchMode="contains">
+                            <f:facet name="filter">
+                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListBiradsTitle_evaluacionbirads}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.evaluacionbirads}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.porcentajecancerbirads}" filterMatchMode="contains">
+                            <f:facet name="filter">
+                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListBiradsTitle_porcentajecancerbirads}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.porcentajecancerbirads}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.recomendacionbirads}" filterMatchMode="contains">
+                            <f:facet name="filter">
+                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListBiradsTitle_recomendacionbirads}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.recomendacionbirads}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.idresultadoe}" filterMatchMode="contains">
+                            <f:facet name="filter">
+                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListBiradsTitle_idresultadoe}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idresultadoe}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.idresultadom}" filterMatchMode="contains">
+                            <f:facet name="filter">
+                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListBiradsTitle_idresultadom}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idresultadom}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.idresultadosmep}" filterMatchMode="contains">
+                            <f:facet name="filter">
+                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListBiradsTitle_idresultadosmep}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idresultadosmep}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.idresultadorm}" filterMatchMode="contains">
+                            <f:facet name="filter">
+                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>
+                            </f:facet>
+                            <f:facet name="header">
+                                <h:outputText style="text-transform: uppercase"   value="#{bundle.ListBiradsTitle_idresultadorm}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idresultadorm}"/>
+                        </p:column>
+                        <f:facet name="footer">
+
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

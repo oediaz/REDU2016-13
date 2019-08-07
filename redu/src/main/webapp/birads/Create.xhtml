@@ -47,6 +47,7 @@
                                 <p:ajax listener="#{biradsController.filtrar}" update="idresultadom" />
                                 <p:ajax listener="#{biradsController.filtrar}" update="idresultadosmep" />
                                 <p:ajax listener="#{biradsController.filtrar}" update="idresultadorm" />
+                                 <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                                 <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"
                                                var="idpacienteItem"
                                                itemLabel="#{idpacienteItem.nombrepaciente}"
@@ -59,11 +60,12 @@
                             <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_screening}" for="screening" />
                             <p:selectOneMenu id="screening" value="#{biradsController.filtroscreening}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_screening}"
                                              effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith" >
-                                <p:ajax listener="#{biradsController.filtrarscreening}" update="screening" />
+                                
                                 <p:ajax listener="#{biradsController.filtrar}" update="idresultadoe" />
                                 <p:ajax listener="#{biradsController.filtrar}" update="idresultadom" />
                                 <p:ajax listener="#{biradsController.filtrar}" update="idresultadosmep" />
                                 <p:ajax listener="#{biradsController.filtrar}" update="idresultadorm" />
+                                 <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                                 <f:selectItems value="#{biradsController.screPaciente}"
                                                var="screeningItem"
                                                itemLabel="#{screeningItem.toString()}"
@@ -75,11 +77,11 @@
                             <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_responsableimagen}" for="responsableimagen" />
                             <p:selectOneMenu id="responsableimagen" value="#{biradsController.filtroresponsablei}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_responsableimagen}"
                                              effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith" >
-                                <p:ajax listener="#{biradsController.filtrarscreening}" update="screening" />
                                 <p:ajax listener="#{biradsController.filtrar}" update="idresultadoe" />
                                 <p:ajax listener="#{biradsController.filtrar}" update="idresultadom" />
                                 <p:ajax listener="#{biradsController.filtrar}" update="idresultadosmep" />
                                 <p:ajax listener="#{biradsController.filtrar}" update="idresultadorm" />
+                                 <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                                 <f:selectItems value="#{responsableimagenController.itemsAvailableSelectOne}"
                                                var="responsableimagenItem"
                                                itemLabel="#{responsableimagenItem.toString()}"
@@ -91,11 +93,11 @@
                             <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_laboratorio}" for="laboratorio" />
                             <p:selectOneMenu id="laboratorio" value="#{biradsController.filtrolaboratorio}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_laboratorio}"
                                              effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith" >
-                                <p:ajax listener="#{biradsController.filtrarscreening}" update="screening" />
                                 <p:ajax listener="#{biradsController.filtrar}" update="idresultadoe" />
                                 <p:ajax listener="#{biradsController.filtrar}" update="idresultadom" />
                                 <p:ajax listener="#{biradsController.filtrar}" update="idresultadosmep" />
                                 <p:ajax listener="#{biradsController.filtrar}" update="idresultadorm" />
+                                 <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                                 <f:selectItems value="#{laboratorioController.itemsAvailableSelectOne}"
                                                var="laboratorioItem"
                                                itemLabel="#{laboratorioItem.toString()}"
