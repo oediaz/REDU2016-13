@@ -193,7 +193,7 @@ public class Medico implements Serializable {
 
     @Override
     public String toString() {
-        return cedulamedico+"-"+nombremedico+" "+apellidomedico;
+        return nombremedico+" "+apellidomedico+"-"+cedulamedico;
     }
     
 }

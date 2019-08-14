@@ -16,8 +16,10 @@ D:\Pasantias\redu\redu\src\main\java\com\susolabs\redu\controlador\MedicamentoCo
 D:\Pasantias\redu\redu\src\main\java\com\susolabs\redu\modelo\facade\TratamientocancermamaFacade.java
 D:\Pasantias\redu\redu\src\main\java\com\susolabs\redu\modelo\entidades\Medicamento.java
 D:\Pasantias\redu\redu\src\main\java\com\susolabs\redu\modelo\facade\BiradsFacade.java
+D:\Pasantias\redu\redu\src\main\java\com\susolabs\redu\modelo\facade\CatalogoFacade.java
 D:\Pasantias\redu\redu\src\main\java\com\susolabs\redu\controlador\ScreeningController.java
 D:\Pasantias\redu\redu\src\main\java\com\susolabs\redu\modelo\facade\QuimioterapiaFacade.java
+D:\Pasantias\redu\redu\src\main\java\com\susolabs\redu\modelo\entidades\Catalogo.java
 D:\Pasantias\redu\redu\src\main\java\com\susolabs\redu\modelo\entidades\Receta.java
 D:\Pasantias\redu\redu\src\main\java\com\susolabs\redu\modelo\facade\ResponsableimagenFacade.java
 D:\Pasantias\redu\redu\src\main\java\com\susolabs\redu\modelo\entidades\Medico.java
@@ -53,6 +55,7 @@ D:\Pasantias\redu\redu\src\main\java\com\susolabs\redu\modelo\facade\EcografiaFa
 D:\Pasantias\redu\redu\src\main\java\com\susolabs\redu\modelo\facade\MedicacionFacade.java
 D:\Pasantias\redu\redu\src\main\java\com\susolabs\redu\controlador\RecetaController.java
 D:\Pasantias\redu\redu\src\main\java\com\susolabs\redu\modelo\entidades\Resultadosexamen.java
+D:\Pasantias\redu\redu\src\main\java\com\susolabs\redu\controlador\CatalogoController.java
 D:\Pasantias\redu\redu\src\main\java\com\susolabs\redu\modelo\entidades\Quimioterapia.java
 D:\Pasantias\redu\redu\src\main\java\com\susolabs\redu\controlador\MedicoController.java
 D:\Pasantias\redu\redu\src\main\java\com\susolabs\redu\modelo\entidades\Biopsia.java

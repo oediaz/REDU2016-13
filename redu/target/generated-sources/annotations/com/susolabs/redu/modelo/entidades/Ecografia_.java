@@ -10,7 +10,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-08-06T22:55:52")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-08-14T05:45:14")
 @StaticMetamodel(Ecografia.class)
 public class Ecografia_ { 
 

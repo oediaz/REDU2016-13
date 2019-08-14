@@ -8,6 +8,7 @@ com\susolabs\redu\controlador\ResultadosresonanciamagneticaController$Resultados
 com\susolabs\redu\modelo\entidades\Mamografiaemisionpositrones.class
 com\susolabs\redu\modelo\entidades\Receta_.class
 com\susolabs\redu\controlador\EcografiaController.class
+com\susolabs\redu\modelo\entidades\Catalogo.class
 com\susolabs\redu\modelo\entidades\Resultadosmamografia.class
 com\susolabs\redu\modelo\facade\ResultadosresonanciamagneticaFacade.class
 com\susolabs\redu\modelo\entidades\Laboratorio.class
@@ -26,6 +27,7 @@ com\susolabs\redu\controlador\BiopsiaController$BiopsiaControllerConverter.class
 com\susolabs\redu\controlador\ExaminacionController$ExaminacionControllerConverter.class
 com\susolabs\redu\modelo\entidades\Cirugia.class
 com\susolabs\redu\modelo\facade\ResponsableimagenFacade.class
+com\susolabs\redu\controlador\CatalogoController.class
 com\susolabs\redu\controlador\ExamenController$ExamenControllerConverter.class
 com\susolabs\redu\controlador\RecetaController.class
 com\susolabs\redu\controlador\ScreeningController$ScreeningControllerConverter.class
@@ -37,6 +39,7 @@ com\susolabs\redu\modelo\facade\CirugiaFacade.class
 com\susolabs\redu\modelo\facade\RadioterapiaFacade.class
 com\susolabs\redu\controlador\ExaminacionController.class
 com\susolabs\redu\controlador\MedicoController.class
+com\susolabs\redu\modelo\entidades\Catalogo_.class
 com\susolabs\redu\controlador\ResultadoexamenController$ResultadoexamenControllerConverter.class
 com\susolabs\redu\modelo\entidades\Mamografiaemisionpositrones_.class
 com\susolabs\redu\controlador\TratamientocancermamaController$TratamientocancermamaControllerConverter.class
@@ -63,6 +66,7 @@ com\susolabs\redu\controlador\ResonanciamagneticaController$ResonanciamagneticaC
 com\susolabs\redu\modelo\entidades\Mamografia.class
 com\susolabs\redu\modelo\entidades\Tratamientocancermama.class
 com\susolabs\redu\controlador\MedicacionController.class
+com\susolabs\redu\modelo\facade\CatalogoFacade.class
 com\susolabs\redu\modelo\entidades\Screening.class
 com\susolabs\redu\modelo\entidades\Resultadosecografia_.class
 com\susolabs\redu\controlador\EcografiaController$EcografiaControllerConverter.class
@@ -72,6 +76,7 @@ com\susolabs\redu\controlador\PacienteController.class
 com\susolabs\redu\modelo\entidades\Cirugia_.class
 com\susolabs\redu\controlador\util\JsfUtil$PersistAction.class
 com\susolabs\redu\controlador\BiopsiaController.class
+com\susolabs\redu\controlador\CatalogoController$CatalogoControllerConverter.class
 com\susolabs\redu\modelo\facade\ResonanciamagneticaFacade.class
 com\susolabs\redu\controlador\MedicacionController$MedicacionControllerConverter.class
 com\susolabs\redu\modelo\entidades\Medicacion_.class

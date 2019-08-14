@@ -199,7 +199,7 @@ public class Paciente implements Serializable {
 
     @Override
     public String toString() {
-        return cedulapaciente+"-"+nombrepaciente+" "+apellidopaciente;
+        return nombrepaciente+" "+apellidopaciente+"-"+cedulapaciente;
     }
     
 }

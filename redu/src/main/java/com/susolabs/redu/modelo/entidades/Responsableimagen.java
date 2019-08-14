@@ -182,7 +182,7 @@ public class Responsableimagen implements Serializable {
 
     @Override
     public String toString() {
-        return cedularesponsablei+"-"+nombreresponsablei;
+        return nombreresponsablei+"-"+cedularesponsablei;
     }
     
 }

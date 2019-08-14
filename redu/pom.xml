@@ -4,7 +4,7 @@
 
     <groupId>com.susolabs</groupId>
     <artifactId>redu</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>war</packaging>
 
     <name>redu</name>
@@ -30,7 +30,8 @@
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>7.0.RC3</version>
+            <version>6.2</version>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.primefaces.themes</groupId>
