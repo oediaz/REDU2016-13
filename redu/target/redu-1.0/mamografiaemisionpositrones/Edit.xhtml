@@ -20,15 +20,8 @@
                         <p:selectOneMenu id="razonmamografiaep" value="#{mamografiaemisionpositronesController.selected.razonmamografiaep}"  
                                          effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith" >
                             <f:selectItem itemLabel="" itemValue="" />
-                            <f:selectItem itemLabel="Detectar cáncer" itemValue="Detectar cáncer" />
-                            <f:selectItem itemLabel="Determinar si un cáncer se ha diseminado en el cuerpo" itemValue="Determinar si un cáncer se ha diseminado en el cuerpo" />
-                            <f:selectItem itemLabel="Evaluar una terapia de cáncer" itemValue="Evaluar una terapia de cáncer" />
-                            <f:selectItem itemLabel="Determinar el retorno de un cáncer tras el tratamiento" itemValue="Determinar el retorno de un cáncer tras el tratamiento" />
-                            <f:selectItem itemLabel="Determinar el flujo sanguíneo hacia el músculo cardíaco" itemValue="Determinar el flujo sanguíneo hacia el músculo cardíaco" />
-                            <f:selectItem itemLabel="Determinar los efectos de un ataque cardíaco o infarto del miocardio en áreas del corazón" itemValue="Determinar los efectos de un ataque cardíaco o infarto del miocardio en áreas del corazón" />
-                            <f:selectItem itemLabel="Identificar áreas del músculo cardíaco que se beneficiarían mediante un procedimiento tal como angioplastia o cirugía de bypass coronario" itemValue="Identificar áreas del músculo cardíaco que se beneficiarían mediante un procedimiento tal como angioplastia o cirugía de bypass coronario" />
-                            <f:selectItem itemLabel="Evaluar anomalías cerebrales,esquematizar el cerebro humano normal y la función cardíaca" itemValue="Evaluar anomalías cerebrales,esquematizar el cerebro humano normal y la función cardíaca" />
-                            <f:selectItem itemLabel="La respuesta metabólica a un tratamiento oncológico" itemValue="La respuesta metabólica a un tratamiento oncológico" />
+                        <f:selectItems value="#{catalogoController.getItemsFind('razonmamografiaep')}" />    
+                         
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditMamografiaemisionpositronesLabel_sensibilidadmetastasisep}" for="sensibilidadmetastasisep" />
                         <p:inputText id="sensibilidadmetastasisep" value="#{mamografiaemisionpositronesController.selected.sensibilidadmetastasisep}" title="#{bundle.EditMamografiaemisionpositronesTitle_sensibilidadmetastasisep}" />

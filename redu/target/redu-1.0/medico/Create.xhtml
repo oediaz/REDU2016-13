@@ -23,7 +23,7 @@
                         <p:outputLabel value="Nombre:" for="nombremedico" />
                         <p:inputText id="nombremedico" value="#{medicoController.selected.nombremedico}" title="#{bundle.CreateMedicoTitle_nombremedico}" />
                         <p:outputLabel value="Tipo Médico:" for="tipomedico" />
-                        <p:selectOneMenu id="tipomedico" value="#{medicoController.selected.tipomedico}" style="width: 100%">
+                        <p:selectOneMenu id="tipomedico" value="#{medicoController.selected.tipomedico}" style="width: 100%" panelStyle="width:180px" effect="fade" var="t" filter="true" filterMatchMode="startsWith">
                             <f:selectItems value="#{catalogoController.getItemsFind('tipomedico')}" />
                         </p:selectOneMenu>
                         <p:outputLabel value="Teléfono:" for="fonomedico" />

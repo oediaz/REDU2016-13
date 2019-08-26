@@ -106,14 +106,15 @@ public class CatalogoController implements Serializable {
     public List<Catalogo> getItemsFind(String nombre) {
         items = new ArrayList();
         List<Catalogo> aux = getFacade().findAll();
+        
         System.out.println("Nombre: " + nombre);
+        System.out.println("Resultado:");
         for (int i = 0; i < aux.size(); i++) {
             if (aux.get(i).getNombre().equals(nombre)) {
                 items.add(aux.get(i));
-            } else {
-                System.out.println("Resultado:");
                 System.out.println(aux.get(i).getDescripcion());
-                System.out.println(aux.get(i).getNombre());
+               } else {
+                
 
             }
         }

@@ -15,23 +15,24 @@
                         <p:outputLabel value="#{bundle.EditMamografiaLabel_fechamamografia}" for="fechamamografia" />
                         <p:calendar id="fechamamografia" placeholder="dd/mm/yyyy" yearRange="1950:2019" locale="de" navigator="true" pattern="dd/MM/yyyy" required="true"  value="#{mamografiaController.selected.fechamamografia}" title="#{bundle.EditMamografiaTitle_fechamamografia}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.EditMamografiaLabel_caracteristicapredominantem}" for="caracteristicapredominantem" />
-                        <p:selectOneMenu id="caracteristicapredominantem" value="#{mamografiaController.selected.caracteristicapredominantem}" style="width: 100%" title="#{bundle.EditMamografiaTitle_caracteristicapredominantem}">
+                        <p:selectOneMenu id="caracteristicapredominantem" value="#{mamografiaController.selected.caracteristicapredominantem}" style="width: 100%" title="#{bundle.EditMamografiaTitle_caracteristicapredominantem}" panelStyle="width:180px" effect="fade" var="t" filter="true" filterMatchMode="startsWith">
                             <f:selectItems value="#{catalogoController.getItemsFind('caracteristicapredominantem')}" />
                         </p:selectOneMenu>
+                        
                         <p:outputLabel value="#{bundle.EditMamografiaLabel_patrondensidadm}" for="patrondensidadm" />
-                        <p:selectOneMenu id="patrondensidadm" value="#{mamografiaController.selected.patrondensidadm}" style="width: 100%" title="#{bundle.EditMamografiaTitle_patrondensidadm}" >
+                        <p:selectOneMenu id="patrondensidadm" value="#{mamografiaController.selected.patrondensidadm}" style="width: 100%" title="#{bundle.EditMamografiaTitle_patrondensidadm}" panelStyle="width:180px" effect="fade" var="t" filter="true" filterMatchMode="startsWith">
                             <f:selectItems value="#{catalogoController.getItemsFind('patrondensidadm')}" />
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditMamografiaLabel_patrongrasam}" for="patrongrasam" />
-                        <p:selectOneMenu id="patrongrasam" value="#{mamografiaController.selected.patrongrasam}" style="width: 100%" title="#{bundle.EditMamografiaTitle_patrongrasam}" >
+                        <p:selectOneMenu id="patrongrasam" value="#{mamografiaController.selected.patrongrasam}" style="width: 100%" title="#{bundle.EditMamografiaTitle_patrongrasam}" panelStyle="width:180px" effect="fade" var="t" filter="true" filterMatchMode="startsWith">
                             <f:selectItems value="#{catalogoController.getItemsFind('patrongrasam')}" />
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditMamografiaLabel_estimacionvisualdensidadm}" for="estimacionvisualdensidadm" />
-                        <p:selectOneMenu id="estimacionvisualdensidadm" value="#{mamografiaController.selected.estimacionvisualdensidadm}" style="width: 100%" title="#{bundle.EditMamografiaTitle_estimacionvisualdensidadm}" >
+                        <p:selectOneMenu id="estimacionvisualdensidadm" value="#{mamografiaController.selected.estimacionvisualdensidadm}" style="width: 100%" title="#{bundle.EditMamografiaTitle_estimacionvisualdensidadm}" panelStyle="width:180px" effect="fade" var="t" filter="true" filterMatchMode="startsWith">
                             <f:selectItems value="#{catalogoController.getItemsFind('estimacionvisualdensidadm')}" />
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditMamografiaLabel_patronparenquimagrandularm}" for="patronparenquimagrandularm" />
-                        <p:selectOneMenu id="patronparenquimagrandularm" value="#{mamografiaController.selected.patronparenquimagrandularm}" style="width: 100%" title="#{bundle.EditMamografiaTitle_patronparenquimagrandularm}" >
+                        <p:selectOneMenu id="patronparenquimagrandularm" value="#{mamografiaController.selected.patronparenquimagrandularm}" style="width: 100%" title="#{bundle.EditMamografiaTitle_patronparenquimagrandularm}" panelStyle="width:180px" effect="fade" var="t" filter="true" filterMatchMode="startsWith">
                             <f:selectItems value="#{catalogoController.getItemsFind('patronparenquimagrandularm')}" />
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditMamografiaLabel_protocolomamografia}" for="protocolomamografia" />
