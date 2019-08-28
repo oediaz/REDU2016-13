@@ -7,7 +7,9 @@ import com.susolabs.redu.controlador.util.JsfUtil.PersistAction;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,6 +21,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import org.primefaces.PrimeFaces;
 
 @Named("catalogoController")
 @SessionScoped
@@ -103,18 +106,33 @@ public class CatalogoController implements Serializable {
         return items;
     }
 
+     public void onCatalogoChange(String tipo, String descripcion) {
+        if ("agregar".equals(tipo)) {
+            System.out.println("entro tipo medico");
+            System.out.println(descripcion);
+            selected=new Catalogo();
+            selected.setNombre(descripcion);
+           PrimeFaces current = PrimeFaces.current();
+            current.executeScript("PF('CatalogoCreateDialog').show()");
+        } else {
+            System.out.println("no entro tipo medico");
+            
+
+            
+        }
+    }
+
     public List<Catalogo> getItemsFind(String nombre) {
         items = new ArrayList();
         List<Catalogo> aux = getFacade().findAll();
-        
+
         System.out.println("Nombre: " + nombre);
         System.out.println("Resultado:");
         for (int i = 0; i < aux.size(); i++) {
             if (aux.get(i).getNombre().equals(nombre)) {
                 items.add(aux.get(i));
                 System.out.println(aux.get(i).getDescripcion());
-               } else {
-                
+            } else {
 
             }
         }

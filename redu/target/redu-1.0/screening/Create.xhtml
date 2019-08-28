@@ -16,6 +16,9 @@
                         <p:calendar id="fechascreening" placeholder="dd/mm/yyyy" yearRange="1950:2019" locale="de" navigator="true" pattern="dd/MM/yyyy" value="#{screeningController.selected.fechascreening}" title="#{bundle.EditScreeningTitle_fechascreening}" required="true" requiredMessage="#{bundle.EditScreeningRequiredMessage_fechascreening}" showOn="button"/>
                         <p:outputLabel value="Método:" for="metodoscreening" />
                         <p:selectOneMenu id="metodoscreening" value="#{screeningController.selected.metodoscreening}" style="width: 100%">
+                            <p:ajax listener="#{catalogoController.onCatalogoChange(screeningController.selected.metodoscreening,'metodoscreening')}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
                             <f:selectItems value="#{catalogoController.getItemsFind('metodoscreening')}" />
                         </p:selectOneMenu>
                         <p:outputLabel value="Descripción:" for="descripcionscreening" />

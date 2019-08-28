@@ -23,7 +23,10 @@
                         <p:outputLabel value="Nombre:" for="nombremedico" />
                         <p:inputText id="nombremedico" value="#{medicoController.selected.nombremedico}" title="#{bundle.CreateMedicoTitle_nombremedico}" />
                         <p:outputLabel value="Tipo Médico:" for="tipomedico" />
-                        <p:selectOneMenu id="tipomedico" value="#{medicoController.selected.tipomedico}" style="width: 100%" panelStyle="width:180px" effect="fade" var="t" filter="true" filterMatchMode="startsWith">
+                        <p:selectOneMenu id="tipomedico" value="#{medicoController.selected.tipomedico}" style="width: 100%" panelStyle="width:180px" effect="fold"  filter="true" filterMatchMode="startsWith">
+                            <p:ajax listener="#{catalogoController.onCatalogoChange(medicoController.selected.tipomedico,'tipomedico')}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
                             <f:selectItems value="#{catalogoController.getItemsFind('tipomedico')}" />
                         </p:selectOneMenu>
                         <p:outputLabel value="Teléfono:" for="fonomedico" />
@@ -50,6 +53,8 @@
                 </h:panelGroup>
             </h:form>
         </p:dialog>
-
+<p:dialog header="Basic Dialog" widgetVar="dlg1" minHeight="40">
+    <h:outputText value="Resistance to PrimeFaces is futile!" />
+</p:dialog>
     </ui:composition>
 </html>
