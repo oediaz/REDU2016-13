@@ -13,9 +13,19 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{resultadosecografiaController.selected != null}">
                         <p:outputLabel value="#{bundle.CreateResultadosecografiaLabel_tipohallazgore}" for="tipohallazgore" />
-                        <p:inputText id="tipohallazgore" value="#{resultadosecografiaController.selected.tipohallazgore}" title="#{bundle.CreateResultadosecografiaTitle_tipohallazgore}" />
-                        <p:outputLabel value="#{bundle.CreateResultadosecografiaLabel_descripcionhallazgore}" for="descripcionhallazgore" />
-                        <p:inputText id="descripcionhallazgore" value="#{resultadosecografiaController.selected.descripcionhallazgore}" title="#{bundle.CreateResultadosecografiaTitle_descripcionhallazgore}" />
+                        <p:selectOneMenu id="tipohallazgore" value="#{resultadosecografiaController.selected.tipohallazgore}" style="width: 100%" panelStyle="width:180px" effect="fold"  filter="true" filterMatchMode="startsWith">
+                            <p:ajax listener="#{catalogoController.onCatalogoChange(resultadosecografiaController.selected.tipohallazgore,'tipohallazgore')}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
+                            <f:selectItems value="#{catalogoController.getItemsFind('tipohallazgore')}" />
+                        </p:selectOneMenu>
+                                                <p:outputLabel value="#{bundle.CreateResultadosecografiaLabel_descripcionhallazgore}" for="descripcionhallazgore" />
+                        <p:selectOneMenu id="descripcionhallazgore" value="#{resultadosecografiaController.selected.descripcionhallazgore}" style="width: 100%" panelStyle="width:180px" effect="fold"  filter="true" filterMatchMode="startsWith">
+                            <p:ajax listener="#{catalogoController.onCatalogoChange(resultadosecografiaController.selected.descripcionhallazgore,'descripcionhallazgore')}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
+                            <f:selectItems value="#{catalogoController.getItemsFind('descripcionhallazgore')}" />
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateResultadosecografiaLabel_valorpredictivopositivohallazgore}" for="valorpredictivopositivohallazgore" />
                         <p:inputText id="valorpredictivopositivohallazgore" value="#{resultadosecografiaController.selected.valorpredictivopositivohallazgore}" title="#{bundle.CreateResultadosecografiaTitle_valorpredictivopositivohallazgore}" />
                         <p:outputLabel value="#{bundle.CreateResultadosecografiaLabel_sensibilidadhallazgore}" for="sensibilidadhallazgore" />

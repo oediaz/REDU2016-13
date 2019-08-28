@@ -18,8 +18,11 @@
                         <p:inputText id="diagnosticopreviomamografiaep" value="#{mamografiaemisionpositronesController.selected.diagnosticopreviomamografiaep}" title="#{bundle.CreateMamografiaemisionpositronesTitle_diagnosticopreviomamografiaep}" />
                         <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_razonmamografiaep}" for="razonmamografiaep" />
                         <p:selectOneMenu id="razonmamografiaep" value="#{mamografiaemisionpositronesController.selected.razonmamografiaep}" style="width: 200px"
-                                         panelStyle="width:180px" effect="fade" var="t" filter="true" filterMatchMode="startsWith">
-                      <f:selectItems value="#{catalogoController.getItemsFind('razonmamografiaep')}" />    
+                                         panelStyle="width:180px" effect="fade"  filter="true" filterMatchMode="startsWith">
+                            <p:ajax listener="#{catalogoController.onCatalogoChange(mamografiaemisionpositronesController.selected.razonmamografiaep,'razonmamografiaep')}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
+                            <f:selectItems value="#{catalogoController.getItemsFind('razonmamografiaep')}" />    
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_sensibilidadmetastasisep}" for="sensibilidadmetastasisep" />
                         <p:inputText id="sensibilidadmetastasisep" value="#{mamografiaemisionpositronesController.selected.sensibilidadmetastasisep}" title="#{bundle.CreateMamografiaemisionpositronesTitle_sensibilidadmetastasisep}" />
@@ -67,10 +70,10 @@
                         <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_laboratorio}" for="laboratorio" />
                         <p:selectOneMenu id="laboratorio" value="#{mamografiaemisionpositronesController.selected.idlaboratorio}" required="true" requiredMessage="#{bundle.EditMamografiaemisionpositronesRequiredMessage_laboratorio}"
                                          effect="fade" var="t" style="width:200px" filter="true" filterMatchMode="startsWith" >
-                         
+
                             <f:selectItems value="#{laboratorioController.itemsAvailableSelectOne}"
                                            var="laboratorioItem"
-                                            itemLabel="#{laboratorioItem.toString()}"
+                                           itemLabel="#{laboratorioItem.toString()}"
                                            itemValue="#{laboratorioItem}"/>
                             <p:column>
                                 <h:outputText value="#{t.toString()}" />

@@ -19,7 +19,7 @@
                         <p:inputText id="descripcion" value="#{catalogoController.selected.descripcion}" title="Descripcion" required="true" requiredMessage="No hay descripcion"/>
 
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{catalogoController.create}" value="#{bundle.Save}" update="display,:MedicoCreateForm,:growl" oncomplete="handleSubmit(args,'CatalogoCreateDialog');">
+                    <p:commandButton actionListener="#{catalogoController.create}" value="#{bundle.Save}" update="display,:MamografiaCreateForm,:growl" oncomplete="handleSubmit(args,'CatalogoCreateDialog');">
                         <p:confirm header="Catalogo" message="Desea Crear Elemento Del Catalogo" icon="ui-icon-alert"/>
                     </p:commandButton>
 

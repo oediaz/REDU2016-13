@@ -13,15 +13,35 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{resultadosmamografiaController.selected != null}">
                         <p:outputLabel value="#{bundle.CreateResultadosmamografiaLabel_tipohallazgorem}" for="tipohallazgorem" />
-                        <p:inputText id="tipohallazgorem" value="#{resultadosmamografiaController.selected.tipohallazgorem}" title="#{bundle.CreateResultadosmamografiaTitle_tipohallazgorem}" />
+                        <p:selectOneMenu id="tipohallazgorem" value="#{resultadosmamografiaController.selected.tipohallazgorem}" style="width: 100%" panelStyle="width:180px" effect="fold"  filter="true" filterMatchMode="startsWith">
+                            <p:ajax listener="#{catalogoController.onCatalogoChange(resultadosmamografiaController.selected.tipohallazgorem,'tipohallazgorem')}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
+                            <f:selectItems value="#{catalogoController.getItemsFind('tipohallazgorem')}" />
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateResultadosmamografiaLabel_descripcionhallazgorem}" for="descripcionhallazgorem" />
-                        <p:inputText id="descripcionhallazgorem" value="#{resultadosmamografiaController.selected.descripcionhallazgorem}" title="#{bundle.CreateResultadosmamografiaTitle_descripcionhallazgorem}" />
+                        <p:selectOneMenu id="descripcionhallazgorem" value="#{resultadosmamografiaController.selected.descripcionhallazgorem}" style="width: 100%" panelStyle="width:180px" effect="fold"  filter="true" filterMatchMode="startsWith">
+                            <p:ajax listener="#{catalogoController.onCatalogoChange(resultadosmamografiaController.selected.descripcionhallazgorem,'descripcionhallazgorem')}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
+                            <f:selectItems value="#{catalogoController.getItemsFind('descripcionhallazgorem')}" />
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateResultadosmamografiaLabel_gradosospechahallazgorem}" for="gradosospechahallazgorem" />
-                        <p:inputText id="gradosospechahallazgorem" value="#{resultadosmamografiaController.selected.gradosospechahallazgorem}" title="#{bundle.CreateResultadosmamografiaTitle_gradosospechahallazgorem}" />
+                        <p:selectOneMenu id="gradosospechahallazgorem" value="#{resultadosmamografiaController.selected.gradosospechahallazgorem}" style="width: 100%" panelStyle="width:180px" effect="fold"  filter="true" filterMatchMode="startsWith">
+                            <p:ajax listener="#{catalogoController.onCatalogoChange(resultadosmamografiaController.selected.gradosospechahallazgorem,'gradosospechahallazgorem')}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
+                            <f:selectItems value="#{catalogoController.getItemsFind('gradosospechahallazgorem')}" />
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateResultadosmamografiaLabel_descripciongradosospechahallazgorem}" for="descripciongradosospechahallazgorem" />
                         <p:inputTextarea rows="4" cols="30" id="descripciongradosospechahallazgorem" value="#{resultadosmamografiaController.selected.descripciongradosospechahallazgorem}" title="#{bundle.CreateResultadosmamografiaTitle_descripciongradosospechahallazgorem}" />
                         <p:outputLabel value="#{bundle.CreateResultadosmamografiaLabel_clasificaciondistribucionhallazgorem}" for="clasificaciondistribucionhallazgorem" />
-                        <p:inputText id="clasificaciondistribucionhallazgorem" value="#{resultadosmamografiaController.selected.clasificaciondistribucionhallazgorem}" title="#{bundle.CreateResultadosmamografiaTitle_clasificaciondistribucionhallazgorem}" />
+                        <p:selectOneMenu id="clasificaciondistribucionhallazgorem" value="#{resultadosmamografiaController.selected.clasificaciondistribucionhallazgorem}" style="width: 100%" panelStyle="width:180px" effect="fold"  filter="true" filterMatchMode="startsWith">
+                            <p:ajax listener="#{catalogoController.onCatalogoChange(resultadosmamografiaController.selected.clasificaciondistribucionhallazgorem,'clasificaciondistribucionhallazgorem')}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
+                            <f:selectItems value="#{catalogoController.getItemsFind('clasificaciondistribucionhallazgorem')}" />
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateResultadosmamografiaLabel_mamografia}" for="mamografia" />
                         <p:selectOneMenu id="mamografia" value="#{resultadosmamografiaController.selected.idmamografia}" >
                             <f:selectItems value="#{mamografiaController.itemsAvailableSelectOne}"

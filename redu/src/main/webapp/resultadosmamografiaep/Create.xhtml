@@ -17,9 +17,19 @@
                         <p:outputLabel value="#{bundle.CreateResultadosmamografiaepLabel_descripcionhallazgomep}" for="descripcionhallazgomep" />
                         <p:inputText id="descripcionhallazgomep" value="#{resultadosmamografiaepController.selected.descripcionhallazgomep}" title="#{bundle.CreateResultadosmamografiaepTitle_descripcionhallazgomep}" />
                         <p:outputLabel value="#{bundle.CreateResultadosmamografiaepLabel_causafalsopositivomep}" for="causafalsopositivomep" />
-                        <p:inputText id="causafalsopositivomep" value="#{resultadosmamografiaepController.selected.causafalsopositivomep}" title="#{bundle.CreateResultadosmamografiaepTitle_causafalsopositivomep}" />
+                        <p:selectOneMenu id="causafalsopositivomep" value="#{resultadosmamografiaepController.selected.causafalsopositivomep}" style="width: 100%" panelStyle="width:180px" effect="fold"  filter="true" filterMatchMode="startsWith">
+                            <p:ajax listener="#{catalogoController.onCatalogoChange(resultadosmamografiaepController.selected.causafalsopositivomep,'causafalsopositivomep')}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
+                            <f:selectItems value="#{catalogoController.getItemsFind('causafalsopositivomep')}" />
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateResultadosmamografiaepLabel_causafalsonegativomep}" for="causafalsonegativomep" />
-                        <p:inputText id="causafalsonegativomep" value="#{resultadosmamografiaepController.selected.causafalsonegativomep}" title="#{bundle.CreateResultadosmamografiaepTitle_causafalsonegativomep}" />
+                        <p:selectOneMenu id="causafalsonegativomep" value="#{resultadosmamografiaepController.selected.causafalsonegativomep}" style="width: 100%" panelStyle="width:180px" effect="fold"  filter="true" filterMatchMode="startsWith">
+                            <p:ajax listener="#{catalogoController.onCatalogoChange(resultadosmamografiaepController.selected.causafalsonegativomep,'causafalsonegativomep')}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
+                            <f:selectItems value="#{catalogoController.getItemsFind('causafalsonegativomep')}" />
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateResultadosmamografiaepLabel_mamografiaemisionpositrones}" for="mamografiaemisionpositrones" />
                         <p:selectOneMenu id="mamografiaemisionpositrones" value="#{resultadosmamografiaepController.selected.idmamografiaep}" >
                             <f:selectItems value="#{mamografiaemisionpositronesController.itemsAvailableSelectOne}"

@@ -17,13 +17,29 @@
                         <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_descripcionrm}" for="descripcionrm" />
                         <p:inputText id="descripcionrm" value="#{resonanciamagneticaController.selected.descripcionrm}" title="#{bundle.CreateResonanciamagneticaTitle_descripcionrm}" />
                         <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_razonrm}" for="razonrm" />
-                        <p:inputText id="razonrm" value="#{resonanciamagneticaController.selected.razonrm}" title="#{bundle.CreateResonanciamagneticaTitle_razonrm}" />
+                        <p:selectOneMenu id="razonrm" value="#{resonanciamagneticaController.selected.razonrm}" style="width: 100%" panelStyle="width:180px" effect="fold"  filter="true" filterMatchMode="startsWith">
+                            <p:ajax listener="#{catalogoController.onCatalogoChange(resonanciamagneticaController.selected.razonrm,'razonrm')}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
+                            <f:selectItems value="#{catalogoController.getItemsFind('razonrm')}" />
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_observacionrm}" for="observacionrm" />
                         <p:inputText id="observacionrm" value="#{resonanciamagneticaController.selected.observacionrm}" title="#{bundle.CreateResonanciamagneticaTitle_observacionrm}" />
                         <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_indicacionespecificidadrm}" for="indicacionespecificidadrm" />
-                        <p:inputText id="indicacionespecificidadrm" value="#{resonanciamagneticaController.selected.indicacionespecificidadrm}" title="#{bundle.CreateResonanciamagneticaTitle_indicacionespecificidadrm}" />
+                        <p:selectOneMenu id="indicacionespecificidadrm" value="#{resonanciamagneticaController.selected.indicacionespecificidadrm}" style="width: 100%" panelStyle="width:180px" effect="fold"  filter="true" filterMatchMode="startsWith">
+                            <p:ajax listener="#{catalogoController.onCatalogoChange(resonanciamagneticaController.selected.indicacionespecificidadrm,'indicacionespecificidadrm')}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
+                            <f:selectItems value="#{catalogoController.getItemsFind('indicacionespecificidadrm')}" />
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_patronreforzamientorm}" for="patronreforzamientorm" />
-                        <p:inputText id="patronreforzamientorm" value="#{resonanciamagneticaController.selected.patronreforzamientorm}" title="#{bundle.CreateResonanciamagneticaTitle_patronreforzamientorm}" />
+                        <p:selectOneMenu id="patronreforzamientorm" value="#{resonanciamagneticaController.selected.patronreforzamientorm}" style="width: 100%" panelStyle="width:180px" effect="fold"  filter="true" filterMatchMode="startsWith">
+                            <p:ajax listener="#{catalogoController.onCatalogoChange(resonanciamagneticaController.selected.patronreforzamientorm,'patronreforzamientorm')}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
+                            <f:selectItems value="#{catalogoController.getItemsFind('patronreforzamientorm')}" />
+                        </p:selectOneMenu>
+                        
                         <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_protocolorm}" for="protocolorm" />
                         <p:inputText id="protocolorm" value="#{resonanciamagneticaController.selected.protocolorm}" title="#{bundle.CreateResonanciamagneticaTitle_protocolorm}" />
                         <p:outputLabel value="#{bundle.CreateResonanciamagneticaLabel_observacionesprotocolorm}" for="observacionesprotocolorm" />

@@ -17,7 +17,12 @@
                         <p:outputLabel value="#{bundle.CreateEcografiaLabel_descripcionecografia}" for="descripcionecografia" />
                         <p:inputText id="descripcionecografia" value="#{ecografiaController.selected.descripcionecografia}" title="#{bundle.CreateEcografiaTitle_descripcionecografia}" />
                         <p:outputLabel value="#{bundle.CreateEcografiaLabel_razonecografia}" for="razonecografia" />
-                        <p:inputText id="razonecografia" value="#{ecografiaController.selected.razonecografia}" title="#{bundle.CreateEcografiaTitle_razonecografia}" />
+                        <p:selectOneMenu id="razonecografia" value="#{ecografiaController.selected.razonecografia}" style="width: 100%" panelStyle="width:180px" effect="fold"  filter="true" filterMatchMode="startsWith">
+                            <p:ajax listener="#{catalogoController.onCatalogoChange(ecografiaController.selected.razonecografia,'razonecografia')}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
+                            <f:selectItems value="#{catalogoController.getItemsFind('razonecografia')}" />
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateEcografiaLabel_observacionecografia}" for="observacionecografia" />
                         <p:inputText id="observacionecografia" value="#{ecografiaController.selected.observacionecografia}" title="#{bundle.CreateEcografiaTitle_observacionecografia}" />
                         <p:outputLabel value="#{bundle.CreateEcografiaLabel_protocoloecografia}" for="protocoloecografia" />
