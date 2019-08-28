@@ -83,6 +83,7 @@ public class CatalogoController implements Serializable {
             items = null;    // Invalidate list of items to trigger re-query.
         }
         seleccion = ejbFacade.findAll();
+        selected = new Catalogo();
     }
 
     public void update() {
