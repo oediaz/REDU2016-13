@@ -12,6 +12,13 @@
             <h:form id="ResultadosmamografiaepEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{resultadosmamografiaepController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditResultadosmamografiaepLabel_mamografiaemisionpositrones}" for="mamografiaemisionpositrones" />
+                        <p:selectOneMenu id="mamografiaemisionpositrones" value="#{resultadosmamografiaepController.selected.idmamografiaep}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{mamografiaemisionpositronesController.itemsAvailableSelectOne}"
+                                           var="mamografiaemisionpositronesItem"
+                                           itemValue="#{mamografiaemisionpositronesItem}"/>
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditResultadosmamografiaepLabel_hallazgomep}" for="hallazgomep" />
                         <p:inputText id="hallazgomep" value="#{resultadosmamografiaepController.selected.hallazgomep}" title="#{bundle.EditResultadosmamografiaepTitle_hallazgomep}" />
                         <p:outputLabel value="#{bundle.EditResultadosmamografiaepLabel_descripcionhallazgomep}" for="descripcionhallazgomep" />
@@ -20,13 +27,7 @@
                         <p:inputText id="causafalsopositivomep" value="#{resultadosmamografiaepController.selected.causafalsopositivomep}" title="#{bundle.EditResultadosmamografiaepTitle_causafalsopositivomep}" />
                         <p:outputLabel value="#{bundle.EditResultadosmamografiaepLabel_causafalsonegativomep}" for="causafalsonegativomep" />
                         <p:inputText id="causafalsonegativomep" value="#{resultadosmamografiaepController.selected.causafalsonegativomep}" title="#{bundle.EditResultadosmamografiaepTitle_causafalsonegativomep}" />
-                        <p:outputLabel value="#{bundle.EditResultadosmamografiaepLabel_mamografiaemisionpositrones}" for="mamografiaemisionpositrones" />
-                        <p:selectOneMenu id="mamografiaemisionpositrones" value="#{resultadosmamografiaepController.selected.idmamografiaep}" >
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{mamografiaemisionpositronesController.itemsAvailableSelectOne}"
-                                           var="mamografiaemisionpositronesItem"
-                                           itemValue="#{mamografiaemisionpositronesItem}"/>
-                        </p:selectOneMenu>
+                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{resultadosmamografiaepController.update}" value="#{bundle.Save}" update="display,:ResultadosmamografiaepListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ResultadosmamografiaepEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ResultadosmamografiaepEditDialog.hide()"/>

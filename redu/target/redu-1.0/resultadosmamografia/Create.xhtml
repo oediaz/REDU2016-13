@@ -12,6 +12,12 @@
             <h:form id="ResultadosmamografiaCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{resultadosmamografiaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateResultadosmamografiaLabel_mamografia}" for="mamografia" />
+                        <p:selectOneMenu id="mamografia" value="#{resultadosmamografiaController.selected.idmamografia}" >
+                            <f:selectItems value="#{mamografiaController.itemsAvailableSelectOne}"
+                                           var="mamografiaItem"
+                                           itemValue="#{mamografiaItem}"/>
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateResultadosmamografiaLabel_tipohallazgorem}" for="tipohallazgorem" />
                         <p:selectOneMenu id="tipohallazgorem" value="#{resultadosmamografiaController.selected.tipohallazgorem}" style="width: 100%" panelStyle="width:180px" effect="fold"  filter="true" filterMatchMode="startsWith">
                             <p:ajax listener="#{catalogoController.onCatalogoChange(resultadosmamografiaController.selected.tipohallazgorem,'tipohallazgorem')}"/>
@@ -42,12 +48,7 @@
                             <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
                             <f:selectItems value="#{catalogoController.getItemsFind('clasificaciondistribucionhallazgorem')}" />
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateResultadosmamografiaLabel_mamografia}" for="mamografia" />
-                        <p:selectOneMenu id="mamografia" value="#{resultadosmamografiaController.selected.idmamografia}" >
-                            <f:selectItems value="#{mamografiaController.itemsAvailableSelectOne}"
-                                           var="mamografiaItem"
-                                           itemValue="#{mamografiaItem}"/>
-                        </p:selectOneMenu>
+                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{resultadosmamografiaController.create}" value="#{bundle.Save}" update="display,:ResultadosmamografiaListForm:datalist,:growl" oncomplete="handleSubmit(args,'ResultadosmamografiaCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ResultadosmamografiaCreateDialog.hide()"/>

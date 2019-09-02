@@ -12,6 +12,12 @@
             <h:form id="ResultadosecografiaCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{resultadosecografiaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateResultadosecografiaLabel_ecografia}" for="ecografia" />
+                        <p:selectOneMenu id="ecografia" value="#{resultadosecografiaController.selected.idecografia}" >
+                            <f:selectItems value="#{ecografiaController.itemsAvailableSelectOne}"
+                                           var="ecografiaItem"
+                                           itemValue="#{ecografiaItem}"/>
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateResultadosecografiaLabel_tipohallazgore}" for="tipohallazgore" />
                         <p:selectOneMenu id="tipohallazgore" value="#{resultadosecografiaController.selected.tipohallazgore}" style="width: 100%" panelStyle="width:180px" effect="fold"  filter="true" filterMatchMode="startsWith">
                             <p:ajax listener="#{catalogoController.onCatalogoChange(resultadosecografiaController.selected.tipohallazgore,'tipohallazgore')}"/>
@@ -30,12 +36,7 @@
                         <p:inputText id="valorpredictivopositivohallazgore" value="#{resultadosecografiaController.selected.valorpredictivopositivohallazgore}" title="#{bundle.CreateResultadosecografiaTitle_valorpredictivopositivohallazgore}" />
                         <p:outputLabel value="#{bundle.CreateResultadosecografiaLabel_sensibilidadhallazgore}" for="sensibilidadhallazgore" />
                         <p:inputText id="sensibilidadhallazgore" value="#{resultadosecografiaController.selected.sensibilidadhallazgore}" title="#{bundle.CreateResultadosecografiaTitle_sensibilidadhallazgore}" />
-                        <p:outputLabel value="#{bundle.CreateResultadosecografiaLabel_ecografia}" for="ecografia" />
-                        <p:selectOneMenu id="ecografia" value="#{resultadosecografiaController.selected.idecografia}" >
-                            <f:selectItems value="#{ecografiaController.itemsAvailableSelectOne}"
-                                           var="ecografiaItem"
-                                           itemValue="#{ecografiaItem}"/>
-                        </p:selectOneMenu>
+                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{resultadosecografiaController.create}" value="#{bundle.Save}" update="display,:ResultadosecografiaListForm:datalist,:growl" oncomplete="handleSubmit(args,'ResultadosecografiaCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ResultadosecografiaCreateDialog.hide()"/>

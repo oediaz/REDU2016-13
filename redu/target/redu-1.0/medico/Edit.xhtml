@@ -22,7 +22,7 @@
                         <p:inputText id="nombremedico" value="#{medicoController.selected.nombremedico}" title="#{bundle.EditMedicoTitle_nombremedico}" />
                         <p:outputLabel value="Tipo Médico:" for="tipomedico" />
                         <p:selectOneMenu id="tipomedico" value="#{medicoController.selected.tipomedico}"  
-                                         effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith">
+                                         effect="fade"  var="t" style="width:100%" filter="true" filterMatchMode="startsWith">
                             <f:selectItems value="#{catalogoController.getItemsFind('tipomedico')}" />
                         </p:selectOneMenu>
                         <p:outputLabel value="Teléfono:" for="fonomedico" />

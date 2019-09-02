@@ -12,6 +12,13 @@
             <h:form id="ResultadosecografiaEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{resultadosecografiaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditResultadosecografiaLabel_ecografia}" for="ecografia" />
+                        <p:selectOneMenu id="ecografia" value="#{resultadosecografiaController.selected.idecografia}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{ecografiaController.itemsAvailableSelectOne}"
+                                           var="ecografiaItem"
+                                           itemValue="#{ecografiaItem}"/>
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditResultadosecografiaLabel_tipohallazgore}" for="tipohallazgore" />
                         <p:inputText id="tipohallazgore" value="#{resultadosecografiaController.selected.tipohallazgore}" title="#{bundle.EditResultadosecografiaTitle_tipohallazgore}" />
                         <p:outputLabel value="#{bundle.EditResultadosecografiaLabel_descripcionhallazgore}" for="descripcionhallazgore" />
@@ -20,13 +27,7 @@
                         <p:inputText id="valorpredictivopositivohallazgore" value="#{resultadosecografiaController.selected.valorpredictivopositivohallazgore}" title="#{bundle.EditResultadosecografiaTitle_valorpredictivopositivohallazgore}" />
                         <p:outputLabel value="#{bundle.EditResultadosecografiaLabel_sensibilidadhallazgore}" for="sensibilidadhallazgore" />
                         <p:inputText id="sensibilidadhallazgore" value="#{resultadosecografiaController.selected.sensibilidadhallazgore}" title="#{bundle.EditResultadosecografiaTitle_sensibilidadhallazgore}" />
-                        <p:outputLabel value="#{bundle.EditResultadosecografiaLabel_ecografia}" for="ecografia" />
-                        <p:selectOneMenu id="ecografia" value="#{resultadosecografiaController.selected.idecografia}" >
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{ecografiaController.itemsAvailableSelectOne}"
-                                           var="ecografiaItem"
-                                           itemValue="#{ecografiaItem}"/>
-                        </p:selectOneMenu>
+                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{resultadosecografiaController.update}" value="#{bundle.Save}" update="display,:ResultadosecografiaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ResultadosecografiaEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ResultadosecografiaEditDialog.hide()"/>

@@ -13,7 +13,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-08-27T16:44:19")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-08-28T07:15:33")
 @StaticMetamodel(Tratamientocancermama.class)
 public class Tratamientocancermama_ { 
 

@@ -15,6 +15,16 @@
                 <h:panelGroup id="display" rendered="#{resultadoexamenController.selected != null}">
                     <p:panelGrid columns="2" columnClasses="column">
 
+                        <p:outputLabel value="#{bundle.CreateResultadosexamenLabel_idexamen}" for="idexamen" />
+                        <p:selectOneMenu id="idexamen" value="#{resultadoexamenController.selected.idexamen}" required="true" requiredMessage="#{bundle.CreateResultadosexamenRequiredMessage_idexamen}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{examenController.items}"
+                                           var="idexamenItem"
+                                           itemValue="#{idexamenItem}"
+                                           itemLabel="#{idexamenItem.descripcionexamen.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateResultadosexamenLabel_elementoexamen}" for="elementoexamen" />
                         <p:inputText id="elementoexamen" value="#{resultadoexamenController.selected.elementoexamen}" title="#{bundle.CreateResultadosexamenLabel_elementoexamen}" size="32" maxlength="32"/>
 
@@ -38,16 +48,6 @@
 
                         </p:selectOneMenu>
 
-                        <p:outputLabel value="#{bundle.CreateResultadosexamenLabel_idexamen}" for="idexamen" />
-                        <p:selectOneMenu id="idexamen" value="#{resultadoexamenController.selected.idexamen}" required="true" requiredMessage="#{bundle.CreateResultadosexamenRequiredMessage_idexamen}" >
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{examenController.items}"
-                                           var="idexamenItem"
-                                           itemValue="#{idexamenItem}"
-                                           itemLabel="#{idexamenItem.descripcionexamen.toString()}"
-                                           />
-
-                        </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{resultadoexamenController.saveNew}" value="#{bundle.Save}" update="display,:ResultadosexamenForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ResultadosexamenCreateDialog'));">
                         <p:confirm header="#{bundle.ConfirmationHeader}" message="#{bundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>

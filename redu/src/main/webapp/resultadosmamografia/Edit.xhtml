@@ -12,6 +12,13 @@
             <h:form id="ResultadosmamografiaEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{resultadosmamografiaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditResultadosmamografiaLabel_mamografia}" for="mamografia" />
+                        <p:selectOneMenu id="mamografia" value="#{resultadosmamografiaController.selected.idmamografia}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{mamografiaController.itemsAvailableSelectOne}"
+                                           var="mamografiaItem"
+                                           itemValue="#{mamografiaItem}"/>
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditResultadosmamografiaLabel_tipohallazgorem}" for="tipohallazgorem" />
                         <p:inputText id="tipohallazgorem" value="#{resultadosmamografiaController.selected.tipohallazgorem}" title="#{bundle.EditResultadosmamografiaTitle_tipohallazgorem}" />
                         <p:outputLabel value="#{bundle.EditResultadosmamografiaLabel_descripcionhallazgorem}" for="descripcionhallazgorem" />
@@ -22,13 +29,7 @@
                         <p:inputTextarea rows="4" cols="30" id="descripciongradosospechahallazgorem" value="#{resultadosmamografiaController.selected.descripciongradosospechahallazgorem}" title="#{bundle.EditResultadosmamografiaTitle_descripciongradosospechahallazgorem}" />
                         <p:outputLabel value="#{bundle.EditResultadosmamografiaLabel_clasificaciondistribucionhallazgorem}" for="clasificaciondistribucionhallazgorem" />
                         <p:inputText id="clasificaciondistribucionhallazgorem" value="#{resultadosmamografiaController.selected.clasificaciondistribucionhallazgorem}" title="#{bundle.EditResultadosmamografiaTitle_clasificaciondistribucionhallazgorem}" />
-                        <p:outputLabel value="#{bundle.EditResultadosmamografiaLabel_mamografia}" for="mamografia" />
-                        <p:selectOneMenu id="mamografia" value="#{resultadosmamografiaController.selected.idmamografia}" >
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{mamografiaController.itemsAvailableSelectOne}"
-                                           var="mamografiaItem"
-                                           itemValue="#{mamografiaItem}"/>
-                        </p:selectOneMenu>
+                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{resultadosmamografiaController.update}" value="#{bundle.Save}" update="display,:ResultadosmamografiaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ResultadosmamografiaEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ResultadosmamografiaEditDialog.hide()"/>

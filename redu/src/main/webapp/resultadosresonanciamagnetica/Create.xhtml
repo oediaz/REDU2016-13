@@ -12,16 +12,17 @@
             <h:form id="ResultadosresonanciamagneticaCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{resultadosresonanciamagneticaController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateResultadosresonanciamagneticaLabel_tipohallazgormm}" for="tipohallazgormm" />
-                        <p:inputText id="tipohallazgormm" value="#{resultadosresonanciamagneticaController.selected.tipohallazgormm}" title="#{bundle.CreateResultadosresonanciamagneticaTitle_tipohallazgormm}" />
-                        <p:outputLabel value="#{bundle.CreateResultadosresonanciamagneticaLabel_descripcionhallazgorrm}" for="descripcionhallazgorrm" />
-                        <p:inputText id="descripcionhallazgorrm" value="#{resultadosresonanciamagneticaController.selected.descripcionhallazgorrm}" title="#{bundle.CreateResultadosresonanciamagneticaTitle_descripcionhallazgorrm}" />
                         <p:outputLabel value="#{bundle.CreateResultadosresonanciamagneticaLabel_resonanciamagnetica}" for="resonanciamagnetica" />
                         <p:selectOneMenu id="resonanciamagnetica" value="#{resultadosresonanciamagneticaController.selected.idresonanciamagnetica}" >
                             <f:selectItems value="#{resonanciamagneticaController.itemsAvailableSelectOne}"
                                            var="resonanciamagneticaItem"
                                            itemValue="#{resonanciamagneticaItem}"/>
                         </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateResultadosresonanciamagneticaLabel_tipohallazgormm}" for="tipohallazgormm" />
+                        <p:inputText id="tipohallazgormm" value="#{resultadosresonanciamagneticaController.selected.tipohallazgormm}" title="#{bundle.CreateResultadosresonanciamagneticaTitle_tipohallazgormm}" />
+                        <p:outputLabel value="#{bundle.CreateResultadosresonanciamagneticaLabel_descripcionhallazgorrm}" for="descripcionhallazgorrm" />
+                        <p:inputText id="descripcionhallazgorrm" value="#{resultadosresonanciamagneticaController.selected.descripcionhallazgorrm}" title="#{bundle.CreateResultadosresonanciamagneticaTitle_descripcionhallazgorrm}" />
+                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{resultadosresonanciamagneticaController.create}" value="#{bundle.Save}" update="display,:ResultadosresonanciamagneticaListForm:datalist,:growl" oncomplete="handleSubmit(args,'ResultadosresonanciamagneticaCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ResultadosresonanciamagneticaCreateDialog.hide()"/>
