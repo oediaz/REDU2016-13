@@ -33,8 +33,31 @@ public class CatalogoController implements Serializable {
     private Catalogo selected;
     private List<Catalogo> seleccion;
     private Catalogo newCatalogo;
+    private boolean disabled = true;
+    private boolean disabledbuton = true;
 
     public CatalogoController() {
+    }
+
+    public void reiniciar() {
+        disabled = true;
+        disabledbuton = true;
+    }
+
+    public boolean isDisabled() {
+        return disabled;
+    }
+
+    public void setDisabled(boolean disabled) {
+        this.disabled = disabled;
+    }
+
+    public boolean isDisabledbuton() {
+        return disabledbuton;
+    }
+
+    public void setDisabledbuton(boolean disabledbuton) {
+        this.disabledbuton = disabledbuton;
     }
 
     public Catalogo getNewCatalogo() {
@@ -107,19 +130,17 @@ public class CatalogoController implements Serializable {
         return items;
     }
 
-     public void onCatalogoChange(String tipo, String descripcion) {
+    public void onCatalogoChange(String tipo, String descripcion) {
         if ("agregar".equals(tipo)) {
             System.out.println("entro tipo medico");
             System.out.println(descripcion);
-            selected=new Catalogo();
+            selected = new Catalogo();
             selected.setNombre(descripcion);
-           PrimeFaces current = PrimeFaces.current();
+            PrimeFaces current = PrimeFaces.current();
             current.executeScript("PF('CatalogoCreateDialog').show()");
         } else {
             System.out.println("no entro tipo medico");
-            
 
-            
         }
     }
 
@@ -178,6 +199,75 @@ public class CatalogoController implements Serializable {
 
     public List<Catalogo> getItemsAvailableSelectOne() {
         return getFacade().findAll();
+    }
+
+    public void validacedula(String cedula) {
+        int numero = Integer.parseInt(cedula);
+        boolean bandera = false;
+        int auxnum = -1;
+        System.out.println("entro cedula");
+        System.out.println(auxnum);
+        if (cedula.length() == 10) {
+            bandera = true;
+            auxnum = Integer.parseInt(cedula.substring(0, 2));
+        } else {
+            bandera = false;
+        }
+
+        if (bandera == true) {
+            if ((auxnum >= 0) && (auxnum <= 24)) {
+                auxnum = Integer.parseInt(cedula.substring(2, 3));
+                System.out.println(auxnum);
+                if ((auxnum >= 0) && (auxnum < 6)) {
+                    String ced = "";
+                    for (int i = 0; i < cedula.length() - 1; i++) {
+                        auxnum = Integer.parseInt(cedula.substring(i, i + 1));
+                        int aux = i % 2;
+                        if (aux == 0) {
+                            auxnum *= 2;
+                            if (auxnum > 10) {
+                                auxnum -= 9;
+                            }
+                        }
+                        ced += auxnum;
+                        System.out.println(ced);
+                    }
+                    auxnum = 0;
+                    for (int i = 0; i < ced.length(); i++) {
+                        auxnum += Integer.parseInt(ced.substring(i, i + 1));
+                    }
+                    System.out.println("total: " + auxnum);
+                    int aux = (auxnum / 10) + 1;
+                    aux *= 10;
+                    aux -= auxnum;
+                    auxnum = Integer.parseInt(cedula.substring(9, 10));
+                    System.out.println("verificador: " + auxnum);
+
+                    if (aux == auxnum) {
+                        bandera = true;
+                    } else {
+                        bandera = false;
+                    }
+                } else {
+                    bandera = false;
+                }
+            } else {
+                bandera = false;
+            }
+        } else {
+            bandera = false;
+        }
+
+        if (bandera == true) {
+            System.out.println("false");
+            disabled = false;
+            disabledbuton = false;
+        } else {
+            System.out.println("true");
+            disabled = true;
+            disabledbuton = true;
+        }
+
     }
 
     @FacesConverter(forClass = Catalogo.class)
