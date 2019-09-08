@@ -6,6 +6,7 @@ import com.susolabs.redu.controlador.util.JsfUtil;
 import com.susolabs.redu.controlador.util.JsfUtil.PersistAction;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -28,10 +29,10 @@ public class PacienteController implements Serializable {
     private List<Paciente> items = null;
     private Paciente selected;
     private List<Paciente> seleccion;
-
+   
     public PacienteController() {
     }
-
+ 
     public List<Paciente> getSeleccion() {
         return seleccion;
     }

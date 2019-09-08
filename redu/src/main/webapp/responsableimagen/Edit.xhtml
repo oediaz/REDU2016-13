@@ -12,8 +12,7 @@
             <h:form id="ResponsableimagenEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{responsableimagenController.selected != null}">
-                        <p:outputLabel value="Cédula:" for="cedularesponsablei" />
-                        <p:inputText id="cedularesponsablei" required="true" value="#{responsableimagenController.selected.cedularesponsablei}" title="#{bundle.EditResponsableimagenTitle_cedularesponsablei}" />
+
                         <p:outputLabel value="Nombre:" for="nombreresponsablei" />
                         <p:inputText id="nombreresponsablei" value="#{responsableimagenController.selected.nombreresponsablei}" title="#{bundle.EditResponsableimagenTitle_nombreresponsablei}" />
                         <p:outputLabel value="Teléfono:" for="fonoresponsablei" />
@@ -23,17 +22,16 @@
                         <p:outputLabel value="#Celular:" for="celularresponsablei" />
                         <p:inputText id="celularresponsablei" value="#{responsableimagenController.selected.celularresponsablei}" title="#{bundle.EditResponsableimagenTitle_celularresponsablei}" />
                     </p:panelGrid>
-                     <p:keyFilter for="cedularesponsablei" mask="num"/>
                     <p:keyFilter for="celularresponsablei" mask="num"/>
-                        <p:keyFilter for="fonoresponsablei" mask="num"/>
-                        <p:keyFilter for="mailresponsablei" mask="email"/>
-                        <p:keyFilter for="nombreresponsablei" regEx="/[ABCDEFGHIJKLMNOPQRSTUVWXYZÑÁÉÍÓÚ]/i"/>
+                    <p:keyFilter for="fonoresponsablei" mask="num"/>
+                    <p:keyFilter for="mailresponsablei" mask="email"/>
+                    <p:keyFilter for="nombreresponsablei" regEx="/[ABCDEFGHIJKLMNOPQRSTUVWXYZÑÁÉÍÓÚ]/i"/>
                     <center>
-                         <p:commandButton actionListener="#{responsableimagenController.update}" value="#{bundle.Save}" update="display,:ResponsableimagenListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ResponsableimagenEditDialog');"/>
-                         <p:commandButton value="#{bundle.Cancel}" onclick="ResponsableimagenEditDialog.hide()"/>
+                        <p:commandButton actionListener="#{responsableimagenController.update}" value="#{bundle.Save}" update="display,:ResponsableimagenListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ResponsableimagenEditDialog');"/>
+                        <p:commandButton value="#{bundle.Cancel}" onclick="ResponsableimagenEditDialog.hide()"/>
                     </center>
-          
-                   
+
+
                 </h:panelGroup>
             </h:form>
         </p:dialog>

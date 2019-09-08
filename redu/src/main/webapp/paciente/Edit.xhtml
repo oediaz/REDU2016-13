@@ -12,14 +12,12 @@
             <h:form id="PacienteEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{pacienteController.selected != null}">
-                        <p:outputLabel value="CÉDULA" for="cedulapaciente" />
-                        <p:inputText id="cedulapaciente" value="#{pacienteController.selected.cedulapaciente}" title="#{bundle.EditPacienteTitle_cedulapaciente}" required="true" requiredMessage="#{bundle.EditPacienteRequiredMessage_cedulapaciente}"/>
                         <p:outputLabel value="APELLIDO" for="apellidopaciente" />
                         <p:inputText id="apellidopaciente" value="#{pacienteController.selected.apellidopaciente}" title="#{bundle.EditPacienteTitle_apellidopaciente}" />
                         <p:outputLabel value="NOMBRE" for="nombrepaciente" />
                         <p:inputText id="nombrepaciente" value="#{pacienteController.selected.nombrepaciente}" title="#{bundle.EditPacienteTitle_nombrepaciente}" />
                         <p:outputLabel value="FECHA DE NACIMIENTO " for="fechanacimientopaciente" />
-                        <p:calendar id="fechanacimientopaciente" placeholder="dd/mm/yyyy" yearRange="1950:2019" locale="de" navigator="true" pattern="dd/MM/yyyy" value="#{pacienteController.selected.fechanacimientopaciente}" title="#{bundle.EditPacienteTitle_fechanacimientopaciente}" required="true" requiredMessage="#{bundle.EditPacienteRequiredMessage_fechanacimientopaciente}" showOn="button"/>
+                        <p:calendar id="fechanacimientopaciente" placeholder="dd/mm/yyyy" yearRange="1950:2019" locale="de" navigator="true" pattern="dd/MM/yyyy" maxdate="#{catalogoController.endDate}" value="#{pacienteController.selected.fechanacimientopaciente}" title="#{bundle.EditPacienteTitle_fechanacimientopaciente}" required="true" requiredMessage="#{bundle.EditPacienteRequiredMessage_fechanacimientopaciente}" showOn="button"/>
                         <p:outputLabel value="TELÉFONO" for="fonopaciente" />
                         <p:inputText id="fonopaciente" value="#{pacienteController.selected.fonopaciente}" title="#{bundle.EditPacienteTitle_fonopaciente}" />
                         <p:outputLabel value="DIRECCIÓN" for="direccionpaciente" />
@@ -29,7 +27,6 @@
                         <p:outputLabel value="CELULAR" for="celularpaciente" />
                         <p:inputText id="celularpaciente" value="#{pacienteController.selected.celularpaciente}" title="#{bundle.EditPacienteTitle_celularpaciente}" />
                     </p:panelGrid>
-                    <p:keyFilter for="cedulapaciente" mask="num"/>
                     <p:keyFilter for="fonopaciente" mask="num"/>
                     <p:keyFilter for="celularpaciente" mask="num"/>
                     <p:keyFilter for="mailpaciente" mask="email"/>

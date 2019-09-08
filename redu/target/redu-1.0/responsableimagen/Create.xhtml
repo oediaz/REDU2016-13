@@ -13,25 +13,27 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{responsableimagenController.selected != null}">
                         <p:outputLabel value="Cédula:" for="cedularesponsablei" />
-                        <p:inputText id="cedularesponsablei" required="true" value="#{responsableimagenController.selected.cedularesponsablei}" title="#{bundle.CreateResponsableimagenTitle_cedularesponsablei}" />
+                        <p:inputText id="cedularesponsablei" required="true" value="#{responsableimagenController.selected.cedularesponsablei}" title="#{bundle.CreateResponsableimagenTitle_cedularesponsablei}" >
+                            <p:ajax event="keyup"  listener="#{catalogoController.validacedula(responsableimagenController.selected.cedularesponsablei)}" update="display" />
+                        </p:inputText>
                         <p:outputLabel value="Nombre:" for="nombreresponsablei" />
-                        <p:inputText id="nombreresponsablei" value="#{responsableimagenController.selected.nombreresponsablei}" title="#{bundle.CreateResponsableimagenTitle_nombreresponsablei}" />
+                        <p:inputText id="nombreresponsablei" value="#{responsableimagenController.selected.nombreresponsablei}" title="#{bundle.CreateResponsableimagenTitle_nombreresponsablei}" disabled="#{catalogoController.disabled}"/>
                         <p:outputLabel value="Teléfono:" for="fonoresponsablei" />
-                        <p:inputText id="fonoresponsablei" value="#{responsableimagenController.selected.fonoresponsablei}" title="#{bundle.CreateResponsableimagenTitle_fonoresponsablei}" />
+                        <p:inputText id="fonoresponsablei" value="#{responsableimagenController.selected.fonoresponsablei}" title="#{bundle.CreateResponsableimagenTitle_fonoresponsablei}" disabled="#{catalogoController.disabled}"/>
                         <p:outputLabel value="Email:" for="mailresponsablei" />
-                        <p:inputText id="mailresponsablei" value="#{responsableimagenController.selected.mailresponsablei}" title="#{bundle.CreateResponsableimagenTitle_mailresponsablei}" validatorMessage="Email no Valido"> <f:validateRegex  pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" /></p:inputText>
+                        <p:inputText id="mailresponsablei" value="#{responsableimagenController.selected.mailresponsablei}" title="#{bundle.CreateResponsableimagenTitle_mailresponsablei}" validatorMessage="Email no Valido" disabled="#{catalogoController.disabled}"> <f:validateRegex  pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" /></p:inputText>
                         <p:outputLabel value="Celular:" for="celularresponsablei" />
-                        <p:inputText id="celularresponsablei" value="#{responsableimagenController.selected.celularresponsablei}" title="#{bundle.CreateResponsableimagenTitle_celularresponsablei}" />
+                        <p:inputText id="celularresponsablei" value="#{responsableimagenController.selected.celularresponsablei}" title="#{bundle.CreateResponsableimagenTitle_celularresponsablei}" disabled="#{catalogoController.disabled}"/>
                     </p:panelGrid>
                     <p:keyFilter for="cedularesponsablei" mask="num"/>
                     <p:keyFilter for="celularresponsablei" mask="num"/>
-                        <p:keyFilter for="fonoresponsablei" mask="num"/>
-                        <p:keyFilter for="mailresponsablei" mask="email"/>
-                        <p:keyFilter for="nombreresponsablei" regEx="/[ABCDEFGHIJKLMNOPQRSTUVWXYZÑÁÉÍÓÚ]/i"/>
-                        
+                    <p:keyFilter for="fonoresponsablei" mask="num"/>
+                    <p:keyFilter for="mailresponsablei" mask="email"/>
+                    <p:keyFilter for="nombreresponsablei" regEx="/[ABCDEFGHIJKLMNOPQRSTUVWXYZÑÁÉÍÓÚ ]/i"/>
+
                     <center>
-                    <p:commandButton actionListener="#{responsableimagenController.create}" value="#{bundle.Save}" update="display,:ResponsableimagenListForm:datalist,:growl" oncomplete="handleSubmit(args,'ResponsableimagenCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="ResponsableimagenCreateDialog.hide()"/>
+                        <p:commandButton actionListener="#{responsableimagenController.create}" value="#{bundle.Save}" update="display,:ResponsableimagenListForm:datalist,:growl" oncomplete="handleSubmit(args,'ResponsableimagenCreateDialog');"/>
+                        <p:commandButton value="#{bundle.Cancel}" onclick="ResponsableimagenCreateDialog.hide()"/>
                     </center>
                 </h:panelGroup>
             </h:form>

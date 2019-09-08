@@ -7,6 +7,7 @@ import com.susolabs.redu.controlador.util.JsfUtil.PersistAction;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +36,14 @@ public class CatalogoController implements Serializable {
     private Catalogo newCatalogo;
     private boolean disabled = true;
     private boolean disabledbuton = true;
+java.util.Date endDate = new Date();
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
 
     public CatalogoController() {
     }
@@ -202,11 +211,13 @@ public class CatalogoController implements Serializable {
     }
 
     public void validacedula(String cedula) {
+        disabled = true;
+            disabledbuton = true;
         int numero = Integer.parseInt(cedula);
         boolean bandera = false;
         int auxnum = -1;
         System.out.println("entro cedula");
-        System.out.println(auxnum);
+        
         if (cedula.length() == 10) {
             bandera = true;
             auxnum = Integer.parseInt(cedula.substring(0, 2));

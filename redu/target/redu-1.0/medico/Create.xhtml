@@ -16,29 +16,29 @@
                         <p:inputText id="cedulamedico" value="#{medicoController.selected.cedulamedico}" title="#{bundle.CreateMedicoTitle_cedulamedico}" 
                                      validatorMessage="Cedula Mal Ingresada"
                                      required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_cedulamedico}">
-                            <f:validateLength minimum = "10" maximum = "10"/>
+                            <p:ajax event="keyup"  listener="#{catalogoController.validacedula(medicoController.selected.cedulamedico)}" update="display" />
                         </p:inputText>
                         <p:outputLabel value="Apellido:" for="apellidomedico" />
-                        <p:inputText id="apellidomedico" value="#{medicoController.selected.apellidomedico}" title="#{bundle.CreateMedicoTitle_apellidomedico}" />
+                        <p:inputText id="apellidomedico" value="#{medicoController.selected.apellidomedico}" title="#{bundle.CreateMedicoTitle_apellidomedico}" disabled="#{catalogoController.disabled}"/>
                         <p:outputLabel value="Nombre:" for="nombremedico" />
-                        <p:inputText id="nombremedico" value="#{medicoController.selected.nombremedico}" title="#{bundle.CreateMedicoTitle_nombremedico}" />
+                        <p:inputText id="nombremedico" value="#{medicoController.selected.nombremedico}" title="#{bundle.CreateMedicoTitle_nombremedico}" disabled="#{catalogoController.disabled}"/>
                         <p:outputLabel value="Tipo Médico:" for="tipomedico" />
-                        <p:selectOneMenu id="tipomedico" value="#{medicoController.selected.tipomedico}" style="width: 100%" panelStyle="width:180px" effect="fold"  filter="true" filterMatchMode="startsWith">
+                        <p:selectOneMenu id="tipomedico" value="#{medicoController.selected.tipomedico}" style="width: 100%" panelStyle="width:180px" effect="fold"  filter="true" filterMatchMode="startsWith" disabled="#{catalogoController.disabled}">
                             <p:ajax listener="#{catalogoController.onCatalogoChange(medicoController.selected.tipomedico,'tipomedico')}"/>
                             <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
                             <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
                             <f:selectItems value="#{catalogoController.getItemsFind('tipomedico')}" />
                         </p:selectOneMenu>
                         <p:outputLabel value="Teléfono:" for="fonomedico" />
-                        <p:inputText id="fonomedico" value="#{medicoController.selected.fonomedico}" title="#{bundle.CreateMedicoTitle_fonomedico}" />
+                        <p:inputText id="fonomedico" value="#{medicoController.selected.fonomedico}" title="#{bundle.CreateMedicoTitle_fonomedico}" disabled="#{catalogoController.disabled}" />
                         <p:outputLabel value="Dirección:" for="direccionmedico" />
-                        <p:inputText id="direccionmedico" value="#{medicoController.selected.direccionmedico}" title="#{bundle.CreateMedicoTitle_direccionmedico}" />
+                        <p:inputText id="direccionmedico" value="#{medicoController.selected.direccionmedico}" title="#{bundle.CreateMedicoTitle_direccionmedico}" disabled="#{catalogoController.disabled}"/>
                         <p:outputLabel value="Email:" for="mailmedico" />
-                        <p:inputText id="mailmedico" value="#{medicoController.selected.mailmedico}" title="#{bundle.CreateMedicoTitle_mailmedico}" validatorMessage="Email no Valido" >
+                        <p:inputText id="mailmedico" value="#{medicoController.selected.mailmedico}" title="#{bundle.CreateMedicoTitle_mailmedico}" validatorMessage="Email no Valido" disabled="#{catalogoController.disabled}">
                             <f:validateRegex  pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
                         </p:inputText>
                         <p:outputLabel value="Celular:" for="celularmedico" />
-                        <p:inputText id="celularmedico" value="#{medicoController.selected.celularmedico}" title="#{bundle.CreateMedicoTitle_celularmedico}" />
+                        <p:inputText id="celularmedico" value="#{medicoController.selected.celularmedico}" title="#{bundle.CreateMedicoTitle_celularmedico}" disabled="#{catalogoController.disabled}"/>
 
                     </p:panelGrid>
                     <p:keyFilter for="cedulamedico" mask="num"/>
@@ -48,7 +48,7 @@
                     <p:keyFilter for="nombremedico" regEx="/[ABCDEFGHIJKLMNOPQRSTUVWXYZÑÁÉÍÓÚ]/i"/>
                     <p:keyFilter for="apellidomedico" regEx="/[ABCDEFGHIJKLMNOPQRSTUVWXYZÑÁÉÍÓÚ]/i"/>
 
-                    <p:commandButton actionListener="#{medicoController.create}" value="#{bundle.Save}" update="display,:MedicoListForm:datalist,:growl" oncomplete="handleSubmit(args,'MedicoCreateDialog');"/>
+                    <p:commandButton actionListener="#{medicoController.create}" disabled="#{catalogoController.disabledbuton}" value="#{bundle.Save}" update="display,:MedicoListForm:datalist,:growl" oncomplete="handleSubmit(args,'MedicoCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="MedicoCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>

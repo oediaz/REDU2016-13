@@ -12,10 +12,7 @@
             <h:form id="MedicoEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{medicoController.selected != null}">
-                        <p:outputLabel value="Cédula:" for="cedulamedico" />
-                        <p:inputText id="cedulamedico" value="#{medicoController.selected.cedulamedico}" title="#{bundle.EditMedicoTitle_cedulamedico}" required="true" requiredMessage="#{bundle.EditMedicoRequiredMessage_cedulamedico}">
-                            <f:validateLength minimum = "10" maximum = "10"/>
-                        </p:inputText>
+
                         <p:outputLabel value="Apellido:" for="apellidomedico" />
                         <p:inputText id="apellidomedico" value="#{medicoController.selected.apellidomedico}" title="#{bundle.EditMedicoTitle_apellidomedico}" />
                         <p:outputLabel value="Nombre:" for="nombremedico" />
@@ -36,7 +33,7 @@
                         <p:outputLabel value="Celular:" for="celularmedico" />
                         <p:inputText id="celularmedico" value="#{medicoController.selected.celularmedico}" title="#{bundle.EditMedicoTitle_celularmedico}" />
                     </p:panelGrid>
-                    <p:keyFilter for="cedulamedico" mask="num"/>
+
                     <p:keyFilter for="fonomedico" mask="num"/>
                     <p:keyFilter for="celularmedico" mask="num"/>
                     <p:keyFilter for="mailmedico" mask="email"/>
