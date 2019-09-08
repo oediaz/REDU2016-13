@@ -44,17 +44,17 @@
                         </p:column>
                         <p:column filterBy="#{item.fechascreening}" filterMatchMode="contains">
                             <f:facet name="filter">
-                                <p:calendar onkeyup="PF('datalist').filter()"    onmousemove="PF('datalist').filter()" style="width:95%" placeholder="dd/mm/yyyy"  locale="de" navigator="true" pattern="dd/MM/yyyy" />
-                                                    </f:facet>
+                                <p:calendar maxdate="#{catalogoController.endDate}" yearRange="1950:2019" onkeyup="PF('datalist').filter()"    onmousemove="PF('datalist').filter()" style="width:95%" placeholder="dd/mm/yyyy"  locale="de" navigator="true" pattern="dd/MM/yyyy" />
+                            </f:facet>
                             <f:facet name="header">
-                                
+
                                 <h:outputText style="width:100%; text-transform: uppercase"   value="FECHA" />
                             </f:facet>
                             <h:outputText value="#{item.fechascreening}" style="width:100%">
                                 <f:convertDateTime pattern="dd/MM/yyyy" />
                             </h:outputText>
                         </p:column>
-                        
+
                         <p:column filterBy="#{item.metodoscreening}" filterMatchMode="contains">
                             <f:facet name="filter">
                                 <p:selectOneMenu onchange="PF('datalist').filter()">

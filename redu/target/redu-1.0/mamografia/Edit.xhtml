@@ -12,8 +12,27 @@
             <h:form id="MamografiaEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{mamografiaController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditMamografiaLabel_fechamamografia}" for="fechamamografia" />
-                        <p:calendar id="fechamamografia" placeholder="dd/mm/yyyy" yearRange="1950:2019" locale="de" navigator="true" pattern="dd/MM/yyyy" required="true"  value="#{mamografiaController.selected.fechamamografia}" title="#{bundle.EditMamografiaTitle_fechamamografia}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditMamografiaLabel_screening}" for="screening" />
+                        <p:selectOneMenu id="screening" value="#{mamografiaController.selected.idscreening}" required="true" requiredMessage="#{bundle.EditMamografiaRequiredMessage_screening}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{screeningController.itemsAvailableSelectOne}"
+                                           var="screeningItem"
+                                           itemValue="#{screeningItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditMamografiaLabel_responsableimagen}" for="responsableimagen" />
+                        <p:selectOneMenu id="responsableimagen" value="#{mamografiaController.selected.idresponsablei}" required="true" requiredMessage="#{bundle.EditMamografiaRequiredMessage_responsableimagen}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{responsableimagenController.itemsAvailableSelectOne}"
+                                           var="responsableimagenItem"
+                                           itemValue="#{responsableimagenItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditMamografiaLabel_laboratorio}" for="laboratorio" />
+                        <p:selectOneMenu id="laboratorio" value="#{mamografiaController.selected.idlaboratorio}" required="true" requiredMessage="#{bundle.EditMamografiaRequiredMessage_laboratorio}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{laboratorioController.itemsAvailableSelectOne}"
+                                           var="laboratorioItem"
+                                           itemValue="#{laboratorioItem}"/>
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditMamografiaLabel_caracteristicapredominantem}" for="caracteristicapredominantem" />
                         <p:selectOneMenu id="caracteristicapredominantem" value="#{mamografiaController.selected.caracteristicapredominantem}" style="width: 100%" title="#{bundle.EditMamografiaTitle_caracteristicapredominantem}" panelStyle="width:180px" effect="fade" var="t" filter="true" filterMatchMode="startsWith">
                             <f:selectItems value="#{catalogoController.getItemsFind('caracteristicapredominantem')}" />
@@ -39,27 +58,7 @@
                         <p:inputText id="protocolomamografia" value="#{mamografiaController.selected.protocolomamografia}" title="#{bundle.EditMamografiaTitle_protocolomamografia}" />
                         <p:outputLabel value="#{bundle.EditMamografiaLabel_observacionesprotocolom}" for="observacionesprotocolom" />
                         <p:inputText id="observacionesprotocolom" value="#{mamografiaController.selected.observacionesprotocolom}" title="#{bundle.EditMamografiaTitle_observacionesprotocolom}" />
-                        <p:outputLabel value="#{bundle.EditMamografiaLabel_screening}" for="screening" />
-                        <p:selectOneMenu id="screening" value="#{mamografiaController.selected.idscreening}" required="true" requiredMessage="#{bundle.EditMamografiaRequiredMessage_screening}">
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{screeningController.itemsAvailableSelectOne}"
-                                           var="screeningItem"
-                                           itemValue="#{screeningItem}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.EditMamografiaLabel_responsableimagen}" for="responsableimagen" />
-                        <p:selectOneMenu id="responsableimagen" value="#{mamografiaController.selected.idresponsablei}" required="true" requiredMessage="#{bundle.EditMamografiaRequiredMessage_responsableimagen}">
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{responsableimagenController.itemsAvailableSelectOne}"
-                                           var="responsableimagenItem"
-                                           itemValue="#{responsableimagenItem}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.EditMamografiaLabel_laboratorio}" for="laboratorio" />
-                        <p:selectOneMenu id="laboratorio" value="#{mamografiaController.selected.idlaboratorio}" required="true" requiredMessage="#{bundle.EditMamografiaRequiredMessage_laboratorio}">
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{laboratorioController.itemsAvailableSelectOne}"
-                                           var="laboratorioItem"
-                                           itemValue="#{laboratorioItem}"/>
-                        </p:selectOneMenu>
+                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{mamografiaController.update}" value="#{bundle.Save}" update="display,:MamografiaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MamografiaEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="MamografiaEditDialog.hide()"/>

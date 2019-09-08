@@ -12,23 +12,7 @@
             <h:form id="ResonanciamagneticaEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{resonanciamagneticaController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditResonanciamagneticaLabel_fecharm}" for="fecharm" />
-                        <p:calendar id="fecharm" placeholder="dd/mm/yyyy" yearRange="1950:2019" locale="de" navigator="true" pattern="dd/MM/yyyy" required="true"  value="#{resonanciamagneticaController.selected.fecharm}" title="#{bundle.EditResonanciamagneticaTitle_fecharm}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.EditResonanciamagneticaLabel_descripcionrm}" for="descripcionrm" />
-                        <p:inputText id="descripcionrm" value="#{resonanciamagneticaController.selected.descripcionrm}" title="#{bundle.EditResonanciamagneticaTitle_descripcionrm}" />
-                        <p:outputLabel value="#{bundle.EditResonanciamagneticaLabel_razonrm}" for="razonrm" />
-                        <p:inputText id="razonrm" value="#{resonanciamagneticaController.selected.razonrm}" title="#{bundle.EditResonanciamagneticaTitle_razonrm}" />
-                        <p:outputLabel value="#{bundle.EditResonanciamagneticaLabel_observacionrm}" for="observacionrm" />
-                        <p:inputText id="observacionrm" value="#{resonanciamagneticaController.selected.observacionrm}" title="#{bundle.EditResonanciamagneticaTitle_observacionrm}" />
-                        <p:outputLabel value="#{bundle.EditResonanciamagneticaLabel_indicacionespecificidadrm}" for="indicacionespecificidadrm" />
-                        <p:inputText id="indicacionespecificidadrm" value="#{resonanciamagneticaController.selected.indicacionespecificidadrm}" title="#{bundle.EditResonanciamagneticaTitle_indicacionespecificidadrm}" />
-                        <p:outputLabel value="#{bundle.EditResonanciamagneticaLabel_patronreforzamientorm}" for="patronreforzamientorm" />
-                        <p:inputText id="patronreforzamientorm" value="#{resonanciamagneticaController.selected.patronreforzamientorm}" title="#{bundle.EditResonanciamagneticaTitle_patronreforzamientorm}" />
-                        <p:outputLabel value="#{bundle.EditResonanciamagneticaLabel_protocolorm}" for="protocolorm" />
-                        <p:inputText id="protocolorm" value="#{resonanciamagneticaController.selected.protocolorm}" title="#{bundle.EditResonanciamagneticaTitle_protocolorm}" />
-                        <p:outputLabel value="#{bundle.EditResonanciamagneticaLabel_observacionesprotocolorm}" for="observacionesprotocolorm" />
-                        <p:inputText id="observacionesprotocolorm" value="#{resonanciamagneticaController.selected.observacionesprotocolorm}" title="#{bundle.EditResonanciamagneticaTitle_observacionesprotocolorm}" />
-                        <p:outputLabel value="#{bundle.EditResonanciamagneticaLabel_screening}" for="screening" />
+                         <p:outputLabel value="#{bundle.EditResonanciamagneticaLabel_screening}" for="screening" />
                         <p:selectOneMenu id="screening" value="#{resonanciamagneticaController.selected.idscreening}" required="true" requiredMessage="#{bundle.EditResonanciamagneticaRequiredMessage_screening}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{screeningController.itemsAvailableSelectOne}"
@@ -49,6 +33,21 @@
                                            var="laboratorioItem"
                                            itemValue="#{laboratorioItem}"/>
                         </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditResonanciamagneticaLabel_descripcionrm}" for="descripcionrm" />
+                        <p:inputText id="descripcionrm" value="#{resonanciamagneticaController.selected.descripcionrm}" title="#{bundle.EditResonanciamagneticaTitle_descripcionrm}" />
+                        <p:outputLabel value="#{bundle.EditResonanciamagneticaLabel_razonrm}" for="razonrm" />
+                        <p:inputText id="razonrm" value="#{resonanciamagneticaController.selected.razonrm}" title="#{bundle.EditResonanciamagneticaTitle_razonrm}" />
+                        <p:outputLabel value="#{bundle.EditResonanciamagneticaLabel_observacionrm}" for="observacionrm" />
+                        <p:inputText id="observacionrm" value="#{resonanciamagneticaController.selected.observacionrm}" title="#{bundle.EditResonanciamagneticaTitle_observacionrm}" />
+                        <p:outputLabel value="#{bundle.EditResonanciamagneticaLabel_indicacionespecificidadrm}" for="indicacionespecificidadrm" />
+                        <p:inputText id="indicacionespecificidadrm" value="#{resonanciamagneticaController.selected.indicacionespecificidadrm}" title="#{bundle.EditResonanciamagneticaTitle_indicacionespecificidadrm}" />
+                        <p:outputLabel value="#{bundle.EditResonanciamagneticaLabel_patronreforzamientorm}" for="patronreforzamientorm" />
+                        <p:inputText id="patronreforzamientorm" value="#{resonanciamagneticaController.selected.patronreforzamientorm}" title="#{bundle.EditResonanciamagneticaTitle_patronreforzamientorm}" />
+                        <p:outputLabel value="#{bundle.EditResonanciamagneticaLabel_protocolorm}" for="protocolorm" />
+                        <p:inputText id="protocolorm" value="#{resonanciamagneticaController.selected.protocolorm}" title="#{bundle.EditResonanciamagneticaTitle_protocolorm}" />
+                        <p:outputLabel value="#{bundle.EditResonanciamagneticaLabel_observacionesprotocolorm}" for="observacionesprotocolorm" />
+                        <p:inputText id="observacionesprotocolorm" value="#{resonanciamagneticaController.selected.observacionesprotocolorm}" title="#{bundle.EditResonanciamagneticaTitle_observacionesprotocolorm}" />
+                       
                     </p:panelGrid>
                     <p:commandButton actionListener="#{resonanciamagneticaController.update}" value="#{bundle.Save}" update="display,:ResonanciamagneticaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ResonanciamagneticaEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ResonanciamagneticaEditDialog.hide()"/>

@@ -41,12 +41,15 @@
                             </f:facet>
                             <h:outputText value="#{item.idresonanciamagnetica}"/>
                         </p:column>
-                        <p:column filterBy="#{item.fecharm}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
+                        <p:column filterBy="#{item.fecharm}" filterMatchMode="contains">  
+                            <f:facet name="filter">
+                                <p:calendar maxdate="#{catalogoController.endDate}" yearRange="1950:2019" onkeyup="PF('datalist').filter()"    onmousemove="PF('datalist').filter()" style="width:95%" placeholder="dd/mm/yyyy"  locale="de" navigator="true" pattern="dd/MM/yyyy" />
+                            </f:facet>
                             <f:facet name="header">
                                 <h:outputText style="width:100%;text-transform: uppercase"   value="#{bundle.ListResonanciamagneticaTitle_fecharm}"/>
                             </f:facet>
                             <h:outputText value="#{item.fecharm}">
-                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
                             </h:outputText>
                         </p:column>
                         <p:column filterBy="#{item.descripcionrm}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>

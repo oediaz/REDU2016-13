@@ -54,7 +54,7 @@ public class Screening implements Serializable {
     @NotNull
     @Column(name = "FECHASCREENING")
     @Temporal(TemporalType.DATE)
-    private Date fechascreening= new Date();;
+    private Date fechascreening= new Date();
     @Size(max = 32)
     @Column(name = "METODOSCREENING")
     private String metodoscreening;
@@ -105,11 +105,12 @@ public class Screening implements Serializable {
     }
 
     public Date getFechascreening() {
+        this.fechascreening= new Date();
         return fechascreening;
     }
 
     public void setFechascreening(Date fechascreening) {
-        this.fechascreening = fechascreening;
+        this.fechascreening = new Date();
     }
 
     public String getMetodoscreening() {

@@ -12,50 +12,6 @@
             <h:form id="MamografiaCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{mamografiaController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateMamografiaLabel_fechamamografia}" for="fechamamografia" />
-                        <p:calendar id="fechamamografia" placeholder="dd/mm/yyyy" yearRange="1950:2019" locale="de" navigator="true" pattern="dd/MM/yyyy" required="true" value="#{mamografiaController.selected.fechamamografia}" title="#{bundle.EditMamografiaTitle_fechamamografia}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateMamografiaLabel_caracteristicapredominantem}" for="caracteristicapredominantem" />
-                        <p:selectOneMenu id="caracteristicapredominantem" value="#{mamografiaController.selected.caracteristicapredominantem}" style="width: 100%" title="#{bundle.CreateMamografiaTitle_caracteristicapredominantem}"
-                                         panelStyle="width:180px" effect="fade"  filter="true" filterMatchMode="startsWith">
-                            <p:ajax listener="#{catalogoController.onCatalogoChange(mamografiaController.selected.caracteristicapredominantem,'caracteristicapredominantem')}"/>
-                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
-                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
-                            <f:selectItems value="#{catalogoController.getItemsFind('caracteristicapredominantem')}" />
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateMamografiaLabel_patrondensidadm}" for="patrondensidadm" />
-                        <p:selectOneMenu id="patrondensidadm" value="#{mamografiaController.selected.patrondensidadm}" style="width: 100%" title="#{bundle.CreateMamografiaTitle_patrondensidadm}" panelStyle="width:180px" effect="fade" filter="true" filterMatchMode="startsWith">
-                            <p:ajax listener="#{catalogoController.onCatalogoChange(mamografiaController.selected.patrondensidadm,'patrondensidadm')}"/>
-                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
-                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
-                            <f:selectItems value="#{catalogoController.getItemsFind('patrondensidadm')}" />
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateMamografiaLabel_patrongrasam}" for="patrongrasam" />
-                        <p:selectOneMenu id="patrongrasam" value="#{mamografiaController.selected.patrongrasam}" style="width: 100%" title="#{bundle.CreateMamografiaTitle_patrongrasam}" panelStyle="width:180px" effect="fade"  filter="true" filterMatchMode="startsWith">
-                             <p:ajax listener="#{catalogoController.onCatalogoChange(mamografiaController.selected.patrongrasam,'patrongrasam')}"/>
-                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
-                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
-                           <f:selectItems value="#{catalogoController.getItemsFind('patrongrasam')}" />
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateMamografiaLabel_estimacionvisualdensidadm}" for="estimacionvisualdensidadm" />
-                        <p:selectOneMenu id="estimacionvisualdensidadm" value="#{mamografiaController.selected.estimacionvisualdensidadm}" style="width: 100%" title="#{bundle.CreateMamografiaTitle_estimacionvisualdensidadm}" panelStyle="width:180px" effect="fade" filter="true" filterMatchMode="startsWith">
-                             <p:ajax listener="#{catalogoController.onCatalogoChange(mamografiaController.selected.estimacionvisualdensidadm,'estimacionvisualdensidadm')}"/>
-                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
-                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
-                            <f:selectItems value="#{catalogoController.getItemsFind('estimacionvisualdensidadm')}" />
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateMamografiaLabel_patronparenquimagrandularm}" for="patronparenquimagrandularm" />
-                        <p:selectOneMenu id="patronparenquimagrandularm" value="#{mamografiaController.selected.patronparenquimagrandularm}" style="width: 100%" title="#{bundle.CreateMamografiaTitle_patronparenquimagrandularm}" panelStyle="width:180px" effect="fade"  filter="true" filterMatchMode="startsWith">
-                             <p:ajax listener="#{catalogoController.onCatalogoChange(mamografiaController.selected.patronparenquimagrandularm,'patronparenquimagrandularm')}"/>
-                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
-                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
-                            <f:selectItems value="#{catalogoController.getItemsFind('patronparenquimagrandularm')}" />
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateMamografiaLabel_protocolomamografia}" for="protocolomamografia" />
-                        <p:inputText id="protocolomamografia" value="#{mamografiaController.selected.protocolomamografia}" title="#{bundle.CreateMamografiaTitle_protocolomamografia}" />
-                        <p:outputLabel value="#{bundle.CreateMamografiaLabel_observacionesprotocolom}" for="observacionesprotocolom" />
-                        <p:inputText id="observacionesprotocolom" value="#{mamografiaController.selected.observacionesprotocolom}" title="#{bundle.CreateMamografiaTitle_observacionesprotocolom}" />
-
-
                         <p:outputLabel value="Paciente:" for="idpaciente" />
                         <p:selectOneMenu id="idpaciente" required="true" value="#{screeningController.filtro}"
                                          effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith">
@@ -102,6 +58,49 @@
                                 <h:outputText value="#{t.toString()}" />
                             </p:column>
                         </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateMamografiaLabel_caracteristicapredominantem}" for="caracteristicapredominantem" />
+                        <p:selectOneMenu id="caracteristicapredominantem" value="#{mamografiaController.selected.caracteristicapredominantem}" style="width: 100%" title="#{bundle.CreateMamografiaTitle_caracteristicapredominantem}"
+                                         panelStyle="width:180px" effect="fade"  filter="true" filterMatchMode="startsWith">
+                            <p:ajax listener="#{catalogoController.onCatalogoChange(mamografiaController.selected.caracteristicapredominantem,'caracteristicapredominantem')}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
+                            <f:selectItems value="#{catalogoController.getItemsFind('caracteristicapredominantem')}" />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateMamografiaLabel_patrondensidadm}" for="patrondensidadm" />
+                        <p:selectOneMenu id="patrondensidadm" value="#{mamografiaController.selected.patrondensidadm}" style="width: 100%" title="#{bundle.CreateMamografiaTitle_patrondensidadm}" panelStyle="width:180px" effect="fade" filter="true" filterMatchMode="startsWith">
+                            <p:ajax listener="#{catalogoController.onCatalogoChange(mamografiaController.selected.patrondensidadm,'patrondensidadm')}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
+                            <f:selectItems value="#{catalogoController.getItemsFind('patrondensidadm')}" />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateMamografiaLabel_patrongrasam}" for="patrongrasam" />
+                        <p:selectOneMenu id="patrongrasam" value="#{mamografiaController.selected.patrongrasam}" style="width: 100%" title="#{bundle.CreateMamografiaTitle_patrongrasam}" panelStyle="width:180px" effect="fade"  filter="true" filterMatchMode="startsWith">
+                             <p:ajax listener="#{catalogoController.onCatalogoChange(mamografiaController.selected.patrongrasam,'patrongrasam')}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
+                           <f:selectItems value="#{catalogoController.getItemsFind('patrongrasam')}" />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateMamografiaLabel_estimacionvisualdensidadm}" for="estimacionvisualdensidadm" />
+                        <p:selectOneMenu id="estimacionvisualdensidadm" value="#{mamografiaController.selected.estimacionvisualdensidadm}" style="width: 100%" title="#{bundle.CreateMamografiaTitle_estimacionvisualdensidadm}" panelStyle="width:180px" effect="fade" filter="true" filterMatchMode="startsWith">
+                             <p:ajax listener="#{catalogoController.onCatalogoChange(mamografiaController.selected.estimacionvisualdensidadm,'estimacionvisualdensidadm')}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
+                            <f:selectItems value="#{catalogoController.getItemsFind('estimacionvisualdensidadm')}" />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateMamografiaLabel_patronparenquimagrandularm}" for="patronparenquimagrandularm" />
+                        <p:selectOneMenu id="patronparenquimagrandularm" value="#{mamografiaController.selected.patronparenquimagrandularm}" style="width: 100%" title="#{bundle.CreateMamografiaTitle_patronparenquimagrandularm}" panelStyle="width:180px" effect="fade"  filter="true" filterMatchMode="startsWith">
+                             <p:ajax listener="#{catalogoController.onCatalogoChange(mamografiaController.selected.patronparenquimagrandularm,'patronparenquimagrandularm')}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
+                            <f:selectItems value="#{catalogoController.getItemsFind('patronparenquimagrandularm')}" />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateMamografiaLabel_protocolomamografia}" for="protocolomamografia" />
+                        <p:inputText id="protocolomamografia" value="#{mamografiaController.selected.protocolomamografia}" title="#{bundle.CreateMamografiaTitle_protocolomamografia}" />
+                        <p:outputLabel value="#{bundle.CreateMamografiaLabel_observacionesprotocolom}" for="observacionesprotocolom" />
+                        <p:inputText id="observacionesprotocolom" value="#{mamografiaController.selected.observacionesprotocolom}" title="#{bundle.CreateMamografiaTitle_observacionesprotocolom}" />
+
+
+                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{mamografiaController.create}" value="#{bundle.Save}" update="display,:MamografiaListForm:datalist,:growl" oncomplete="handleSubmit(args,'MamografiaCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="MamografiaCreateDialog.hide()"/>

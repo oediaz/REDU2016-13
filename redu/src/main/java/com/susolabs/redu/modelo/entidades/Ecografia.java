@@ -53,7 +53,7 @@ public class Ecografia implements Serializable {
     private Integer idecografia;
     @Column(name = "FECHAECOGRAFIA")
     @Temporal(TemporalType.DATE)
-    private Date fechaecografia;
+    private Date fechaecografia = new Date();
     @Size(max = 64)
     @Column(name = "DESCRIPCIONECOGRAFIA")
     private String descripcionecografia;
@@ -97,11 +97,12 @@ public class Ecografia implements Serializable {
     }
 
     public Date getFechaecografia() {
+        this.fechaecografia = new Date();
         return fechaecografia;
     }
 
     public void setFechaecografia(Date fechaecografia) {
-        this.fechaecografia = fechaecografia;
+        this.fechaecografia = new Date();
     }
 
     public String getDescripcionecografia() {
@@ -199,9 +200,9 @@ public class Ecografia implements Serializable {
 
     @Override
     public String toString() {
-        String dato=""+new SimpleDateFormat("dd-MM-yyyy").format(fechaecografia);
-        String fecha=dato.replace('-', '/');
-        return "" +fecha  + "-"+idecografia;
+        String dato = "" + new SimpleDateFormat("dd-MM-yyyy").format(fechaecografia);
+        String fecha = dato.replace('-', '/');
+        return "" + fecha + "-" + idecografia;
     }
-    
+
 }

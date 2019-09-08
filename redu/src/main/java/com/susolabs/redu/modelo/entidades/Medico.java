@@ -52,7 +52,7 @@ public class Medico implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
-    @Column(name = "CEDULAMEDICO")
+    @Column(name = "CEDULAMEDICO",unique = true)
     private String cedulamedico;
     @Size(max = 32)
     @Column(name = "APELLIDOMEDICO")

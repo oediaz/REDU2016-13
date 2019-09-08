@@ -56,7 +56,7 @@ public class Mamografia implements Serializable {
     private Integer idmamografia;
     @Column(name = "FECHAMAMOGRAFIA")
     @Temporal(TemporalType.DATE)
-    private Date fechamamografia;
+    private Date fechamamografia=new Date();
     @Size(max = 32)
     @Column(name = "CARACTERISTICAPREDOMINANTEM")
     private String caracteristicapredominantem;
@@ -106,11 +106,12 @@ public class Mamografia implements Serializable {
     }
 
     public Date getFechamamografia() {
+         this.fechamamografia =new Date();
         return fechamamografia;
     }
 
     public void setFechamamografia(Date fechamamografia) {
-        this.fechamamografia = fechamamografia;
+        this.fechamamografia =new Date();
     }
 
     public String getCaracteristicapredominantem() {

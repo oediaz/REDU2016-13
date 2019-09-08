@@ -12,24 +12,6 @@
             <h:form id="EcografiaCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{ecografiaController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateEcografiaLabel_fechaecografia}" for="fechaecografia" />
-                        <p:calendar id="fechaecografia" placeholder="dd/mm/yyyy" yearRange="1950:2019" locale="de" navigator="true" pattern="dd/MM/yyyy" required="true"  value="#{ecografiaController.selected.fechaecografia}" title="#{bundle.EditEcografiaTitle_fechaecografia}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateEcografiaLabel_descripcionecografia}" for="descripcionecografia" />
-                        <p:inputText id="descripcionecografia" value="#{ecografiaController.selected.descripcionecografia}" title="#{bundle.CreateEcografiaTitle_descripcionecografia}" />
-                        <p:outputLabel value="#{bundle.CreateEcografiaLabel_razonecografia}" for="razonecografia" />
-                        <p:selectOneMenu id="razonecografia" value="#{ecografiaController.selected.razonecografia}" style="width: 100%" panelStyle="width:180px" effect="fold"  filter="true" filterMatchMode="startsWith">
-                            <p:ajax listener="#{catalogoController.onCatalogoChange(ecografiaController.selected.razonecografia,'razonecografia')}"/>
-                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
-                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
-                            <f:selectItems value="#{catalogoController.getItemsFind('razonecografia')}" />
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateEcografiaLabel_observacionecografia}" for="observacionecografia" />
-                        <p:inputText id="observacionecografia" value="#{ecografiaController.selected.observacionecografia}" title="#{bundle.CreateEcografiaTitle_observacionecografia}" />
-                        <p:outputLabel value="#{bundle.CreateEcografiaLabel_protocoloecografia}" for="protocoloecografia" />
-                        <p:inputText id="protocoloecografia" value="#{ecografiaController.selected.protocoloecografia}" title="#{bundle.CreateEcografiaTitle_protocoloecografia}" />
-                        <p:outputLabel value="#{bundle.CreateEcografiaLabel_observacionesprotocoloe}" for="observacionesprotocoloe" />
-                        <p:inputText id="observacionesprotocoloe" value="#{ecografiaController.selected.observacionesprotocoloe}" title="#{bundle.CreateEcografiaTitle_observacionesprotocoloe}" />
-                        
                         <p:outputLabel value="Paciente:" for="idpaciente" />
                         <p:selectOneMenu id="idpaciente" required="true" value="#{screeningController.filtro}"
                                          effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith">
@@ -42,7 +24,6 @@
                                 <h:outputText value="#{t.toString()}" />
                             </p:column>
                         </p:selectOneMenu>
-                        
                         <p:outputLabel value="#{bundle.CreateEcografiaLabel_screening}" for="screening" />
                         <p:selectOneMenu id="screening" value="#{ecografiaController.selected.idscreening}" required="true" requiredMessage="#{bundle.EditEcografiaRequiredMessage_screening}"
                                          effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith">
@@ -76,6 +57,21 @@
                                 <h:outputText value="#{t.toString()}" />
                             </p:column>
                         </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateEcografiaLabel_descripcionecografia}" for="descripcionecografia" />
+                        <p:inputText id="descripcionecografia" value="#{ecografiaController.selected.descripcionecografia}" title="#{bundle.CreateEcografiaTitle_descripcionecografia}" />
+                        <p:outputLabel value="#{bundle.CreateEcografiaLabel_razonecografia}" for="razonecografia" />
+                        <p:selectOneMenu id="razonecografia" value="#{ecografiaController.selected.razonecografia}" style="width: 100%" panelStyle="width:180px" effect="fold"  filter="true" filterMatchMode="startsWith">
+                            <p:ajax listener="#{catalogoController.onCatalogoChange(ecografiaController.selected.razonecografia,'razonecografia')}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
+                            <f:selectItems value="#{catalogoController.getItemsFind('razonecografia')}" />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateEcografiaLabel_observacionecografia}" for="observacionecografia" />
+                        <p:inputText id="observacionecografia" value="#{ecografiaController.selected.observacionecografia}" title="#{bundle.CreateEcografiaTitle_observacionecografia}" />
+                        <p:outputLabel value="#{bundle.CreateEcografiaLabel_protocoloecografia}" for="protocoloecografia" />
+                        <p:inputText id="protocoloecografia" value="#{ecografiaController.selected.protocoloecografia}" title="#{bundle.CreateEcografiaTitle_protocoloecografia}" />
+                        <p:outputLabel value="#{bundle.CreateEcografiaLabel_observacionesprotocoloe}" for="observacionesprotocoloe" />
+                        <p:inputText id="observacionesprotocoloe" value="#{ecografiaController.selected.observacionesprotocoloe}" title="#{bundle.CreateEcografiaTitle_observacionesprotocoloe}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{ecografiaController.create}" value="#{bundle.Save}" update="display,:EcografiaListForm:datalist,:growl" oncomplete="handleSubmit(args,'EcografiaCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="EcografiaCreateDialog.hide()"/>

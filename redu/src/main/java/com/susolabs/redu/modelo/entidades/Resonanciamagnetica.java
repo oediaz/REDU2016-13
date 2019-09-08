@@ -56,7 +56,7 @@ public class Resonanciamagnetica implements Serializable {
     private Integer idresonanciamagnetica;
     @Column(name = "FECHARM")
     @Temporal(TemporalType.DATE)
-    private Date fecharm;
+    private Date fecharm= new Date();
     @Size(max = 64)
     @Column(name = "DESCRIPCIONRM")
     private String descripcionrm;
@@ -106,11 +106,12 @@ public class Resonanciamagnetica implements Serializable {
     }
 
     public Date getFecharm() {
+        this.fecharm = new Date();
         return fecharm;
     }
 
     public void setFecharm(Date fecharm) {
-        this.fecharm = fecharm;
+        this.fecharm = new Date();
     }
 
     public String getDescripcionrm() {

@@ -55,7 +55,7 @@ public class Paciente implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
-    @Column(name = "CEDULAPACIENTE")
+    @Column(name = "CEDULAPACIENTE",unique = true)
     private String cedulapaciente;
     @Size(max = 32)
     @Column(name = "APELLIDOPACIENTE")

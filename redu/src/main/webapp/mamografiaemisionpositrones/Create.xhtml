@@ -12,25 +12,6 @@
             <h:form id="MamografiaemisionpositronesCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{mamografiaemisionpositronesController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_fechamamografiaep}" for="fechamamografiaep" />
-                        <p:calendar id="fechamamografiaep" placeholder="dd/mm/yyyy" yearRange="1950:2019" locale="de" navigator="true" pattern="dd/MM/yyyy" required="true"  value="#{mamografiaemisionpositronesController.selected.fechamamografiaep}" title="#{bundle.EditMamografiaemisionpositronesTitle_fechamamografiaep}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_diagnosticopreviomamografiaep}" for="diagnosticopreviomamografiaep" />
-                        <p:inputText id="diagnosticopreviomamografiaep" value="#{mamografiaemisionpositronesController.selected.diagnosticopreviomamografiaep}" title="#{bundle.CreateMamografiaemisionpositronesTitle_diagnosticopreviomamografiaep}" />
-                        <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_razonmamografiaep}" for="razonmamografiaep" />
-                        <p:selectOneMenu id="razonmamografiaep" value="#{mamografiaemisionpositronesController.selected.razonmamografiaep}" style="width: 200px"
-                                         panelStyle="width:180px" effect="fade"  filter="true" filterMatchMode="startsWith">
-                            <p:ajax listener="#{catalogoController.onCatalogoChange(mamografiaemisionpositronesController.selected.razonmamografiaep,'razonmamografiaep')}"/>
-                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
-                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
-                            <f:selectItems value="#{catalogoController.getItemsFind('razonmamografiaep')}" />    
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_sensibilidadmetastasisep}" for="sensibilidadmetastasisep" />
-                        <p:inputText id="sensibilidadmetastasisep" value="#{mamografiaemisionpositronesController.selected.sensibilidadmetastasisep}" title="#{bundle.CreateMamografiaemisionpositronesTitle_sensibilidadmetastasisep}" />
-                        <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_especificadadmetastasisep}" for="especificadadmetastasisep" />
-                        <p:inputText id="especificadadmetastasisep" value="#{mamografiaemisionpositronesController.selected.especificadadmetastasisep}" title="#{bundle.CreateMamografiaemisionpositronesTitle_especificadadmetastasisep}" />
-                        <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_observacionesmetastasisep}" for="observacionesmetastasisep" />
-                        <p:inputText id="observacionesmetastasisep" value="#{mamografiaemisionpositronesController.selected.observacionesmetastasisep}" title="#{bundle.CreateMamografiaemisionpositronesTitle_observacionesmetastasisep}" />
-
                         <p:outputLabel value="Paciente:" for="idpaciente" />
                         <p:selectOneMenu id="idpaciente" required="true" value="#{screeningController.filtro}"
                                          effect="fade" var="t" style="width:200px" filter="true" filterMatchMode="startsWith">
@@ -79,6 +60,24 @@
                                 <h:outputText value="#{t.toString()}" />
                             </p:column>
                         </p:selectOneMenu>
+                       <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_diagnosticopreviomamografiaep}" for="diagnosticopreviomamografiaep" />
+                        <p:inputText id="diagnosticopreviomamografiaep" value="#{mamografiaemisionpositronesController.selected.diagnosticopreviomamografiaep}" title="#{bundle.CreateMamografiaemisionpositronesTitle_diagnosticopreviomamografiaep}" />
+                        <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_razonmamografiaep}" for="razonmamografiaep" />
+                        <p:selectOneMenu id="razonmamografiaep" value="#{mamografiaemisionpositronesController.selected.razonmamografiaep}" style="width: 200px"
+                                         panelStyle="width:180px" effect="fade"  filter="true" filterMatchMode="startsWith">
+                            <p:ajax listener="#{catalogoController.onCatalogoChange(mamografiaemisionpositronesController.selected.razonmamografiaep,'razonmamografiaep')}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="agregar" itemValue="agregar" noSelectionOption="true" />
+                            <f:selectItems value="#{catalogoController.getItemsFind('razonmamografiaep')}" />    
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_sensibilidadmetastasisep}" for="sensibilidadmetastasisep" />
+                        <p:inputText id="sensibilidadmetastasisep" value="#{mamografiaemisionpositronesController.selected.sensibilidadmetastasisep}" title="#{bundle.CreateMamografiaemisionpositronesTitle_sensibilidadmetastasisep}" />
+                        <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_especificadadmetastasisep}" for="especificadadmetastasisep" />
+                        <p:inputText id="especificadadmetastasisep" value="#{mamografiaemisionpositronesController.selected.especificadadmetastasisep}" title="#{bundle.CreateMamografiaemisionpositronesTitle_especificadadmetastasisep}" />
+                        <p:outputLabel value="#{bundle.CreateMamografiaemisionpositronesLabel_observacionesmetastasisep}" for="observacionesmetastasisep" />
+                        <p:inputText id="observacionesmetastasisep" value="#{mamografiaemisionpositronesController.selected.observacionesmetastasisep}" title="#{bundle.CreateMamografiaemisionpositronesTitle_observacionesmetastasisep}" />
+
+                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{mamografiaemisionpositronesController.create}" value="#{bundle.Save}" update="display,:MamografiaemisionpositronesListForm:datalist,:growl" oncomplete="handleSubmit(args,'MamografiaemisionpositronesCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="MamografiaemisionpositronesCreateDialog.hide()"/>

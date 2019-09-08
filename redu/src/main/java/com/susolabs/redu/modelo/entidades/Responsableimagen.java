@@ -46,7 +46,7 @@ public class Responsableimagen implements Serializable {
     @Column(name = "IDRESPONSABLEI")
     private Integer idresponsablei;
     @Size(max = 10)
-    @Column(name = "CEDULARESPONSABLEI")
+    @Column(name = "CEDULARESPONSABLEI",unique = true)
     private String cedularesponsablei;
     @Size(max = 32)
     @Column(name = "NOMBRERESPONSABLEI")

@@ -42,12 +42,15 @@
                             </f:facet>
                             <h:outputText value="#{item.idmamografiaep}"/>
                         </p:column>
-                        <p:column filterBy="#{item.fechamamografiaep}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>
-                            <f:facet name="header">
+                        <p:column filterBy="#{item.fechamamografiaep}" filterMatchMode="contains">    
+                             <f:facet name="filter">
+                                <p:calendar maxdate="#{catalogoController.endDate}" yearRange="1950:2019" onkeyup="PF('datalist').filter()"    onmousemove="PF('datalist').filter()" style="width:95%" placeholder="dd/mm/yyyy"  locale="de" navigator="true" pattern="dd/MM/yyyy" />
+                            </f:facet>
+                           <f:facet name="header">
                                 <h:outputText style="text-transform: uppercase"   value="#{bundle.ListMamografiaemisionpositronesTitle_fechamamografiaep}"/>
                             </f:facet>
                             <h:outputText value="#{item.fechamamografiaep}">
-                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
                             </h:outputText>
                         </p:column>
                         <p:column filterBy="#{item.diagnosticopreviomamografiaep}" filterMatchMode="contains">                            <f:facet name="filter">                                <p:inputText onkeyup ="PF('datalist').filter()" style="width:95%"/>                            </f:facet>

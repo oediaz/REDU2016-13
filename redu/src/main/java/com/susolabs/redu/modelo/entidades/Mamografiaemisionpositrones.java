@@ -54,7 +54,7 @@ public class Mamografiaemisionpositrones implements Serializable {
     private Integer idmamografiaep;
     @Column(name = "FECHAMAMOGRAFIAEP")
     @Temporal(TemporalType.DATE)
-    private Date fechamamografiaep;
+    private Date fechamamografiaep=new Date();
     @Size(max = 64)
     @Column(name = "DIAGNOSTICOPREVIOMAMOGRAFIAEP")
     private String diagnosticopreviomamografiaep;
@@ -98,11 +98,12 @@ public class Mamografiaemisionpositrones implements Serializable {
     }
 
     public Date getFechamamografiaep() {
+        this.fechamamografiaep = new Date();
         return fechamamografiaep;
     }
 
     public void setFechamamografiaep(Date fechamamografiaep) {
-        this.fechamamografiaep = fechamamografiaep;
+        this.fechamamografiaep = new Date();
     }
 
     public String getDiagnosticopreviomamografiaep() {
