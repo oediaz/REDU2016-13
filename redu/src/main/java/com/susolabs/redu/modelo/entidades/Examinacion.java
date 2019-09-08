@@ -49,7 +49,7 @@ public class Examinacion implements Serializable {
     @Column(name = "IDEXAMINACION")
     private Integer idexaminacion;
     @Column(name = "FECHAEXAMINACION")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date fechaexaminacion;
     @Size(max = 64)
     @Column(name = "DESCRIPCIONEXAMINACION")

@@ -12,16 +12,6 @@
             <h:form id="ScreeningEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{screeningController.selected != null}">
-                        <p:outputLabel value="Fecha:" for="fechascreening" />
-                        <p:calendar id="fechascreening" placeholder="dd/mm/yyyy" yearRange="1950:2019" locale="de" navigator="true" pattern="dd/MM/yyyy" value="#{screeningController.selected.fechascreening}" title="#{bundle.EditScreeningTitle_fechascreening}" required="true" requiredMessage="#{bundle.EditScreeningRequiredMessage_fechascreening}" showOn="button"/>
-                        
-                        <p:outputLabel value="Método:" for="metodoscreening" />
-                        <p:selectOneMenu id="metodoscreening" value="#{screeningController.selected.metodoscreening}" style="width: 100%">
-                            <f:selectItems value="#{catalogoController.getItemsFind('metodoscreening')}" />
-                        </p:selectOneMenu><p:outputLabel value="Descripción:" for="descripcionscreening" />
-                        <p:inputTextarea rows="4" cols="30" id="descripcionscreening" value="#{screeningController.selected.descripcionscreening}" title="#{bundle.EditScreeningTitle_descripcionscreening}" required="true" requiredMessage="#{bundle.EditScreeningRequiredMessage_descripcionscreening}"/>
-                        <p:outputLabel value="Observación:" for="observacionscreening" />
-                        <p:inputTextarea rows="4" cols="30" id="observacionscreening" value="#{screeningController.selected.observacionscreening}" title="#{bundle.EditScreeningTitle_observacionscreening}" />
                         <p:outputLabel value="Médico:" for="idmedico" />
                         <p:selectOneMenu id="idmedico" value="#{screeningController.selected.idmedico}" required="true" requiredMessage="#{bundle.EditScreeningRequiredMessage_idmedico}"
                                          effect="fade" var="t" style="width:100%" filter="true" filterMatchMode="startsWith">
@@ -46,6 +36,14 @@
                                 <h:outputText value="#{t.cedulapaciente}-#{t.nombrepaciente} #{t.apellidopaciente}" />
                             </p:column>
                         </p:selectOneMenu>
+                        <p:outputLabel value="Método:" for="metodoscreening" />
+                        <p:selectOneMenu id="metodoscreening" value="#{screeningController.selected.metodoscreening}" style="width: 100%">
+                            <f:selectItems value="#{catalogoController.getItemsFind('metodoscreening')}" />
+                        </p:selectOneMenu><p:outputLabel value="Descripción:" for="descripcionscreening" />
+                        <p:inputTextarea rows="4" cols="30" id="descripcionscreening" value="#{screeningController.selected.descripcionscreening}" title="#{bundle.EditScreeningTitle_descripcionscreening}" required="true" requiredMessage="#{bundle.EditScreeningRequiredMessage_descripcionscreening}"/>
+                        <p:outputLabel value="Observación:" for="observacionscreening" />
+                        <p:inputTextarea rows="4" cols="30" id="observacionscreening" value="#{screeningController.selected.observacionscreening}" title="#{bundle.EditScreeningTitle_observacionscreening}" />
+                        
                     </p:panelGrid>
                     <center>
                         <p:commandButton actionListener="#{screeningController.update}" value="#{bundle.Save}" update="display,:ScreeningListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ScreeningEditDialog');"/>

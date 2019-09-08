@@ -55,7 +55,7 @@ public class Mamografia implements Serializable {
     @Column(name = "IDMAMOGRAFIA")
     private Integer idmamografia;
     @Column(name = "FECHAMAMOGRAFIA")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date fechamamografia;
     @Size(max = 32)
     @Column(name = "CARACTERISTICAPREDOMINANTEM")

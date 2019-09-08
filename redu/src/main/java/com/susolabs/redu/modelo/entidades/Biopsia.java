@@ -42,7 +42,7 @@ public class Biopsia implements Serializable {
     @Column(name = "IDBIOPSIA")
     private Integer idbiopsia;
     @Column(name = "FECHABIOPSIA")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date fechabiopsia;
     @JoinColumn(name = "IDTRTAMIENTOCM", referencedColumnName = "IDTRTAMIENTOCM")
     @ManyToOne(optional = false)

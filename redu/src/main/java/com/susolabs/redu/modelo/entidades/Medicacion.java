@@ -48,7 +48,7 @@ public class Medicacion implements Serializable {
     @Column(name = "IDMEDICACION")
     private Integer idmedicacion;
     @Column(name = "FECHAMEDICACION")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date fechamedicacion;
     @Size(max = 64)
     @Column(name = "DESCRIPCIONMEDICACION")

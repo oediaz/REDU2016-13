@@ -53,7 +53,7 @@ public class Mamografiaemisionpositrones implements Serializable {
     @Column(name = "IDMAMOGRAFIAEP")
     private Integer idmamografiaep;
     @Column(name = "FECHAMAMOGRAFIAEP")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date fechamamografiaep;
     @Size(max = 64)
     @Column(name = "DIAGNOSTICOPREVIOMAMOGRAFIAEP")

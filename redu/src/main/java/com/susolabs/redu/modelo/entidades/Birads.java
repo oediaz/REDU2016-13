@@ -58,7 +58,7 @@ public class Birads implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "FECHABIRADS")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date fechabirads;
     @Size(max = 32)
     @Column(name = "RAZONBIRADS")

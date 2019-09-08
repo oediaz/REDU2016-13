@@ -18,16 +18,17 @@
                         <h:outputText value="#{screeningController.selected.fechascreening}" title="#{bundle.ViewScreeningTitle_fechascreening}">
                             <f:convertDateTime pattern="dd/MM/yyyy" />
                         </h:outputText>
+                        <h:outputText value="Médico:"/>
+                        <h:outputText value="#{screeningController.selected.idmedico}" title="#{bundle.ViewScreeningTitle_idmedico}"/>
+                        <h:outputText value="Paciente:"/>
+                        <h:outputText value="#{screeningController.selected.idpaciente}" title="#{bundle.ViewScreeningTitle_idpaciente}"/>
                         <h:outputText value="Método:"/>
                         <h:outputText value="#{screeningController.selected.metodoscreening}" title="#{bundle.ViewScreeningTitle_metodoscreening}"/>
                         <h:outputText value="Descripción:"/>
                         <h:outputText value="#{screeningController.selected.descripcionscreening}" title="#{bundle.ViewScreeningTitle_descripcionscreening}"/>
                         <h:outputText value="Observación:"/>
                         <h:outputText value="#{screeningController.selected.observacionscreening}" title="#{bundle.ViewScreeningTitle_observacionscreening}"/>
-                        <h:outputText value="Médico:"/>
-                        <h:outputText value="#{screeningController.selected.idmedico}" title="#{bundle.ViewScreeningTitle_idmedico}"/>
-                        <h:outputText value="Paciente:"/>
-                        <h:outputText value="#{screeningController.selected.idpaciente}" title="#{bundle.ViewScreeningTitle_idpaciente}"/>
+                        
                     </p:panelGrid>
                     <center>
                         <p:commandButton value="#{bundle.Close}" onclick="ScreeningViewDialog.hide()"/>

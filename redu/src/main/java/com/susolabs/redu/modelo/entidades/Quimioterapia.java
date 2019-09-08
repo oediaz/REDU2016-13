@@ -42,7 +42,7 @@ public class Quimioterapia implements Serializable {
     @Column(name = "IDQUIMIOTERAPIA")
     private Integer idquimioterapia;
     @Column(name = "FECHAINICIOQUIMIOTERAPIA")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date fechainicioquimioterapia;
     @JoinColumn(name = "IDTRTAMIENTOCM", referencedColumnName = "IDTRTAMIENTOCM")
     @ManyToOne(optional = false)

@@ -42,7 +42,7 @@ public class Cirugia implements Serializable {
     @Column(name = "IDCIRUGIA")
     private Integer idcirugia;
     @Column(name = "FECHAINICIOCIRUGIA")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date fechainiciocirugia;
     @JoinColumn(name = "IDTRTAMIENTOCM", referencedColumnName = "IDTRTAMIENTOCM")
     @ManyToOne(optional = false)

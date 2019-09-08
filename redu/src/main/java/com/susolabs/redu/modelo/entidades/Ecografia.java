@@ -52,7 +52,7 @@ public class Ecografia implements Serializable {
     @Column(name = "IDECOGRAFIA")
     private Integer idecografia;
     @Column(name = "FECHAECOGRAFIA")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date fechaecografia;
     @Size(max = 64)
     @Column(name = "DESCRIPCIONECOGRAFIA")

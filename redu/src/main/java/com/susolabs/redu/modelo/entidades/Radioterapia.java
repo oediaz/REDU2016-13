@@ -42,7 +42,7 @@ public class Radioterapia implements Serializable {
     @Column(name = "IDTERAPIARADIOTERAPIA")
     private Integer idterapiaradioterapia;
     @Column(name = "FECHAINICIORADIOTERAPIA")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date fechainicioradioterapia;
     @JoinColumn(name = "IDTRTAMIENTOCM", referencedColumnName = "IDTRTAMIENTOCM")
     @ManyToOne(optional = false)

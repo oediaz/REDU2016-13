@@ -53,8 +53,8 @@ public class Screening implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "FECHASCREENING")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechascreening;
+    @Temporal(TemporalType.DATE)
+    private Date fechascreening= new Date();;
     @Size(max = 32)
     @Column(name = "METODOSCREENING")
     private String metodoscreening;

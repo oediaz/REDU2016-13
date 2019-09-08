@@ -50,7 +50,7 @@ public class Tratamientocancermama implements Serializable {
     @Column(name = "IDTRTAMIENTOCM")
     private Integer idtrtamientocm;
     @Column(name = "FECHAINICIOTCM")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date fechainiciotcm;
     @Size(max = 64)
     @Column(name = "DESCRIPCIONTCM")

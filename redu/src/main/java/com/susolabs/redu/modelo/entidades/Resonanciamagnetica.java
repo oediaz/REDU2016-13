@@ -55,7 +55,7 @@ public class Resonanciamagnetica implements Serializable {
     @Column(name = "IDRESONANCIAMAGNETICA")
     private Integer idresonanciamagnetica;
     @Column(name = "FECHARM")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date fecharm;
     @Size(max = 64)
     @Column(name = "DESCRIPCIONRM")
