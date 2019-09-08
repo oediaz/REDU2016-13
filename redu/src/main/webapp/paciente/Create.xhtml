@@ -13,7 +13,7 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{pacienteController.selected != null}">
                         <p:outputLabel value="CÉDULA" for="cedulapaciente" />
-                        <p:inputText id="cedulapaciente" value="#{pacienteController.selected.cedulapaciente}" title="#{bundle.CreatePacienteTitle_cedulapaciente}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_cedulapaciente}">
+                        <p:inputText id="cedulapaciente" value="#{pacienteController.selected.cedulapaciente}" title="#{bundle.CreatePacienteTitle_cedulapaciente}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_cedulapaciente}" maxlength="10">
                          <p:ajax event="keyup"  listener="#{catalogoController.validacedula(pacienteController.selected.cedulapaciente)}" update="display" />
                         </p:inputText>
                         <p:outputLabel value="APELLIDO" for="apellidopaciente"  />

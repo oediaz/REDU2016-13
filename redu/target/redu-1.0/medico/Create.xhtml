@@ -14,7 +14,7 @@
                     <p:panelGrid columns="2" rendered="#{medicoController.selected != null}">
                         <p:outputLabel value="Cédula:" for="cedulamedico" />
                         <p:inputText id="cedulamedico" value="#{medicoController.selected.cedulamedico}" title="#{bundle.CreateMedicoTitle_cedulamedico}" 
-                                     validatorMessage="Cedula Mal Ingresada"
+                                     validatorMessage="Cedula Mal Ingresada" maxlength="10"
                                      required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_cedulamedico}">
                             <p:ajax event="keyup"  listener="#{catalogoController.validacedula(medicoController.selected.cedulamedico)}" update="display" />
                         </p:inputText>

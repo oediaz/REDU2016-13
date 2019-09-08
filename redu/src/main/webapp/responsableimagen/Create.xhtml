@@ -13,7 +13,7 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{responsableimagenController.selected != null}">
                         <p:outputLabel value="Cédula:" for="cedularesponsablei" />
-                        <p:inputText id="cedularesponsablei" required="true" value="#{responsableimagenController.selected.cedularesponsablei}" title="#{bundle.CreateResponsableimagenTitle_cedularesponsablei}" >
+                        <p:inputText id="cedularesponsablei" required="true" maxlength="10" value="#{responsableimagenController.selected.cedularesponsablei}" title="#{bundle.CreateResponsableimagenTitle_cedularesponsablei}" >
                             <p:ajax event="keyup"  listener="#{catalogoController.validacedula(responsableimagenController.selected.cedularesponsablei)}" update="display" />
                         </p:inputText>
                         <p:outputLabel value="Nombre:" for="nombreresponsablei" />
