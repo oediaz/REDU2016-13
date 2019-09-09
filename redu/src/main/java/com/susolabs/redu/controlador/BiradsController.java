@@ -206,7 +206,7 @@ public class BiradsController implements Serializable {
         screPaciente = ejbPaciente.find(filtropaciente.getIdpaciente()).getScreeningList();
         if (screPaciente.size() > 0) {
             filtroscreening = screPaciente.get(0);
-            
+
         } else {
             filtroscreening = new Screening();
         }
@@ -218,45 +218,45 @@ public class BiradsController implements Serializable {
         resultadosmamografiaep = new ArrayList<Resultadosmamografiaep>();
         resultadosrm = new ArrayList<Resultadosresonanciamagnetica>();
         birad = new ArrayList<Birads>();
-        try{
-        System.out.println("Cedula es:"+filtropaciente.getCedulapaciente());
-        
-        }catch (Exception e) {
-System.out.println("No imprimió cedula");
-        }
-        try{
-        System.out.println("Scree es:"+filtroscreening.getIdscreening());
-        
-        }catch (Exception e) {
-System.out.println("No imprimió scre");
-        }
-        try{
-        System.out.println("Responsable:"+filtroresponsablei.getCedularesponsablei());
-        
-        }catch (Exception e) {
-System.out.println("No imprimió image");
-        }
-        try{
-        System.out.println("Lab:"+filtrolaboratorio.getIdlaboratorio());
-        
-        }catch (Exception e) {
-System.out.println("No imprimió lab");
+        try {
+            System.out.println("Cedula es:" + filtropaciente.getCedulapaciente());
+
+        } catch (Exception e) {
+            System.out.println("No imprimió cedula");
         }
         try {
-            
+            System.out.println("Scree es:" + filtroscreening.getIdscreening());
+
+        } catch (Exception e) {
+            System.out.println("No imprimió scre");
+        }
+        try {
+            System.out.println("Responsable:" + filtroresponsablei.getCedularesponsablei());
+
+        } catch (Exception e) {
+            System.out.println("No imprimió image");
+        }
+        try {
+            System.out.println("Lab:" + filtrolaboratorio.getIdlaboratorio());
+
+        } catch (Exception e) {
+            System.out.println("No imprimió lab");
+        }
+        try {
+
             List<Resultadosecografia> resultado = ejbREcografia.findAll();
             for (int i = 0; i < resultado.size(); i++) {
                 if (Objects.equals(resultado.get(i).getIdecografia().getIdlaboratorio().getIdlaboratorio(), filtrolaboratorio.getIdlaboratorio())) {
                     if (Objects.equals(resultado.get(i).getIdecografia().getIdresponsablei().getIdresponsablei(), filtroresponsablei.getIdresponsablei())) {
                         if (Objects.equals(resultado.get(i).getIdecografia().getIdscreening().getIdscreening(), filtroscreening.getIdscreening())) {
                             resultadosecografia.add(resultado.get(i));
-                            System.out.println("Ecografia es: "+resultado.get(i).getIdresultadoe());
+                            System.out.println("Ecografia es: " + resultado.get(i).getIdresultadoe());
                         }
                     }
                 }
             }
         } catch (Exception e) {
-System.out.println("Error Eco");
+            System.out.println("Error Eco");
         }
         try {
             List<Resultadosmamografia> resultadom = ejbRMamografia.findAll();
@@ -265,13 +265,13 @@ System.out.println("Error Eco");
                     if (Objects.equals(resultadom.get(i).getIdmamografia().getIdresponsablei().getIdresponsablei(), filtroresponsablei.getIdresponsablei())) {
                         if (Objects.equals(resultadom.get(i).getIdmamografia().getIdscreening().getIdscreening(), filtroscreening.getIdscreening())) {
                             resultadosmamografia.add(resultadom.get(i));
-                            System.out.println("Mamografia es:"+resultadom.get(i).getIdresultadom());
+                            System.out.println("Mamografia es:" + resultadom.get(i).getIdresultadom());
                         }
                     }
                 }
             }
         } catch (Exception e) {
-System.out.println("Error mamo");
+            System.out.println("Error mamo");
         }
         try {
             List<Resultadosmamografiaep> resultadomep = ejbRMamografiaep.findAll();
@@ -280,13 +280,13 @@ System.out.println("Error mamo");
                     if (Objects.equals(resultadomep.get(i).getIdmamografiaep().getIdresponsablei().getIdresponsablei(), filtroresponsablei.getIdresponsablei())) {
                         if (Objects.equals(resultadomep.get(i).getIdmamografiaep().getIdscreening().getIdscreening(), filtroscreening.getIdscreening())) {
                             resultadosmamografiaep.add(resultadomep.get(i));
-                            System.out.println("Positrones es:"+resultadomep.get(i).getIdresultadosmep());
+                            System.out.println("Positrones es:" + resultadomep.get(i).getIdresultadosmep());
                         }
                     }
                 }
             }
         } catch (Exception e) {
-System.out.println("Error positrones");
+            System.out.println("Error positrones");
         }
         try {
             List<Resultadosresonanciamagnetica> resultadorm = ejbRResonancia.findAll();
@@ -295,37 +295,71 @@ System.out.println("Error positrones");
                     if (Objects.equals(resultadorm.get(i).getIdresonanciamagnetica().getIdresponsablei().getIdresponsablei(), filtroresponsablei.getIdresponsablei())) {
                         if (Objects.equals(resultadorm.get(i).getIdresonanciamagnetica().getIdscreening().getIdscreening(), filtroscreening.getIdscreening())) {
                             resultadosrm.add(resultadorm.get(i));
-                              System.out.println("Resonancia es:"+resultadorm.get(i).getIdresultadorm());
+                            System.out.println("Resonancia es:" + resultadorm.get(i).getIdresultadorm());
                         }
                     }
                 }
             }
         } catch (Exception e) {
-System.out.println("Error resonancia");
+            System.out.println("Error resonancia");
         }
         try {
             List<Birads> rbirad = ejbFacade.findAll();
             for (int i = 0; i < rbirad.size(); i++) {
+                boolean bandera = true;
+                int rm = -1, mamografia = -1, ep = -1, eco = -1;
                 for (int j = 0; j < resultadosrm.size(); j++) {
-                    for (int k = 0; k < resultadosmamografiaep.size(); k++) {
-                        for (int l = 0; l < resultadosmamografia.size(); l++) {
-                            for (int m = 0; m < resultadosecografia.size(); m++) {
-                                if (Objects.equals(rbirad.get(i).getIdresultadorm().getIdresultadorm(), resultadosrm.get(j).getIdresultadorm())) {
-                                    if (Objects.equals(rbirad.get(i).getIdresultadosmep().getIdresultadosmep(), resultadosmamografiaep.get(k).getIdresultadosmep())) {
-                                        if (Objects.equals(rbirad.get(i).getIdresultadom().getIdresultadom(), resultadosmamografia.get(l).getIdresultadom())) {
-                                            if (Objects.equals(rbirad.get(i).getIdresultadoe().getIdresultadoe(), resultadosecografia.get(m).getIdresultadoe())) {
-                                                birad.add(rbirad.get(i));
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                    if (Objects.equals(rbirad.get(i).getIdresultadorm().getIdresultadorm(), resultadosrm.get(j).getIdresultadorm())) {
+                        rm = j;
                     }
+                }
+                for (int k = 0; k < resultadosmamografiaep.size(); k++) {
+                    if (Objects.equals(rbirad.get(i).getIdresultadosmep().getIdresultadosmep(), resultadosmamografiaep.get(k).getIdresultadosmep())) {
+                        ep = k;
+                    }
+                }
+                for (int l = 0; l < resultadosmamografia.size(); l++) {
+                    if (Objects.equals(rbirad.get(i).getIdresultadom().getIdresultadom(), resultadosmamografia.get(l).getIdresultadom())) {
+                        mamografia = l;
+                    }
+                }
+                for (int m = 0; m < resultadosecografia.size(); m++) {
+                    if (Objects.equals(rbirad.get(i).getIdresultadoe().getIdresultadoe(), resultadosecografia.get(m).getIdresultadoe())) {
+                        eco = m;
+                    }
+                }
+               
+                
+               
+                int aux = -1;
+                if (rm > -1) {
+                    aux = rm;
+                } else {
+                    System.out.println("no existe resonancia");
+                }
+                if (mamografia > -1) {
+                    aux = mamografia;
+                } else {
+                    System.out.println("no existe mamografia");
+                }
+                 if (ep > -1) {
+                    aux = ep;
+                } else {
+                    System.out.println("no existe emision de positrones");
+                }
+                if (eco > -1) {
+                    aux = eco;
+                } else {
+                    System.out.println("no existe ecografia");
+                }
+                if (aux > -1) {
+                    birad.add(rbirad.get(aux));
+                } else {
+                    System.out.println("no existen resultados");
                 }
 
             }
-            
+
         } catch (Exception e) {
 
         }
