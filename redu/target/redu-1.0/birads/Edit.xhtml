@@ -18,8 +18,6 @@
                         <p:tabView>
                             <p:tab title="Información de Birads">
                                 <p:panelGrid columns="2" rendered="#{biradsController.selected != null}">
-                               <p:outputLabel value="#{bundle.EditBiradsLabel_fechabirads}" for="fechabirads" />
-                                <p:calendar id="fechabirads" pattern="MM/dd/yyyy HH:mm:ss" value="#{biradsController.selected.fechabirads}" title="#{bundle.EditBiradsTitle_fechabirads}" required="true" requiredMessage="#{bundle.EditBiradsRequiredMessage_fechabirads}" showOn="button"/>
                                 <p:outputLabel value="#{bundle.EditBiradsLabel_razonbirads}" for="razonbirads" />
                                 <p:selectOneMenu id="razonbirads" value="#{biradsController.selected.razonbirads}" title="#{bundle.EditBiradsTitle_razonbirads}" style="width: 100%">
                                      <f:selectItems value="#{catalogoController.getItemsFind('razonbirads')}" />

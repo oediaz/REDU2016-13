@@ -59,7 +59,7 @@ public class Birads implements Serializable {
     @NotNull
     @Column(name = "FECHABIRADS")
     @Temporal(TemporalType.DATE)
-    private Date fechabirads;
+    private Date fechabirads= new Date();
     @Size(max = 32)
     @Column(name = "RAZONBIRADS")
     private String razonbirads;
@@ -117,11 +117,12 @@ public class Birads implements Serializable {
     }
 
     public Date getFechabirads() {
+        this.fechabirads = new Date();
         return fechabirads;
     }
 
     public void setFechabirads(Date fechabirads) {
-        this.fechabirads = fechabirads;
+        this.fechabirads = new Date();
     }
 
     public String getRazonbirads() {
