@@ -72,10 +72,12 @@
                                 <p:menuitem value="Gestión de patrones en el dominio de la textura Haralicks" outcome="/index" />
                                 <p:menuitem value="Gestión de coeficientes de Haralicks" outcome="/index" />
                             </p:submenu>
-                            <p:menuitem value="Base de conocimiento" ></p:menuitem>
-                            <p:menuitem value="Motor de inferencia" ></p:menuitem>
-                            <p:menuitem value="Gestión de reglas de inferencia" ></p:menuitem>
-                            <p:menuitem value="Generación supervisada del reporte BI-RADS" ></p:menuitem>
+                            <p:submenu label="Alimentar Base de conocimiento" >
+                                <p:menuitem value="Cargar los datos a la base del conocimiento" outcome="/index" />
+                                <p:menuitem value="Aprendizaje automatico de nuevos datos de la base del conocimiento" outcome="/index" />
+                                <p:menuitem value="Aprendizaje automatico del aspecto difuso" outcome="/index" />
+                            </p:submenu>
+                            
                         </p:submenu>
                        
                         <p:menuitem value="Ayuda" icon="ui-icon-help"></p:menuitem>
