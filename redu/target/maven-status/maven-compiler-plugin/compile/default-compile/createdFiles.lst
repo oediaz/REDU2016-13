@@ -120,6 +120,7 @@ com\susolabs\redu\controlador\ResultadosmamografiaepController$Resultadosmamogra
 com\susolabs\redu\modelo\facade\BiradsFacade.class
 com\susolabs\redu\modelo\facade\PacienteFacade.class
 com\susolabs\redu\controlador\ResultadosecografiaController$ResultadosecografiaControllerConverter.class
+com\susolabs\redu\controlador\PythonController.class
 com\susolabs\redu\controlador\ResultadosmamografiaepController.class
 com\susolabs\redu\modelo\entidades\Biopsia.class
 com\susolabs\redu\controlador\ResponsableimagenController.class
