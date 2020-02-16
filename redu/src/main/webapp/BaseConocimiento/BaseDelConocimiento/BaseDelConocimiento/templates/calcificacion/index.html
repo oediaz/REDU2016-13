@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <title>Calcificaciones</title>
+        <style>
+            body{background-image: url("http://img.webme.com/pic/n/nesbet/wallpapers5.png");
+            background-size:100% 100%;}
+            H1, H3 { text-align: center}
+            table { 
+                width: 100%; 
+                border-collapse: collapse; 
+            }
+            /* Zebra striping */
+            tr:nth-of-type(odd) { 
+                background: #eee; 
+            }
+            th { 
+                background: #333; 
+                color: white; 
+                font-weight: bold; 
+            }
+            td, th { 
+                padding: 6px; 
+                border: 1px solid #ccc; 
+                text-align: center; 
+            }
+        </style>        
+    </head>
+    <body>
+        <h1>Calcificaciones</h1>
+        
+        <table>
+        <tr>
+            <th>Homogeneidad</th> <th>Contraste</th>
+            <th>Disimilitud</th> <th>Entropia</th>
+            <th>Energia</th> <th>Agrupacion</th>
+            <th>Laterialidad</th> <th>Profundidad</th>
+            <th>Distancia Pezon</th> <th>Distancia Toraxica</th>
+            <th>Distancia Externon</th> <th>Forma</th>
+            <th>Bordes</th> <th>Area</th>
+            <th>Maligna</th> 
+            <th>Nombre Calcif.</th> 
+            <th>BI-RADS</th> 
+        </tr>
+        {% for c in calcificaciones %}
+        <tr>
+            <td>{{c.Homogeneidad}}</td>
+            <td>{{c.Contraste}}</td>
+            <td>{{c.Disimilitud}}</td>
+            <td>{{c.Entropia}}</td>
+            <td>{{c.Energia}}</td>
+            <td>{{c.Agrupacion}}</td>
+            <td>{{c.Lateralidad}}</td>
+            <td>{{c.Profundidad}}</td>
+            <td>{{c.DistanciaPezon}}</td>
+            <td>{{c.DistanciaToracica}}</td>
+            <td>{{c.DistanciaExternon}}</td>
+            <td>{{c.Forma}}</td>
+            <td>{{c.Bordes}}</td>
+            <td>{{c.Area}}</td>
+            <td>{{c.Maligna}}</td>
+            <td>{{c.nombreCalcif}}</td>
+            <td>{{c.birads}}</td>
+        </tr>
+        {% endfor %}
+        </table> <br><br>
+        <div style="text-align: center;">
+            <button onclick="location.href='/upload/'">Analizar Nuevos Datos</button>
+        </div>
+        <h3 >Interpretación de los datos</h3>
+        <h4>Agrupación:</h4>
+        <table>
+            <tr><th>Valor Numérico</th> <th>Descripción</th></tr>
+            <tr>
+                <td>1</td>
+                <td>Agrupada</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Lineal</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Segmentaria</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Regional</td>
+            </tr>
+        </table>
+        <h4>Lateralidad:</h4>
+        <table>
+            <tr><th>Valor Numérico</th> <th>Descripción</th></tr>
+            <tr>
+                <td>1</td>
+                <td>Derecha</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Izquierda</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Bilateral</td>
+            </tr>
+        </table>
+        <h4>Profunidad:</h4>
+        <table>
+            <tr><th>Valor Numérico</th> <th>Descripción</th></tr>
+            <tr>
+                <td>1</td>
+                <td>Anterior</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Medio</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Posterior</td>
+            </tr>
+        </table>
+        <h4>Forma:</h4>
+        <table>
+            <tr><th>Valor Numérico</th> <th>Descripción</th></tr>
+            <tr>
+                <td>1</td>
+                <td>Ovalada</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Redonda</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Circular</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Irregular</td>
+            </tr>
+        </table>
+        <h4>Maligna:</h4>
+        <table>
+            <tr><th>Valor Numérico</th> <th>Descripción</th></tr>
+            <tr>
+                <td>1</td>
+                <td>Maligna</td>
+            </tr>
+            <tr>
+                <td>0</td>
+                <td>Benigna</td>
+            </tr>
+        </table>
+    </body>
+</html>

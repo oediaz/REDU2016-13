@@ -1,0 +1,24 @@
+{
+  "calcificaciones": {
+    "Nombre": "",
+    "Haralick": {
+      "Homogeneidad": "",
+      "Contraste": "",
+      "Disimilitud": "",
+      "Entropia": "",
+      "Energia": ""
+    },
+    "Agrupacion": "",
+    "Ubicacion": {
+      "Lateralidad": "",
+      "Profunidad": "",
+      "DistanciaPezon": "",
+      "DistanciaToracica": "",
+      "DistanciaExternon": ""
+    },
+    "Forma": "",
+    "Bordes": "",
+    "Area": "",
+    "Maligna": "1 o 0"
+  }
+}

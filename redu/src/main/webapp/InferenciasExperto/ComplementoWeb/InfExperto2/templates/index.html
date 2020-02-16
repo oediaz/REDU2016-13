@@ -1,0 +1,39 @@
+{% extends 'base/base.html'%}
+
+{% block title %}
+{{title}}
+{% endblock %}
+{% block content %}
+
+{% from "_macro.html" import render_field %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <br>
+            <h2>Escribe tu inferencia </h2>
+            <br>
+            <h5>Ejemplo:</h5>
+            <h5> Si se presenta calcificaciones de morfología cutánea, vascular, palomita de maíz, lineal, redondeada, puntiforme, distrófica, leche de calcio o de sutura llega al grado de sospecha de birads2</h5>
+            <br>
+            <form name="sentMessage" id="contactForm" method="POST">
+         
+                {{render_field(form.textinf ,class='form-control' , placeholder="Escriba aquí su inferencia" ,id="mitextarea" ,cols="150" ,rows="10" ,style="resize: both; ")}}
+
+           
+
+                <br>
+                <div id="success"></div>
+                <div class="row">
+                    <div class="form-group col-xs-12">
+                        <button type="submit" class="btn btn-info">Guardar</button>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

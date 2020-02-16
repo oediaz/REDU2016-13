@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+{% extends 'base/base.html'%}
+
+{% block title %}
+{{title}}
+{% endblock %}
+{% block content %}
+
+<body>
+    <div class="form-check">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+            <br>
+            
+            <form method="POST" action="/">
+                <h3>Morfologia</h3>
+                <input type="checkbox" value="cutánea" name="mycheckbox"> Cutanea
+                <br>
+                <input type="checkbox" value="vascular" name="mycheckbox"> Vascular
+                <br>
+                <input type="checkbox" value="palomitamaíz" name="mycheckbox"> Palomita de maíz
+                <br>
+                <input type="checkbox" value="redondeada" name="mycheckbox"> Redondeada
+                <br>
+                <input type="checkbox" value="puntiforme" name="mycheckbox"> Puntiforme
+                <br>
+                <input type="checkbox" value="distrófica" name="mycheckbox"> Distrófica
+                <br>
+                <input type="checkbox" value="lecheCalcio" name="mycheckbox"> Leche de calcio
+                <br>
+                <input type="checkbox" value="sutura" name="mycheckbox"> Sutura
+                <br>
+                <input type="checkbox" value="amorfa" name="mycheckbox"> Amorfa
+                <br>
+                <input type="checkbox" value="grosera" name="mycheckbox"> Grosera
+                <br>
+                <input type="checkbox" value="finas" name="mycheckbox"> Finas Pleomorficas
+                <br>
+                <input type="checkbox" value="linealesfinas" name="mycheckbox"> Lineales finas
+                <br>
+                <input type="checkbox" value="linealesfinasramificadas" name="mycheckbox"> Lineales finas ramificadas
+                <br>
+
+                <br>
+                <h3>Distribución</h3>
+                <input type="checkbox" value="difusa" name="mycheckbox"> Difusa
+                <br>
+                <input type="checkbox" value="regional" name="mycheckbox"> Regional
+                <br>
+                <input type="checkbox" value="agrupada" name="mycheckbox"> Agrupada
+                <br>
+                <input type="checkbox" value="lineal" name="mycheckbox"> Lineal
+                <br>
+                <input type="checkbox" value="segmentaria" name="mycheckbox"> Segmentaria
+                <br>
+                <br>
+                <h3>Lateralidad</h3>
+                <input type="checkbox" value="Bilateral" name="mycheckbox"> Bilateral
+                <br>
+                <br>
+                <div id="success"></div>
+                <div class="row">
+                    <div class="form-group col-xs-12">
+                        <button type="submit" class="btn btn-info">Enviar</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+    </form>
+    </div>
+</body>
+
+</html>
+{% endblock %}

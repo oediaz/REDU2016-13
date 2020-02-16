@@ -1,0 +1,258 @@
+{
+    "categoria":{
+		"titulo": "Salud",
+		"subcategoria": {
+			"nombre":"Medicina",
+			"Especialidad":{
+				"nombre":"Oncología",
+				"enfermedad":{
+					"codigoCIE10":"C00-C97",
+					"nombreComun":"Cáncer",
+					"otroNombre": "Neoplasia",
+					"subTipo": {
+						"codigoCIE10":"C50",
+						"nombre":"Cáncer de Mama",
+						"screening":[
+							{
+								"nombre": "Mamografía",
+								"nodulo":
+								{
+									"forma":["Ovalada", "Redonda", "Irregular"],
+									"margen":["Circunscrito", "Oscurecido", "Microbulado", "Indefinido", "Espiculado"],
+									"densidad": [{"nombre":"Hiperdenso",
+									"minimoTejidoGlandularEstroma":"0%",
+									"maximoTejidoGlandularEstroma":"24.99%"
+									},
+									{"nombre":"Isodenso",
+									  "minimoTejidoGlandularEstroma":"25%",
+									"maximoTejidoGlandularEstroma":"49.99%"
+									},
+									{"nombre":"Hipodenso",
+									  "minimoTejidoGlandularEstroma":"50%",
+									"maximoTejidoGlandularEstroma":"74.99%"
+									}, 
+									{"nombre":"Contenido Adiposo",
+									  "minimoTejidoGlandularEstroma":"75%",
+									"maximoTejidoGlandularEstroma":"100%"
+									}],
+									"ubicacion":
+									{
+										"lateralidad":["Izquierda","Derecha"],
+										"cuadrantePosicionHorario":["Superoexterno","Superointerno","Inferoexterno","Inferointerno"],
+										"profundidad":["Anterior","Medio","Posterior"],
+										"distanciaPezon": "distancia",
+										"distanciaToracica": "distancia2",
+	                  "distanciaExternon": "distancia3"
+									}
+								},
+								"calcificaciones":
+								{
+									"tipo":
+									{
+										"Benignas":["Cutáneas","Vasculares","Macrocalcificaciones","Lineales Gruesas", "Redondeadas","Anulares","Distróficas","Leche Cálcica", "Hilos de Sutura"],
+										"Malignas":[{"nombre":"Amorfas",
+										  "area": "dato",
+										  "perimetro":"dato",
+										  "areaRellena": "dato",
+										  "extension":"dato", 
+										  "areaConvexa": "dato",
+										  "solidez":"dato",
+										  "distribucion": ["Agrupada", "Lineal", "Segmentaria"],
+										  "haralick":{
+									      "Homogeneidad": {"valor":"valorN","grado":["alto","medio","bajo"]},
+									      "Contraste":{"valor":"valorN","grado":["alto","medio","bajo"]},
+										    "Disimilaridad":{"valor":"valorN","grado":["alto","medio","bajo"]},
+										    "Media":{"valor":"valorN","grado":["alto","medio","bajo"]}
+										  },
+										  "BI-RADS":"4B"
+										},
+										{"nombre":"Groseras Heterogéneas",
+										  "area": "dato",
+										  "perimetro":"dato",
+										  "areaRellena": "dato",
+										  "extension":"dato", 
+										  "areaConvexa": "dato",
+										  "solidez":"dato",
+										  "distribucion": ["Agrupada"],
+										  "haralick":{
+									      "Homogeneidad": {"valor":"valorN","grado":["alto","medio","bajo"]},
+									      "Contraste":{"valor":"valorN","grado":["alto","medio","bajo"]},
+										    "Disimilaridad":{"valor":"valorN","grado":["alto","medio","bajo"]},
+										    "Media":{"valor":"valorN","grado":["alto","medio","bajo"]}
+										  },
+										  "BI-RADS":"4B"
+										},
+										{"nombre":"Finas Pleomorfas",
+										  "area": "dato",
+										  "perimetro":"dato",
+										  "areaRellena": "dato",
+										  "extension":"dato", 
+										  "areaConvexa": "dato",
+										  "solidez":"dato",
+										  "distribucion": ["Agrupada", "Regional", "Segmentaria"],
+										  "haralick":{
+									      "Homogeneidad": {"valor":"valorN","grado":["alto","medio","bajo"]},
+									      "Contraste":{"valor":"valorN","grado":["alto","medio","bajo"]},
+										    "Disimilaridad":{"valor":"valorN","grado":["alto","medio","bajo"]},
+										    "Media":{"valor":"valorN","grado":["alto","medio","bajo"]}
+										  },
+										  "BI-RADS":"4B"
+										},
+										{"nombre":"Lineales Finas Ramificadas",
+										  "area": "dato",
+										  "perimetro":"dato",
+										  "areaRellena": "dato",
+										  "extension":"dato", 
+										  "areaConvexa": "dato",
+										  "solidez":"dato",
+										  "distribucion": ["Agrupada", "Regional", "Segmentaria"],
+										  "haralick":{
+									      "Homogeneidad": {"valor":"valorN","grado":["alto","medio","bajo"]},
+									      "Contraste":{"valor":"valorN","grado":["alto","medio","bajo"]},
+										    "Disimilaridad":{"valor":"valorN","grado":["alto","medio","bajo"]},
+										    "Media":{"valor":"valorN","grado":["alto","medio","bajo"]}
+										  },
+										  "BI-RADS":"4C"
+										}
+										]
+									},
+									"ubicacion":
+									{
+										"lateralidad":["Izquierda","Derecha"],
+										"cuadrantePosicionHorario":["Superoexterno","Superointerno","Inferoexterno","Inferointerno"],
+										"profundidad":["Anterior","Medio","Posterior"],
+										"distanciaPezon": "distancia",
+										"distanciaToracica": "distancia2",
+										"distanciaExternon": "distancia3"
+									}
+								},
+								"asimetrias":
+								{
+									"Asimetria":["si","no"],
+									"Asimetria Global":["si","no"],
+									"Asimetria Focal":["si","no"],
+									"AsimetriaEnDesarrollo":["si","no"]
+								},
+								"hallazgosAsociados":
+								{
+									"Hallazgo":
+									[
+										{"nombre":"Ganglio Linfático Intramarino", "forma":"Reniformes Circunscritas",
+										  "tamañoMaximo": "1 cm"
+										}, {"nombre":"Lesión Cutánea"},
+										{"nombre":"Conducto Dilatado Solitario",
+										  "forma":"Tubulares o Ramificadas Unilaterales "
+										},
+										{"nombre":"Retracción Cutánea",
+										  "descripcion":"La piel de la mama presenta una tracción anómala."
+										}, 
+										{"nombre":"Retracción del Pezón",
+										  "descripcion":"La retracción del pezón consiste en su hundimiento."
+										}, 
+										{"nombre":"Engrosamiento Cutáneo",
+										  "descripcion":"El engrosamiento cutáneo puede ser focal o difuso",
+										  "grosorMinimo":"2mm"
+										}, {"nombre":"Engrosamiento Trabecular",
+										  "descripcion":"El engrosamiento trabecular consiste en el aumento de grosor de los tabiques fibrosos de la mama."
+										},
+										{"nombre":"Adenopatía Axilar"}, 
+										{"nombre":"Distorsión de la Arquitectura"}
+									],
+									"ubicacion":
+									{
+										"lateralidad":["Izquierda","Derecha"],
+										"cuadrantePosicionHorario":["Superoexterno","Superointerno","Inferoexterno","Inferointerno"],
+										"profundidad":["Anterior","Medio","Posterior"],
+										"distanciaPezon": "distancia",
+										"distanciaToracica": "distancia2"
+									}
+								}
+							},
+							{
+								"nombre": "Ecografía",
+								"composicionTejido":["Ecoestructura adiposa homogénea", " Ecoestructura fibroglandular homogénea","Ecoestructura Heterogénea"],
+								"nodulo":
+								{
+									"forma":["Ovalada", "Redonda", "Irregular"],
+									"orientacion":["Paralela", "No Paralela"],
+									"margen":["Circunscrito", "Indefinido","Angulado", "Microbulado", "Espiculado"],
+									"ecogenicidad":["Anecoica","Hipercioca","Compleja","Hipoecoica","Isoecoica","Heterogénea"],
+									"HallazgosAcusticoPosteriores":["Sin hallazgos","Refuerzo acústico posterior","Sobra acústica posterior","Patrón Mixto"]
+								},
+								"calcificacion":["Calcificaciones Intranodulares","Calcificaciones Extranodulares","Calcificaciones intraductales"],
+								"hallazgosAsociados":["Distorsión de la Arquitectura", "Cambios ductales","Engrosamiento Cutáneo", "Retracción Cutánea", "Edema","Vascularización Ausente", "Vascularización Interna","Vascularización Anular","Elasticidad Blanda", "Elasticidad Intermedia","Elasticidad Dura"],
+								"casosEspeciales":["Quiste Simple","Microquistes agrupados", "Quiste complicado"," Lesión dentro del espesor cutáneo","Cuerpo extraño, incluidos implantes mamarios","Ganglios linfáticos intramamarios","Ganglios linfáticos axilares", "Alteraciones vascualres", "Colecciones líquidas posquirúrgicas","Necrosis grasa"]
+							},
+							{
+								"nombre": "Resonancia Magnética",
+								"cantidadTejidoFibroangular":["Tejido adiposo casi en su totalidad", "Tejido fibroglandular disperso", "Tejido fibroglandular Heterogéneo","Tejido fibroglandular casi en su totalidad"],
+								"realceParenquimatosoFondo":
+								{
+									"grado": ["Mínimo","Leve","Moderado","Marcado"],
+									"simetria":["Simétrico","Asimétrico"]
+								},
+								"foco":["solitario","no solitario","n/a"],
+								"nodulos":
+								{
+									"forma":["Ovalada", "Redonda", "Irregular"],
+									"margen":["Circunscrito", "Oscurecido", "Microbulado", "Indefinido", "Espiculado"],
+									"CaracteristicasRealceInterno":["Homogéneo","Heterogéneo","Anular","Tabiques Internos Hipointesos"],
+									"ubicacion":
+									{
+										"lateralidad":["Izquierda","Derecha"],
+										"profundidad":["Anterior","Medio","Posterior"]
+									}
+								},
+								"realceNoNodular":
+								{
+									"distribucion":["Focal","Lineal","Segmentaria","Regional","En Múltiples Regiones","Difusa"],
+									"patronRealceInterno":["Homogéneo","Heterogéneo","En empedrado","Anular agrupado"]
+								},
+								"hallazgoSinRealce":{
+									"hallazgo":["Hiperintensidad ductal en T1 sin contraste","Quiste","Colecciones posquirúrgicas","Engrosamiento cutáneo y Trabecular posterapéutico", "Nódulos sin realce", "Distorisión de la Arquitectura","Ausencia de señal de cuepos extraños"],
+									"ubicacion":
+									{
+										"lateralidad":["Izquierda","Derecha"],
+										"profundidad":["Anterior","Medio","Posterior"]
+									}
+								},
+								"lesionesContienenGrasa":{
+									"lesion":["Glanglios linfáticos normales", "Glanglios linfáticos alterados","Hamartoma", "Seroma o hematoma posoperatorio que contiene grasa"],
+									"ubicacion":
+									{
+										"lateralidad":["Izquierda","Derecha"],
+										"profundidad":["Anterior","Medio","Posterior"]
+									}
+								},
+								"hallazgoAsociado":
+								{
+									"hallazgo":["Ganglio linfático Intramarino","Lesión Cutánea","Retracción del pezón", "Invasión del pezón","Retracción cutánea", " Engrosamiento cutáneo","Invasión cutánea directa","Cáncer inflamatorio","Adenopatia axilar", "Invasión del músculo pectoral","Invasión de la pared torácica","Distorsión Arquitectura"],
+									"ubicacion":
+									{
+										"lateralidad":["Izquierda","Derecha"],
+										"profundidad":["Anterior","Medio","Posterior"]
+									}
+								},
+								"valoracionCurvasCineticas":
+								{
+									"FaseInicial": ["Lenta","Intermedia","Rapida"],
+									"FaseTardia":["Persistente","En meseta","Lavado"]
+								},
+								"implantes":
+								{
+									"Material":["Solución salina","Silicona intacto","Silicona roto","Otros materiales"],
+									"Ubicacion":["Retroglandular","Retropectoral"],
+									"ContornoAlterado":["Protuberancia focal","No"],
+									"SiliconaIntracapsular":["Pliegues radiales","Linea Subcapsular","Signo del ojo de cerradura","Signos de los linguine"],
+									"SiliconaExtracapsular":["Mama","Ganglios linfáticos"],
+									"GotasAgua":["si","no"],
+									"LiquidoPeriprotesico":["si","no"]
+								}
+							}
+						]
+					}
+				}
+			}
+		}
+	}
+}

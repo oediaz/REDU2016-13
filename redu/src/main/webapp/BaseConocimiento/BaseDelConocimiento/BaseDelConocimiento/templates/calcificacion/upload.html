@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <title>Calcificaciones</title>
+        <style>
+            html {
+                background: url("http://img.webme.com/pic/n/nesbet/wallpapers5.png")
+                    no-repeat center center fixed;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+                overflow: hidden;
+                }
+
+                img {
+                display: block;
+                margin: auto;
+                width: 100%;
+                height: auto;
+                }
+
+                button {
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                padding: 30px;
+                margin: auto;
+                
+                border-radius: 50%;
+                background: white;
+                color: black;
+                overflow: hidden;
+                opacity: 0.4;
+                box-shadow: 10px 10px 30px #000;
+                }
+                /* Heading */
+                h1 {
+                font-family: "Open Sans Condensed", sans-serif;
+                position: relative;
+                margin-top: 0px;
+                text-align: center;
+                font-size: 40px;
+                color: #ddd;
+                text-shadow: 3px 3px 10px #000;
+                }
+                p {
+                font-family: "Open Sans Condensed", sans-serif;
+                position: relative;
+                margin-top: 0px;
+                text-align: left;
+                font-size: 20px;
+                color: #ddd;
+                text-shadow: 3px 3px 10px #000;
+                }
+
+                input {
+                font-family: "Open Sans Condensed", sans-serif;
+                text-decoration: none;
+                position: relative;
+                width: 80%;
+                display: block;
+                margin: 9px auto;
+                font-size: 17px;
+                color: #fff;
+                padding: 8px;
+                border-radius: 6px;
+                border: none;
+                background: rgba(3, 3, 3, 0.1);
+                -webkit-transition: all 2s ease-in-out;
+                -moz-transition: all 2s ease-in-out;
+                -o-transition: all 2s ease-in-out;
+                transition: all 0.2s ease-in-out;
+                }
+
+                input:focus {
+                outline: none;
+                box-shadow: 3px 3px 10px #333;
+                background: rgba(3, 3, 3, 0.18);
+                }
+
+        </style>        
+    </head>
+    <body>
+        <h1>Análisis de Calcificaciones</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <P>Seleccione el archivo que desea analizar:</P>
+            <input type="file" name="archivo" accept=".json">   <br><br><br><br>
+            <div style="text-align: center;">
+                <button type="submit" style="height:150px; width:150px" >Analizar</button><br><br>
+            </div>
+             
+        </form>
+        <div style="text-align: center;">
+            <button onclick="location.href='/calcificacion/'" style="height:100px; width:100px">Ver Datos</button>
+        </div>
+        
+    </body>
+</html>
